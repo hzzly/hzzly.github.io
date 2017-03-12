@@ -6,58 +6,53 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>开源的收获 | Hzzly</title>
+  <title>axios在vue中的简单配置与使用 | Hzzly</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="第一次在github上发布了开源《Qu约》后，不到两天，被人star了137次，fork了25次，这个成绩大大出乎了我自己的意料！
-
-Github地址： https://github.com/hzzly/xyy-vuedemo地址： http://hjingren.cn/xyy-vue/欢迎大家的star啦~
-同时也让我收获到了许多：
+  <meta name="description" content="尤雨溪之前在微博发布消息，不再继续维护vue-resource，并推荐大家使用 axios 开始。
 
 
-github首次破百
+一、axios 简介axios 是一个基于Promise 用于浏览器和 nodejs 的 HTTP 客户端，它本身具有以下特征：
 
 
-
-
-
-掘金的阅读量与喜欢量同时">
+从浏览器中创建 XMLHttpRequest
+从 node.js 发出 http 请求
+支持 Promise API
+拦截请求和响应
+转换请求和响应数据
+取消请">
 <meta property="og:type" content="article">
-<meta property="og:title" content="开源的收获">
-<meta property="og:url" content="http://yoursite.com/2017/03/09/开源的收获/index.html">
+<meta property="og:title" content="axios在vue中的简单配置与使用">
+<meta property="og:url" content="http://yoursite.com/2017/03/12/axios在vue中的简单配置与使用/index.html">
 <meta property="og:site_name" content="Hzzly">
-<meta property="og:description" content="第一次在github上发布了开源《Qu约》后，不到两天，被人star了137次，fork了25次，这个成绩大大出乎了我自己的意料！
-
-Github地址： https://github.com/hzzly/xyy-vuedemo地址： http://hjingren.cn/xyy-vue/欢迎大家的star啦~
-同时也让我收获到了许多：
+<meta property="og:description" content="尤雨溪之前在微博发布消息，不再继续维护vue-resource，并推荐大家使用 axios 开始。
 
 
-github首次破百
+一、axios 简介axios 是一个基于Promise 用于浏览器和 nodejs 的 HTTP 客户端，它本身具有以下特征：
 
 
-
-
-
-掘金的阅读量与喜欢量同时">
-<meta property="og:image" content="https://hzzly.github.io/img/github.png">
-<meta property="og:image" content="https://hzzly.github.io/img/juejin.png">
-<meta property="og:image" content="https://hzzly.github.io/img/segmentfault.png">
-<meta property="og:updated_time" content="2017-03-10T16:03:10.091Z">
+从浏览器中创建 XMLHttpRequest
+从 node.js 发出 http 请求
+支持 Promise API
+拦截请求和响应
+转换请求和响应数据
+取消请">
+<meta property="og:image" content="https://hzzly.github.io/img/axios.png">
+<meta property="og:updated_time" content="2017-03-12T13:37:16.642Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="开源的收获">
-<meta name="twitter:description" content="第一次在github上发布了开源《Qu约》后，不到两天，被人star了137次，fork了25次，这个成绩大大出乎了我自己的意料！
-
-Github地址： https://github.com/hzzly/xyy-vuedemo地址： http://hjingren.cn/xyy-vue/欢迎大家的star啦~
-同时也让我收获到了许多：
+<meta name="twitter:title" content="axios在vue中的简单配置与使用">
+<meta name="twitter:description" content="尤雨溪之前在微博发布消息，不再继续维护vue-resource，并推荐大家使用 axios 开始。
 
 
-github首次破百
+一、axios 简介axios 是一个基于Promise 用于浏览器和 nodejs 的 HTTP 客户端，它本身具有以下特征：
 
 
-
-
-
-掘金的阅读量与喜欢量同时">
-<meta name="twitter:image" content="https://hzzly.github.io/img/github.png">
+从浏览器中创建 XMLHttpRequest
+从 node.js 发出 http 请求
+支持 Promise API
+拦截请求和响应
+转换请求和响应数据
+取消请">
+<meta name="twitter:image" content="https://hzzly.github.io/img/axios.png">
   
     <link rel="alternative" href="/atom.xml" title="Hzzly" type="application/atom+xml">
   
@@ -193,20 +188,20 @@ github首次破百
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-开源的收获" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-axios在vue中的简单配置与使用" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      开源的收获
+      axios在vue中的简单配置与使用
     </h1>
   
 
         
-        <a href="/2017/03/09/开源的收获/" class="archive-article-date">
-  	<time datetime="2017-03-09T15:57:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-09</time>
+        <a href="/2017/03/12/axios在vue中的简单配置与使用/" class="archive-article-date">
+  	<time datetime="2017-03-12T13:34:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-12</time>
 </a>
         
       </header>
@@ -214,37 +209,32 @@ github首次破百
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>第一次在github上发布了开源《Qu约》后，不到两天，被人star了137次，fork了25次，这个成绩大大出乎了我自己的意料！</p>
+<p>尤雨溪之前在微博发布消息，不再继续维护vue-resource，并推荐大家使用 axios 开始。</p>
 </blockquote>
-<p><strong>Github地址：</strong> <a href="https://github.com/hzzly/xyy-vue" target="_blank" rel="external">https://github.com/hzzly/xyy-vue</a><br><strong>demo地址：</strong> <a href="http://hjingren.cn/xyy-vue/" target="_blank" rel="external">http://hjingren.cn/xyy-vue/</a><br>欢迎大家的star啦~</p>
-<p>同时也让我收获到了许多：</p>
+<p><img src="https://hzzly.github.io/img/axios.png" alt="axios"></p>
+<h2 id="一、axios-简介"><a href="#一、axios-简介" class="headerlink" title="一、axios 简介"></a><strong>一、axios 简介</strong></h2><p>axios 是一个基于Promise 用于浏览器和 nodejs 的 HTTP 客户端，它本身具有以下特征：</p>
 <blockquote>
-<ol>
-<li>github首次破百</li>
-</ol>
+<ul>
+<li>从浏览器中创建 XMLHttpRequest</li>
+<li>从 node.js 发出 http 请求</li>
+<li>支持 Promise API</li>
+<li>拦截请求和响应</li>
+<li>转换请求和响应数据</li>
+<li>取消请求</li>
+<li>自动转换JSON数据</li>
+<li>客户端支持防止 CSRF/XSRF</li>
+</ul>
 </blockquote>
-<p><img src="https://hzzly.github.io/img/github.png" alt="github"></p>
-<blockquote>
-<ol>
-<li>掘金的阅读量与喜欢量同时给他人带来了不一样的价值</li>
-</ol>
+<h2 id="二、引入方式："><a href="#二、引入方式：" class="headerlink" title="二、引入方式："></a><strong>二、引入方式：</strong></h2><p>npm:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ npm install axios</div><div class="line">//淘宝源</div><div class="line">$ cnpm install axios</div></pre></td></tr></table></figure></p>
+<p>bower:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ bower install axios</div></pre></td></tr></table></figure></p>
+<p>cdn:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script src=<span class="string">"https://unpkg.com/axios/dist/axios.min.js"</span>&gt;&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="三、vue中axios的配置"><a href="#三、vue中axios的配置" class="headerlink" title="三、vue中axios的配置 "></a><strong>三、vue中axios的配置 </strong></h2><blockquote>
+<p>之前那个开源项目一开始就打算用axios，在网上找了好多文章与攻略，发现好多都不太详细，所以打算自己动手配置一个，(不要怂，撸起袖子就是干)。</p>
 </blockquote>
-<p><img src="https://hzzly.github.io/img/juejin.png" alt="juejin"></p>
-<blockquote>
-<ol>
-<li>segmentfault的阅读量、收藏量与声望值，把其中的价值传给他人</li>
-</ol>
-</blockquote>
-<p><img src="https://hzzly.github.io/img/segmentfault.png" alt="segmentfault"></p>
-<blockquote>
-<ol>
-<li>收获了一个offer</li>
-<li>给我以后就业增加了一份保证</li>
-<li>结交了好多同行开发者</li>
-</ol>
-</blockquote>
-<p>分享与开源，让技术生生不息。借用一本书de名字，Just for fun。开源是一种情怀，happy hacking！</p>
-<p>革命尚未成功，我们还需努力。。。</p>
+<p>我的配置：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span></div><div class="line"><span class="keyword">import</span> qs <span class="keyword">from</span> <span class="string">'qs'</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> _ <span class="keyword">from</span> <span class="string">'../util/tool'</span></div><div class="line"></div><div class="line">axios.defaults.timeout = <span class="number">5000</span>;                        <span class="comment">//响应时间</span></div><div class="line">axios.defaults.headers.post[<span class="string">'Content-Type'</span>] = <span class="string">'application/x-www-form-urlencoded;charset=UTF-8'</span>;           <span class="comment">//配置请求头</span></div><div class="line">axios.defaults.baseURL = <span class="string">'你的接口地址'</span>;   <span class="comment">//配置接口地址</span></div><div class="line"></div><div class="line"><span class="comment">//POST传参序列化(添加请求拦截器)</span></div><div class="line">axios.interceptors.request.use(<span class="function">(<span class="params">config</span>) =&gt;</span> &#123;</div><div class="line">	<span class="comment">//在发送请求之前做某件事</span></div><div class="line">    <span class="keyword">if</span>(config.method  === <span class="string">'post'</span>)&#123;</div><div class="line">        config.data = qs.stringify(config.data);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> config;</div><div class="line">&#125;,(error) =&gt;&#123;</div><div class="line">     _.toast(<span class="string">"错误的传参"</span>, <span class="string">'fail'</span>);</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(error);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">//返回状态判断(添加响应拦截器)</span></div><div class="line">axios.interceptors.response.use(<span class="function">(<span class="params">res</span>) =&gt;</span>&#123;</div><div class="line">	<span class="comment">//对响应数据做些事</span></div><div class="line">    <span class="keyword">if</span>(!res.data.success)&#123;</div><div class="line">        <span class="comment">// _.toast(res.data.msg);</span></div><div class="line">        <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(res);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> res;</div><div class="line">&#125;, (error) =&gt; &#123;</div><div class="line">    _.toast(<span class="string">"网络异常"</span>, <span class="string">'fail'</span>);</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(error);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">//返回一个Promise(发送post请求)</span></div><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">fetch</span>(<span class="params">url, params</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">        axios.post(url, params)</div><div class="line">            .then(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</div><div class="line">                resolve(response.data);</div><div class="line">            &#125;, err =&gt; &#123;</div><div class="line">                reject(err);</div><div class="line">            &#125;)</div><div class="line">            .catch(<span class="function">(<span class="params">error</span>) =&gt;</span> &#123;</div><div class="line">               reject(error)</div><div class="line">            &#125;)</div><div class="line">    &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="四、vue中使用配置好的axios"><a href="#四、vue中使用配置好的axios" class="headerlink" title="四、vue中使用配置好的axios"></a><strong>四、vue中使用配置好的axios</strong></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 用户登录</div><div class="line">     */</div><div class="line">    Login(params) &#123;</div><div class="line">        <span class="keyword">return</span> fetch(<span class="string">'/users/api/userLogin'</span>, params)</div><div class="line">    &#125;,  </div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 用户注册</div><div class="line">     */</div><div class="line">    Regist(params) &#123;</div><div class="line">        <span class="keyword">return</span> fetch(<span class="string">'/users/api/userRegist'</span>, params)</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 发送注册验证码</div><div class="line">     */</div><div class="line">    RegistVerifiCode(tellphone) &#123;</div><div class="line">        <span class="keyword">return</span> fetch(<span class="string">'/users/api/registVerifiCode'</span>, &#123;<span class="attr">tellphone</span>: tellphone&#125;)</div><div class="line">    &#125;,</div><div class="line">    ......</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果觉得还行，欢迎star<br><strong>项目地址：</strong> <a href="https://github.com/hzzly/xyy-vue" target="_blank" rel="external">https://github.com/hzzly/xyy-vue</a><br><strong>demo地址：</strong> <a href="http://hjingren.cn/xyy-vue/" target="_blank" rel="external">http://hjingren.cn/xyy-vue/</a></p>
+<p>好了，溜了溜了。。。</p>
 
       
 
@@ -345,7 +335,7 @@ github首次破百
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/03/09/开源的收获/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/03/12/axios在vue中的简单配置与使用/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -359,18 +349,9 @@ github首次破百
   
 <nav id="article-nav">
   
-    <a href="/2017/03/12/axios在vue中的简单配置与使用/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          axios在vue中的简单配置与使用
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/03/08/进阶vue全家桶/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">进阶vue全家桶</div>
+    <a href="/2017/03/09/开源的收获/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">开源的收获</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -384,7 +365,7 @@ github首次破百
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="开源的收获" data-title="开源的收获" data-url="http://yoursite.com/2017/03/09/开源的收获/"></div>
+	<div class="ds-thread" data-thread-key="axios在vue中的简单配置与使用" data-title="axios在vue中的简单配置与使用" data-url="http://yoursite.com/2017/03/12/axios在vue中的简单配置与使用/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
