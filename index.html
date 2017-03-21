@@ -151,6 +151,132 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-一个Vue-Canvas的酷炫后台管理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/21/一个Vue-Canvas的酷炫后台管理/">一个Vue+Canvas的酷炫后台管理</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/21/一个Vue-Canvas的酷炫后台管理/" class="archive-article-date">
+  	<time datetime="2017-03-21T09:10:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>又一个Vue+Cnavas酷炫的后台管理，依然前后端分离（用PC打开，还没适配移动端）。</p>
+</blockquote>
+<p><strong>项目地址：</strong> <a href="https://github.com/hzzly/canvas-vue">https://github.com/hzzly/canvas-vue</a><br><strong>demo地址：</strong> <a href="http://hjingren.cn/curriculum-design/">http://hjingren.cn/curriculum-design/</a><br>欢迎大家的star啦~</p>
+<h3 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a><strong>技术栈</strong></h3><p>前台:</p>
+<pre><code>&gt; 1. vue-cli
+&gt; 2. vue
+&gt; 3. vue-router
+&gt; 4. webpak
+&gt; 5. canvas
+&gt; 6. ajax
+</code></pre><p>后台:</p>
+<pre><code>&gt; 1. wamp
+&gt; 2. PHP(ThinkPHP)
+&gt; 3. mysql
+</code></pre><h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a><strong>功能说明</strong></h3><ul>
+<li>登录<ul>
+<li>用户登录</li>
+<li>管理员登录</li>
+</ul>
+</li>
+<li>注册<ul>
+<li>用户注册</li>
+</ul>
+</li>
+<li>Canvas<ul>
+<li>流星滑过</li>
+<li>星星闪闪</li>
+<li>后台折线</li>
+<li>折线跟着鼠标滑动</li>
+</ul>
+</li>
+<li>Vue<ul>
+<li>弹出框组件</li>
+<li>路由切换动画</li>
+<li>通过Ajax调用后台接口</li>
+</ul>
+</li>
+<li>留言板(时间轴)</li>
+<li>添加房屋信息</li>
+<li>出租 求租</li>
+<li>出售 求购</li>
+<li>个人信息修改</li>
+<li>密码修改</li>
+<li>……</li>
+</ul>
+<blockquote>
+<p>1.登录注册模块，流星与星星为canvas，登录注册切换动画为vue transition</p>
+</blockquote>
+<p><img src="http://omt3u4bph.bkt.clouddn.com/canvas-login.gif" alt="canvas-login"></p>
+<blockquote>
+<ol>
+<li>后台管理页面，背景为canvas(会动的折线+跟着鼠标滑动) 功能模块切换为vue transition</li>
+</ol>
+</blockquote>
+<p><img src="http://omt3u4bph.bkt.clouddn.com/admin.gif" alt="admin"></p>
+<blockquote>
+<ol>
+<li>留言板(时间轴特效)</li>
+</ol>
+</blockquote>
+<p><img src="http://omt3u4bph.bkt.clouddn.com/msgboard.gif" alt="msgboard"></p>
+<h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3>
+        
+          <a class="article-more-a" href="/2017/03/21/一个Vue-Canvas的酷炫后台管理/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/21/一个Vue-Canvas的酷炫后台管理/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-移动端屏幕适配的解决" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -346,11 +472,9 @@
 <h2 id="三、vue中axios的配置"><a href="#三、vue中axios的配置" class="headerlink" title="三、vue中axios的配置 "></a><strong>三、vue中axios的配置 </strong></h2><blockquote>
 <p>之前那个开源项目一开始就打算用axios，在网上找了好多文章与攻略，发现好多都不太详细，所以打算自己动手配置一个，(不要怂，撸起袖子就是干)。</p>
 </blockquote>
-<p>我的配置：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span></div><div class="line"><span class="keyword">import</span> qs <span class="keyword">from</span> <span class="string">'qs'</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> _ <span class="keyword">from</span> <span class="string">'../util/tool'</span></div><div class="line"></div><div class="line">axios.defaults.timeout = <span class="number">5000</span>;                        <span class="comment">//响应时间</span></div><div class="line">axios.defaults.headers.post[<span class="string">'Content-Type'</span>] = <span class="string">'application/x-www-form-urlencoded;charset=UTF-8'</span>;           <span class="comment">//配置请求头</span></div><div class="line">axios.defaults.baseURL = <span class="string">'你的接口地址'</span>;   <span class="comment">//配置接口地址</span></div><div class="line"></div><div class="line"><span class="comment">//POST传参序列化(添加请求拦截器)</span></div><div class="line">axios.interceptors.request.use(<span class="function">(<span class="params">config</span>) =&gt;</span> &#123;</div><div class="line">	<span class="comment">//在发送请求之前做某件事</span></div><div class="line">    <span class="keyword">if</span>(config.method  === <span class="string">'post'</span>)&#123;</div><div class="line">        config.data = qs.stringify(config.data);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> config;</div><div class="line">&#125;,(error) =&gt;&#123;</div><div class="line">     _.toast(<span class="string">"错误的传参"</span>, <span class="string">'fail'</span>);</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(error);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">//返回状态判断(添加响应拦截器)</span></div><div class="line">axios.interceptors.response.use(<span class="function">(<span class="params">res</span>) =&gt;</span>&#123;</div><div class="line">	<span class="comment">//对响应数据做些事</span></div><div class="line">    <span class="keyword">if</span>(!res.data.success)&#123;</div><div class="line">        <span class="comment">// _.toast(res.data.msg);</span></div><div class="line">        <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(res);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> res;</div><div class="line">&#125;, (error) =&gt; &#123;</div><div class="line">    _.toast(<span class="string">"网络异常"</span>, <span class="string">'fail'</span>);</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(error);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">//返回一个Promise(发送post请求)</span></div><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">fetch</span>(<span class="params">url, params</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">        axios.post(url, params)</div><div class="line">            .then(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</div><div class="line">                resolve(response.data);</div><div class="line">            &#125;, err =&gt; &#123;</div><div class="line">                reject(err);</div><div class="line">            &#125;)</div><div class="line">            .catch(<span class="function">(<span class="params">error</span>) =&gt;</span> &#123;</div><div class="line">               reject(error)</div><div class="line">            &#125;)</div><div class="line">    &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="四、vue中使用配置好的axios"><a href="#四、vue中使用配置好的axios" class="headerlink" title="四、vue中使用配置好的axios"></a><strong>四、vue中使用配置好的axios</strong></h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 用户登录</div><div class="line">     */</div><div class="line">    Login(params) &#123;</div><div class="line">        <span class="keyword">return</span> fetch(<span class="string">'/users/api/userLogin'</span>, params)</div><div class="line">    &#125;,  </div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 用户注册</div><div class="line">     */</div><div class="line">    Regist(params) &#123;</div><div class="line">        <span class="keyword">return</span> fetch(<span class="string">'/users/api/userRegist'</span>, params)</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 发送注册验证码</div><div class="line">     */</div><div class="line">    RegistVerifiCode(tellphone) &#123;</div><div class="line">        <span class="keyword">return</span> fetch(<span class="string">'/users/api/registVerifiCode'</span>, &#123;<span class="attr">tellphone</span>: tellphone&#125;)</div><div class="line">    &#125;,</div><div class="line">    ......</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>如果觉得还行，欢迎star<br><strong>项目地址：</strong> <a href="https://github.com/hzzly/xyy-vue" target="_blank" rel="external">https://github.com/hzzly/xyy-vue</a><br><strong>demo地址：</strong> <a href="http://hjingren.cn/xyy-vue/" target="_blank" rel="external">http://hjingren.cn/xyy-vue/</a></p>
-<p>好了，溜了溜了。。。</p>
-
+        
+          <a class="article-more-a" href="/2017/03/12/axios在vue中的简单配置与使用/#more">more >></a>
+        
       
 
       
@@ -467,114 +591,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/03/09/开源的收获/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-进阶vue全家桶" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/08/进阶vue全家桶/">进阶vue全家桶</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/08/进阶vue全家桶/" class="archive-article-date">
-  	<time datetime="2017-03-08T01:47:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>有人说只会vue不会vuex还只是个切图仔，所以本项目结合前端Vue2.0全家桶(vue+vue-router+vuex+axios+es6+sass)以及后端Node,一个前后端分离的练手项目。本项目可以作为一个前端vue进阶项目，从前端flex布局到前端vue以及组件分离的使用，再到后端Node以及Leancloud的结合，是一个打通前后端流程的一个项目。欢迎大家前来star。如果有任何问题，可以给我留言，我们互相学习讨论，一起进步。</p>
-</blockquote>
-<p><strong>项目地址：</strong> <a href="https://github.com/hzzly/xyy-vue">https://github.com/hzzly/xyy-vue</a><br><strong>demo地址：</strong> <a href="http://hjingren.cn/xyy-vue/">http://hjingren.cn/xyy-vue/</a><br>欢迎大家的star啦~</p>
-<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><ul>
-<li>首页轮播图</li>
-<li>首页热门活动</li>
-<li>约跑步活动列表</li>
-<li>约出行活动列表</li>
-<li>个人中心<ul>
-<li>查看个人活动</li>
-<li>学生认证(待开发)</li>
-<li>学生信息修改</li>
-<li>消息通知(后台接口待开发)</li>
-<li>选择高校(待开发)</li>
-</ul>
-</li>
-<li>登录</li>
-<li>注册</li>
-<li>活动详情<ul>
-<li>活动报名</li>
-</ul>
-</li>
-<li>活动发布<ul>
-<li>时间选择组件</li>
-<li>地址选择组件</li>
-<li>文件上传</li>
-</ul>
-</li>
-<li>axios的封装</li>
-<li>……</li>
-</ul>
-<h3 id="公共组件"><a href="#公共组件" class="headerlink" title="公共组件"></a>公共组件</h3><blockquote>
-<ul>
-<li>弹出文字组件</li>
-<li>弹出框组件</li>
-<li>loading组件</li>
-<li>toast组件</li>
-<li>时间选择器组件</li>
-<li>地址选择器组件</li>
-<li>……</li>
-</ul>
-</blockquote>
-<p><img src="https://hzzly.github.io/img/xyy-vue.gif" alt="xyy-vue"></p>
-<h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3>
-        
-          <a class="article-more-a" href="/2017/03/08/进阶vue全家桶/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/08/进阶vue全家桶/">展开全文 >></a>
         </p>
       
 
