@@ -31,7 +31,7 @@
 <meta property="og:image" content="http://omt3u4bph.bkt.clouddn.com/canvas-login.gif">
 <meta property="og:image" content="http://omt3u4bph.bkt.clouddn.com/admin.gif">
 <meta property="og:image" content="http://omt3u4bph.bkt.clouddn.com/msgboard.gif">
-<meta property="og:updated_time" content="2017-03-21T09:15:35.051Z">
+<meta property="og:updated_time" content="2017-03-21T09:19:24.353Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一个Vue+Canvas的酷炫后台管理">
 <meta name="twitter:description" content="又一个Vue+Cnavas酷炫的后台管理，依然前后端分离（用PC打开，还没适配移动端）。
@@ -248,20 +248,16 @@
 <p>1.登录注册模块，流星与星星为canvas，登录注册切换动画为vue transition</p>
 </blockquote>
 <p><img src="http://omt3u4bph.bkt.clouddn.com/canvas-login.gif" alt="canvas-login"></p>
+<a id="more"></a>
 <blockquote>
-<ol>
-<li>后台管理页面，背景为canvas(会动的折线+跟着鼠标滑动) 功能模块切换为vue transition</li>
-</ol>
+<p>2.后台管理页面，背景为canvas(会动的折线+跟着鼠标滑动) 功能模块切换为vue transition</p>
 </blockquote>
 <p><img src="http://omt3u4bph.bkt.clouddn.com/admin.gif" alt="admin"></p>
 <blockquote>
-<ol>
-<li>留言板(时间轴特效)</li>
-</ol>
+<p>3.留言板(时间轴特效)</p>
 </blockquote>
 <p><img src="http://omt3u4bph.bkt.clouddn.com/msgboard.gif" alt="msgboard"></p>
-<h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">|——canvas-vue/</div><div class="line">|   |——build/</div><div class="line">|   |——confg/</div><div class="line">|   |——node_modules/</div><div class="line">|   |——src/</div><div class="line">|   |   |——assets/                 //静态文件</div><div class="line">|   |   |——components/             //页面组件</div><div class="line">|   |   |   |——Menu.vue            //登录注册加载页面</div><div class="line">|   |   |   |——Home.vue            //后台首页</div><div class="line">|   |   |   |——Login.vue           //登录页面</div><div class="line">|   |   |   |——Regist.vue          //注册页面</div><div class="line">|   |   |   |——Navbar.vue          //我的发布</div><div class="line">|   |   |   |——Messageboard.vue    //留言板页面</div><div class="line">|   |   |   |——...                 //等等</div><div class="line">|   |   |——router/                 </div><div class="line">|   |   |   |——index.js            //页面路由</div><div class="line">|   |   |——App.vue                 //父组件</div><div class="line">|   |   |——main.js                 //入口文件</div><div class="line">|   |——static/                     </div><div class="line">|   |——.babelrc</div><div class="line">|   |——.editorconfig</div><div class="line">|   |——.gitgnore</div><div class="line">|   |——index.html</div><div class="line">|   |——package.json</div><div class="line">|   |——README.md</div></pre></td></tr></table></figure>
+<h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">|——canvas-vue/</div><div class="line">|   |——build/</div><div class="line">|   |——confg/</div><div class="line">|   |——node_modules/</div><div class="line">|   |——src/</div><div class="line">|   |   |——assets/                 //静态文件</div><div class="line">|   |   |——components/             //页面组件</div><div class="line">|   |   |   |——Menu.vue            //登录注册加载页面</div><div class="line">|   |   |   |——Home.vue            //后台首页</div><div class="line">|   |   |   |——Login.vue           //登录页面</div><div class="line">|   |   |   |——Regist.vue          //注册页面</div><div class="line">|   |   |   |——Navbar.vue          //我的发布</div><div class="line">|   |   |   |——Messageboard.vue    //留言板页面</div><div class="line">|   |   |   |——...                 //等等</div><div class="line">|   |   |——router/                 </div><div class="line">|   |   |   |——index.js            //页面路由</div><div class="line">|   |   |——App.vue                 //父组件</div><div class="line">|   |   |——main.js                 //入口文件</div><div class="line">|   |——static/                     </div><div class="line">|   |——.babelrc</div><div class="line">|   |——.editorconfig</div><div class="line">|   |——.gitgnore</div><div class="line">|   |——index.html</div><div class="line">|   |——package.json</div><div class="line">|   |——README.md</div></pre></td></tr></table></figure>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>这个项目还没有完成，后期将不定期更新，敬请期待。。</p>
 <p>如果觉得还行，欢迎star<br><strong>项目地址：</strong> <a href="https://github.com/hzzly/canvas-vue" target="_blank" rel="external">https://github.com/hzzly/canvas-vue</a><br><strong>后台地址：</strong> <a href="https://github.com/hzzly/canvas-vue-backstage" target="_blank" rel="external">https://github.com/hzzly/canvas-vue-backstage</a></p>
 <p>好了，溜了溜了。。。</p>
