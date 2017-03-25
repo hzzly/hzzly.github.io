@@ -6,21 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>浅谈Promise | Hzzly</title>
+  <title>Hzzly</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="接触过promise的的都知道它的应用场景和用途，Promise可以用来避免异步操作函数里的嵌套回调（callback hell）问题，因为解决异步最直接的方法是回调嵌套，将后一个的操作放在前一个操作的异步回调里，但如果操作多了，就会有很多层的嵌套(回调地狱)。
-12345678910$.ajax(url1, function(data1)&amp;#123;    // do something...">
-<meta property="og:type" content="article">
-<meta property="og:title" content="浅谈Promise">
-<meta property="og:url" content="http://yoursite.com/2017/03/25/浅谈Promise/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hzzly">
+<meta property="og:url" content="http://yoursite.com/page/4/index.html">
 <meta property="og:site_name" content="Hzzly">
-<meta property="og:description" content="接触过promise的的都知道它的应用场景和用途，Promise可以用来避免异步操作函数里的嵌套回调（callback hell）问题，因为解决异步最直接的方法是回调嵌套，将后一个的操作放在前一个操作的异步回调里，但如果操作多了，就会有很多层的嵌套(回调地狱)。
-12345678910$.ajax(url1, function(data1)&amp;#123;    // do something...">
-<meta property="og:updated_time" content="2017-03-25T07:38:18.274Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浅谈Promise">
-<meta name="twitter:description" content="接触过promise的的都知道它的应用场景和用途，Promise可以用来避免异步操作函数里的嵌套回调（callback hell）问题，因为解决异步最直接的方法是回调嵌套，将后一个的操作放在前一个操作的异步回调里，但如果操作多了，就会有很多层的嵌套(回调地狱)。
-12345678910$.ajax(url1, function(data1)&amp;#123;    // do something...">
+<meta name="twitter:title" content="Hzzly">
   
     <link rel="alternative" href="/atom.xml" title="Hzzly" type="application/atom+xml">
   
@@ -156,197 +149,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-浅谈Promise" class="article article-type-post " itemscope itemprop="blogPost">
+            
+  
+    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      浅谈Promise
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/01/hello-world/">Hello Hexo</a>
     </h1>
   
 
         
-        <a href="/2017/03/25/浅谈Promise/" class="archive-article-date">
-  	<time datetime="2017-03-25T07:29:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-25</time>
+        <a href="/2017/03/01/hello-world/" class="archive-article-date">
+  	<time datetime="2017-03-01T09:33:06.116Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>接触过promise的的都知道它的应用场景和用途，Promise可以用来避免异步操作函数里的嵌套回调（callback hell）问题，因为解决异步最直接的方法是回调嵌套，将后一个的操作放在前一个操作的异步回调里，但如果操作多了，就会有很多层的嵌套(<strong>回调地狱</strong>)。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$.ajax(url1, <span class="function"><span class="keyword">function</span>(<span class="params">data1</span>)</span>&#123;</div><div class="line">    <span class="comment">// do something...</span></div><div class="line">    $.ajax(url2, <span class="function"><span class="keyword">function</span>(<span class="params">data2</span>)</span>&#123;</div><div class="line">        <span class="comment">// do something...</span></div><div class="line">        $.ajax(url3, <span class="function"><span class="keyword">function</span>(<span class="params">data3</span>)</span>&#123;</div><div class="line">            <span class="comment">// do something...</span></div><div class="line">            done(data3); <span class="comment">// 返回数据</span></div><div class="line">        &#125;)</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>Promise学术点的描述：</p>
-<blockquote>
-<p>promise代表一个异步操作的执行返回状态，这个执行返回状态在promise对象创建时未必已知。它允许你为异步操作的成功或失败指定处理方法。</p>
-</blockquote>
-<p>这使得异步方法可以像同步方法那样返回值：异步方法会返回一个包含了原返回状态的 promise 对象来替代原返回状态。</p>
-<h3 id="Promise的表现"><a href="#Promise的表现" class="headerlink" title="Promise的表现"></a><strong>Promise的表现</strong></h3><p>如果使用回调方法处理多个操作的异步场景，判断某个操作成功或失败的控制在于声明的匿名函数里面，使用Promise对象则可以重新定义异步执行的状态和控制逻辑。</p>
-<p>promises的最重要的特点就是它把我们处理任何函数调用的成功或者失败的方式规范成了可预测的形式，特别是如果这个调用实际上的异步的。</p>
-<p>Promise中有几个状态：</p>
-<blockquote>
-<ul>
-<li>pending: 初始状态。 非 fulfilled 或 rejected。</li>
-<li>resolved: 成功的操作。也有的成为fulfilled 。</li>
-<li>rejected: 失败的操作。</li>
-</ul>
-</blockquote>
-<p>状态转换关系为：</p>
-<blockquote>
-<p>pending-&gt;resolved(fulfilled)，pending-&gt;rejected。</p>
-</blockquote>
-<h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a><strong>用法</strong></h3><p>说了这么多，直接上代码。</p>
-<a id="more"></a>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">    <span class="comment">// do somthing, maybe async</span></div><div class="line">    <span class="keyword">if</span> (success)&#123;</div><div class="line">      <span class="keyword">return</span> resolve(res);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">return</span> reject(err);</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"> </div><div class="line">promise.then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</div><div class="line">    <span class="comment">// do something... e.g</span></div><div class="line">    <span class="built_in">console</span>.log(res);</div><div class="line">&#125;, err =&gt; &#123;</div><div class="line">    <span class="comment">// deal the err.</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p><strong>或封装成方法</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fetch</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">        <span class="comment">// do somthing, maybe async</span></div><div class="line">        <span class="keyword">if</span> (success)&#123;</div><div class="line">            resolve(res);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            reject(err);</div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">fetch(data)</div><div class="line">    .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</div><div class="line">        <span class="built_in">console</span>.log(res)</div><div class="line">    &#125;, err =&gt; &#123;</div><div class="line">        <span class="comment">// deal the err.</span></div><div class="line">    &#125;)</div></pre></td></tr></table></figure></p>
-<h3 id="异步嵌套回调"><a href="#异步嵌套回调" class="headerlink" title="异步嵌套回调"></a><strong>异步嵌套回调</strong></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadAsync1</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">        <span class="comment">//异步操作</span></div><div class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'异步任务1'</span>);</div><div class="line">            resolve(<span class="string">'异步任务1传过来的值'</span>);</div><div class="line">        &#125;, <span class="number">2000</span>);</div><div class="line">    &#125;);          </div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadAsync2</span>(<span class="params">data1</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">        <span class="comment">//异步操作</span></div><div class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'异步任务2'</span>);</div><div class="line">            resolve(<span class="string">'异步任务2传过来的值'</span>);</div><div class="line">        &#125;, <span class="number">2000</span>);</div><div class="line">    &#125;);          </div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadAsync3</span>(<span class="params">data2</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">        <span class="comment">//异步操作</span></div><div class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'异步任务3'</span>);</div><div class="line">            resolve(<span class="string">'异步任务3传过来的值'</span>);</div><div class="line">        &#125;, <span class="number">2000</span>);</div><div class="line">    &#125;);          </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>有返回值<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">loadAsync1()</div><div class="line">    .then(<span class="function"><span class="params">data1</span> =&gt;</span> &#123;</div><div class="line">        <span class="keyword">return</span> loadAsync2(data1)</div><div class="line">    &#125;)</div><div class="line">    .then(<span class="function"><span class="params">data2</span> =&gt;</span> &#123;</div><div class="line">        <span class="keyword">return</span> loadAsync3(data2)</div><div class="line">    &#125;)</div><div class="line">    .then(okFn, failFn)</div></pre></td></tr></table></figure></p>
-<p>没有返回值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">loadAsync1()</div><div class="line">    .then(data1 =&gt; &#123;</div><div class="line">        loadAsync2(data1)</div><div class="line">    &#125;)</div><div class="line">    .then(data2 =&gt;&#123;</div><div class="line">        loadAsync3(data2)</div><div class="line">    &#125;)</div><div class="line">    .then(res =&gt; console.log(res))</div></pre></td></tr></table></figure></p>
-<p>输出的值为：</p>
-<blockquote>
-<p>异步任务1<br>异步任务1传过来的值<br>异步任务2<br>异步任务2传过来的值<br>异步任务3<br>异步任务3传过来的值</p>
-</blockquote>
-<h3 id="promise-all方法"><a href="#promise-all方法" class="headerlink" title="promise.all方法"></a><strong>promise.all方法</strong></h3><blockquote>
-<p>Promise.all 可以接收一个元素为 Promise 对象的数组作为参数，当这个数组里面所有的 Promise 对象都变为 resolve 时，该方法才会返回。</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</div><div class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        resolve(<span class="string">"第一个promise"</span>);</div><div class="line">    &#125;, <span class="number">3000</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</div><div class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        resolve(<span class="string">"第二个promise"</span>);</div><div class="line">    &#125;, <span class="number">1000</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="built_in">Promise</span>.all([p1, p2])</div><div class="line">    .then(<span class="function">(<span class="params">result</span>) =&gt;</span> &#123;</div><div class="line">        <span class="built_in">console</span>.log(result); <span class="comment">// ["第一个promise", "第二个promise"]</span></div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
-<p>上面的代码中，all接收一个数组作为参数，p1,p2是并行执行的，等两个都执行完了，才会进入到then，all会把所有的结果放到一个数组中返回，所以我们打印出我们的结果为一个数组。</p>
-<blockquote>
-<p>值得注意的是，虽然p2的执行顺序比p1快，但是all会按照参数里面的数组顺序来返回结果。all的使用场景类似于，玩游戏的时候，需要提前将游戏需要的资源提前准备好，才进行页面的初始化。</p>
-</blockquote>
-<p>之后会有express操作mongondb的基于Promise的封装，敬请期待！</p>
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="http://hjingren.cn/publicImages/alipay.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="http://hjingren.cn/publicImages/wxpay.jpg">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
-
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/01/hello-world/">展开全文 >></a>
+        </p>
       
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
 
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/03/25/浅谈Promise/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
-  
-<nav id="article-nav">
-  
-    <a href="/2017/03/25/Express与MongoDB的缠绵/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Express与MongoDB的缠绵
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2017/03/22/移动端touch事件/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">移动端touch事件</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
+
 
 
 
@@ -354,28 +210,11 @@
 
 
   
-  <div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="浅谈Promise" data-title="浅谈Promise" data-url="http://yoursite.com/2017/03/25/浅谈Promise/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"myblog-3b592400adadcfaab4522c84e2f34125"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
-
   
-
-
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+    </nav>
+  
 
 
           </div>
@@ -400,8 +239,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: false,
-		isPost: true,
+		isHome: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
