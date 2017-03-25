@@ -24,7 +24,7 @@ Express 是一个基于 Node.js 平台的极简、灵活的 web 应用开发框�
 
 全局安装express脚手架1$ npm install express-generator -g
 创建express项目1234$ express myapp$ cd myapp$ npm install$ DE">
-<meta property="og:updated_time" content="2017-03-25T11:05:52.594Z">
+<meta property="og:updated_time" content="2017-03-25T11:09:37.075Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Express与MongoDB的缠绵">
 <meta name="twitter:description" content="前奏Express 是什么？
@@ -227,7 +227,7 @@ Express 是一个基于 Node.js 平台的极简、灵活的 web 应用开发框�
 </blockquote>
 <p><strong>Entity</strong></p>
 <blockquote>
-<p>由Model创建的实体，使用save方法保存数据，Model和Entity都有能影响数据库的操作，但Model比Entity更具操作性。</p>
+<p>Entity–由Model创建的实体，使用save方法保存数据，Model和Entity都有能影响数据库的操作，但Model比Entity更具操作性。所以此项目主要用的Model。</p>
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> UserEntity = <span class="keyword">new</span> UserModel(&#123;</div><div class="line">	<span class="attr">name</span> : <span class="string">"hzzly"</span>,</div><div class="line">	<span class="attr">age</span>  : <span class="number">21</span>,</div><div class="line">	<span class="attr">email</span>: <span class="string">"hjingren@aliyun.com"</span>,</div><div class="line">	<span class="attr">github</span>: <span class="string">'https://github.com/hzzly'</span></div><div class="line">&#125;);</div><div class="line">UserEntity.save(<span class="function"><span class="keyword">function</span>(<span class="params">error,doc</span>)</span>&#123;</div><div class="line">	<span class="keyword">if</span>(error)&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="string">"error :"</span> + error);</div><div class="line">	&#125;<span class="keyword">else</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(doc);</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <h3 id="三、封装数据库的CURD"><a href="#三、封装数据库的CURD" class="headerlink" title="三、封装数据库的CURD"></a><strong>三、封装数据库的CURD</strong></h3><blockquote>
