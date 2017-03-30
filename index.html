@@ -157,6 +157,148 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-读书笔记-es5Array对象" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/30/读书笔记-es5Array对象/">读书笔记-es5Array对象</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/30/读书笔记-es5Array对象/" class="archive-article-date">
+  	<time datetime="2017-03-30T04:24:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-创建-Array-对象的语法："><a href="#1-创建-Array-对象的语法：" class="headerlink" title="1.创建 Array 对象的语法："></a>1.创建 Array 对象的语法：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">Array</span>();</div><div class="line"><span class="keyword">new</span> <span class="built_in">Array</span>(size);</div><div class="line"><span class="keyword">new</span> <span class="built_in">Array</span>(element0, element1, ..., elementn)</div></pre></td></tr></table></figure>
+<h3 id="2-属性"><a href="#2-属性" class="headerlink" title="2.属性"></a>2.属性</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th style="text-align:right">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>constructor</td>
+<td style="text-align:right">返回对创建此对象的数组函数的引用</td>
+</tr>
+<tr>
+<td>length</td>
+<td style="text-align:right">设置或返回数组中元素的数目</td>
+</tr>
+<tr>
+<td>prototype</td>
+<td style="text-align:right">允许向对象添加属性和方法</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-常用方法"><a href="#3-常用方法" class="headerlink" title="3.常用方法"></a>3.常用方法</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th style="text-align:right">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>concat()</td>
+<td style="text-align:right">连接两个或更多的数组，并返回结果</td>
+</tr>
+<tr>
+<td>join()</td>
+<td style="text-align:right">把数组的所有元素放入一个字符串。元素通过指定的分隔符进行分隔</td>
+</tr>
+<tr>
+<td>pop()</td>
+<td style="text-align:right">删除并返回数组的最后一个元素</td>
+</tr>
+<tr>
+<td>push()</td>
+<td style="text-align:right">向数组的末尾添加一个或更多元素，并返回新的长度</td>
+</tr>
+<tr>
+<td>reverse()</td>
+<td style="text-align:right">颠倒数组中元素的顺序</td>
+</tr>
+<tr>
+<td>shift()</td>
+<td style="text-align:right">删除并返回数组的第一个元素</td>
+</tr>
+<tr>
+<td>unshift()</td>
+<td style="text-align:right">向数组的开头添加一个或更多元素，并返回新的长度</td>
+</tr>
+<tr>
+<td>slice()</td>
+<td style="text-align:right">从某个已有的数组返回选定的元素</td>
+</tr>
+<tr>
+<td>sort()</td>
+<td style="text-align:right">对数组的元素进行排序</td>
+</tr>
+<tr>
+<td>splice()</td>
+<td style="text-align:right">删除元素，并向数组添加新元素</td>
+</tr>
+<tr>
+<td>valueOf()</td>
+<td style="text-align:right">返回某个字符串对象的原始值</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-栗子"><a href="#4-栗子" class="headerlink" title="4.栗子"></a>4.栗子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//concat()</span></div><div class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line">a.concat(<span class="number">4</span>,<span class="number">5</span>) <span class="comment">//[1,2,3,4,5]</span></div><div class="line"></div><div class="line"><span class="comment">//join()</span></div><div class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line">a.join() <span class="comment">//1,2,3</span></div><div class="line"></div><div class="line"><span class="comment">//slice()</span></div><div class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line">a.slice(<span class="number">1</span>) <span class="comment">//[2,3]</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line">a.slice(<span class="number">1</span>,<span class="number">2</span>) <span class="comment">//[2]</span></div><div class="line"></div><div class="line"><span class="comment">//splice()</span></div><div class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</div><div class="line">a.splice(<span class="number">1</span>,<span class="number">1</span>) <span class="comment">//[2]</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</div><div class="line">a.splice(<span class="number">1</span>,<span class="number">1</span>,<span class="string">'hzzly'</span>) <span class="comment">//[2]</span></div><div class="line">a <span class="comment">//[1, "hzzly", 3, 4, 5]</span></div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">es5</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/30/读书笔记-es5Array对象/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-读书笔记-es5String对象" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -268,6 +410,10 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">es5</a>
         		</li>
       		
 		</ul>
@@ -535,119 +681,6 @@
 
 
   
-    <article id="post-一个Vue-Canvas的酷炫后台管理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/21/一个Vue-Canvas的酷炫后台管理/">一个Vue+Canvas的酷炫后台管理</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/21/一个Vue-Canvas的酷炫后台管理/" class="archive-article-date">
-  	<time datetime="2017-03-21T09:10:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>又一个Vue+Cnavas酷炫的后台管理，依然前后端分离（用PC打开，还没适配移动端）。</p>
-</blockquote>
-<p><strong>项目地址：</strong> <a href="https://github.com/hzzly/canvas-vue">https://github.com/hzzly/canvas-vue</a><br><strong>demo地址：</strong> <a href="http://hjingren.cn/curriculum-design/">http://hjingren.cn/curriculum-design/</a><br>账号：hzzly  密码：123456<br>欢迎大家的star啦~</p>
-<h3 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a><strong>技术栈</strong></h3><p>前台:</p>
-<pre><code>&gt; 1. vue-cli
-&gt; 2. vue
-&gt; 3. vue-router
-&gt; 4. webpak
-&gt; 5. canvas
-&gt; 6. ajax
-</code></pre><p>后台:</p>
-<pre><code>&gt; 1. wamp
-&gt; 2. PHP(ThinkPHP)
-&gt; 3. mysql
-</code></pre><h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a><strong>功能说明</strong></h3><ul>
-<li>登录<ul>
-<li>用户登录</li>
-<li>管理员登录</li>
-</ul>
-</li>
-<li>注册<ul>
-<li>用户注册</li>
-</ul>
-</li>
-<li>Canvas<ul>
-<li>流星滑过</li>
-<li>星星闪闪</li>
-<li>后台折线</li>
-<li>折线跟着鼠标滑动</li>
-</ul>
-</li>
-<li>Vue<ul>
-<li>弹出框组件</li>
-<li>路由切换动画</li>
-<li>通过Ajax调用后台接口</li>
-</ul>
-</li>
-<li>留言板(时间轴)</li>
-<li>添加房屋信息</li>
-<li>出租 求租</li>
-<li>出售 求购</li>
-<li>个人信息修改</li>
-<li>密码修改</li>
-<li>……</li>
-</ul>
-<blockquote>
-<p>1.登录注册模块，流星与星星为canvas，登录注册切换动画为vue transition</p>
-</blockquote>
-<p><img src="http://omt3u4bph.bkt.clouddn.com/canvas-login.gif" alt="canvas-login"></p>
-        
-          <a class="article-more-a" href="/2017/03/21/一个Vue-Canvas的酷炫后台管理/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/21/一个Vue-Canvas的酷炫后台管理/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -745,6 +778,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">随笔 es5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">es5</a>
               </li>
             
             <div class="clearfix"></div>
