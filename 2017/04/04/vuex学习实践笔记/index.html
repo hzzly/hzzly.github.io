@@ -21,7 +21,7 @@ Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。它采用�
 
 栗如(travel store)：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515">
 <meta property="og:image" content="http://omt3u4bph.bkt.clouddn.com/vuex2.jpg">
-<meta property="og:updated_time" content="2017-04-04T14:31:57.153Z">
+<meta property="og:updated_time" content="2017-04-04T14:43:11.168Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vuex学习实践笔记">
 <meta name="twitter:description" content="Vuex是什么？
@@ -206,7 +206,11 @@ Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。它采用�
 <p>客户端(Client) -&gt; action -&gt; mutations -&gt; state -&gt; 客户端</p>
 </blockquote>
 <p>可以看出在vuex中数据是单一流向的：视图(view)触发action，action提交(commit)到mutations，mutations改变state(数据)，state的改变，相应的组件也会相应的更新。</p>
-
+<h3 id="1-State"><a href="#1-State" class="headerlink" title="1.State"></a><strong>1.State</strong></h3><blockquote>
+<p>单一状态树，唯一数据源，能够直接清晰的读懂数据的结构。</p>
+</blockquote>
+<h4 id="1-1在-Vue-组件中获得数据"><a href="#1-1在-Vue-组件中获得数据" class="headerlink" title="1.1在 Vue 组件中获得数据"></a>1.1在 Vue 组件中获得数据</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//store</span></div><div class="line"><span class="keyword">const</span> state = &#123;</div><div class="line">    <span class="attr">travelsList</span>: [],</div><div class="line">    <span class="attr">searchKey</span>: &#123;</div><div class="line">        <span class="attr">page</span>: <span class="number">0</span>,</div><div class="line">        <span class="attr">limit</span>: <span class="number">20</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">scroll</span>: <span class="literal">true</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//在view中直接获取</span></div><div class="line">data () &#123; </div><div class="line">	<span class="keyword">return</span> &#123;</div><div class="line">    	<span class="attr">scroll</span>: <span class="keyword">this</span>.$store.state.scroll</div><div class="line">	&#125;</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
+<h4 id="1-2mapState-辅助函数"><a href="#1-2mapState-辅助函数" class="headerlink" title="1.2mapState 辅助函数"></a>1.2mapState 辅助函数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">computed: mapState([</div><div class="line">	<span class="comment">// 映射 this.scroll 为 this.$store.state.scroll</span></div><div class="line">	<span class="string">'scroll'</span></div><div class="line">])</div><div class="line"></div><div class="line"><span class="comment">//或对象展开运算符</span></div><div class="line">computed: &#123;</div><div class="line">	...mapState(&#123;</div><div class="line">		<span class="string">'scroll'</span></div><div class="line">	&#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
 
       
