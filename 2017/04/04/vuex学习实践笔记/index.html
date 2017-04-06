@@ -21,7 +21,7 @@ Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。它采用�
 
 栗如(travel store)：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515">
 <meta property="og:image" content="http://omt3u4bph.bkt.clouddn.com/vuex2.jpg">
-<meta property="og:updated_time" content="2017-04-06T05:08:44.515Z">
+<meta property="og:updated_time" content="2017-04-06T05:09:46.719Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vuex学习实践笔记">
 <meta name="twitter:description" content="Vuex是什么？
@@ -234,6 +234,8 @@ Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。它采用�
 <p>当应用变得很大时，store 对象会变得臃肿不堪。为了解决这个问题，Vuex 允许我们将 store 分割到模块（module）。每个模块拥有自己的 state、mutation、action、getters</p>
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> moduleA = &#123;</div><div class="line">  <span class="attr">state</span>: &#123; ... &#125;,</div><div class="line">  <span class="attr">mutations</span>: &#123; ... &#125;,</div><div class="line">  <span class="attr">actions</span>: &#123; ... &#125;,</div><div class="line">  <span class="attr">getters</span>: &#123; ... &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> moduleB = &#123;</div><div class="line">  <span class="attr">state</span>: &#123; ... &#125;,</div><div class="line">  <span class="attr">mutations</span>: &#123; ... &#125;,</div><div class="line">  <span class="attr">actions</span>: &#123; ... &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</div><div class="line">  <span class="attr">modules</span>: &#123;</div><div class="line">    <span class="attr">a</span>: moduleA,</div><div class="line">    <span class="attr">b</span>: moduleB</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line"></div><div class="line">store.state.a <span class="comment">// -&gt; moduleA 的状态</span></div><div class="line">store.state.b <span class="comment">// -&gt; moduleB 的状态</span></div></pre></td></tr></table></figure>
+<h3 id="6-项目实践"><a href="#6-项目实践" class="headerlink" title="6.项目实践"></a><strong>6.项目实践</strong></h3><p><a href="https://hzzly.github.io/2017/03/08/%E8%BF%9B%E9%98%B6vue%E5%85%A8%E5%AE%B6%E6%A1%B6/" target="_blank" rel="external">进阶vue全家桶</a></p>
+
       
 
       
