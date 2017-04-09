@@ -184,7 +184,8 @@
 <blockquote>
 <ul>
 <li>1.块级作用域</li>
-<li>2.不存在变量提升</li>
+<li>2.不存在变量提升<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// var 的情况</span></div><div class="line"><span class="built_in">console</span>.log(foo); <span class="comment">// 输出undefined</span></div><div class="line"><span class="keyword">var</span> foo = <span class="number">2</span>;</div><div class="line"></div><div class="line"><span class="comment">// let 的情况</span></div><div class="line"><span class="built_in">console</span>.log(bar); <span class="comment">// 报错ReferenceError</span></div><div class="line"><span class="keyword">let</span> bar = <span class="number">2</span>;</div></pre></td></tr></table></figure>
+</li>
 </ul>
 </blockquote>
 
