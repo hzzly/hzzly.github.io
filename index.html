@@ -157,6 +157,81 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-读书笔记-es6let与const" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/09/读书笔记-es6let与const/">读书笔记-es6let与const</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/09/读书笔记-es6let与const/" class="archive-article-date">
+  	<time datetime="2017-04-09T14:16:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="let和const"><a href="#let和const" class="headerlink" title="let和const"></a><strong>let和const</strong></h2><blockquote>
+<p>两种新的声明变量的方法</p>
+</blockquote>
+<h3 id="一、let"><a href="#一、let" class="headerlink" title="一、let"></a>一、let</h3><p>用法类似于var，但是所声明的变量，只在let命令所在的代码块内有效。</p>
+<blockquote>
+<ul>
+<li>1.块级作用域</li>
+<li>2.不存在变量提升</li>
+</ul>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">es6</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/09/读书笔记-es6let与const/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-vuex学习实践笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -610,91 +685,6 @@
 
 
   
-    <article id="post-浅谈Promise" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/25/浅谈Promise/">浅谈Promise</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/25/浅谈Promise/" class="archive-article-date">
-  	<time datetime="2017-03-25T07:29:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>接触过promise的的都知道它的应用场景和用途，Promise可以用来避免异步操作函数里的嵌套回调（callback hell）问题，因为解决异步最直接的方法是回调嵌套，将后一个的操作放在前一个操作的异步回调里，但如果操作多了，就会有很多层的嵌套(<strong>回调地狱</strong>)。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$.ajax(url1, <span class="function"><span class="keyword">function</span>(<span class="params">data1</span>)</span>&#123;</div><div class="line">    <span class="comment">// do something...</span></div><div class="line">    $.ajax(url2, <span class="function"><span class="keyword">function</span>(<span class="params">data2</span>)</span>&#123;</div><div class="line">        <span class="comment">// do something...</span></div><div class="line">        $.ajax(url3, <span class="function"><span class="keyword">function</span>(<span class="params">data3</span>)</span>&#123;</div><div class="line">            <span class="comment">// do something...</span></div><div class="line">            done(data3); <span class="comment">// 返回数据</span></div><div class="line">        &#125;)</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>Promise学术点的描述：</p>
-<blockquote>
-<p>promise代表一个异步操作的执行返回状态，这个执行返回状态在promise对象创建时未必已知。它允许你为异步操作的成功或失败指定处理方法。</p>
-</blockquote>
-<p>这使得异步方法可以像同步方法那样返回值：异步方法会返回一个包含了原返回状态的 promise 对象来替代原返回状态。</p>
-<h3 id="Promise的表现"><a href="#Promise的表现" class="headerlink" title="Promise的表现"></a><strong>Promise的表现</strong></h3><p>如果使用回调方法处理多个操作的异步场景，判断某个操作成功或失败的控制在于声明的匿名函数里面，使用Promise对象则可以重新定义异步执行的状态和控制逻辑。</p>
-<p>promises的最重要的特点就是它把我们处理任何函数调用的成功或者失败的方式规范成了可预测的形式，特别是如果这个调用实际上的异步的。</p>
-<p>Promise中有几个状态：</p>
-<blockquote>
-<ul>
-<li>pending: 初始状态。 非 fulfilled 或 rejected。</li>
-<li>resolved: 成功的操作。也有的成为fulfilled 。</li>
-<li>rejected: 失败的操作。</li>
-</ul>
-</blockquote>
-<p>状态转换关系为：</p>
-<blockquote>
-<p>pending-&gt;resolved(fulfilled)，pending-&gt;rejected。</p>
-</blockquote>
-<h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a><strong>用法</strong></h3><p>说了这么多，直接上代码。</p>
-        
-          <a class="article-more-a" href="/2017/03/25/浅谈Promise/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/25/浅谈Promise/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -800,6 +790,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">es5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
             
             <div class="clearfix"></div>
