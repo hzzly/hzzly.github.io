@@ -157,6 +157,92 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Express与MongoDB的缠绵" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/25/Express与MongoDB的缠绵/">Express与MongoDB的缠绵</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/25/Express与MongoDB的缠绵/" class="archive-article-date">
+  	<time datetime="2017-03-25T11:00:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="前奏"><a href="#前奏" class="headerlink" title="前奏"></a><strong>前奏</strong></h3><p>Express 是什么？</p>
+<blockquote>
+<p>Express 是一个基于 Node.js 平台的极简、灵活的 web 应用开发框架，它提供一系列强大的特性，帮助你创建各种 Web 和移动设备应用。</p>
+</blockquote>
+<p>全局安装express<a href="http://www.expressjs.com.cn/starter/generator.html">脚手架</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install express-generator -g</div></pre></td></tr></table></figure></p>
+<p>创建express项目<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ express myapp</div><div class="line">$ <span class="built_in">cd</span> myapp</div><div class="line">$ npm install</div><div class="line">$ DEBUG=myapp npm start</div></pre></td></tr></table></figure></p>
+<p>MongoDB与Mongoose？</p>
+<blockquote>
+<ul>
+<li>MongoDB是一个对象数据库，是用来存储数据的；存储的数据格式为JSON。</li>
+<li>Mongoose是封装了MongoDB操作(增删改查等)的一个对象模型库,是用来操作这些数据的。</li>
+</ul>
+</blockquote>
+<p>安装MongoDB：<br><a href="https://www.mongodb.com/download-center?jmp=nav">https://www.mongodb.com/download-center?jmp=nav</a></p>
+<p>安装Mongoose：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install mongoose --save</div></pre></td></tr></table></figure></p>
+<h3 id="一、连接MongoDB"><a href="#一、连接MongoDB" class="headerlink" title="一、连接MongoDB"></a><strong>一、连接MongoDB</strong></h3><blockquote>
+<p>在项目根目录下新建/lib/mongo.js</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">"mongoose"</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> db = mongoose.connect(<span class="string">'mongodb://localhost:27017/myblog'</span>);</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = db</div></pre></td></tr></table></figure>
+<blockquote>
+<p>要连接的数据库为myblog</p>
+</blockquote>
+<h3 id="二、Schema"><a href="#二、Schema" class="headerlink" title="二、Schema"></a><strong>二、Schema</strong></h3>
+        
+          <a class="article-more-a" href="/2017/03/25/Express与MongoDB的缠绵/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/25/Express与MongoDB的缠绵/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-浅谈Promise" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -502,83 +588,9 @@
 
 
   
-    <article id="post-移动端1px的解决方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/13/移动端1px的解决方法/">移动端1px的解决方法</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/13/移动端1px的解决方法/" class="archive-article-date">
-  	<time datetime="2017-03-13T13:22:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>在上个项目中，移动端1px问题被困扰了好久，设置1px边框，实际显示2px。<br>以下是我在项目中的解决方法，才疏学浅，轻喷。</p>
-</blockquote>
-<p>关于什么是移动端1像素边框问题，先上两张图，大家就明白了。</p>
-<p><strong>假的1px:</strong><br><img src="https://hzzly.github.io/img/onepx2.png" alt="2px"></p>
-<p><strong>真的1px:</strong><br><img src="https://hzzly.github.io/img/onepx1.png" alt="1px"></p>
-<p>原来Retine屏的分辨率始终是普通屏幕的2倍，1px的边框在devicePixelRatio=2的retina屏下会显示成2px。</p>
-<p><strong>解决方案</strong></p>
-<blockquote>
-<p>transform: scaleY()</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2017/03/13/移动端1px的解决方法/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/13/移动端1px的解决方法/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 
@@ -680,11 +692,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es5</a>
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+                <a href="javascript:void(0)" class="js-tag color4">es5</a>
               </li>
             
             <div class="clearfix"></div>
