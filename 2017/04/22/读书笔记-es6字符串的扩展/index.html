@@ -6,14 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 随笔 | Hzzly</title>
+  <title>读书笔记-es6字符串的扩展 | Hzzly</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hzzly">
-<meta property="og:url" content="http://yoursite.com/tags/随笔/page/3/index.html">
+  <meta name="description" content="字符串的扩展一、字符串的遍历器接口123456for (let codePoint of &apos;foo&apos;) &amp;#123;  console.log(codePoint)&amp;#125;// &quot;f&quot;// &quot;o&quot;// &quot;o&quot;
+二、at返回字符串给定位置的字符12345//es5&apos;abc&apos;.charAt(0) // &quot;a&quot;//es6&apos;abc&apos;.at(0) // &quot;a&quot;
+三、indexOf(), includes">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读书笔记-es6字符串的扩展">
+<meta property="og:url" content="http://yoursite.com/2017/04/22/读书笔记-es6字符串的扩展/index.html">
 <meta property="og:site_name" content="Hzzly">
+<meta property="og:description" content="字符串的扩展一、字符串的遍历器接口123456for (let codePoint of &apos;foo&apos;) &amp;#123;  console.log(codePoint)&amp;#125;// &quot;f&quot;// &quot;o&quot;// &quot;o&quot;
+二、at返回字符串给定位置的字符12345//es5&apos;abc&apos;.charAt(0) // &quot;a&quot;//es6&apos;abc&apos;.at(0) // &quot;a&quot;
+三、indexOf(), includes">
+<meta property="og:updated_time" content="2017-04-22T15:08:52.013Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hzzly">
+<meta name="twitter:title" content="读书笔记-es6字符串的扩展">
+<meta name="twitter:description" content="字符串的扩展一、字符串的遍历器接口123456for (let codePoint of &apos;foo&apos;) &amp;#123;  console.log(codePoint)&amp;#125;// &quot;f&quot;// &quot;o&quot;// &quot;o&quot;
+二、at返回字符串给定位置的字符12345//es5&apos;abc&apos;.charAt(0) // &quot;a&quot;//es6&apos;abc&apos;.at(0) // &quot;a&quot;
+三、indexOf(), includes">
   
     <link rel="alternative" href="/atom.xml" title="Hzzly" type="application/atom+xml">
   
@@ -155,36 +165,81 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-读书笔记-es6字符串的扩展" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      读书笔记-es6字符串的扩展
+    </h1>
+  
+
+        
+        <a href="/2017/04/22/读书笔记-es6字符串的扩展/" class="archive-article-date">
+  	<time datetime="2017-04-22T15:07:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-22</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="字符串的扩展"><a href="#字符串的扩展" class="headerlink" title="字符串的扩展"></a><strong>字符串的扩展</strong></h2><h3 id="一、字符串的遍历器接口"><a href="#一、字符串的遍历器接口" class="headerlink" title="一、字符串的遍历器接口"></a>一、字符串的遍历器接口</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> codePoint <span class="keyword">of</span> <span class="string">'foo'</span>) &#123;</div><div class="line">  <span class="built_in">console</span>.log(codePoint)</div><div class="line">&#125;</div><div class="line"><span class="comment">// "f"</span></div><div class="line"><span class="comment">// "o"</span></div><div class="line"><span class="comment">// "o"</span></div></pre></td></tr></table></figure>
+<h3 id="二、at"><a href="#二、at" class="headerlink" title="二、at"></a>二、at</h3><p>返回字符串给定位置的字符<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//es5</span></div><div class="line"><span class="string">'abc'</span>.charAt(<span class="number">0</span>) <span class="comment">// "a"</span></div><div class="line"></div><div class="line"><span class="comment">//es6</span></div><div class="line"><span class="string">'abc'</span>.at(<span class="number">0</span>) <span class="comment">// "a"</span></div></pre></td></tr></table></figure></p>
+<h3 id="三、indexOf-includes-startsWith-endsWith"><a href="#三、indexOf-includes-startsWith-endsWith" class="headerlink" title="三、indexOf(), includes(), startsWith(), endsWith()"></a>三、indexOf(), includes(), startsWith(), endsWith()</h3><blockquote>
+<ul>
+<li>indexOf() 确定一个字符串是否包含在另一个字符串中(es5)</li>
+<li>includes() 返回布尔值，表示是否找到了参数字符串。</li>
+<li>startsWith() 返回布尔值，表示参数字符串是否在源字符串的头部。</li>
+<li>endsWith()返回布尔值，表示参数字符串是否在源字符串的尾部。</li>
+</ul>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = <span class="string">'Hello world!'</span>;</div><div class="line"></div><div class="line">s.startsWith(<span class="string">'Hello'</span>) <span class="comment">// true</span></div><div class="line">s.endsWith(<span class="string">'!'</span>) <span class="comment">// true</span></div><div class="line">s.includes(<span class="string">'o'</span>) <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<p>支持第二个参数，表示开始搜索的位置<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = <span class="string">'Hello world!'</span>;</div><div class="line"></div><div class="line">s.startsWith(<span class="string">'Hello'</span>) <span class="comment">// true</span></div><div class="line">s.endsWith(<span class="string">'!'</span>) <span class="comment">// true</span></div><div class="line">s.includes(<span class="string">'o'</span>) <span class="comment">// true</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = <span class="string">'Hello world!'</span>;</div><div class="line"></div><div class="line">s.startsWith(<span class="string">'world'</span>, <span class="number">6</span>) <span class="comment">// true</span></div><div class="line">s.endsWith(<span class="string">'Hello'</span>, <span class="number">5</span>) <span class="comment">// true</span></div><div class="line">s.includes(<span class="string">'Hello'</span>, <span class="number">6</span>) <span class="comment">// false</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>endsWith的行为与其他两个方法有所不同。它针对前n个字符，而其他两个方法针对从第n个位置直到字符串结束。</p>
+</blockquote>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://hjingren.cn/publicImages/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://hjingren.cn/publicImages/wxpay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/15/移动端屏幕适配的解决/" class="archive-article-date">
-  	<time datetime="2017-03-15T14:01:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/15/移动端屏幕适配的解决/">移动端屏幕适配的解决</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -192,179 +247,96 @@
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
         		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/13/移动端1px的解决方法/" class="archive-article-date">
-  	<time datetime="2017-03-13T13:22:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/13/移动端1px的解决方法/">移动端1px的解决方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
+      		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">es6</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/04/22/读书笔记-es6字符串的扩展/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/12/axios在vue中的简单配置与使用/" class="archive-article-date">
-  	<time datetime="2017-03-12T13:34:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-12</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/12/axios在vue中的简单配置与使用/">axios在vue中的简单配置与使用</a>
-    </h1>
+  
+    <a href="/2017/04/21/读书笔记-es6变量的解构赋值/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">读书笔记-es6变量的解构赋值</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/09/开源的收获/" class="archive-article-date">
-  	<time datetime="2017-03-09T15:57:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/09/开源的收获/">开源的收获</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/08/进阶vue全家桶/" class="archive-article-date">
-  	<time datetime="2017-03-08T01:47:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/08/进阶vue全家桶/">进阶vue全家桶</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/tags/随笔/page/2/">&laquo; Prev</a><a class="page-number" href="/tags/随笔/">1</a><a class="page-number" href="/tags/随笔/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/tags/随笔/page/4/">4</a><a class="page-number" href="/tags/随笔/page/5/">5</a><a class="extend next" rel="next" href="/tags/随笔/page/4/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -390,9 +362,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
