@@ -6,14 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017 | Hzzly</title>
+  <title>DIY一个自己的音乐播放器 | Hzzly</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hzzly">
-<meta property="og:url" content="http://yoursite.com/archives/2017/page/5/index.html">
+  <meta name="description" content="前言：在最近的一个外包项目中包联盟(PC端)中使用到了video，遇到了好多坑。突发奇想来踩一踩audio的坑😀，果然一入深似海，👇下面将分享我的DIY之路-Vue音乐播放器。注：本项目为开源项目，不能用于商业应用，仅供学习。有问题或建议发我邮箱：hjingren@aliyun.com
+
+[温馨提示：pc浏览f12手机模式最佳,手机建议wifi下访问]demo地址： http://hjing">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DIY一个自己的音乐播放器">
+<meta property="og:url" content="http://yoursite.com/2017/04/27/’DIY一个自己的音乐播放器/index.html">
 <meta property="og:site_name" content="Hzzly">
+<meta property="og:description" content="前言：在最近的一个外包项目中包联盟(PC端)中使用到了video，遇到了好多坑。突发奇想来踩一踩audio的坑😀，果然一入深似海，👇下面将分享我的DIY之路-Vue音乐播放器。注：本项目为开源项目，不能用于商业应用，仅供学习。有问题或建议发我邮箱：hjingren@aliyun.com
+
+[温馨提示：pc浏览f12手机模式最佳,手机建议wifi下访问]demo地址： http://hjing">
+<meta property="og:image" content="http://omt3u4bph.bkt.clouddn.com/magic-music1.gif">
+<meta property="og:updated_time" content="2017-04-27T07:16:58.716Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hzzly">
+<meta name="twitter:title" content="DIY一个自己的音乐播放器">
+<meta name="twitter:description" content="前言：在最近的一个外包项目中包联盟(PC端)中使用到了video，遇到了好多坑。突发奇想来踩一踩audio的坑😀，果然一入深似海，👇下面将分享我的DIY之路-Vue音乐播放器。注：本项目为开源项目，不能用于商业应用，仅供学习。有问题或建议发我邮箱：hjingren@aliyun.com
+
+[温馨提示：pc浏览f12手机模式最佳,手机建议wifi下访问]demo地址： http://hjing">
+<meta name="twitter:image" content="http://omt3u4bph.bkt.clouddn.com/magic-music1.gif">
   
     <link rel="alternative" href="/atom.xml" title="Hzzly" type="application/atom+xml">
   
@@ -155,36 +167,200 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-’DIY一个自己的音乐播放器" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      DIY一个自己的音乐播放器
+    </h1>
+  
+
+        
+        <a href="/2017/04/27/’DIY一个自己的音乐播放器/" class="archive-article-date">
+  	<time datetime="2017-04-27T06:47:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-27</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>前言：在最近的一个外包项目<a href="http://www.zblmchina.com/#/post" target="_blank" rel="external">中包联盟</a>(PC端)中使用到了video，遇到了好多坑。突发奇想来踩一踩audio的坑😀，果然一入深似海，👇下面将分享我的DIY之路-Vue音乐播放器。<br>注：本项目为开源项目，不能用于商业应用，仅供学习。有问题或建议发我邮箱：hjingren@aliyun.com</p>
+</blockquote>
+<p>[温馨提示：pc浏览f12手机模式最佳,手机建议wifi下访问]<br><strong>demo地址：</strong> <a href="http://hjingren.cn/magic-music" target="_blank" rel="external">http://hjingren.cn/magic-music</a><br><strong>项目地址：</strong> <a href="https://github.com/hzzly/MagicMusic" target="_blank" rel="external">https://github.com/hzzly/MagicMusic</a><br>欢迎大家的star啦😄~</p>
+<p>先来个预览：</p>
+<p><img src="http://omt3u4bph.bkt.clouddn.com/magic-music1.gif" alt="magic-music1"></p>
+<p>更多预览：<a href="http://hjingren.cn/magic-music/pic.html" target="_blank" rel="external">更多</a></p>
+<p>👉老铁们，准备发车(技能点)：</p>
+<blockquote>
+<ul>
+<li><a href="https://cn.vuejs.org/" target="_blank" rel="external">vue文档</a></li>
+<li><a href="https://router.vuejs.org/zh-cn/" target="_blank" rel="external">vue-router文档</a></li>
+<li><a href="https://vuex.vuejs.org/zh-cn/" target="_blank" rel="external">vuex文档</a> 不想看文档的可以看看我这篇博客<a href="https://hzzly.github.io/2017/04/04/vuex%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/" target="_blank" rel="external">vuex学习实践笔记</a></li>
+<li><a href="https://www.npmjs.com/package/axios" target="_blank" rel="external">axios文档</a> 或者这篇博客 <a href="https://blog.ygxdxx.com/2017/02/01/Vuex2&amp;Axios-Develop/" target="_blank" rel="external">Vuex2 与 Axios 开发</a>(我也是参考这篇，感谢作者😁)</li>
+<li><a href="http://es6.ruanyifeng.com/" target="_blank" rel="external">es6(阮一峰的es6入门)</a> 可以参考<a href="https://hzzly.github.io/tags/es6/" target="_blank" rel="external">我的es6之路</a>(还在继续,轻喷)</li>
+<li><a href="https://doc.webpack-china.org/" target="_blank" rel="external">webpack2(中文网站)</a></li>
+<li><a href="https://hzzly.github.io/2017/03/25/%E6%B5%85%E8%B0%88Promise/" target="_blank" rel="external">Promise (浅谈Promise)</a></li>
+<li><a href="https://hzzly.github.io/2017/03/03/Web%E7%9A%84Flex%E5%BC%B9%E6%80%A7%E7%9B%92%E6%A8%A1%E5%9E%8B/" target="_blank" rel="external">flex (Web的flex弹性盒模型)</a></li>
+<li><a href="https://hzzly.github.io/2017/03/15/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D%E7%9A%84%E8%A7%A3%E5%86%B3/" target="_blank" rel="external">移动端屏幕适配的解决 (flexible+rem)</a></li>
+<li><a href="https://hzzly.github.io/2017/04/26/%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8sessionStorage%E4%B8%8ElocalStorage/" target="_blank" rel="external">本地存储(sessionStorage、localStorage)</a></li>
+<li><a href="https://github.com/hilongjw/vue-lazyload?from=gold" target="_blank" rel="external">图片懒加载</a></li>
+</ul>
+</blockquote>
+<p>👉坐好，出发</p>
+<h3 id="实现的功能"><a href="#实现的功能" class="headerlink" title="实现的功能"></a>实现的功能</h3><h4 id="1、首页"><a href="#1、首页" class="headerlink" title="1、首页"></a>1、首页</h4><blockquote>
+<ul>
+<li>[x] 轮播</li>
+<li>[x] 个性推荐[流行、古典、轻音乐、流行]</li>
+<li>[x] 歌曲操作<ul>
+<li>[x] 加入播放列表</li>
+<li>[ ] 喜欢</li>
+<li>[ ] 分享</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h4 id="2、底部播放控件"><a href="#2、底部播放控件" class="headerlink" title="2、底部播放控件"></a>2、底部播放控件</h4><blockquote>
+<ul>
+<li>[x] 播放</li>
+<li>[x] 暂停</li>
+<li>[x] 下一曲</li>
+<li>[x] 播放进度条</li>
+</ul>
+</blockquote>
+<a id="more"></a>
+<h4 id="3、播放页面"><a href="#3、播放页面" class="headerlink" title="3、播放页面"></a>3、播放页面</h4><blockquote>
+<ul>
+<li>[x] 上一曲</li>
+<li>[x] 播放</li>
+<li>[x] 暂停</li>
+<li>[x] 下一曲</li>
+<li>[x] 播放进度条[弧形进度条]</li>
+<li>[x] 歌词滚动</li>
+<li>[x] 播放的歌词高亮</li>
+<li>[ ] 播放模式[单曲循环、列表循环、随机播放]</li>
+</ul>
+</blockquote>
+<h4 id="4、播放列表"><a href="#4、播放列表" class="headerlink" title="4、播放列表"></a>4、播放列表</h4><blockquote>
+<ul>
+<li>[x] 播放歌曲高亮</li>
+<li>[x] 切歌(单击切歌)</li>
+<li>[x] 删歌(点击右侧小X)</li>
+<li>[ ] 清空播放列表</li>
+<li>[ ] 本地缓存播放列表</li>
+</ul>
+</blockquote>
+<h4 id="5、排行榜"><a href="#5、排行榜" class="headerlink" title="5、排行榜"></a>5、排行榜</h4><blockquote>
+<ul>
+<li>[x] 热门排行榜</li>
+<li>[x] 排行榜里的歌曲(单击播放)</li>
+</ul>
+</blockquote>
+<h4 id="6、音乐搜索"><a href="#6、音乐搜索" class="headerlink" title="6、音乐搜索"></a>6、音乐搜索</h4><p>输入搜索关键词，点击<code>放大镜</code>图标</p>
+<blockquote>
+<ul>
+<li>[x] 单曲(单击或点击歌曲操作(…)添加至音乐播放列表，部分音乐会存在版权问题无法播放)</li>
+<li>[x] 歌手</li>
+<li>[x] 专辑</li>
+<li>[x] 歌单</li>
+<li>[x] 用户</li>
+<li>[x] 本地缓存搜索列表</li>
+</ul>
+</blockquote>
+<h4 id="7、侧边栏"><a href="#7、侧边栏" class="headerlink" title="7、侧边栏"></a>7、侧边栏</h4><blockquote>
+<ul>
+<li>[x] 头像</li>
+<li>[x] 菜单<ul>
+<li>[x] 个人中心</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3><p>感谢作者把api整理的这么好(点个赞👍)</p>
+<blockquote>
+<p><a href="https://binaryify.github.io/NeteaseCloudMusicApi/#/?id=%e6%90%9c%e7%b4%a2%e9%9f%b3%e4%b9%90" target="_blank" rel="external">网易云音乐 NodeJS 版 API</a></p>
+</blockquote>
+<h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">|——MagicMusic/</div><div class="line">|   |——build/</div><div class="line">|   |——confg/</div><div class="line">|   |——node_modules/</div><div class="line">|   |——src/</div><div class="line">|   |   |——assets/                 //静态文件</div><div class="line">|   |   |——components/             //公共组件</div><div class="line">|   |   |——api/</div><div class="line">|   |   |   |——index.js            //axios封装与api</div><div class="line">|   |   |——pages/                  //存放项目页面</div><div class="line">|   |   |   |——classical.vue       //古典歌曲页面</div><div class="line">|   |   |   |——collection.vue      //排行榜</div><div class="line">|   |   |   |——home.vue            //首页</div><div class="line">|   |   |   |——light.vue           //轻音乐歌曲页面</div><div class="line">|   |   |   |——login.vue           //登录页面</div><div class="line">|   |   |   |——popular.vue         //流行歌曲页面</div><div class="line">|   |   |   |——radio.vue           //电台歌曲页面</div><div class="line">|   |   |   |——rank.vue            //排行榜列表</div><div class="line">|   |   |   |——search.vue          //搜索页</div><div class="line">|   |   |   |——user.vue            //用户</div><div class="line">|   |   |——router/                 </div><div class="line">|   |   |   |——index.js            //页面路由</div><div class="line">|   |   |——util                    //公用方法</div><div class="line">|   |   |——vuex /                  //存放vuex代码</div><div class="line">|   |   |   |——modules /           //数据模块</div><div class="line">|   |   |   |——store.js            //vuex主入口</div><div class="line">|   |   |   |——types.js            //vuex的types文件</div><div class="line">|   |   |——App.vue                 //父组件</div><div class="line">|   |   |——main.js                 //入口文件</div><div class="line">|   |——static/</div><div class="line">|   |——.babelrc</div><div class="line">|   |——.editorconfig</div><div class="line">|   |——.gitgnore</div><div class="line">|   |——index.html</div><div class="line">|   |——package.json</div><div class="line">|   |——README.md</div></pre></td></tr></table></figure>
+<h3 id="开发心得与总结"><a href="#开发心得与总结" class="headerlink" title="开发心得与总结"></a>开发心得与总结</h3><h4 id="1、轮播图"><a href="#1、轮播图" class="headerlink" title="1、轮播图"></a>1、轮播图</h4><p>首先感谢作者<a href="https://github.com/ShanaMaid/vue-image-scroll" target="_blank" rel="external">ShanaMaid/vue-image-scroll</a>开源的代码，我把代码copy下来自己进行了一点修改(没有手指滑动效果)，因为这是移动端，少不了的手指滑动切换，所以添加了<a href="https://github.com/vuejs/vue-touch#next" target="_blank" rel="external">vue-touch</a>(偷偷告诉你，vue-touch的next分支还是支持vue2.0的😜)。<a href="https://github.com/hzzly/MagicMusic/blob/master/src/components/banner.vue" target="_blank" rel="external">代码传送门</a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;li v-<span class="keyword">for</span>=<span class="string">"(item,index) in image"</span> :<span class="class"><span class="keyword">class</span></span>=<span class="string">"[move[index]]"</span>&gt;</div><div class="line">    &lt;v-touch class="vuetouch"</div><div class="line">            v-on:swipeleft="nextPic"</div><div class="line">            v-on:swiperight="prePic"&gt;</div><div class="line">        ...</div><div class="line">    &lt;/v-touch&gt;</div><div class="line">&lt;/li&gt;</div><div class="line"></div><div class="line">methods: &#123;</div><div class="line">    nextPic(event) &#123;</div><div class="line">        <span class="keyword">let</span> temp = <span class="keyword">this</span>.move.pop()</div><div class="line">        <span class="keyword">this</span>.move.unshift(temp)</div><div class="line">    &#125;,</div><div class="line">    prePic(event) &#123;</div><div class="line">        <span class="keyword">let</span> temp = <span class="keyword">this</span>.move.shift()</div><div class="line">        <span class="keyword">this</span>.move.push(temp)</div><div class="line">    &#125;,</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="2、歌曲操作-喜欢，分享，加入播放列表-动画、播放列表展开与删除歌曲动画"><a href="#2、歌曲操作-喜欢，分享，加入播放列表-动画、播放列表展开与删除歌曲动画" class="headerlink" title="2、歌曲操作(喜欢，分享，加入播放列表)动画、播放列表展开与删除歌曲动画"></a>2、歌曲操作(喜欢，分享，加入播放列表)动画、播放列表展开与删除歌曲动画</h4><blockquote>
+<p><code>Vue</code>提供了<code>transition</code>的封装组件，在下列情形中，可以给任何元素和组件添加 entering/leaving 过渡</p>
+<ul>
+<li>条件渲染 （使用 v-if）</li>
+<li>条件展示 （使用 v-show）</li>
+<li>动态组件</li>
+<li>组件根节点</li>
+</ul>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;transition name="move"&gt;</div><div class="line">    &lt;div class="menu" v-show="item.menuShow"&gt;</div><div class="line">        ...</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/transition&gt;</div><div class="line"></div><div class="line">&lt;transition-group name="slide" tag="div" class="list-wrapper"&gt;</div><div class="line">    &lt;div class="item" v-for="(item, index) in listenLists" :key="item"&gt;</div><div class="line">        ...</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/transition-group&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p><code>transition-group</code>一组过度动画，这里有个小坑的，之前看官网列表过渡的栗子，给每一项设置唯一的key值，一般都会用index。所以在做的时候就把index传给key，结果过渡老是不对，后来换成对应的<code>item</code>就正常了(生无可恋脸)。</p>
+</blockquote>
+<h4 id="3、直线进度条、弧形进度条"><a href="#3、直线进度条、弧形进度条" class="headerlink" title="3、直线进度条、弧形进度条"></a>3、直线进度条、弧形进度条</h4><blockquote>
+<p>西班牙建筑大师曾说过：“直线属于人类，曲线则归于上帝”。在这里我大胆的使用了弧形来作为进度条，(几大热门音乐APP貌似还没有弧形进度条😄)。</p>
+</blockquote>
+<p>这里我用到了Vue的<strong>绑定内联样式</strong><br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">//直线进度条</div><div class="line">&lt;div class="progress-bar"&gt;</div><div class="line">    &lt;div class="play"</div><div class="line">        :style="&#123;width: (now / duration).toFixed(3)*100 + '%'&#125;"&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">//弧形进度条</div><div class="line">//因为用到了弧形，所以我这里用到了`border-radius`来使它变成一个大圆，然后平移`translateX`居中，其它不要的部分`overflow: hidden`。</div><div class="line">//这里用两个div来表示进度条，一条固定的进度条，一条慢慢增加。</div><div class="line">&lt;div class="process" @click="showToast"&gt;</div><div class="line">    &lt;div class="line"&gt;&lt;/div&gt;</div><div class="line">    &lt;div class="pro" :style="&#123;transform: `translateX($&#123;translateX&#125;) rotate($&#123;deg*1 + 56.5*((now / size).toFixed(3))&#125;deg)`&#125;"&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<h4 id="4、本地存储"><a href="#4、本地存储" class="headerlink" title="4、本地存储"></a>4、本地存储</h4><blockquote>
+<p>将一些数据缓存到localStorage，可以减少Http请求，从而优化页面加载时间。</p>
+</blockquote>
+<p>在这个项目中首页歌曲列表以及搜索历史用到了本地缓存，拿搜索历史来举栗：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">created() &#123;</div><div class="line">    <span class="keyword">if</span> (!localStorage.searchHistory) &#123;</div><div class="line">        <span class="keyword">let</span> searchHistory = [<span class="string">'前端'</span>, <span class="string">'童话镇'</span>, <span class="string">'刚好遇见你'</span>]</div><div class="line">        localStorage.searchHistory = <span class="built_in">JSON</span>.stringify(searchHistory)</div><div class="line">    &#125; </div><div class="line">&#125;,</div><div class="line"><span class="attr">methods</span>: &#123;</div><div class="line">    _search(keywords) &#123;</div><div class="line">        <span class="comment">//判断搜索列表中是否已存在</span></div><div class="line">        <span class="keyword">let</span> searchHistory = <span class="built_in">JSON</span>.parse(localStorage.searchHistory)</div><div class="line">        <span class="keyword">let</span> find = searchHistory.findIndex(<span class="function">(<span class="params">val</span>) =&gt;</span> &#123;</div><div class="line">            <span class="keyword">return</span> val === keywords</div><div class="line">        &#125;)</div><div class="line">        find === <span class="number">-1</span> ? localStorage.searchHistory = <span class="built_in">JSON</span>.stringify([keywords, ...searchHistory]) : <span class="string">''</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="5、图片懒加载"><a href="#5、图片懒加载" class="headerlink" title="5、图片懒加载"></a>5、图片懒加载</h4><p>使用了<a href="https://github.com/hilongjw/vue-lazyload?from=gold" target="_blank" rel="external">vue-lazyload</a>插件<br>用法👉：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install vue-lazyload</div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//main.js</span></div><div class="line"><span class="keyword">import</span> VueLazyLoad <span class="keyword">from</span> <span class="string">'vue-lazyload'</span></div><div class="line"><span class="keyword">import</span> def_lazy_img <span class="keyword">from</span> <span class="string">'../static/img/loading.gif'</span> <span class="comment">//懒加载的默认图片</span></div><div class="line">Vue.use(VueLazyLoad,&#123;</div><div class="line">    <span class="attr">loading</span>: def_lazy_img</div><div class="line">&#125;) <span class="comment">//使用懒加载组件</span></div><div class="line"></div><div class="line"><span class="comment">//在使用img标签的地方使用</span></div><div class="line">&lt;img v-lazy=<span class="string">"item.al.picUrl"</span> alt=<span class="string">""</span>&gt;</div></pre></td></tr></table></figure>
+<h4 id="6、歌词滚动与高亮"><a href="#6、歌词滚动与高亮" class="headerlink" title="6、歌词滚动与高亮"></a>6、歌词滚动与高亮</h4><p>因为api提供的歌词包括时间，如：<code>[03:57.280]原谅我这一生不羁放纵爱自由</code><br>所以首先要进行字符串切割：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&lt;div class="lyric"&gt;</div><div class="line">    &lt;div class="roll-lyric" v-html="lyrics" ref="lyric"&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">computed: &#123;</div><div class="line">    lyrics() &#123;</div><div class="line">        let lyrics = ''</div><div class="line">        this.lyricArr = []</div><div class="line">        if (this.lyric) &#123;</div><div class="line">            let arr = this.lyric.split('\n')</div><div class="line">            for (let item of arr) &#123;</div><div class="line">                if (item) &#123;</div><div class="line">                    let arr2 = item.split(']')</div><div class="line">                    this.lyricArr.push(arr2[0].substring(1,3)*60+arr2[0].substring(4)*1)</div><div class="line">                    if (arr2) &#123;</div><div class="line">                        lyrics += `&lt;p class='lyrichook' style='margin: 10px 0'&gt;$&#123;arr2[1]&#125;&lt;/p&gt;`</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125; else &#123;</div><div class="line">            lyrics = '暂无歌词~'</div><div class="line">        &#125;</div><div class="line">        return lyrics</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后在播放的监听事件中与播放的当前做对比：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.$refs.myAudio.addEventListener(<span class="string">'play'</span>, () =&gt; &#123;</div><div class="line">    <span class="keyword">this</span>.pDOM = [...document.querySelectorAll(<span class="string">'.lyrichook'</span>)]</div><div class="line">    timer = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        <span class="keyword">this</span>.now = audioDOM.currentTime</div><div class="line">        <span class="keyword">this</span>.lyricArr.forEach(<span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</div><div class="line">            <span class="keyword">if</span> (<span class="built_in">parseInt</span>(item) == <span class="built_in">parseInt</span>(<span class="keyword">this</span>.now)) &#123;</div><div class="line">                <span class="keyword">this</span>.pDOM.forEach(<span class="function">(<span class="params">p</span>) =&gt;</span> &#123;</div><div class="line">                    p.style.color = <span class="string">'rgba(255,255,255,.8)'</span> <span class="comment">//其它歌词清除高亮</span></div><div class="line">                &#125;);</div><div class="line">                <span class="keyword">this</span>.pDOM[index].style.color = <span class="string">'#f12c61'</span> <span class="comment">//歌词高亮</span></div><div class="line">                <span class="keyword">this</span>.$refs.lyric.style.transform = <span class="string">`translateY(-<span class="subst">$&#123;(index<span class="number">-2</span>)*<span class="number">25</span>&#125;</span>px)`</span> <span class="comment">//歌词滚动</span></div><div class="line">            &#125; </div><div class="line">        &#125;);</div><div class="line">    &#125;, <span class="number">1000</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>到这就ok了😜</p>
+<h4 id="7、vuex状态管理"><a href="#7、vuex状态管理" class="headerlink" title="7、vuex状态管理"></a>7、vuex状态管理</h4><p>推荐官方调试工具 <a href="https://github.com/vuejs/vue-devtools" target="_blank" rel="external">devtools extension</a></p>
+<blockquote>
+<p>想进一步理解vuex，可以看这篇博客<a href="https://hzzly.github.io/2017/04/04/vuex%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/" target="_blank" rel="external">vuex学习实践笔记</a></p>
+</blockquote>
+<p>之前看到好多人写的vuex，把整个项目的数据放到了一个state里，导致应用的所有状态集中到一个很大的对象。但是，当应用变得很大时，store 对象会变得臃肿不堪。</p>
+<blockquote>
+<p>所以我建议(个人见解，轻喷)：将 store 分割到模块（module）。每个模块拥有自己的 state、mutation、action、getters。这样方便管理与后期的维护。</p>
+</blockquote>
+<p>车已到站✌️。</p>
+<p>不知不觉写了这么多，老铁们凑合这看吧😁，觉得还行的可以点个star，<strong>你的star是我继续开源创作的动力</strong>，谢谢！！！</p>
+<p><strong>项目地址：</strong> <a href="https://github.com/hzzly/MagicMusic" target="_blank" rel="external">https://github.com/hzzly/MagicMusic</a><br>欢迎大家的star啦~</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://hjingren.cn/publicImages/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://hjingren.cn/publicImages/wxpay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/04/手把手用Node的socket.io撸一个简单聊天室/" class="archive-article-date">
-  	<time datetime="2017-03-04T14:51:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/04/手把手用Node的socket.io撸一个简单聊天室/">手把手用Node的socket.io撸一个简单聊天室</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -192,130 +368,96 @@
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
         		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/03/Web的Flex弹性盒模型/" class="archive-article-date">
-  	<time datetime="2017-03-03T01:24:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/03/Web的Flex弹性盒模型/">Web的Flex弹性盒模型</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
+      		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/04/27/’DIY一个自己的音乐播放器/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/02/博客正式上线/" class="archive-article-date">
-  	<time datetime="2017-03-02T00:49:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-02</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/02/博客正式上线/">博客正式上线</a>
-    </h1>
+  
+    <a href="/2017/04/26/本地存储sessionStorage与localStorage/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">本地存储sessionStorage与localStorage</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/01/hello-world/" class="archive-article-date">
-  	<time datetime="2017-03-01T09:33:06.116Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/01/hello-world/">Hello Hexo</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2017/page/4/">&laquo; Prev</a><a class="page-number" href="/archives/2017/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2017/page/3/">3</a><a class="page-number" href="/archives/2017/page/4/">4</a><span class="page-number current">5</span>
-    </nav>
-  
 
 
           </div>
@@ -341,8 +483,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
