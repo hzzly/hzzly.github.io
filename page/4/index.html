@@ -157,6 +157,92 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-axios在vue中的简单配置与使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/12/axios在vue中的简单配置与使用/">axios在vue中的简单配置与使用</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/12/axios在vue中的简单配置与使用/" class="archive-article-date">
+  	<time datetime="2017-03-12T13:34:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>尤雨溪之前在微博发布消息，不再继续维护vue-resource，并推荐大家开始使用 axios 。</p>
+</blockquote>
+<p><img src="https://hzzly.github.io/img/axios.png" alt="axios"></p>
+<h2 id="一、axios-简介"><a href="#一、axios-简介" class="headerlink" title="一、axios 简介"></a><strong>一、axios 简介</strong></h2><p>axios 是一个基于Promise 用于浏览器和 nodejs 的 HTTP 客户端，它本身具有以下特征：</p>
+<blockquote>
+<ul>
+<li>从浏览器中创建 XMLHttpRequest</li>
+<li>从 node.js 发出 http 请求</li>
+<li>支持 Promise API</li>
+<li>拦截请求和响应</li>
+<li>转换请求和响应数据</li>
+<li>取消请求</li>
+<li>自动转换JSON数据</li>
+<li>客户端支持防止 CSRF/XSRF</li>
+</ul>
+</blockquote>
+<h2 id="二、引入方式："><a href="#二、引入方式：" class="headerlink" title="二、引入方式："></a><strong>二、引入方式：</strong></h2><p>npm:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ npm install axios</div><div class="line">//淘宝源</div><div class="line">$ cnpm install axios</div></pre></td></tr></table></figure></p>
+<p>bower:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ bower install axios</div></pre></td></tr></table></figure></p>
+<p>cdn:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script src=<span class="string">"https://unpkg.com/axios/dist/axios.min.js"</span>&gt;&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="三、vue中axios的配置"><a href="#三、vue中axios的配置" class="headerlink" title="三、vue中axios的配置 "></a><strong>三、vue中axios的配置 </strong></h2><blockquote>
+<p>之前那个开源项目一开始就打算用axios，在网上找了好多文章与攻略，发现好多都不太详细，所以打算自己动手配置一个，(不要怂，撸起袖子就是干)。</p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2017/03/12/axios在vue中的简单配置与使用/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/12/axios在vue中的简单配置与使用/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-开源的收获" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -513,82 +599,6 @@
 
 
   
-    <article id="post-前端入坑笔记–JavaScript类型检测" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/05/前端入坑笔记–JavaScript类型检测/">前端入坑笔记–JavaScript类型检测</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/05/前端入坑笔记–JavaScript类型检测/" class="archive-article-date">
-  	<time datetime="2017-03-05T12:29:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>JavaScript变量可以用来保存两种类型的值：基本类型值和引用类型值</strong></p>
-<blockquote>
-<ul>
-<li>5种基本数据类型：String Number Boolean Undefined  Null  </li>
-<li>引用类型：Object  Array  Data  RegExp  Function  Error  Map  …   </li>
-</ul>
-</blockquote>
-<p>ES6引入了一种新的原始数据类型Symbol，表示独一无二的值</p>
-<h2 id="一、typeof"><a href="#一、typeof" class="headerlink" title="一、typeof"></a>一、typeof</h2><p>   typeof 用来判断各种数据类型,有两种写法：typeof xxx, typeof(xxx) </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="string">'hzzly'</span>;</div><div class="line"><span class="keyword">var</span> b = <span class="literal">true</span>;</div><div class="line"><span class="keyword">var</span> c = <span class="number">22</span>;</div><div class="line"><span class="keyword">var</span> d;</div><div class="line"><span class="keyword">var</span> e = <span class="literal">null</span>;</div><div class="line"><span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">typeof</span> a );       <span class="comment">//string</span></div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">typeof</span> b );       <span class="comment">//boolean</span></div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">typeof</span> c );       <span class="comment">//number</span></div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">typeof</span> d );       <span class="comment">//undefined</span></div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">typeof</span> e );       <span class="comment">//object</span></div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">typeof</span> o );       <span class="comment">//object</span></div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">typeof</span> f );       <span class="comment">//function</span></div><div class="line"></div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">typeof</span> &#123;&#125; );      <span class="comment">//object</span></div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">typeof</span> [] );      <span class="comment">//object</span></div></pre></td></tr></table></figure>
-<p>这里面包含了js里面的五种数据类型  number   string    boolean   undefined     object和函数类型 function</p>
-<p>看到这里你肯定会问了：我怎么去区分对象，数组和null呢?</p>
-<p>接下来我们就用到另外两个利器：Object.prototype.toString.call   instanceof/constructor</p>
-        
-          <a class="article-more-a" href="/2017/03/05/前端入坑笔记–JavaScript类型检测/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/05/前端入坑笔记–JavaScript类型检测/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
@@ -689,19 +699,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">vuex</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es5</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">es6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">es5</a>
               </li>
             
             <div class="clearfix"></div>
