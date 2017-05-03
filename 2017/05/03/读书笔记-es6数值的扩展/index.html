@@ -8,34 +8,34 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>读书笔记-es6数值的扩展 | Hzzly</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="数值的扩展Number.isFinite(), Number.isNaN()
+  <meta name="description" content="数值的扩展一、Number.isFinite(), Number.isNaN()
 
 Number.isFinite()  检查一个数值是否为有限的（finite）
 Number.isNaN()  检查一个值是否为NaN
 
 
-123456789101112131415161718//Number.isFinite()Number.isFinite(15); // trueNumber.isFinite(">
+123456789101112131415161718//Number.isFinite()Number.isFinite(15); // trueNumber.isFinit">
 <meta property="og:type" content="article">
 <meta property="og:title" content="读书笔记-es6数值的扩展">
 <meta property="og:url" content="http://yoursite.com/2017/05/03/读书笔记-es6数值的扩展/index.html">
 <meta property="og:site_name" content="Hzzly">
-<meta property="og:description" content="数值的扩展Number.isFinite(), Number.isNaN()
+<meta property="og:description" content="数值的扩展一、Number.isFinite(), Number.isNaN()
 
 Number.isFinite()  检查一个数值是否为有限的（finite）
 Number.isNaN()  检查一个值是否为NaN
 
 
-123456789101112131415161718//Number.isFinite()Number.isFinite(15); // trueNumber.isFinite(">
-<meta property="og:updated_time" content="2017-05-03T15:06:35.263Z">
+123456789101112131415161718//Number.isFinite()Number.isFinite(15); // trueNumber.isFinit">
+<meta property="og:updated_time" content="2017-05-03T15:19:09.488Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记-es6数值的扩展">
-<meta name="twitter:description" content="数值的扩展Number.isFinite(), Number.isNaN()
+<meta name="twitter:description" content="数值的扩展一、Number.isFinite(), Number.isNaN()
 
 Number.isFinite()  检查一个数值是否为有限的（finite）
 Number.isNaN()  检查一个值是否为NaN
 
 
-123456789101112131415161718//Number.isFinite()Number.isFinite(15); // trueNumber.isFinite(">
+123456789101112131415161718//Number.isFinite()Number.isFinite(15); // trueNumber.isFinit">
   
     <link rel="alternative" href="/atom.xml" title="Hzzly" type="application/atom+xml">
   
@@ -197,26 +197,26 @@ Number.isNaN()  检查一个值是否为NaN
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="数值的扩展"><a href="#数值的扩展" class="headerlink" title="数值的扩展"></a><strong>数值的扩展</strong></h2><h3 id="Number-isFinite-Number-isNaN"><a href="#Number-isFinite-Number-isNaN" class="headerlink" title="Number.isFinite(), Number.isNaN()"></a>Number.isFinite(), Number.isNaN()</h3><blockquote>
+        <h2 id="数值的扩展"><a href="#数值的扩展" class="headerlink" title="数值的扩展"></a><strong>数值的扩展</strong></h2><h3 id="一、Number-isFinite-Number-isNaN"><a href="#一、Number-isFinite-Number-isNaN" class="headerlink" title="一、Number.isFinite(), Number.isNaN()"></a>一、Number.isFinite(), Number.isNaN()</h3><blockquote>
 <ul>
 <li>Number.isFinite()  检查一个数值是否为有限的（finite）</li>
 <li>Number.isNaN()  检查一个值是否为NaN</li>
 </ul>
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Number.isFinite()</span></div><div class="line"><span class="built_in">Number</span>.isFinite(<span class="number">15</span>); <span class="comment">// true</span></div><div class="line"><span class="built_in">Number</span>.isFinite(<span class="number">0.8</span>); <span class="comment">// true</span></div><div class="line"><span class="built_in">Number</span>.isFinite(<span class="literal">NaN</span>); <span class="comment">// false</span></div><div class="line"><span class="built_in">Number</span>.isFinite(<span class="literal">Infinity</span>); <span class="comment">// false</span></div><div class="line"><span class="built_in">Number</span>.isFinite(-<span class="literal">Infinity</span>); <span class="comment">// false</span></div><div class="line"><span class="built_in">Number</span>.isFinite(<span class="string">'foo'</span>); <span class="comment">// false</span></div><div class="line"><span class="built_in">Number</span>.isFinite(<span class="string">'15'</span>); <span class="comment">// false</span></div><div class="line"><span class="built_in">Number</span>.isFinite(<span class="literal">true</span>); <span class="comment">// false</span></div><div class="line"></div><div class="line"><span class="comment">//Number.isNaN()</span></div><div class="line"><span class="built_in">Number</span>.isNaN(<span class="literal">NaN</span>) <span class="comment">// true</span></div><div class="line"><span class="built_in">Number</span>.isNaN(<span class="number">15</span>) <span class="comment">// false</span></div><div class="line"><span class="built_in">Number</span>.isNaN(<span class="string">'15'</span>) <span class="comment">// false</span></div><div class="line"><span class="built_in">Number</span>.isNaN(<span class="literal">true</span>) <span class="comment">// false</span></div><div class="line"><span class="built_in">Number</span>.isNaN(<span class="number">9</span>/<span class="literal">NaN</span>) <span class="comment">// true</span></div><div class="line"><span class="built_in">Number</span>.isNaN(<span class="string">'true'</span>/<span class="number">0</span>) <span class="comment">// true</span></div><div class="line"><span class="built_in">Number</span>.isNaN(<span class="string">'true'</span>/<span class="string">'true'</span>) <span class="comment">// true</span></div></pre></td></tr></table></figure>
-<h3 id="Number-parseInt-Number-parseFloat"><a href="#Number-parseInt-Number-parseFloat" class="headerlink" title="Number.parseInt(), Number.parseFloat()"></a>Number.parseInt(), Number.parseFloat()</h3><blockquote>
+<h3 id="二、Number-parseInt-Number-parseFloat"><a href="#二、Number-parseInt-Number-parseFloat" class="headerlink" title="二、Number.parseInt(), Number.parseFloat()"></a>二、Number.parseInt(), Number.parseFloat()</h3><blockquote>
 <p>全局方法parseInt()和parseFloat()，移植到Number对象上面，行为完全保持不变。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Number</span>.parseInt === <span class="built_in">parseInt</span> <span class="comment">// true</span></div><div class="line"><span class="built_in">Number</span>.parseFloat === <span class="built_in">parseFloat</span> <span class="comment">// true</span></div></pre></td></tr></table></figure></p>
 </blockquote>
-<h3 id="Number-isInteger"><a href="#Number-isInteger" class="headerlink" title="Number.isInteger()"></a>Number.isInteger()</h3><blockquote>
+<h3 id="三、Number-isInteger"><a href="#三、Number-isInteger" class="headerlink" title="三、Number.isInteger()"></a>三、Number.isInteger()</h3><blockquote>
 <p>判断一个值是否为整数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Number</span>.isInteger(<span class="number">25</span>) <span class="comment">// true</span></div><div class="line"><span class="built_in">Number</span>.isInteger(<span class="number">25.0</span>) <span class="comment">// true</span></div><div class="line"><span class="built_in">Number</span>.isInteger(<span class="number">25.1</span>) <span class="comment">// false</span></div><div class="line"><span class="built_in">Number</span>.isInteger(<span class="string">"15"</span>) <span class="comment">// false</span></div><div class="line"><span class="built_in">Number</span>.isInteger(<span class="literal">true</span>) <span class="comment">// false</span></div></pre></td></tr></table></figure></p>
 </blockquote>
-<h3 id="安全整数和Number-isSafeInteger"><a href="#安全整数和Number-isSafeInteger" class="headerlink" title="安全整数和Number.isSafeInteger()"></a>安全整数和Number.isSafeInteger()</h3><blockquote>
+<h3 id="四、安全整数和Number-isSafeInteger"><a href="#四、安全整数和Number-isSafeInteger" class="headerlink" title="四、安全整数和Number.isSafeInteger()"></a>四、安全整数和Number.isSafeInteger()</h3><blockquote>
 <p>JavaScript能够准确表示的整数范围在-2^53到2^53之间（不含两个端点），超过这个范围，无法精确表示这个值。Number.isSafeInteger() 用来判断一个整数是否落在这个范围之内</p>
 </blockquote>
-<h3 id="Math-trunc"><a href="#Math-trunc" class="headerlink" title="Math.trunc()"></a>Math.trunc()</h3><blockquote>
+<h3 id="五、Math-trunc"><a href="#五、Math-trunc" class="headerlink" title="五、Math.trunc()"></a>五、Math.trunc()</h3><blockquote>
 <p>去除一个数的小数部分，返回整数部分</p>
 </blockquote>
-<h3 id="Math-sign"><a href="#Math-sign" class="headerlink" title="Math.sign()"></a>Math.sign()</h3><blockquote>
+<h3 id="六、Math-sign"><a href="#六、Math-sign" class="headerlink" title="六、Math.sign()"></a>六、Math.sign()</h3><blockquote>
 <p>判断一个数到底是正数、负数、还是零</p>
 <ul>
 <li>参数为正数，返回+1；</li>
@@ -226,7 +226,7 @@ Number.isNaN()  检查一个值是否为NaN
 <li>其他值，返回NaN。</li>
 </ul>
 </blockquote>
-<h3 id="Math-signbit"><a href="#Math-signbit" class="headerlink" title="Math.signbit()"></a>Math.signbit()</h3><blockquote>
+<h3 id="七、Math-signbit"><a href="#七、Math-signbit" class="headerlink" title="七、Math.signbit()"></a>七、Math.signbit()</h3><blockquote>
 <p>判断一个数的符号位是否设置了</p>
 <ul>
 <li>如果参数是NaN，返回false</li>
@@ -236,7 +236,7 @@ Number.isNaN()  检查一个值是否为NaN
 </li>
 </ul>
 </blockquote>
-<h3 id="指数运算符"><a href="#指数运算符" class="headerlink" title="指数运算符( ** )"></a>指数运算符( ** )</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="number">2</span> ** <span class="number">2</span> <span class="comment">// 4</span></div><div class="line"><span class="number">2</span> ** <span class="number">3</span> <span class="comment">// 8</span></div></pre></td></tr></table></figure>
+<h3 id="八、指数运算符"><a href="#八、指数运算符" class="headerlink" title="八、指数运算符( ** )"></a>八、指数运算符( ** )</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="number">2</span> ** <span class="number">2</span> <span class="comment">// 4</span></div><div class="line"><span class="number">2</span> ** <span class="number">3</span> <span class="comment">// 8</span></div></pre></td></tr></table></figure>
       
 
       
@@ -475,11 +475,11 @@ Number.isNaN()  检查一个值是否为NaN
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+                <a href="javascript:void(0)" class="js-tag color4">es5</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es5</a>
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
             
             <div class="clearfix"></div>
