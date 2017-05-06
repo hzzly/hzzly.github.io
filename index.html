@@ -157,6 +157,137 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-读书笔记-es6对象的扩展" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/06/读书笔记-es6对象的扩展/">读书笔记-es6对象的扩展</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/06/读书笔记-es6对象的扩展/" class="archive-article-date">
+  	<time datetime="2017-05-06T02:17:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="对象的扩展"><a href="#对象的扩展" class="headerlink" title="对象的扩展"></a><strong>对象的扩展</strong></h2><h3 id="属性和方法的简洁表示法"><a href="#属性和方法的简洁表示法" class="headerlink" title="属性和方法的简洁表示法"></a>属性和方法的简洁表示法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> foo = <span class="string">'bar'</span>;</div><div class="line"><span class="keyword">var</span> baz = &#123;foo&#125;;</div><div class="line">baz <span class="comment">// &#123;foo: "bar"&#125;</span></div><div class="line"></div><div class="line"><span class="comment">// 等同于</span></div><div class="line"><span class="keyword">var</span> baz = &#123;<span class="attr">foo</span>: foo&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> o = &#123;</div><div class="line">  method() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"Hello!"</span>;</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 等同于</span></div><div class="line"><span class="keyword">var</span> o = &#123;</div><div class="line">  <span class="attr">method</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"Hello!"</span>;</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">//如果某个方法的值是一个Generator函数，前面需要加上星号。</span></div><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  * m()&#123;</div><div class="line">    <span class="keyword">yield</span> <span class="string">'hello world'</span>;</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>用于函数的返回值，将会非常方便</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getPoint</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> x = <span class="number">1</span>;</div><div class="line">  <span class="keyword">var</span> y = <span class="number">10</span>;</div><div class="line">  <span class="keyword">return</span> &#123;x, y&#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">getPoint()</div><div class="line"><span class="comment">// &#123;x:1, y:10&#125;</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>CommonJS模块输出变量，就非常合适使用简洁写法。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ms = &#123;&#125;;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getItem</span> (<span class="params">key</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> key <span class="keyword">in</span> ms ? ms[key] : <span class="literal">null</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">setItem</span> (<span class="params">key, value</span>) </span>&#123;</div><div class="line">  ms[key] = value;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">clear</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  ms = &#123;&#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = &#123; getItem, setItem, clear &#125;;</div><div class="line"><span class="comment">// 等同于</span></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="attr">getItem</span>: getItem,</div><div class="line">  <span class="attr">setItem</span>: setItem,</div><div class="line">  <span class="attr">clear</span>: clear</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="Object-is"><a href="#Object-is" class="headerlink" title="Object.is()"></a>Object.is()</h3><blockquote>
+<p>Object.is它用来比较两个值是否严格相等，与严格比较运算符（===）的行为基本一致。</p>
+</blockquote>
+<h3 id="Object-assign"><a href="#Object-assign" class="headerlink" title="Object.assign()"></a>Object.assign()</h3><blockquote>
+<p>Object.assign方法用于对象的合并，将源对象（source）的所有可枚举属性，复制到目标对象（target）</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> target = &#123; <span class="attr">a</span>: <span class="number">1</span> &#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> source1 = &#123; <span class="attr">b</span>: <span class="number">2</span> &#125;;</div><div class="line"><span class="keyword">var</span> source2 = &#123; <span class="attr">c</span>: <span class="number">3</span> &#125;;</div><div class="line"></div><div class="line"><span class="built_in">Object</span>.assign(target, source1, source2);</div><div class="line">target <span class="comment">// &#123;a:1, b:2, c:3&#125;</span></div><div class="line"><span class="comment">//如果目标对象与源对象有同名属性，或多个源对象有同名属性，则后面的属性会覆盖前面的属性。</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>Object.assign方法实行的是浅拷贝，而不是深拷贝。也就是说，如果源对象某个属性的值是对象，那么目标对象拷贝得到的是这个对象的引用。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;<span class="attr">a</span>: &#123;<span class="attr">b</span>: <span class="number">1</span>&#125;&#125;;</div><div class="line"><span class="keyword">var</span> obj2 = <span class="built_in">Object</span>.assign(&#123;&#125;, obj1);</div><div class="line"></div><div class="line">obj1.a.b = <span class="number">2</span>;</div><div class="line">obj2.a.b <span class="comment">// 2</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>对于这种嵌套的对象，一旦遇到同名属性，Object.assign的处理方法是替换，而不是添加。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> target = &#123; <span class="attr">a</span>: &#123; <span class="attr">b</span>: <span class="string">'c'</span>, <span class="attr">d</span>: <span class="string">'e'</span> &#125; &#125;</div><div class="line"><span class="keyword">var</span> source = &#123; <span class="attr">a</span>: &#123; <span class="attr">b</span>: <span class="string">'hello'</span> &#125; &#125;</div><div class="line"><span class="built_in">Object</span>.assign(target, source)</div><div class="line"><span class="comment">// &#123; a: &#123; b: 'hello' &#125; &#125;</span></div><div class="line"><span class="string">``</span></div><div class="line"></div><div class="line">**<span class="built_in">Object</span>.assign常见用途**</div><div class="line">&gt;<span class="number">1</span>）为对象添加属性</div><div class="line"></div><div class="line"><span class="string">``</span><span class="string">`javascript</span></div><div class="line">class Point &#123;</div><div class="line">  constructor(x, y) &#123;</div><div class="line">    Object.assign(this, &#123;x, y&#125;);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">`<span class="string">`</span></div><div class="line">上面方法通过Object.assign方法，将x属性和y属性添加到Point类的对象实例。</div><div class="line"></div><div class="line">&gt;2）为对象添加方法</div><div class="line"></div><div class="line">`<span class="string">``</span>javascript</div><div class="line"><span class="built_in">Object</span>.assign(SomeClass.prototype, &#123;</div><div class="line">  someMethod(arg1, arg2) &#123;</div><div class="line">    ···</div><div class="line">  &#125;,</div><div class="line">  anotherMethod() &#123;</div><div class="line">    ···</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 等同于下面的写法</span></div><div class="line">SomeClass.prototype.someMethod = <span class="function"><span class="keyword">function</span> (<span class="params">arg1, arg2</span>) </span>&#123;</div><div class="line">  ···</div><div class="line">&#125;;</div><div class="line">SomeClass.prototype.anotherMethod = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  ···</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>3）克隆对象</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">clone</span>(<span class="params">origin</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">Object</span>.assign(&#123;&#125;, origin);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面代码将原始对象拷贝到一个空对象，就得到了原始对象的克隆。</p>
+<p>不过，采用这种方法克隆，只能克隆原始对象自身的值，不能克隆它继承的值。如果想要保持继承链，可以采用下面的代码。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">clone</span>(<span class="params">origin</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> originProto = <span class="built_in">Object</span>.getPrototypeOf(origin);</div><div class="line">  <span class="keyword">return</span> <span class="built_in">Object</span>.assign(<span class="built_in">Object</span>.create(originProto), origin);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>4）合并多个对象</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> merge =</div><div class="line">  <span class="function">(<span class="params">target, ...sources</span>) =&gt;</span> <span class="built_in">Object</span>.assign(target, ...sources);</div></pre></td></tr></table></figure>
+<p>如果希望合并后返回一个新对象，可以改写上面函数，对一个空对象合并。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> merge =</div><div class="line">  <span class="function">(<span class="params">...sources</span>) =&gt;</span> <span class="built_in">Object</span>.assign(&#123;&#125;, ...sources);</div></pre></td></tr></table></figure></p>
+<h3 id="属性的遍历"><a href="#属性的遍历" class="headerlink" title="属性的遍历"></a>属性的遍历</h3><blockquote>
+<p>1）for…in</p>
+</blockquote>
+<p>for…in循环遍历对象自身的和继承的可枚举属性（不含Symbol属性）。</p>
+<blockquote>
+<p>2）Object.keys(obj)</p>
+</blockquote>
+<p>Object.keys返回一个数组，包括对象自身的（不含继承的）所有可枚举属性（不含Symbol属性）。</p>
+<blockquote>
+<p>3）Object.getOwnPropertyNames(obj)</p>
+</blockquote>
+<p>Object.getOwnPropertyNames返回一个数组，包含对象自身的所有属性（不含Symbol属性，但是包括不可枚举属性）。</p>
+<blockquote>
+<p>4）Object.getOwnPropertySymbols(obj)</p>
+</blockquote>
+<p>Object.getOwnPropertySymbols返回一个数组，包含对象自身的所有Symbol属性。</p>
+<blockquote>
+<p>5）Reflect.ownKeys(obj)</p>
+</blockquote>
+<p>Reflect.ownKeys返回一个数组，包含对象自身的所有属性，不管属性名是Symbol或字符串，也不管是否可枚举。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Reflect</span>.ownKeys(&#123; [<span class="built_in">Symbol</span>()]:<span class="number">0</span>, <span class="attr">b</span>:<span class="number">0</span>, <span class="number">10</span>:<span class="number">0</span>, <span class="number">2</span>:<span class="number">0</span>, <span class="attr">a</span>:<span class="number">0</span> &#125;)</div><div class="line"><span class="comment">// ['2', '10', 'b', 'a', Symbol()]</span></div></pre></td></tr></table></figure></p>
+<h3 id="Object-keys-，Object-values-，Object-entries"><a href="#Object-keys-，Object-values-，Object-entries" class="headerlink" title="Object.keys()，Object.values()，Object.entries()"></a>Object.keys()，Object.values()，Object.entries()</h3><blockquote>
+<ul>
+<li>Object.keys方法，返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键名。</li>
+<li>Object.values方法返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键值。Object.values只返回对象自身的可遍历属性。Object.values会过滤属性名为 Symbol 值的属性。如果Object.values方法的参数是一个字符串，会返回各个字符组成的一个数组。</li>
+<li>Object.entries方法返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键值对数组。如果原对象的属性名是一个 Symbol 值，该属性会被忽略。Object.entries的基本用途是遍历对象的属性。另一个用处是，将对象转为真正的Map结构。</li>
+</ul>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">foo</span>: <span class="string">'bar'</span>, <span class="attr">baz</span>: <span class="number">42</span> &#125;;</div><div class="line"><span class="built_in">Object</span>.keys(obj)</div><div class="line"><span class="comment">// ["foo", "baz"]</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">foo</span>: <span class="string">'bar'</span>, <span class="attr">baz</span>: <span class="number">42</span> &#125;;</div><div class="line"><span class="built_in">Object</span>.values(obj)</div><div class="line"><span class="comment">// ["bar", 42]</span></div><div class="line"><span class="keyword">var</span> obj = &#123; <span class="number">100</span>: <span class="string">'a'</span>, <span class="number">2</span>: <span class="string">'b'</span>, <span class="number">7</span>: <span class="string">'c'</span> &#125;;</div><div class="line"><span class="built_in">Object</span>.values(obj)</div><div class="line"><span class="comment">// ["b", "c", "a"]</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">foo</span>: <span class="string">'bar'</span>, <span class="attr">baz</span>: <span class="number">42</span> &#125;;</div><div class="line"><span class="built_in">Object</span>.entries(obj)</div><div class="line"><span class="comment">// [ ["foo", "bar"], ["baz", 42] ]</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">let</span> &#123;keys, values, entries&#125; = <span class="built_in">Object</span>;</div><div class="line"><span class="keyword">let</span> obj = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">3</span> &#125;;</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">of</span> keys(obj)) &#123;</div><div class="line">  <span class="built_in">console</span>.log(key); <span class="comment">// 'a', 'b', 'c'</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> values(obj)) &#123;</div><div class="line">  <span class="built_in">console</span>.log(value); <span class="comment">// 1, 2, 3</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [key, value] <span class="keyword">of</span> entries(obj)) &#123;</div><div class="line">  <span class="built_in">console</span>.log([key, value]); <span class="comment">// ['a', 1], ['b', 2], ['c', 3]</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="对象的扩展运算符"><a href="#对象的扩展运算符" class="headerlink" title="对象的扩展运算符"></a>对象的扩展运算符</h3><blockquote>
+<p>扩展运算符（…）用于取出参数对象的所有可遍历属性，拷贝到当前对象之中。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> z = &#123; <span class="attr">a</span>: <span class="number">3</span>, <span class="attr">b</span>: <span class="number">4</span> &#125;;</div><div class="line"><span class="keyword">let</span> n = &#123; ...z &#125;;</div><div class="line">n <span class="comment">// &#123; a: 3, b: 4 &#125;</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> aClone = &#123; ...a &#125;;</div><div class="line"><span class="comment">// 等同于</span></div><div class="line"><span class="keyword">let</span> aClone = <span class="built_in">Object</span>.assign(&#123;&#125;, a);</div><div class="line"></div><div class="line"><span class="comment">//合并两个对象</span></div><div class="line"><span class="keyword">let</span> ab = &#123; ...a, ...b &#125;;</div><div class="line"><span class="comment">// 等同于</span></div><div class="line"><span class="keyword">let</span> ab = <span class="built_in">Object</span>.assign(&#123;&#125;, a, b);</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">es6</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/06/读书笔记-es6对象的扩展/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-读书笔记-es6函数的扩展" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -195,51 +326,9 @@
 <h3 id="四、扩展运算符-…"><a href="#四、扩展运算符-…" class="headerlink" title="四、扩展运算符(…)"></a>四、扩展运算符(…)</h3><blockquote>
 <p>它好比 rest 参数的逆运算，将一个数组转为用逗号分隔的参数序列。<br>扩展运算符内部调用的是数据结构的Iterator接口</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(...[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</div><div class="line"><span class="comment">// 1 2 3</span></div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="number">1</span>, ...[<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], <span class="number">5</span>)</div><div class="line"><span class="comment">// 1 2 3 4 5</span></div><div class="line"></div><div class="line">[...document.querySelectorAll(<span class="string">'div'</span>)]</div><div class="line"><span class="comment">// [&lt;div&gt;, &lt;div&gt;, &lt;div&gt;]</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">push</span>(<span class="params">array, ...items</span>) </span>&#123;</div><div class="line">  array.push(...items);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">x, y</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> x + y;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> numbers = [<span class="number">4</span>, <span class="number">38</span>];</div><div class="line">add(...numbers) <span class="comment">// 42</span></div></pre></td></tr></table></figure>
-<p>栗子：</p>
-<blockquote>
-<ul>
-<li>替代数组的apply方法</li>
-</ul>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ES5的写法</span></div><div class="line"><span class="built_in">Math</span>.max.apply(<span class="literal">null</span>, [<span class="number">14</span>, <span class="number">3</span>, <span class="number">77</span>])</div><div class="line"></div><div class="line"><span class="comment">// ES6的写法</span></div><div class="line"><span class="built_in">Math</span>.max(...[<span class="number">14</span>, <span class="number">3</span>, <span class="number">77</span>])</div><div class="line"></div><div class="line"><span class="comment">// 等同于</span></div><div class="line"><span class="built_in">Math</span>.max(<span class="number">14</span>, <span class="number">3</span>, <span class="number">77</span>);</div></pre></td></tr></table></figure>
-<blockquote>
-<ul>
-<li>合并数组</li>
-</ul>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ES5</span></div><div class="line">[<span class="number">1</span>, <span class="number">2</span>].concat(more)</div><div class="line"><span class="comment">// ES6</span></div><div class="line">[<span class="number">1</span>, <span class="number">2</span>, ...more]</div><div class="line"></div><div class="line"><span class="keyword">var</span> arr1 = [<span class="string">'a'</span>, <span class="string">'b'</span>];</div><div class="line"><span class="keyword">var</span> arr2 = [<span class="string">'c'</span>];</div><div class="line"><span class="keyword">var</span> arr3 = [<span class="string">'d'</span>, <span class="string">'e'</span>];</div><div class="line"></div><div class="line"><span class="comment">// ES5的合并数组</span></div><div class="line">arr1.concat(arr2, arr3);</div><div class="line"><span class="comment">// [ 'a', 'b', 'c', 'd', 'e' ]</span></div><div class="line"></div><div class="line"><span class="comment">// ES6的合并数组</span></div><div class="line">[...arr1, ...arr2, ...arr3]</div><div class="line"><span class="comment">// [ 'a', 'b', 'c', 'd', 'e' ]</span></div></pre></td></tr></table></figure>
-<blockquote>
-<ul>
-<li>与解构赋值结合</li>
-</ul>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> [first, ...rest] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</div><div class="line">first <span class="comment">// 1</span></div><div class="line">rest  <span class="comment">// [2, 3, 4, 5]</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> [first, ...rest] = [];</div><div class="line">first <span class="comment">// undefined</span></div><div class="line">rest  <span class="comment">// []:</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> [first, ...rest] = [<span class="string">"foo"</span>];</div><div class="line">first  <span class="comment">// "foo"</span></div><div class="line">rest   <span class="comment">// []</span></div></pre></td></tr></table></figure>
-<h3 id="五、箭头函数"><a href="#五、箭头函数" class="headerlink" title="五、箭头函数"></a>五、箭头函数</h3><blockquote>
-<p>箭头函数可以让this指向固定化，这种特性很有利于封装回调函数</p>
-</blockquote>
-<p>（1）函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。</p>
-<p>（2）不可以当作构造函数，也就是说，不可以使用new命令，否则会抛出一个错误。</p>
-<p>（3）不可以使用arguments对象，该对象在函数体内不存在。如果要用，可以用Rest参数代替。</p>
-<p>（4）不可以使用yield命令，因此箭头函数不能用作Generator函数。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> f = <span class="function"><span class="params">()</span> =&gt;</span> <span class="number">5</span>;</div><div class="line"><span class="comment">// 等同于</span></div><div class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">5</span> &#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> f = <span class="function"><span class="params">v</span> =&gt;</span> v;</div><div class="line"><span class="comment">//等同于：</span></div><div class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span>(<span class="params">v</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> v;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> sum = <span class="function">(<span class="params">num1, num2</span>) =&gt;</span> num1 + num2;</div><div class="line"><span class="comment">// 等同于</span></div><div class="line"><span class="keyword">var</span> sum = <span class="function"><span class="keyword">function</span>(<span class="params">num1, num2</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> num1 + num2;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<blockquote>
-<ul>
-<li>箭头函数简化回调函数</li>
-</ul>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 正常函数写法</span></div><div class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>].map(<span class="function"><span class="keyword">function</span> (<span class="params">x</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> x * x;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 箭头函数写法</span></div><div class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>].map(<span class="function"><span class="params">x</span> =&gt;</span> x * x);</div></pre></td></tr></table></figure>
-<blockquote>
-<ul>
-<li>箭头函数可以让setTimeout里面的this，绑定定义时所在的作用域，而不是指向运行时所在的作用域</li>
-</ul>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Timer</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.s1 = <span class="number">0</span>;</div><div class="line">  <span class="keyword">this</span>.s2 = <span class="number">0</span>;</div><div class="line">  <span class="comment">// 箭头函数</span></div><div class="line">  setInterval(<span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">this</span>.s1++, <span class="number">1000</span>);</div><div class="line">  <span class="comment">// 普通函数</span></div><div class="line">  setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.s2++;</div><div class="line">  &#125;, <span class="number">1000</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> timer = <span class="keyword">new</span> Timer();</div><div class="line"></div><div class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'s1: '</span>, timer.s1), <span class="number">3100</span>);</div><div class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'s2: '</span>, timer.s2), <span class="number">3100</span>);</div><div class="line"><span class="comment">// s1: 3</span></div><div class="line"><span class="comment">// s2: 0</span></div></pre></td></tr></table></figure>
-<blockquote>
-<ul>
-<li>因为所有的内层函数都是箭头函数，都没有自己的this，它们的this其实都是最外层foo函数的this</li>
-</ul>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'id:'</span>, <span class="keyword">this</span>.id);</div><div class="line">      &#125;;</div><div class="line">    &#125;;</div><div class="line">  &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> f = foo.call(&#123;<span class="attr">id</span>: <span class="number">1</span>&#125;);</div><div class="line"></div><div class="line"><span class="keyword">var</span> t1 = f.call(&#123;<span class="attr">id</span>: <span class="number">2</span>&#125;)()(); <span class="comment">// id: 1</span></div><div class="line"><span class="keyword">var</span> t2 = f().call(&#123;<span class="attr">id</span>: <span class="number">3</span>&#125;)(); <span class="comment">// id: 1</span></div><div class="line"><span class="keyword">var</span> t3 = f()().call(&#123;<span class="attr">id</span>: <span class="number">4</span>&#125;); <span class="comment">// id: 1</span></div></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2017/05/05/读书笔记-es6函数的扩展/#more">more >></a>
+        
       
 
       
@@ -554,96 +643,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/04/27/’DIY一个自己的音乐播放器/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-本地存储sessionStorage与localStorage" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/26/本地存储sessionStorage与localStorage/">本地存储sessionStorage与localStorage</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/26/本地存储sessionStorage与localStorage/" class="archive-article-date">
-  	<time datetime="2017-04-26T15:44:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<ul>
-<li>sessionStorage 数据的存储仅特定于某个会话中，也就是说数据只保持到浏览器关闭，当浏览器关闭后重新打开这个页面时， 之前的存储已经被清除。</li>
-<li>localStorage 是一个持久化的存储，它并不局限于会话。除非主动删除数据，否则数据是永远不会过期的。</li>
-</ul>
-</blockquote>
-<h3 id="一、localStorage和sessionStorage操作"><a href="#一、localStorage和sessionStorage操作" class="headerlink" title="一、localStorage和sessionStorage操作"></a>一、localStorage和sessionStorage操作</h3><blockquote>
-<p>localStorage和sessionStorage都具有相同的操作方法，例如setItem、getItem和removeItem等</p>
-</blockquote>
-<h3 id="1-setItem存储value"><a href="#1-setItem存储value" class="headerlink" title="1.setItem存储value"></a>1.setItem存储value</h3><p>sessionStorage.setItem(“name”, “hzzly”);<br>localStorage.setItem(“blog”, “hzzly.github.io”);</p>
-<h3 id="2-getItem获取value"><a href="#2-getItem获取value" class="headerlink" title="2.getItem获取value"></a>2.getItem获取value</h3><p>let name = sessionStorage.getItem(“name”);<br>let blog = localStorage.getItem(“blog”);</p>
-<h3 id="3-removeItem删除key"><a href="#3-removeItem删除key" class="headerlink" title="3.removeItem删除key"></a>3.removeItem删除key</h3><p>sessionStorage.removeItem(“name”);<br>localStorage.removeItem(“blog”);</p>
-<h3 id="4-clear清除所有的key-value"><a href="#4-clear清除所有的key-value" class="headerlink" title="4.clear清除所有的key/value"></a>4.clear清除所有的key/value</h3><p>sessionStorage.clear();<br>localStorage.clear();</p>
-<h3 id="5-其他操作方法：点操作和"><a href="#5-其他操作方法：点操作和" class="headerlink" title="5.其他操作方法：点操作和[]"></a>5.其他操作方法：点操作和[]</h3><blockquote>
-<p>web Storage不但可以用自身的setItem,getItem等方便存取，也可以像普通对象一样用点(.)操作符，及[]的方式进行数据存储及读取，像如下的代码：</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">localStorage.name = <span class="string">"hzzly"</span>; </div><div class="line">localStorage[<span class="string">"age"</span>] = <span class="string">"21"</span>; </div><div class="line"></div><div class="line">sessionStorage.name = <span class="string">"hzzly"</span>; </div><div class="line">sessionStorage[<span class="string">"age"</span>] = <span class="string">"21"</span>;</div><div class="line"></div><div class="line"><span class="keyword">let</span> name1 = localStorage.name</div><div class="line"><span class="keyword">let</span> age1 = localStorage[<span class="string">"age"</span>]</div><div class="line"></div><div class="line"><span class="keyword">let</span> name2 = sessionStorage.name</div><div class="line"><span class="keyword">let</span> age2 = sessionStorage[<span class="string">"age"</span>]</div></pre></td></tr></table></figure>
-<h3 id="6-localStorage和sessionStorage的key和length属性实现遍历"><a href="#6-localStorage和sessionStorage的key和length属性实现遍历" class="headerlink" title="6.localStorage和sessionStorage的key和length属性实现遍历"></a>6.localStorage和sessionStorage的key和length属性实现遍历</h3><blockquote>
-<p>sessionStorage和localStorage提供的key()和length可以方便的实现存储的数据遍历，例如下面的代码：</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> storage = <span class="built_in">window</span>.localStorage; </div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>, len = storage.length; i  &lt;  len; i++)&#123;     </div><div class="line">	<span class="keyword">let</span> key = storage.key(i);     </div><div class="line">	<span class="keyword">let</span> value = storage.getItem(key);     </div><div class="line">	<span class="built_in">console</span>.log(key + <span class="string">"="</span> + value); </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="二、实例"><a href="#二、实例" class="headerlink" title="二、实例"></a>二、实例</h3><blockquote>
-<p>storage只能存储字符串的数据，对于JS中常用的数组或对象却不能直接存储，可以用下面两个方法进行转换：</p>
-<ul>
-<li>JSON.stringify() 用于从一个对象解析出字符串</li>
-<li>JSON.parse() 用于从一个字符串中解析出json对象</li>
-</ul>
-</blockquote>
-<h3 id="1-localStorage-sessionStorage存取数组"><a href="#1-localStorage-sessionStorage存取数组" class="headerlink" title="1.localStorage/sessionStorage存取数组"></a>1.localStorage/sessionStorage存取数组</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//存</span></div><div class="line"><span class="keyword">let</span> language = [<span class="string">'HTML/HTML5'</span>, <span class="string">'CSS/CSS3'</span>, <span class="string">'JavaScript'</span>, <span class="string">'Vue'</span>, <span class="string">'React'</span>]</div><div class="line">localStorage.language = <span class="built_in">JSON</span>.stringify(language)</div><div class="line">sessionStorag.language = <span class="built_in">JSON</span>.stringify(language)</div><div class="line"></div><div class="line"><span class="comment">//取</span></div><div class="line"><span class="keyword">let</span> storageLanguage = <span class="built_in">JSON</span>.parse(localStorage.language)</div></pre></td></tr></table></figure>
-<h3 id="2-localStorage存取对象"><a href="#2-localStorage存取对象" class="headerlink" title="2.localStorage存取对象"></a>2.localStorage存取对象</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//存</span></div><div class="line"><span class="keyword">let</span> myInfo = &#123;</div><div class="line">	<span class="string">'name'</span>: <span class="string">'hzzly'</span>,</div><div class="line">	<span class="string">'age'</span>: <span class="number">21</span>,</div><div class="line">	<span class="string">'school'</span>: <span class="string">'ECUT'</span>,</div><div class="line">	<span class="string">'city'</span>: <span class="string">'NanChang'</span></div><div class="line">&#125;</div><div class="line">localStorage.myInfo = <span class="built_in">JSON</span>.stringify(myInfo)</div><div class="line">sessionStorag.myInfo = <span class="built_in">JSON</span>.stringify(myInfo)</div><div class="line"></div><div class="line"><span class="comment">//取</span></div><div class="line"><span class="keyword">let</span> storageLanguage = <span class="built_in">JSON</span>.parse(localStorage.myInfo)</div></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/26/本地存储sessionStorage与localStorage/">展开全文 >></a>
         </p>
       
 
