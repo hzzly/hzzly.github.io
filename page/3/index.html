@@ -157,6 +157,89 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-vuex学习实践笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/04/vuex学习实践笔记/">vuex学习实践笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/04/vuex学习实践笔记/" class="archive-article-date">
+  	<time datetime="2017-04-04T12:11:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Vuex是什么？"><a href="#Vuex是什么？" class="headerlink" title="Vuex是什么？"></a><strong>Vuex是什么？</strong></h3><blockquote>
+<p>Vuex 是一个专为 Vue.js 应用程序开发的<strong>状态管理模式</strong>。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。</p>
+</blockquote>
+<p>栗如(travel store)：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> types <span class="keyword">from</span> <span class="string">'../types'</span></div><div class="line"><span class="comment">//数据</span></div><div class="line"><span class="keyword">const</span> state = &#123;</div><div class="line">    <span class="attr">travelsList</span>: [],</div><div class="line">    <span class="attr">searchKey</span>: &#123;</div><div class="line">        <span class="attr">page</span>: <span class="number">0</span>,</div><div class="line">        <span class="attr">limit</span>: <span class="number">20</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">scroll</span>: <span class="literal">true</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//用户行为(可以处理异步),触发 mutations 来改变 state</span></div><div class="line"><span class="keyword">const</span> actions = &#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 获取约跑步列表</div><div class="line">     */</div><div class="line">    getTravelsList(&#123; commit &#125;) &#123;</div><div class="line">        <span class="keyword">if</span>(state.scroll) &#123;</div><div class="line">            commit(types.GET_TRAVELS_PAGE_NUM)</div><div class="line">            commit(types.COM_LOADING_STATUS, <span class="literal">true</span>),</div><div class="line">            commit(types.GET_TRAVELS_SCORLL_STATUS, <span class="literal">false</span>)</div><div class="line">            api.TravelsList()</div><div class="line">                .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</div><div class="line">                    <span class="built_in">console</span>.log(res)</div><div class="line">                    commit(types.COM_LOADING_STATUS, <span class="literal">false</span>),</div><div class="line">                    commit(types.GET_TRAVELS_SCORLL_STATUS, <span class="literal">true</span>)</div><div class="line">                    commit(types.GET_TRAVELS_LIST, res)</div><div class="line">                &#125;)</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 参加</div><div class="line">     */</div><div class="line">    joinTravel(&#123; commit &#125;, id) &#123;</div><div class="line">		...</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//可以过滤 state 中的数据</span></div><div class="line"><span class="keyword">const</span> getters = &#123;</div><div class="line">    <span class="attr">travelsList</span>: <span class="function"><span class="params">state</span> =&gt;</span> state.travelsList,</div><div class="line">    <span class="attr">travelListIndex</span>: <span class="function"><span class="params">state</span> =&gt;</span> state.travelsList.slice(<span class="number">0</span>,<span class="number">4</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">//唯一能改变 state 的方法(纯函数)</span></div><div class="line"><span class="keyword">const</span> mutations = &#123;</div><div class="line">    [types.GET_TRAVELS_LIST](state, res) &#123;</div><div class="line">        <span class="keyword">if</span>(state.searchKey.page &lt;= <span class="number">1</span>) &#123;</div><div class="line">            state.travelsList = res.data</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            state.travelsList = state.travelsList.concat(res.data)</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    [types.GET_TRAVELS_SEARCH_KEY](state, params) &#123;</div><div class="line">        state.searchKey = params</div><div class="line">    &#125;,</div><div class="line">    [types.GET_TRAVELS_PAGE_NUM](state) &#123;</div><div class="line">        state.searchKey[<span class="string">'page'</span>] += <span class="number">1</span></div><div class="line">    &#125;,</div><div class="line">    [types.GET_TRAVELS_SCORLL_STATUS](state, status) &#123;</div><div class="line">        state.scroll = status</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//导出一个 travel store 模块</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">    state,</div><div class="line">    actions,</div><div class="line">    getters,</div><div class="line">    mutations</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>每一个 Vuex 应用的核心就是 store（仓库）。”store” 基本上就是一个容器，它包含着你的应用中大部分的状态(state)数据。</p>
+<blockquote>
+<ul>
+<li>Vuex 的状态存储是响应式的。当 Vue 组件从 store 中读取状态的时候，若 store 中的状态发生变化，那么相应的组件也会相应地得到高效更新。</li>
+<li>你不能直接改变 store 中的状态。改变 store 中的状态的唯一途径就是显式地提交(commit) mutations。这样使得我们可以方便地跟踪每一个状态的变化，从而让我们能够实现一些工具帮助我们更好地了解我们的应用。</li>
+</ul>
+</blockquote>
+<p>用一张图来理解一下<br><img src="http://omt3u4bph.bkt.clouddn.com/vuex2.jpg" alt="vuex"></p>
+<blockquote>
+<p>客户端(Client) -&gt; action -&gt; mutations -&gt; state -&gt; 客户端</p>
+</blockquote>
+<p>可以看出在vuex中数据是单一流向的：视图(view)触发action，action提交(commit)到mutations，mutations改变state(数据)，state的改变，相应的组件也会相应的更新。</p>
+        
+          <a class="article-more-a" href="/2017/04/04/vuex学习实践笔记/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">vuex</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/04/vuex学习实践笔记/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-读书笔记-es5Array对象" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -612,75 +695,6 @@
 
 
   
-    <article id="post-移动端touch事件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/22/移动端touch事件/">移动端touch事件</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/22/移动端touch事件/" class="archive-article-date">
-  	<time datetime="2017-03-22T14:08:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="4个touch事件"><a href="#4个touch事件" class="headerlink" title="4个touch事件"></a><strong>4个touch事件</strong></h3><p><strong>touchstart</strong> 事件：当手指触摸屏幕时候触发，即使已经有一个手指放在屏幕上也会触发。<br><strong>touchmove</strong> 事件：当手指在屏幕上滑动的时候连续地触发。调用preventDefault()事件可以阻止滚动。<br><strong>touchend</strong> 事件：当手指从屏幕上离开的时候触发。<br><strong>touchcancel</strong> 事件：触摸结束的时候触发</p>
-<h3 id="触摸事件："><a href="#触摸事件：" class="headerlink" title="触摸事件："></a><strong>触摸事件：</strong></h3><p><strong>touches：</strong>当前位于屏幕上的所有手指的列表。<br><strong>targetTouches：</strong>位于当前DOM元素上手指的列表。<br><strong>changedTouches：</strong>涉及当前事件手指的列表。</p>
-<h3 id="Touch对象属性"><a href="#Touch对象属性" class="headerlink" title="Touch对象属性"></a><strong>Touch对象属性</strong></h3><p>每个Touch对象包含的属性如下： </p>
-<blockquote>
-<p>clientX：触摸目标在视口中的x坐标。<br>clientY：触摸目标在视口中的y坐标。<br>identifier：标识触摸的唯一ID。<br>pageX：触摸目标在页面中的x坐标。<br>pageY：触摸目标在页面中的y坐标。<br>screenX：触摸目标在屏幕中的x坐标。<br>screenY：触摸目标在屏幕中的y坐标。<br>target：触摸的DOM节点目标。</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'touchstart'</span>,touch,<span class="literal">false</span>);</div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'touchmove'</span>,touch,<span class="literal">false</span>);</div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'touchend'</span>,touch,<span class="literal">false</span>);     </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">touch</span> (<span class="params">event</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> event = event || <span class="built_in">window</span>.event;</div><div class="line">    <span class="keyword">var</span> oInp = <span class="built_in">document</span>.getElementById(<span class="string">"inp"</span>);</div><div class="line">    <span class="keyword">switch</span>(event.type)&#123;</div><div class="line">        <span class="keyword">case</span> <span class="string">"touchstart"</span>:</div><div class="line">            oInp.innerHTML =<span class="string">`Touch started ( <span class="subst">$&#123;event.touches[<span class="number">0</span>].clientX&#125;</span> , <span class="subst">$&#123;event.touches[<span class="number">0</span>].clientY&#125;</span> )`</span>;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="string">"touchend"</span>:</div><div class="line">            oInp.innerHTML =<span class="string">`&lt;br&gt;Touch end ( <span class="subst">$&#123;event.changedTouches[<span class="number">0</span>].clientX&#125;</span> , <span class="subst">$&#123;event.changedTouches[<span class="number">0</span>].clientY&#125;</span> )`</span>;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="string">"touchmove"</span>:</div><div class="line">            event.preventDefault();</div><div class="line">            oInp.innerHTML =<span class="string">`&lt;br&gt;Touch moved ( <span class="subst">$&#123;event.touches[<span class="number">0</span>].clientX&#125;</span> , <span class="subst">$&#123;event.touches[<span class="number">0</span>].clientY&#125;</span> )`</span>;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="事件-包括鼠标事件-发生的顺序如下："><a href="#事件-包括鼠标事件-发生的顺序如下：" class="headerlink" title="事件(包括鼠标事件)发生的顺序如下："></a><strong>事件(包括鼠标事件)发生的顺序如下：</strong></h3><p>(1) touchstart<br>(2) mouseover<br>(3) mousemove(一次)<br>(4) mousedown<br>(5) mouseup<br>(6) click<br>(7) touchend</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/22/移动端touch事件/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -781,19 +795,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">vuex</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es5</a>
+                <a href="javascript:void(0)" class="js-tag color5">vuex</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">es6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">es5</a>
               </li>
             
             <div class="clearfix"></div>

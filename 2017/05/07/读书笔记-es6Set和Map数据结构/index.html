@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>读书笔记-es6let与const | Hzzly</title>
+  <title>读书笔记-es6Set和Map数据结构 | Hzzly</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="let和const 两种新的声明变量的方法  一、let用法类似于var，但是所声明的变量，只在let命令所在的代码块内有效。   1.块级作用域 2.不存在变量提升   1234567// var 的情况console.log(foo); // 输出undefinedvar foo = 2;// let 的情况console.log(bar); // 报错ReferenceErrorlet ba">
+  <meta name="description" content="Set和Map数据结构Set 它类似于数组，但是成员的值都是唯一的，没有重复的值。Set 本身是一个构造函数，用来生成 Set 数据结构。  12345678const s = new Set();[2, 3, 5, 4, 5, 2, 2].forEach(x =&amp;gt; s.add(x));for (let i of s) &amp;#123;  console.log(i);&amp;#125;// 2 3">
 <meta name="keywords" content="随笔,es6">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读书笔记-es6let与const">
-<meta property="og:url" content="http://yoursite.com/2017/04/09/读书笔记-es6let与const/index.html">
+<meta property="og:title" content="读书笔记-es6Set和Map数据结构">
+<meta property="og:url" content="http://yoursite.com/2017/05/07/读书笔记-es6Set和Map数据结构/index.html">
 <meta property="og:site_name" content="Hzzly">
-<meta property="og:description" content="let和const 两种新的声明变量的方法  一、let用法类似于var，但是所声明的变量，只在let命令所在的代码块内有效。   1.块级作用域 2.不存在变量提升   1234567// var 的情况console.log(foo); // 输出undefinedvar foo = 2;// let 的情况console.log(bar); // 报错ReferenceErrorlet ba">
-<meta property="og:updated_time" content="2017-05-04T15:30:20.000Z">
+<meta property="og:description" content="Set和Map数据结构Set 它类似于数组，但是成员的值都是唯一的，没有重复的值。Set 本身是一个构造函数，用来生成 Set 数据结构。  12345678const s = new Set();[2, 3, 5, 4, 5, 2, 2].forEach(x =&amp;gt; s.add(x));for (let i of s) &amp;#123;  console.log(i);&amp;#125;// 2 3">
+<meta property="og:updated_time" content="2017-05-07T11:11:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="读书笔记-es6let与const">
-<meta name="twitter:description" content="let和const 两种新的声明变量的方法  一、let用法类似于var，但是所声明的变量，只在let命令所在的代码块内有效。   1.块级作用域 2.不存在变量提升   1234567// var 的情况console.log(foo); // 输出undefinedvar foo = 2;// let 的情况console.log(bar); // 报错ReferenceErrorlet ba">
+<meta name="twitter:title" content="读书笔记-es6Set和Map数据结构">
+<meta name="twitter:description" content="Set和Map数据结构Set 它类似于数组，但是成员的值都是唯一的，没有重复的值。Set 本身是一个构造函数，用来生成 Set 数据结构。  12345678const s = new Set();[2, 3, 5, 4, 5, 2, 2].forEach(x =&amp;gt; s.add(x));for (let i of s) &amp;#123;  console.log(i);&amp;#125;// 2 3">
   
     <link rel="alternative" href="/atom.xml" title="Hzzly" type="application/atom+xml">
   
@@ -160,60 +160,81 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-读书笔记-es6let与const" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-读书笔记-es6Set和Map数据结构" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      读书笔记-es6let与const
+      读书笔记-es6Set和Map数据结构
     </h1>
   
 
         
-        <a href="/2017/04/09/读书笔记-es6let与const/" class="archive-article-date">
-  	<time datetime="2017-04-09T14:16:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-09</time>
+        <a href="/2017/05/07/读书笔记-es6Set和Map数据结构/" class="archive-article-date">
+  	<time datetime="2017-05-07T11:10:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-07</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="let和const"><a href="#let和const" class="headerlink" title="let和const"></a><strong>let和const</strong></h2><blockquote>
-<p>两种新的声明变量的方法</p>
+        <h2 id="Set和Map数据结构"><a href="#Set和Map数据结构" class="headerlink" title="Set和Map数据结构"></a><strong>Set和Map数据结构</strong></h2><h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><blockquote>
+<p>它类似于数组，但是成员的值都是唯一的，没有重复的值。Set 本身是一个构造函数，用来生成 Set 数据结构。</p>
 </blockquote>
-<h3 id="一、let"><a href="#一、let" class="headerlink" title="一、let"></a>一、let</h3><p>用法类似于var，但是所声明的变量，只在let命令所在的代码块内有效。</p>
-<blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> s = <span class="keyword">new</span> <span class="built_in">Set</span>();</div><div class="line"></div><div class="line">[<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">2</span>].forEach(<span class="function"><span class="params">x</span> =&gt;</span> s.add(x));</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">of</span> s) &#123;</div><div class="line">  <span class="built_in">console</span>.log(i);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 2 3 5 4</span></div></pre></td></tr></table></figure>
+<p>Set 函数可以接受一个数组（或类似数组的对象）作为参数，用来初始化。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">/ 例一</div><div class="line"><span class="keyword">const</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>]);</div><div class="line">[...set]</div><div class="line"><span class="comment">// [1, 2, 3, 4]</span></div><div class="line"></div><div class="line"><span class="comment">// 例二</span></div><div class="line"><span class="keyword">const</span> items = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>]);</div><div class="line">items.size <span class="comment">// 5</span></div><div class="line"></div><div class="line"><span class="comment">// 例三</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">divs</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> [...document.querySelectorAll(<span class="string">'div'</span>)];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>(divs());</div><div class="line">set.size <span class="comment">// 56</span></div><div class="line"></div><div class="line"><span class="comment">// 类似于</span></div><div class="line">divs().forEach(<span class="function"><span class="params">div</span> =&gt;</span> set.add(div));</div><div class="line">set.size <span class="comment">// 56</span></div></pre></td></tr></table></figure>
+<p>去除数组重复成员的方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 去除数组的重复成员</span></div><div class="line">[...new <span class="built_in">Set</span>(array)]</div></pre></td></tr></table></figure>
+<h3 id="Set-实例的属性和方法"><a href="#Set-实例的属性和方法" class="headerlink" title="Set 实例的属性和方法"></a>Set 实例的属性和方法</h3><blockquote>
 <ul>
-<li>1.块级作用域</li>
-<li>2.不存在变量提升</li>
+<li>属性<ul>
+<li>Set.prototype.constructor：构造函数，默认就是Set函数。</li>
+<li>Set.prototype.size：返回Set实例的成员总数。</li>
+</ul>
+</li>
+<li>方法<ul>
+<li>add(value)：添加某个值，返回Set结构本身。</li>
+<li>delete(value)：删除某个值，返回一个布尔值，表示删除是否成功。</li>
+<li>has(value)：返回一个布尔值，表示该值是否为Set的成员。</li>
+<li>clear()：清除所有成员，没有返回值。</li>
+</ul>
+</li>
 </ul>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// var 的情况</span></div><div class="line"><span class="built_in">console</span>.log(foo); <span class="comment">// 输出undefined</span></div><div class="line"><span class="keyword">var</span> foo = <span class="number">2</span>;</div><div class="line"></div><div class="line"><span class="comment">// let 的情况</span></div><div class="line"><span class="built_in">console</span>.log(bar); <span class="comment">// 报错ReferenceError</span></div><div class="line"><span class="keyword">let</span> bar = <span class="number">2</span>;</div></pre></td></tr></table></figure>
-<blockquote>
+<h3 id="遍历操作"><a href="#遍历操作" class="headerlink" title="遍历操作"></a>遍历操作</h3><blockquote>
 <ul>
-<li>3.暂时性死区</li>
+<li>keys()：返回键名的遍历器</li>
+<li>values()：返回键值的遍历器</li>
+<li>entries()：返回键值对的遍历器</li>
+<li>forEach()：使用回调函数遍历每个成员</li>
 </ul>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> tmp = <span class="number">123</span>;</div><div class="line"></div><div class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</div><div class="line">  tmp = <span class="string">'abc'</span>; <span class="comment">// ReferenceError</span></div><div class="line">  <span class="keyword">let</span> tmp;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>上面代码中，存在全局变量tmp，但是块级作用域内let又声明了一个局部变量tmp，导致后者绑定这个块级作用域，所以在let声明变量前，对tmp赋值会报错。</p>
-<blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="string">'red'</span>, <span class="string">'green'</span>, <span class="string">'blue'</span>]);</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> set.keys()) &#123;</div><div class="line">  <span class="built_in">console</span>.log(item);</div><div class="line">&#125;</div><div class="line"><span class="comment">// red</span></div><div class="line"><span class="comment">// green</span></div><div class="line"><span class="comment">// blue</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> set.values()) &#123;</div><div class="line">  <span class="built_in">console</span>.log(item);</div><div class="line">&#125;</div><div class="line"><span class="comment">// red</span></div><div class="line"><span class="comment">// green</span></div><div class="line"><span class="comment">// blue</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> set.entries()) &#123;</div><div class="line">  <span class="built_in">console</span>.log(item);</div><div class="line">&#125;</div><div class="line"><span class="comment">// ["red", "red"]</span></div><div class="line"><span class="comment">// ["green", "green"]</span></div><div class="line"><span class="comment">// ["blue", "blue"]</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]);</div><div class="line">set.forEach(<span class="function">(<span class="params">value, key</span>) =&gt;</span> <span class="built_in">console</span>.log(value * <span class="number">2</span>) )</div><div class="line"><span class="comment">// 2</span></div><div class="line"><span class="comment">// 4</span></div><div class="line"><span class="comment">// 6</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]);</div><div class="line">set = <span class="keyword">new</span> <span class="built_in">Set</span>([...set].map(<span class="function"><span class="params">x</span> =&gt;</span> x * <span class="number">2</span>));</div><div class="line"><span class="comment">// 返回Set结构：&#123;2, 4, 6&#125;</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]);</div><div class="line">set = <span class="keyword">new</span> <span class="built_in">Set</span>([...set].filter(<span class="function"><span class="params">x</span> =&gt;</span> (x % <span class="number">2</span>) == <span class="number">0</span>));</div><div class="line"><span class="comment">// 返回Set结构：&#123;2, 4&#125;</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> arr = [<span class="number">3</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">5</span>];</div><div class="line"><span class="keyword">let</span> unique = [...new <span class="built_in">Set</span>(arr)];</div><div class="line"><span class="comment">// [3, 5, 2]</span></div></pre></td></tr></table></figure>
+<h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3><blockquote>
+<p>它类似于对象，也是键值对的集合，但是“键”的范围不限于字符串，各种类型的值（包括对象）都可以当作键。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>([</div><div class="line">  [<span class="string">'name'</span>, <span class="string">'张三'</span>],</div><div class="line">  [<span class="string">'title'</span>, <span class="string">'Author'</span>]</div><div class="line">]);</div><div class="line"></div><div class="line">map.size <span class="comment">// 2</span></div><div class="line">map.has(<span class="string">'name'</span>) <span class="comment">// true</span></div><div class="line">map.get(<span class="string">'name'</span>) <span class="comment">// "张三"</span></div><div class="line">map.has(<span class="string">'title'</span>) <span class="comment">// true</span></div><div class="line">map.get(<span class="string">'title'</span>) <span class="comment">// "Author"</span></div></pre></td></tr></table></figure>
+<h3 id="Map-实例的属性和方法"><a href="#Map-实例的属性和方法" class="headerlink" title="Map 实例的属性和方法"></a>Map 实例的属性和方法</h3><blockquote>
 <ul>
-<li>4.不允许重复声明</li>
+<li>属性<ul>
+<li>Map.prototype.constructor：构造函数，默认就是Map函数。</li>
+<li>Map.prototype.size：返回Map实例的成员总数。</li>
+</ul>
+</li>
+<li>方法<ul>
+<li>set(key, value)：set方法设置键名key对应的键值为value，然后返回整个 Map 结构。如果key已经有值，则键值会被更新，否则就新生成该键。可以采用链式写法。</li>
+<li>get(key)：get方法读取key对应的键值，如果找不到key，返回undefined。</li>
+<li>has(key)：has方法返回一个布尔值，表示某个键是否在当前 Map 对象之中。</li>
+<li>delete(key)：delete方法删除某个键，返回true。如果删除失败，返回false。</li>
+<li>clear(): clear方法清除所有成员，没有返回值。</li>
+</ul>
+</li>
 </ul>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 报错</span></div><div class="line"><span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> a = <span class="number">10</span>;</div><div class="line">  <span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 报错</span></div><div class="line"><span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> a = <span class="number">10</span>;</div><div class="line">  <span class="keyword">let</span> a = <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="二、const"><a href="#二、const" class="headerlink" title="二、const"></a>二、const</h3><p>const声明一个只读的常量。一旦声明，常量的值就不能改变。<br>const一旦声明变量，就必须立即初始化，不能留到以后赋值。<br>只在声明所在的块级作用域内有效。</p>
-<blockquote>
-<p>const实际上保证的，并不是变量的值不得改动，而是变量指向的那个内存地址不得改动。对于简单类型的数据（数值、字符串、布尔值），值就保存在变量指向的那个内存地址，因此等同于常量。但对于复合类型的数据（主要是对象和数组），变量指向的内存地址，保存的只是一个指针，const只能保证这个指针是固定的，至于它指向的数据结构是不是可变的，就完全不能控制了。因此，将一个对象声明为常量必须非常小心。</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> foo = &#123;&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 为 foo 添加一个属性，可以成功</span></div><div class="line">foo.prop = <span class="number">123</span>;</div><div class="line">foo.prop <span class="comment">// 123</span></div><div class="line"></div><div class="line"><span class="comment">// 将 foo 指向另一个对象，就会报错</span></div><div class="line">foo = &#123;&#125;; <span class="comment">// TypeError: "foo" is read-only</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>上面代码中，常量foo储存的是一个地址，这个地址指向一个对象。不可变的只是这个地址，即不能把foo指向另一个地址，但对象本身是可变的，所以依然可以为其添加新属性。</p>
-</blockquote>
-<p><strong>Github地址：</strong> <a href="https://github.com/hzzly/learn-es6" target="_blank" rel="external">https://github.com/hzzly/learn-es6</a></p>
-<p>文章来源<a href="https://hzzly.github.io/" target="_blank" rel="external">hzzly博客技术分享</a></p>
+<h3 id="遍历操作-1"><a href="#遍历操作-1" class="headerlink" title="遍历操作"></a>遍历操作</h3><p>和 Set 一样</p>
 
       
 
@@ -318,7 +339,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/04/09/读书笔记-es6let与const/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/07/读书笔记-es6Set和Map数据结构/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -332,18 +353,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/04/21/读书笔记-es6变量的解构赋值/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          读书笔记-es6变量的解构赋值
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/04/04/vuex学习实践笔记/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">vuex学习实践笔记</div>
+    <a href="/2017/05/06/读书笔记-es6对象的扩展/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">读书笔记-es6对象的扩展</div>
       <i class="icon-circle-right"></i>
     </a>
   

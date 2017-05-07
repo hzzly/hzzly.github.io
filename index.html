@@ -157,6 +157,126 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-读书笔记-es6Set和Map数据结构" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/07/读书笔记-es6Set和Map数据结构/">读书笔记-es6Set和Map数据结构</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/07/读书笔记-es6Set和Map数据结构/" class="archive-article-date">
+  	<time datetime="2017-05-07T11:10:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Set和Map数据结构"><a href="#Set和Map数据结构" class="headerlink" title="Set和Map数据结构"></a><strong>Set和Map数据结构</strong></h2><h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><blockquote>
+<p>它类似于数组，但是成员的值都是唯一的，没有重复的值。Set 本身是一个构造函数，用来生成 Set 数据结构。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> s = <span class="keyword">new</span> <span class="built_in">Set</span>();</div><div class="line"></div><div class="line">[<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">2</span>].forEach(<span class="function"><span class="params">x</span> =&gt;</span> s.add(x));</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">of</span> s) &#123;</div><div class="line">  <span class="built_in">console</span>.log(i);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 2 3 5 4</span></div></pre></td></tr></table></figure>
+<p>Set 函数可以接受一个数组（或类似数组的对象）作为参数，用来初始化。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">/ 例一</div><div class="line"><span class="keyword">const</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>]);</div><div class="line">[...set]</div><div class="line"><span class="comment">// [1, 2, 3, 4]</span></div><div class="line"></div><div class="line"><span class="comment">// 例二</span></div><div class="line"><span class="keyword">const</span> items = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>]);</div><div class="line">items.size <span class="comment">// 5</span></div><div class="line"></div><div class="line"><span class="comment">// 例三</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">divs</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> [...document.querySelectorAll(<span class="string">'div'</span>)];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>(divs());</div><div class="line">set.size <span class="comment">// 56</span></div><div class="line"></div><div class="line"><span class="comment">// 类似于</span></div><div class="line">divs().forEach(<span class="function"><span class="params">div</span> =&gt;</span> set.add(div));</div><div class="line">set.size <span class="comment">// 56</span></div></pre></td></tr></table></figure>
+<p>去除数组重复成员的方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 去除数组的重复成员</span></div><div class="line">[...new <span class="built_in">Set</span>(array)]</div></pre></td></tr></table></figure>
+<h3 id="Set-实例的属性和方法"><a href="#Set-实例的属性和方法" class="headerlink" title="Set 实例的属性和方法"></a>Set 实例的属性和方法</h3><blockquote>
+<ul>
+<li>属性<ul>
+<li>Set.prototype.constructor：构造函数，默认就是Set函数。</li>
+<li>Set.prototype.size：返回Set实例的成员总数。</li>
+</ul>
+</li>
+<li>方法<ul>
+<li>add(value)：添加某个值，返回Set结构本身。</li>
+<li>delete(value)：删除某个值，返回一个布尔值，表示删除是否成功。</li>
+<li>has(value)：返回一个布尔值，表示该值是否为Set的成员。</li>
+<li>clear()：清除所有成员，没有返回值。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="遍历操作"><a href="#遍历操作" class="headerlink" title="遍历操作"></a>遍历操作</h3><blockquote>
+<ul>
+<li>keys()：返回键名的遍历器</li>
+<li>values()：返回键值的遍历器</li>
+<li>entries()：返回键值对的遍历器</li>
+<li>forEach()：使用回调函数遍历每个成员</li>
+</ul>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="string">'red'</span>, <span class="string">'green'</span>, <span class="string">'blue'</span>]);</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> set.keys()) &#123;</div><div class="line">  <span class="built_in">console</span>.log(item);</div><div class="line">&#125;</div><div class="line"><span class="comment">// red</span></div><div class="line"><span class="comment">// green</span></div><div class="line"><span class="comment">// blue</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> set.values()) &#123;</div><div class="line">  <span class="built_in">console</span>.log(item);</div><div class="line">&#125;</div><div class="line"><span class="comment">// red</span></div><div class="line"><span class="comment">// green</span></div><div class="line"><span class="comment">// blue</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> set.entries()) &#123;</div><div class="line">  <span class="built_in">console</span>.log(item);</div><div class="line">&#125;</div><div class="line"><span class="comment">// ["red", "red"]</span></div><div class="line"><span class="comment">// ["green", "green"]</span></div><div class="line"><span class="comment">// ["blue", "blue"]</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]);</div><div class="line">set.forEach(<span class="function">(<span class="params">value, key</span>) =&gt;</span> <span class="built_in">console</span>.log(value * <span class="number">2</span>) )</div><div class="line"><span class="comment">// 2</span></div><div class="line"><span class="comment">// 4</span></div><div class="line"><span class="comment">// 6</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]);</div><div class="line">set = <span class="keyword">new</span> <span class="built_in">Set</span>([...set].map(<span class="function"><span class="params">x</span> =&gt;</span> x * <span class="number">2</span>));</div><div class="line"><span class="comment">// 返回Set结构：&#123;2, 4, 6&#125;</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]);</div><div class="line">set = <span class="keyword">new</span> <span class="built_in">Set</span>([...set].filter(<span class="function"><span class="params">x</span> =&gt;</span> (x % <span class="number">2</span>) == <span class="number">0</span>));</div><div class="line"><span class="comment">// 返回Set结构：&#123;2, 4&#125;</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> arr = [<span class="number">3</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">5</span>];</div><div class="line"><span class="keyword">let</span> unique = [...new <span class="built_in">Set</span>(arr)];</div><div class="line"><span class="comment">// [3, 5, 2]</span></div></pre></td></tr></table></figure>
+<h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3><blockquote>
+<p>它类似于对象，也是键值对的集合，但是“键”的范围不限于字符串，各种类型的值（包括对象）都可以当作键。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>([</div><div class="line">  [<span class="string">'name'</span>, <span class="string">'张三'</span>],</div><div class="line">  [<span class="string">'title'</span>, <span class="string">'Author'</span>]</div><div class="line">]);</div><div class="line"></div><div class="line">map.size <span class="comment">// 2</span></div><div class="line">map.has(<span class="string">'name'</span>) <span class="comment">// true</span></div><div class="line">map.get(<span class="string">'name'</span>) <span class="comment">// "张三"</span></div><div class="line">map.has(<span class="string">'title'</span>) <span class="comment">// true</span></div><div class="line">map.get(<span class="string">'title'</span>) <span class="comment">// "Author"</span></div></pre></td></tr></table></figure>
+<h3 id="Map-实例的属性和方法"><a href="#Map-实例的属性和方法" class="headerlink" title="Map 实例的属性和方法"></a>Map 实例的属性和方法</h3><blockquote>
+<ul>
+<li>属性<ul>
+<li>Map.prototype.constructor：构造函数，默认就是Map函数。</li>
+<li>Map.prototype.size：返回Map实例的成员总数。</li>
+</ul>
+</li>
+<li>方法<ul>
+<li>set(key, value)：set方法设置键名key对应的键值为value，然后返回整个 Map 结构。如果key已经有值，则键值会被更新，否则就新生成该键。可以采用链式写法。</li>
+<li>get(key)：get方法读取key对应的键值，如果找不到key，返回undefined。</li>
+<li>has(key)：has方法返回一个布尔值，表示某个键是否在当前 Map 对象之中。</li>
+<li>delete(key)：delete方法删除某个键，返回true。如果删除失败，返回false。</li>
+<li>clear(): clear方法清除所有成员，没有返回值。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="遍历操作-1"><a href="#遍历操作-1" class="headerlink" title="遍历操作"></a>遍历操作</h3><p>和 Set 一样</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">es6</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/07/读书笔记-es6Set和Map数据结构/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-读书笔记-es6对象的扩展" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -501,117 +621,6 @@
 
 
   
-    <article id="post-’DIY一个自己的音乐播放器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/27/’DIY一个自己的音乐播放器/">DIY一个自己的音乐播放器</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/27/’DIY一个自己的音乐播放器/" class="archive-article-date">
-  	<time datetime="2017-04-27T06:47:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>前言：在最近的一个外包项目<a href="http://www.zblmchina.com/#/post" target="_blank" rel="external">中包联盟</a>(PC端)中使用到了video，遇到了好多坑。突发奇想来踩一踩audio的坑😀，果然一入深似海，👇下面将分享我的DIY之路-Vue音乐播放器。<br>注：本项目为开源项目，不能用于商业应用，仅供学习。有问题或建议发我邮箱：hjingren@aliyun.com</p>
-</blockquote>
-<p>[温馨提示：pc浏览f12手机模式最佳,手机建议wifi下访问]<br><strong>demo地址：</strong> <a href="http://hjingren.cn/magic-music" target="_blank" rel="external">http://hjingren.cn/magic-music</a><br><strong>项目地址：</strong> <a href="https://github.com/hzzly/MagicMusic" target="_blank" rel="external">https://github.com/hzzly/MagicMusic</a><br>欢迎大家的star啦😄~</p>
-<p>先来个预览：</p>
-<p><img src="http://omt3u4bph.bkt.clouddn.com/magic-music1.gif" alt="magic-music1"></p>
-<p>更多预览：<a href="http://hjingren.cn/magic-music/pic.html" target="_blank" rel="external">更多</a></p>
-<p>👉老铁们，准备发车(技能点)：</p>
-<blockquote>
-<ul>
-<li><a href="https://cn.vuejs.org/" target="_blank" rel="external">vue文档</a></li>
-<li><a href="https://router.vuejs.org/zh-cn/" target="_blank" rel="external">vue-router文档</a></li>
-<li><a href="https://vuex.vuejs.org/zh-cn/" target="_blank" rel="external">vuex文档</a> 不想看文档的可以看看我这篇博客<a href="https://hzzly.github.io/2017/04/04/vuex%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/" target="_blank" rel="external">vuex学习实践笔记</a></li>
-<li><a href="https://www.npmjs.com/package/axios" target="_blank" rel="external">axios文档</a> 或者这篇博客 <a href="https://blog.ygxdxx.com/2017/02/01/Vuex2&amp;Axios-Develop/" target="_blank" rel="external">Vuex2 与 Axios 开发</a>(我也是参考这篇，感谢作者😁)</li>
-<li><a href="http://es6.ruanyifeng.com/" target="_blank" rel="external">es6(阮一峰的es6入门)</a> 可以参考<a href="https://hzzly.github.io/tags/es6/" target="_blank" rel="external">我的es6之路</a>(还在继续,轻喷)</li>
-<li><a href="https://doc.webpack-china.org/" target="_blank" rel="external">webpack2(中文网站)</a></li>
-<li><a href="https://hzzly.github.io/2017/03/25/%E6%B5%85%E8%B0%88Promise/" target="_blank" rel="external">Promise (浅谈Promise)</a></li>
-<li><a href="https://hzzly.github.io/2017/03/03/Web%E7%9A%84Flex%E5%BC%B9%E6%80%A7%E7%9B%92%E6%A8%A1%E5%9E%8B/" target="_blank" rel="external">flex (Web的flex弹性盒模型)</a></li>
-<li><a href="https://hzzly.github.io/2017/03/15/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D%E7%9A%84%E8%A7%A3%E5%86%B3/" target="_blank" rel="external">移动端屏幕适配的解决 (flexible+rem)</a></li>
-<li><a href="https://hzzly.github.io/2017/04/26/%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8sessionStorage%E4%B8%8ElocalStorage/" target="_blank" rel="external">本地存储(sessionStorage、localStorage)</a></li>
-<li><a href="https://github.com/hilongjw/vue-lazyload?from=gold" target="_blank" rel="external">图片懒加载</a></li>
-</ul>
-</blockquote>
-<p>👉坐好，出发</p>
-<h3 id="实现的功能"><a href="#实现的功能" class="headerlink" title="实现的功能"></a>实现的功能</h3><h4 id="1、首页"><a href="#1、首页" class="headerlink" title="1、首页"></a>1、首页</h4><blockquote>
-<ul>
-<li>[x] 轮播</li>
-<li>[x] 个性推荐[流行、古典、轻音乐、流行]</li>
-<li>[x] 歌曲操作<ul>
-<li>[x] 加入播放列表</li>
-<li>[ ] 喜欢</li>
-<li>[ ] 分享</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<h4 id="2、底部播放控件"><a href="#2、底部播放控件" class="headerlink" title="2、底部播放控件"></a>2、底部播放控件</h4><blockquote>
-<ul>
-<li>[x] 播放</li>
-<li>[x] 暂停</li>
-<li>[x] 下一曲</li>
-<li>[x] 播放进度条</li>
-</ul>
-</blockquote>
-        
-          <a class="article-more-a" href="/2017/04/27/’DIY一个自己的音乐播放器/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/27/’DIY一个自己的音乐播放器/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -712,19 +721,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">vuex</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es5</a>
+                <a href="javascript:void(0)" class="js-tag color5">vuex</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">es6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">es5</a>
               </li>
             
             <div class="clearfix"></div>
