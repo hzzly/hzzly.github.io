@@ -157,6 +157,80 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-移动端1px的解决方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/13/移动端1px的解决方法/">移动端1px的解决方法</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/13/移动端1px的解决方法/" class="archive-article-date">
+  	<time datetime="2017-03-13T13:22:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>在上个项目中，移动端1px问题被困扰了好久，设置1px边框，实际显示2px。<br>以下是我在项目中的解决方法，才疏学浅，轻喷。</p>
+</blockquote>
+<p>关于什么是移动端1像素边框问题，先上两张图，大家就明白了。</p>
+<p><strong>假的1px:</strong><br><img src="https://hzzly.github.io/img/onepx2.png" alt="2px"></p>
+<p><strong>真的1px:</strong><br><img src="https://hzzly.github.io/img/onepx1.png" alt="1px"></p>
+<p>原来Retine屏的分辨率始终是普通屏幕的2倍，1px的边框在devicePixelRatio=2的retina屏下会显示成2px。</p>
+<p><strong>解决方案</strong></p>
+<blockquote>
+<p>transform: scaleY()</p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2017/03/13/移动端1px的解决方法/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/13/移动端1px的解决方法/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-axios在vue中的简单配置与使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -520,85 +594,6 @@
 
 
   
-    <article id="post-前后端分离的尝试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/06/前后端分离的尝试/">前后端分离的尝试</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/06/前后端分离的尝试/" class="archive-article-date">
-  	<time datetime="2017-03-06T02:21:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>首次尝试前后端分离是在一个外包项目中:</p>
-<blockquote>
-<p>点匠科技 o2o的家装类 移动项目微信平台前端开发主要工作内容是将原有的android、ios 应用 配合后端工程师开发一套 微信产品,个人角色为 前端开发工程师 负责界面 html css vue 前后端数据联调等工作</p>
-</blockquote>
-<p><a href="http://www.dianjiang99.com/html/user_center/user_center.html" target="_blank" rel="external">项目地址</a><br>(测试账号:15103585135 测试密码:123456)</p>
-<p>这次的项目<strong>技术栈</strong></p>
-<blockquote>
-<ul>
-<li>vue vue-router vuex </li>
-<li>weui</li>
-<li>sass</li>
-<li>es6 ajax</li>
-</ul>
-</blockquote>
-<p>通过这次项目，让我体会到了这种前后端分离的快感，所以特来分享一波。</p>
-<p>如果你没有尝试过前后端分离的工作流程，那么可以先试想一下这样的流程改变：</p>
-        
-          <a class="article-more-a" href="/2017/03/06/前后端分离的尝试/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/06/前后端分离的尝试/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
@@ -707,11 +702,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+                <a href="javascript:void(0)" class="js-tag color4">es5</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es5</a>
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
             
             <div class="clearfix"></div>
