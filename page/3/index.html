@@ -157,6 +157,99 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-读书笔记-es6字符串的扩展" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/22/读书笔记-es6字符串的扩展/">读书笔记-es6字符串的扩展</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/22/读书笔记-es6字符串的扩展/" class="archive-article-date">
+  	<time datetime="2017-04-22T15:07:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="字符串的扩展"><a href="#字符串的扩展" class="headerlink" title="字符串的扩展"></a><strong>字符串的扩展</strong></h2><h3 id="一、字符串的遍历器接口"><a href="#一、字符串的遍历器接口" class="headerlink" title="一、字符串的遍历器接口"></a>一、字符串的遍历器接口</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> codePoint <span class="keyword">of</span> <span class="string">'foo'</span>) &#123;</div><div class="line">  <span class="built_in">console</span>.log(codePoint)</div><div class="line">&#125;</div><div class="line"><span class="comment">// "f"</span></div><div class="line"><span class="comment">// "o"</span></div><div class="line"><span class="comment">// "o"</span></div></pre></td></tr></table></figure>
+<h3 id="二、at"><a href="#二、at" class="headerlink" title="二、at"></a>二、at</h3><p>返回字符串给定位置的字符<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//es5</span></div><div class="line"><span class="string">'abc'</span>.charAt(<span class="number">0</span>) <span class="comment">// "a"</span></div><div class="line"></div><div class="line"><span class="comment">//es6</span></div><div class="line"><span class="string">'abc'</span>.at(<span class="number">0</span>) <span class="comment">// "a"</span></div></pre></td></tr></table></figure></p>
+<h3 id="三、indexOf-includes-startsWith-endsWith"><a href="#三、indexOf-includes-startsWith-endsWith" class="headerlink" title="三、indexOf(), includes(), startsWith(), endsWith()"></a>三、indexOf(), includes(), startsWith(), endsWith()</h3><blockquote>
+<ul>
+<li>indexOf() 确定一个字符串是否包含在另一个字符串中(es5)</li>
+<li>includes() 返回布尔值，表示是否找到了参数字符串。</li>
+<li>startsWith() 返回布尔值，表示参数字符串是否在源字符串的头部。</li>
+<li>endsWith()返回布尔值，表示参数字符串是否在源字符串的尾部。</li>
+</ul>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = <span class="string">'Hello world!'</span>;</div><div class="line"></div><div class="line">s.startsWith(<span class="string">'Hello'</span>) <span class="comment">// true</span></div><div class="line">s.endsWith(<span class="string">'!'</span>) <span class="comment">// true</span></div><div class="line">s.includes(<span class="string">'o'</span>) <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<p>支持第二个参数，表示开始搜索的位置<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = <span class="string">'Hello world!'</span>;</div><div class="line"></div><div class="line">s.startsWith(<span class="string">'Hello'</span>) <span class="comment">// true</span></div><div class="line">s.endsWith(<span class="string">'!'</span>) <span class="comment">// true</span></div><div class="line">s.includes(<span class="string">'o'</span>) <span class="comment">// true</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = <span class="string">'Hello world!'</span>;</div><div class="line"></div><div class="line">s.startsWith(<span class="string">'world'</span>, <span class="number">6</span>) <span class="comment">// true</span></div><div class="line">s.endsWith(<span class="string">'Hello'</span>, <span class="number">5</span>) <span class="comment">// true</span></div><div class="line">s.includes(<span class="string">'Hello'</span>, <span class="number">6</span>) <span class="comment">// false</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>endsWith的行为与其他两个方法有所不同。它针对前n个字符，而其他两个方法针对从第n个位置直到字符串结束。</p>
+</blockquote>
+<h3 id="四、repeat"><a href="#四、repeat" class="headerlink" title="四、repeat()"></a>四、repeat()</h3><blockquote>
+<p>返回一个新字符串，表示将原字符串重复n次。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">'x'</span>.repeat(<span class="number">3</span>) <span class="comment">// "xxx"</span></div><div class="line"><span class="string">'hello'</span>.repeat(<span class="number">2</span>) <span class="comment">// "hellohello"</span></div></pre></td></tr></table></figure>
+<h3 id="五、padStart-，padEnd"><a href="#五、padStart-，padEnd" class="headerlink" title="五、padStart()，padEnd()"></a>五、padStart()，padEnd()</h3><blockquote>
+<p>字符串补全长度</p>
+<ul>
+<li>padStart() 头部补全</li>
+<li>padEnd() 尾部补全<br>第一个参数用来指定字符串的最小长度，第二个参数是用来补全的字符串。如果省略第二个参数，默认使用空格补全长度</li>
+</ul>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="string">'x'</span>.padStart(<span class="number">5</span>, <span class="string">'ab'</span>) <span class="comment">// 'ababx'</span></div><div class="line"><span class="string">'x'</span>.padStart(<span class="number">4</span>, <span class="string">'ab'</span>) <span class="comment">// 'abax'</span></div><div class="line"></div><div class="line"><span class="string">'x'</span>.padEnd(<span class="number">5</span>, <span class="string">'ab'</span>) <span class="comment">// 'xabab'</span></div><div class="line"><span class="string">'x'</span>.padEnd(<span class="number">4</span>, <span class="string">'ab'</span>) <span class="comment">// 'xaba'</span></div></pre></td></tr></table></figure>
+<h3 id="六、模板字符串"><a href="#六、模板字符串" class="headerlink" title="六、模板字符串"></a>六、模板字符串</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 字符串中嵌入变量</span></div><div class="line"><span class="keyword">let</span> name = <span class="string">"hzzly"</span>, time = <span class="string">"today"</span>;</div><div class="line"><span class="string">`Hello <span class="subst">$&#123;name&#125;</span>, how are you <span class="subst">$&#123;time&#125;</span>?`</span></div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">es6</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/22/读书笔记-es6字符串的扩展/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-读书笔记-es6变量的解构赋值" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -581,151 +674,9 @@
 
 
   
-    <article id="post-读书笔记-es5String对象" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/29/读书笔记-es5String对象/">读书笔记-es5String对象</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/29/读书笔记-es5String对象/" class="archive-article-date">
-  	<time datetime="2017-03-29T05:48:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-创建-String-对象的语法："><a href="#1-创建-String-对象的语法：" class="headerlink" title="1.创建 String 对象的语法："></a>1.创建 String 对象的语法：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">String</span>(s);</div><div class="line"><span class="built_in">String</span>(s);</div></pre></td></tr></table></figure>
-<h3 id="2-属性"><a href="#2-属性" class="headerlink" title="2.属性"></a>2.属性</h3><table>
-<thead>
-<tr>
-<th>属性</th>
-<th style="text-align:right">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>constructor</td>
-<td style="text-align:right">对创建该对象的函数的引用</td>
-</tr>
-<tr>
-<td>length</td>
-<td style="text-align:right">字符串的长度</td>
-</tr>
-<tr>
-<td>prototype</td>
-<td style="text-align:right">允许向对象添加属性和方法</td>
-</tr>
-</tbody>
-</table>
-<h3 id="3-常用方法"><a href="#3-常用方法" class="headerlink" title="3.常用方法"></a>3.常用方法</h3><table>
-<thead>
-<tr>
-<th>方法</th>
-<th style="text-align:right">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>charAt()</td>
-<td style="text-align:right">返回在指定位置的字符</td>
-</tr>
-<tr>
-<td>concat()</td>
-<td style="text-align:right">连接字符串</td>
-</tr>
-<tr>
-<td>indexOf()</td>
-<td style="text-align:right">检索字符串</td>
-</tr>
-<tr>
-<td>lastIndexOf()</td>
-<td style="text-align:right">从后向前搜索字符串</td>
-</tr>
-<tr>
-<td>match()</td>
-<td style="text-align:right">找到一个或多个正则表达式的匹配</td>
-</tr>
-<tr>
-<td>slice()</td>
-<td style="text-align:right">提取字符串的片断，并在新的字符串中返回被提取的部分</td>
-</tr>
-<tr>
-<td>split()</td>
-<td style="text-align:right">把字符串分割为字符串数组</td>
-</tr>
-<tr>
-<td>toLowerCase()</td>
-<td style="text-align:right">把字符串转换为小写</td>
-</tr>
-<tr>
-<td>toUpperCase()</td>
-<td style="text-align:right">把字符串转换为大写</td>
-</tr>
-<tr>
-<td>toString()</td>
-<td style="text-align:right">返回字符串</td>
-</tr>
-<tr>
-<td>valueOf()</td>
-<td style="text-align:right">返回某个字符串对象的原始值</td>
-</tr>
-</tbody>
-</table>
-<h3 id="4-栗子"><a href="#4-栗子" class="headerlink" title="4.栗子"></a>4.栗子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//charAt()</span></div><div class="line"><span class="keyword">let</span> str=<span class="string">"Hello world!"</span></div><div class="line">str.charAt(<span class="number">1</span>) <span class="comment">//e</span></div><div class="line"></div><div class="line"><span class="comment">//concat()</span></div><div class="line"><span class="keyword">let</span> str1=<span class="string">"Hello "</span></div><div class="line"><span class="keyword">let</span> str2=<span class="string">"world!"</span></div><div class="line">str1.concat(str2) <span class="comment">//Hello world!</span></div><div class="line"></div><div class="line"><span class="comment">//indexOf()</span></div><div class="line"><span class="keyword">let</span> str=<span class="string">"Hello world!"</span></div><div class="line">str.indexOf(<span class="string">"Hello"</span>) <span class="comment">//0</span></div><div class="line">str.indexOf(<span class="string">"World"</span>) <span class="comment">//-1 (没有就返回-1)</span></div><div class="line">str.indexOf(<span class="string">"world"</span>) <span class="comment">//6</span></div><div class="line"></div><div class="line"><span class="comment">//slice()</span></div><div class="line"><span class="keyword">let</span> str=<span class="string">"Hello happy world!"</span></div><div class="line">str.slice(<span class="number">6</span>) <span class="comment">//happy world!</span></div><div class="line"></div><div class="line"><span class="comment">//split()</span></div><div class="line"><span class="keyword">let</span> str=<span class="string">"How are you doing today?"</span></div><div class="line">str.split(<span class="string">" "</span>) <span class="comment">//["How", "are", "you", "doing", "today?"]</span></div><div class="line">str.split(<span class="string">""</span>) <span class="comment">//["H", "o", "w", " ", "a", "r", "e", " ", "y", "o", "u", " ", "d", "o", "i", "n", "g", " ", "t", "o", "d", "a", "y", "?"]</span></div><div class="line">str.split(<span class="string">" "</span>,<span class="number">3</span>) <span class="comment">//["How", "are", "you"]</span></div></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">es5</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/29/读书笔记-es5String对象/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 
@@ -831,11 +782,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es5</a>
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+                <a href="javascript:void(0)" class="js-tag color4">es5</a>
               </li>
             
             <div class="clearfix"></div>

@@ -157,6 +157,81 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-读书笔记-es6Async函数栗子" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/10/读书笔记-es6Async函数栗子/">读书笔记-es6Async函数栗子</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/10/读书笔记-es6Async函数栗子/" class="archive-article-date">
+  	<time datetime="2017-05-10T12:07:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="async函数栗子"><a href="#async函数栗子" class="headerlink" title="async函数栗子"></a><strong>async函数栗子</strong></h2><blockquote>
+<ul>
+<li>栗子一：从豆瓣 API 获取数据</li>
+</ul>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fetchDoubanApi = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  </div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line">    xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="keyword">if</span> (xhr.readyState === <span class="number">4</span>) &#123;</div><div class="line">        <span class="keyword">if</span> (xhr.status &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt; <span class="number">300</span>) &#123;</div><div class="line">          <span class="keyword">var</span> response;</div><div class="line">          <span class="keyword">try</span> &#123;</div><div class="line">            response = <span class="built_in">JSON</span>.parse(xhr.responseText);</div><div class="line">          &#125; <span class="keyword">catch</span> (e) &#123;</div><div class="line">            reject(e);</div><div class="line">          &#125;</div><div class="line">          <span class="keyword">if</span> (response) &#123;</div><div class="line">            resolve(response, xhr.status, xhr);</div><div class="line">          &#125;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">          reject(xhr);</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;;</div><div class="line">    xhr.open(<span class="string">'GET'</span>, <span class="string">'https://api.douban.com/v2/user/aisk'</span>, <span class="literal">true</span>);</div><div class="line">    xhr.setRequestHeader(<span class="string">"Content-Type"</span>, <span class="string">"text/plain"</span>);</div><div class="line">    xhr.send(data);</div><div class="line">  &#125;);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">(<span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">try</span> &#123;</div><div class="line">    <span class="keyword">let</span> result = <span class="keyword">await</span> fetchDoubanApi();</div><div class="line">    <span class="built_in">console</span>.log(result);</div><div class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</div><div class="line">    <span class="built_in">console</span>.log(e);</div><div class="line">  &#125;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<blockquote>
+<p>栗子二：根据电影文件名，自动下载对应的海报</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> fs <span class="keyword">from</span> <span class="string">'fs'</span>;</div><div class="line"><span class="keyword">import</span> path <span class="keyword">from</span> <span class="string">'path'</span>;</div><div class="line"><span class="keyword">import</span> request <span class="keyword">from</span> <span class="string">'request'</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> movieDir = __dirname + <span class="string">'/movies'</span>,</div><div class="line">    exts     = [<span class="string">'.mkv'</span>, <span class="string">'.avi'</span>, <span class="string">'.mp4'</span>, <span class="string">'.rm'</span>, <span class="string">'.rmvb'</span>, <span class="string">'.wmv'</span>];</div><div class="line"></div><div class="line"><span class="comment">// 读取文件列表</span></div><div class="line"><span class="keyword">var</span> readFiles = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</div><div class="line">        fs.readdir(movieDir, <span class="function"><span class="keyword">function</span> (<span class="params">err, files</span>) </span>&#123;</div><div class="line">            resolve(files.filter(<span class="function">(<span class="params">v</span>) =&gt;</span> exts.includes(path.parse(v).ext)));</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 获取海报</span></div><div class="line"><span class="keyword">var</span> getPoster = <span class="function"><span class="keyword">function</span> (<span class="params">movieName</span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> url = <span class="string">`https://api.douban.com/v2/movie/search?q=<span class="subst">$&#123;<span class="built_in">encodeURI</span>(movieName)&#125;</span>`</span>;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</div><div class="line">        request(&#123;<span class="attr">url</span>: url, <span class="attr">json</span>: <span class="literal">true</span>&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">error, response, body</span>) </span>&#123;</div><div class="line">            <span class="keyword">if</span> (error) <span class="keyword">return</span> reject(error);</div><div class="line"></div><div class="line">            resolve(body.subjects[<span class="number">0</span>].images.large);</div><div class="line">        &#125;)</div><div class="line">    &#125;);</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 保存海报</span></div><div class="line"><span class="keyword">var</span> savePoster = <span class="function"><span class="keyword">function</span> (<span class="params">movieName, url</span>) </span>&#123;</div><div class="line">    request.get(url).pipe(fs.createWriteStream(path.join(movieDir, movieName + <span class="string">'.jpg'</span>)));</div><div class="line">&#125;;</div><div class="line"></div><div class="line"></div><div class="line"><span class="function">(<span class="params"><span class="keyword">async</span> (</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">let</span> files = <span class="keyword">await</span> readFiles();</div><div class="line"></div><div class="line">    <span class="comment">// await只能使用在原生语法</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> file <span class="keyword">of</span> files) &#123;</div><div class="line">        <span class="keyword">let</span> name = path.parse(file).name;</div><div class="line"></div><div class="line">        <span class="built_in">console</span>.log(<span class="string">`正在获取【<span class="subst">$&#123;name&#125;</span>】的海报`</span>);</div><div class="line">        savePoster(name, <span class="keyword">await</span> getPoster(name));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'=== 获取海报完成 ==='</span>);</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">es6</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/10/读书笔记-es6Async函数栗子/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-读书笔记-es6Async函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -537,94 +612,9 @@
 
 
   
-    <article id="post-读书笔记-es6函数的扩展" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/05/读书笔记-es6函数的扩展/">读书笔记-es6函数的扩展</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/05/读书笔记-es6函数的扩展/" class="archive-article-date">
-  	<time datetime="2017-05-05T08:26:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="函数的扩展"><a href="#函数的扩展" class="headerlink" title="函数的扩展"></a><strong>函数的扩展</strong></h2><h3 id="一、函数参数的默认值"><a href="#一、函数参数的默认值" class="headerlink" title="一、函数参数的默认值"></a>一、函数参数的默认值</h3><blockquote>
-<ul>
-<li>参数变量是默认声明的，所以不能用let或const再次声明</li>
-<li>通常情况下，定义了默认值的参数，应该是函数的尾参数</li>
-</ul>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params">x, y = <span class="string">'World'</span></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(x, y);</div><div class="line">&#125;</div><div class="line"></div><div class="line">log(<span class="string">'Hello'</span>) <span class="comment">// Hello World</span></div><div class="line">log(<span class="string">'Hello'</span>, <span class="string">'China'</span>) <span class="comment">// Hello China</span></div><div class="line">log(<span class="string">'Hello'</span>, <span class="string">''</span>) <span class="comment">// Hello</span></div></pre></td></tr></table></figure>
-<h3 id="二、与解构赋值默认值结合使用"><a href="#二、与解构赋值默认值结合使用" class="headerlink" title="二、与解构赋值默认值结合使用"></a>二、与解构赋值默认值结合使用</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">&#123;x, y = <span class="number">5</span>&#125;</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(x, y);</div><div class="line">&#125;</div><div class="line"></div><div class="line">foo(&#123;&#125;) <span class="comment">// undefined, 5</span></div><div class="line">foo(&#123;<span class="attr">x</span>: <span class="number">1</span>&#125;) <span class="comment">// 1, 5</span></div><div class="line">foo(&#123;<span class="attr">x</span>: <span class="number">1</span>, <span class="attr">y</span>: <span class="number">2</span>&#125;) <span class="comment">// 1, 2</span></div><div class="line">foo() <span class="comment">// TypeError: Cannot read property 'x' of undefined</span></div></pre></td></tr></table></figure>
-<h3 id="三、rest参数"><a href="#三、rest参数" class="headerlink" title="三、rest参数"></a>三、rest参数</h3><blockquote>
-<p>ES6 引入 rest 参数（形式为“…变量名”），用于获取函数的多余参数，这样就不需要使用arguments对象了。rest 参数搭配的变量是一个数组，该变量将多余的参数放入数组中。</p>
-<ul>
-<li>rest 参数之后不能再有其他参数（即只能是最后一个参数），否则会报错</li>
-</ul>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">...values</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> sum = <span class="number">0</span>;</div><div class="line"></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> val <span class="keyword">of</span> values) &#123;</div><div class="line">    sum += val;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> sum;</div><div class="line">&#125;</div><div class="line">add(<span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>) <span class="comment">// 10</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">push</span>(<span class="params">array, ...items</span>) </span>&#123;</div><div class="line">  items.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</div><div class="line">    array.push(item);</div><div class="line">    <span class="built_in">console</span>.log(item);</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> a = [];</div><div class="line">push(a, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</div></pre></td></tr></table></figure>
-<h3 id="四、扩展运算符-…"><a href="#四、扩展运算符-…" class="headerlink" title="四、扩展运算符(…)"></a>四、扩展运算符(…)</h3><blockquote>
-<p>它好比 rest 参数的逆运算，将一个数组转为用逗号分隔的参数序列。<br>扩展运算符内部调用的是数据结构的Iterator接口</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2017/05/05/读书笔记-es6函数的扩展/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">es6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/05/读书笔记-es6函数的扩展/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -730,11 +720,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es5</a>
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+                <a href="javascript:void(0)" class="js-tag color4">es5</a>
               </li>
             
             <div class="clearfix"></div>
