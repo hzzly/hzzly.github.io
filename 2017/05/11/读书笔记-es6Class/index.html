@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017/4 | Hzzly</title>
+  <title>读书笔记-es6Class | Hzzly</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hzzly">
-<meta property="og:url" content="http://yoursite.com/archives/2017/04/page/2/index.html">
+  <meta name="description" content="Class一、Class基本语法传统方法:12345678910function Point(x, y) &amp;#123;  this.x = x;  this.y = y;&amp;#125;Point.prototype.toString = function () &amp;#123;  return &apos;(&apos; + this.x + &apos;, &apos; + this.y + &apos;)&apos;;&amp;#125;;var p = new P">
+<meta name="keywords" content="随笔,es6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读书笔记-es6Class">
+<meta property="og:url" content="http://yoursite.com/2017/05/11/读书笔记-es6Class/index.html">
 <meta property="og:site_name" content="Hzzly">
+<meta property="og:description" content="Class一、Class基本语法传统方法:12345678910function Point(x, y) &amp;#123;  this.x = x;  this.y = y;&amp;#125;Point.prototype.toString = function () &amp;#123;  return &apos;(&apos; + this.x + &apos;, &apos; + this.y + &apos;)&apos;;&amp;#125;;var p = new P">
+<meta property="og:updated_time" content="2017-05-11T15:48:30.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hzzly">
+<meta name="twitter:title" content="读书笔记-es6Class">
+<meta name="twitter:description" content="Class一、Class基本语法传统方法:12345678910function Point(x, y) &amp;#123;  this.x = x;  this.y = y;&amp;#125;Point.prototype.toString = function () &amp;#123;  return &apos;(&apos; + this.x + &apos;, &apos; + this.y + &apos;)&apos;;&amp;#125;;var p = new P">
   
     <link rel="alternative" href="/atom.xml" title="Hzzly" type="application/atom+xml">
   
@@ -155,36 +160,127 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-读书笔记-es6Class" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/04/vuex学习实践笔记/" class="archive-article-date">
-  	<time datetime="2017-04-04T12:11:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-04</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/04/vuex学习实践笔记/">vuex学习实践笔记</a>
+    <h1 class="article-title" itemprop="name">
+      读书笔记-es6Class
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/05/11/读书笔记-es6Class/" class="archive-article-date">
+  	<time datetime="2017-05-11T15:46:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Class"><a href="#Class" class="headerlink" title="Class"></a><strong>Class</strong></h2><h3 id="一、Class基本语法"><a href="#一、Class基本语法" class="headerlink" title="一、Class基本语法"></a>一、Class基本语法</h3><p>传统方法:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Point</span>(<span class="params">x, y</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.x = x;</div><div class="line">  <span class="keyword">this</span>.y = y;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Point.prototype.toString = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="string">'('</span> + <span class="keyword">this</span>.x + <span class="string">', '</span> + <span class="keyword">this</span>.y + <span class="string">')'</span>;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Point(<span class="number">1</span>, <span class="number">2</span>);</div></pre></td></tr></table></figure></p>
+<p>ES6:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(x, y) &#123;</div><div class="line">    <span class="keyword">this</span>.x = x;</div><div class="line">    <span class="keyword">this</span>.y = y;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  toString() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">'('</span> + <span class="keyword">this</span>.x + <span class="string">', '</span> + <span class="keyword">this</span>.y + <span class="string">')'</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Point(<span class="number">1</span>, <span class="number">2</span>);</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>ES6的类，完全可以看作构造函数的另一种写法:</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">typeof</span> Point <span class="comment">// "function"</span></div><div class="line">Point === Point.prototype.constructor <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>构造函数的prototype属性，在ES6的“类”上面继续存在。事实上，类的所有方法都定义在类的prototype属性上面。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>()&#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">  &#125;</div><div class="line">  toString()&#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">  &#125;</div><div class="line">  toValue()&#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 等同于</span></div><div class="line">Point.prototype = &#123;</div><div class="line">  toString()&#123;&#125;,</div><div class="line">  toValue()&#123;&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>在类的实例上面调用方法，其实就是调用原型上的方法。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> </span>&#123;&#125;</div><div class="line"><span class="keyword">let</span> b = <span class="keyword">new</span> B();</div><div class="line"></div><div class="line">b.constructor === B.prototype.constructor <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>由于类的方法都定义在prototype对象上面，所以类的新方法可以添加在prototype对象上面。Object.assign方法可以很方便地一次向类添加多个方法。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>()&#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">Object</span>.assign(Point.prototype, &#123;</div><div class="line">  toString()&#123;&#125;,</div><div class="line">  toValue()&#123;&#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">//prototype对象的constructor属性，直接指向“类”的本身，这与ES5的行为是一致的。</span></div><div class="line">Point.prototype.constructor === Point <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>类的内部所有定义的方法，都是不可枚举的（non-enumerable）。<strong>这一点与ES5的行为不一致</strong>。</p>
+</blockquote>
+<h3 id="二、constructor方法"><a href="#二、constructor方法" class="headerlink" title="二、constructor方法"></a>二、constructor方法</h3><blockquote>
+<p>constructor方法是类的默认方法，通过new命令生成对象实例时，自动调用该方法。一个类必须有constructor方法，如果没有显式定义，一个空的constructor方法会被默认添加。</p>
+</blockquote>
+<h3 id="三、类的实例对象"><a href="#三、类的实例对象" class="headerlink" title="三、类的实例对象"></a>三、类的实例对象</h3><blockquote>
+<p>生成类的实例对象的写法，与ES5完全一样，也是使用new命令。如果忘记加上new，像函数那样调用Class，将会报错。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 报错</span></div><div class="line"><span class="keyword">var</span> point = Point(<span class="number">2</span>, <span class="number">3</span>);</div><div class="line"></div><div class="line"><span class="comment">// 正确</span></div><div class="line"><span class="keyword">var</span> point = <span class="keyword">new</span> Point(<span class="number">2</span>, <span class="number">3</span>);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>与ES5一样，实例的属性除非显式定义在其本身（即定义在this对象上），否则都是定义在原型上（即定义在class上）。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">constructor</span>(x, y) &#123;</div><div class="line">    <span class="keyword">this</span>.x = x;</div><div class="line">    <span class="keyword">this</span>.y = y;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  toString() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">'('</span> + <span class="keyword">this</span>.x + <span class="string">', '</span> + <span class="keyword">this</span>.y + <span class="string">')'</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> point = <span class="keyword">new</span> Point(<span class="number">2</span>, <span class="number">3</span>);</div><div class="line"></div><div class="line">point.toString() <span class="comment">// (2, 3)</span></div><div class="line"></div><div class="line">point.hasOwnProperty(<span class="string">'x'</span>) <span class="comment">// true</span></div><div class="line">point.hasOwnProperty(<span class="string">'y'</span>) <span class="comment">// true</span></div><div class="line">point.hasOwnProperty(<span class="string">'toString'</span>) <span class="comment">// false</span></div><div class="line">point.__proto__.hasOwnProperty(<span class="string">'toString'</span>) <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<p>上面代码中，x和y都是实例对象point自身的属性（因为定义在this变量上），所以hasOwnProperty方法返回true，而toString是原型对象的属性（因为定义在Point类上），所以hasOwnProperty方法返回false。这些都与ES5的行为保持一致。</p>
+<blockquote>
+<p>与ES5一样，类的所有实例共享一个原型对象。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Point(<span class="number">2</span>,<span class="number">3</span>);</div><div class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> Point(<span class="number">3</span>,<span class="number">2</span>);</div><div class="line"></div><div class="line">p1.__proto__ === p2.__proto__   <span class="comment">//true</span></div></pre></td></tr></table></figure>
+<p>上面代码中，p1和p2都是Point的实例，它们的原型都是Point.prototype，所以<strong>proto</strong>属性是相等的。</p>
+<p>这也意味着，可以通过实例的<strong>proto</strong>属性为Class添加方法。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Point(<span class="number">2</span>,<span class="number">3</span>);</div><div class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> Point(<span class="number">3</span>,<span class="number">2</span>);</div><div class="line"></div><div class="line">p1.__proto__.printName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="string">'Oops'</span> &#125;;</div><div class="line"></div><div class="line">p1.printName() <span class="comment">// "Oops"</span></div><div class="line">p2.printName() <span class="comment">// "Oops"</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> p3 = <span class="keyword">new</span> Point(<span class="number">4</span>,<span class="number">2</span>);</div><div class="line">p3.printName() <span class="comment">// "Oops"</span></div></pre></td></tr></table></figure></p>
+<p>上面代码在p1的原型上添加了一个printName方法，由于p1的原型就是p2的原型，因此p2也可以调用这个方法。而且，此后新建的实例p3也可以调用这个方法。这意味着，使用实例的<strong>proto</strong>属性改写原型，必须相当谨慎，不推荐使用，因为这会改变Class的原始定义，影响到所有实例。</p>
+<h3 id="四、不存在变量提升"><a href="#四、不存在变量提升" class="headerlink" title="四、不存在变量提升"></a>四、不存在变量提升</h3><blockquote>
+<p>Class不存在变量提升（hoist），这一点与ES5完全不同。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> Foo(); <span class="comment">// ReferenceError</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>&#123;&#125;</div></pre></td></tr></table></figure>
+<h3 id="五、Class表达式"><a href="#五、Class表达式" class="headerlink" title="五、Class表达式"></a>五、Class表达式</h3><blockquote>
+<p>采用Class表达式，可以写出立即执行的Class。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> person = <span class="keyword">new</span> <span class="class"><span class="keyword">class</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(name) &#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  sayName() &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">  &#125;</div><div class="line">&#125;(<span class="string">'张三'</span>);</div><div class="line"></div><div class="line">person.sayName(); <span class="comment">// "张三"</span></div></pre></td></tr></table></figure>
+<h3 id="六、私有方法"><a href="#六、私有方法" class="headerlink" title="六、私有方法"></a>六、私有方法</h3><blockquote>
+<p>私有方法是常见需求，但 ES6 不提供，只能通过变通方法模拟实现。</p>
+</blockquote>
+<p>在命名上加以区别:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Widget</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="comment">// 公有方法</span></div><div class="line">  foo (baz) &#123;</div><div class="line">    <span class="keyword">this</span>._bar(baz);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// 私有方法</span></div><div class="line">  _bar(baz) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.snaf = baz;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>上面代码中，_bar方法前面的下划线，表示这是一个只限于内部使用的私有方法。但是，这种命名是不保险的，在类的外部，还是可以调用到这个方法。</p>
+<h3 id="七、this的指向"><a href="#七、this的指向" class="headerlink" title="七、this的指向"></a>七、this的指向</h3><blockquote>
+<p>类的方法内部如果含有this，它默认指向类的实例</p>
+</blockquote>
+<h3 id="八、Class的取值函数（getter）和存值函数（setter）"><a href="#八、Class的取值函数（getter）和存值函数（setter）" class="headerlink" title="八、Class的取值函数（getter）和存值函数（setter）"></a>八、Class的取值函数（getter）和存值函数（setter）</h3><blockquote>
+<p>与ES5一样，在Class内部可以使用get和set关键字，对某个属性设置存值函数和取值函数，拦截该属性的存取行为。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>() &#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">  &#125;</div><div class="line">  get prop() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">'getter'</span>;</div><div class="line">  &#125;</div><div class="line">  set prop(value) &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'setter: '</span>+value);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> inst = <span class="keyword">new</span> MyClass();</div><div class="line"></div><div class="line">inst.prop = <span class="number">123</span>;</div><div class="line"><span class="comment">// setter: 123</span></div><div class="line"></div><div class="line">inst.prop</div><div class="line"><span class="comment">// 'getter'</span></div></pre></td></tr></table></figure>
+<p><strong>Github地址：</strong> <a href="https://github.com/hzzly/learn-es6" target="_blank" rel="external">https://github.com/hzzly/learn-es6</a></p>
+<p>文章来源<a href="https://hzzly.github.io/" target="_blank" rel="external">hzzly博客技术分享</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://hjingren.cn/publicImages/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://hjingren.cn/publicImages/wxpay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -194,29 +290,94 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">vuex</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">es6</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/11/读书笔记-es6Class/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/05/10/读书笔记-es6Async函数栗子/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">读书笔记-es6Async函数栗子</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2017/04/">&laquo; Prev</a><a class="page-number" href="/archives/2017/04/">1</a><span class="page-number current">2</span>
-    </nav>
-  
+
 
 
           </div>
@@ -242,8 +403,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

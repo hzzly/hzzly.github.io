@@ -157,6 +157,96 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-本地存储sessionStorage与localStorage" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/26/本地存储sessionStorage与localStorage/">本地存储sessionStorage与localStorage</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/26/本地存储sessionStorage与localStorage/" class="archive-article-date">
+  	<time datetime="2017-04-26T15:44:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<ul>
+<li>sessionStorage 数据的存储仅特定于某个会话中，也就是说数据只保持到浏览器关闭，当浏览器关闭后重新打开这个页面时， 之前的存储已经被清除。</li>
+<li>localStorage 是一个持久化的存储，它并不局限于会话。除非主动删除数据，否则数据是永远不会过期的。</li>
+</ul>
+</blockquote>
+<h3 id="一、localStorage和sessionStorage操作"><a href="#一、localStorage和sessionStorage操作" class="headerlink" title="一、localStorage和sessionStorage操作"></a>一、localStorage和sessionStorage操作</h3><blockquote>
+<p>localStorage和sessionStorage都具有相同的操作方法，例如setItem、getItem和removeItem等</p>
+</blockquote>
+<h3 id="1-setItem存储value"><a href="#1-setItem存储value" class="headerlink" title="1.setItem存储value"></a>1.setItem存储value</h3><p>sessionStorage.setItem(“name”, “hzzly”);<br>localStorage.setItem(“blog”, “hzzly.github.io”);</p>
+<h3 id="2-getItem获取value"><a href="#2-getItem获取value" class="headerlink" title="2.getItem获取value"></a>2.getItem获取value</h3><p>let name = sessionStorage.getItem(“name”);<br>let blog = localStorage.getItem(“blog”);</p>
+<h3 id="3-removeItem删除key"><a href="#3-removeItem删除key" class="headerlink" title="3.removeItem删除key"></a>3.removeItem删除key</h3><p>sessionStorage.removeItem(“name”);<br>localStorage.removeItem(“blog”);</p>
+<h3 id="4-clear清除所有的key-value"><a href="#4-clear清除所有的key-value" class="headerlink" title="4.clear清除所有的key/value"></a>4.clear清除所有的key/value</h3><p>sessionStorage.clear();<br>localStorage.clear();</p>
+<h3 id="5-其他操作方法：点操作和"><a href="#5-其他操作方法：点操作和" class="headerlink" title="5.其他操作方法：点操作和[]"></a>5.其他操作方法：点操作和[]</h3><blockquote>
+<p>web Storage不但可以用自身的setItem,getItem等方便存取，也可以像普通对象一样用点(.)操作符，及[]的方式进行数据存储及读取，像如下的代码：</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">localStorage.name = <span class="string">"hzzly"</span>; </div><div class="line">localStorage[<span class="string">"age"</span>] = <span class="string">"21"</span>; </div><div class="line"></div><div class="line">sessionStorage.name = <span class="string">"hzzly"</span>; </div><div class="line">sessionStorage[<span class="string">"age"</span>] = <span class="string">"21"</span>;</div><div class="line"></div><div class="line"><span class="keyword">let</span> name1 = localStorage.name</div><div class="line"><span class="keyword">let</span> age1 = localStorage[<span class="string">"age"</span>]</div><div class="line"></div><div class="line"><span class="keyword">let</span> name2 = sessionStorage.name</div><div class="line"><span class="keyword">let</span> age2 = sessionStorage[<span class="string">"age"</span>]</div></pre></td></tr></table></figure>
+<h3 id="6-localStorage和sessionStorage的key和length属性实现遍历"><a href="#6-localStorage和sessionStorage的key和length属性实现遍历" class="headerlink" title="6.localStorage和sessionStorage的key和length属性实现遍历"></a>6.localStorage和sessionStorage的key和length属性实现遍历</h3><blockquote>
+<p>sessionStorage和localStorage提供的key()和length可以方便的实现存储的数据遍历，例如下面的代码：</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> storage = <span class="built_in">window</span>.localStorage; </div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>, len = storage.length; i  &lt;  len; i++)&#123;     </div><div class="line">	<span class="keyword">let</span> key = storage.key(i);     </div><div class="line">	<span class="keyword">let</span> value = storage.getItem(key);     </div><div class="line">	<span class="built_in">console</span>.log(key + <span class="string">"="</span> + value); </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="二、实例"><a href="#二、实例" class="headerlink" title="二、实例"></a>二、实例</h3><blockquote>
+<p>storage只能存储字符串的数据，对于JS中常用的数组或对象却不能直接存储，可以用下面两个方法进行转换：</p>
+<ul>
+<li>JSON.stringify() 用于从一个对象解析出字符串</li>
+<li>JSON.parse() 用于从一个字符串中解析出json对象</li>
+</ul>
+</blockquote>
+<h3 id="1-localStorage-sessionStorage存取数组"><a href="#1-localStorage-sessionStorage存取数组" class="headerlink" title="1.localStorage/sessionStorage存取数组"></a>1.localStorage/sessionStorage存取数组</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//存</span></div><div class="line"><span class="keyword">let</span> language = [<span class="string">'HTML/HTML5'</span>, <span class="string">'CSS/CSS3'</span>, <span class="string">'JavaScript'</span>, <span class="string">'Vue'</span>, <span class="string">'React'</span>]</div><div class="line">localStorage.language = <span class="built_in">JSON</span>.stringify(language)</div><div class="line">sessionStorag.language = <span class="built_in">JSON</span>.stringify(language)</div><div class="line"></div><div class="line"><span class="comment">//取</span></div><div class="line"><span class="keyword">let</span> storageLanguage = <span class="built_in">JSON</span>.parse(localStorage.language)</div></pre></td></tr></table></figure>
+<h3 id="2-localStorage存取对象"><a href="#2-localStorage存取对象" class="headerlink" title="2.localStorage存取对象"></a>2.localStorage存取对象</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//存</span></div><div class="line"><span class="keyword">let</span> myInfo = &#123;</div><div class="line">	<span class="string">'name'</span>: <span class="string">'hzzly'</span>,</div><div class="line">	<span class="string">'age'</span>: <span class="number">21</span>,</div><div class="line">	<span class="string">'school'</span>: <span class="string">'ECUT'</span>,</div><div class="line">	<span class="string">'city'</span>: <span class="string">'NanChang'</span></div><div class="line">&#125;</div><div class="line">localStorage.myInfo = <span class="built_in">JSON</span>.stringify(myInfo)</div><div class="line">sessionStorag.myInfo = <span class="built_in">JSON</span>.stringify(myInfo)</div><div class="line"></div><div class="line"><span class="comment">//取</span></div><div class="line"><span class="keyword">let</span> storageLanguage = <span class="built_in">JSON</span>.parse(localStorage.myInfo)</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/26/本地存储sessionStorage与localStorage/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-读书笔记-es6字符串的扩展" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -532,148 +622,6 @@
 
 
   
-    <article id="post-读书笔记-es5Array对象" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/30/读书笔记-es5Array对象/">读书笔记-es5Array对象</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/30/读书笔记-es5Array对象/" class="archive-article-date">
-  	<time datetime="2017-03-30T04:24:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-创建-Array-对象的语法："><a href="#1-创建-Array-对象的语法：" class="headerlink" title="1.创建 Array 对象的语法："></a>1.创建 Array 对象的语法：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">Array</span>();</div><div class="line"><span class="keyword">new</span> <span class="built_in">Array</span>(size);</div><div class="line"><span class="keyword">new</span> <span class="built_in">Array</span>(element0, element1, ..., elementn)</div></pre></td></tr></table></figure>
-<h3 id="2-属性"><a href="#2-属性" class="headerlink" title="2.属性"></a>2.属性</h3><table>
-<thead>
-<tr>
-<th>属性</th>
-<th style="text-align:right">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>constructor</td>
-<td style="text-align:right">返回对创建此对象的数组函数的引用</td>
-</tr>
-<tr>
-<td>length</td>
-<td style="text-align:right">设置或返回数组中元素的数目</td>
-</tr>
-<tr>
-<td>prototype</td>
-<td style="text-align:right">允许向对象添加属性和方法</td>
-</tr>
-</tbody>
-</table>
-<h3 id="3-常用方法"><a href="#3-常用方法" class="headerlink" title="3.常用方法"></a>3.常用方法</h3><table>
-<thead>
-<tr>
-<th>方法</th>
-<th style="text-align:right">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>concat()</td>
-<td style="text-align:right">连接两个或更多的数组，并返回结果</td>
-</tr>
-<tr>
-<td>join()</td>
-<td style="text-align:right">把数组的所有元素放入一个字符串。元素通过指定的分隔符进行分隔</td>
-</tr>
-<tr>
-<td>pop()</td>
-<td style="text-align:right">删除并返回数组的最后一个元素</td>
-</tr>
-<tr>
-<td>push()</td>
-<td style="text-align:right">向数组的末尾添加一个或更多元素，并返回新的长度</td>
-</tr>
-<tr>
-<td>reverse()</td>
-<td style="text-align:right">颠倒数组中元素的顺序</td>
-</tr>
-<tr>
-<td>shift()</td>
-<td style="text-align:right">删除并返回数组的第一个元素</td>
-</tr>
-<tr>
-<td>unshift()</td>
-<td style="text-align:right">向数组的开头添加一个或更多元素，并返回新的长度</td>
-</tr>
-<tr>
-<td>slice()</td>
-<td style="text-align:right">从某个已有的数组返回选定的元素</td>
-</tr>
-<tr>
-<td>sort()</td>
-<td style="text-align:right">对数组的元素进行排序</td>
-</tr>
-<tr>
-<td>splice()</td>
-<td style="text-align:right">删除元素，并向数组添加新元素</td>
-</tr>
-<tr>
-<td>valueOf()</td>
-<td style="text-align:right">返回某个字符串对象的原始值</td>
-</tr>
-</tbody>
-</table>
-<h3 id="4-栗子"><a href="#4-栗子" class="headerlink" title="4.栗子"></a>4.栗子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//concat()</span></div><div class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line">a.concat(<span class="number">4</span>,<span class="number">5</span>) <span class="comment">//[1,2,3,4,5]</span></div><div class="line"></div><div class="line"><span class="comment">//join()</span></div><div class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line">a.join() <span class="comment">//1,2,3</span></div><div class="line"></div><div class="line"><span class="comment">//slice()</span></div><div class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line">a.slice(<span class="number">1</span>) <span class="comment">//[2,3]</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line">a.slice(<span class="number">1</span>,<span class="number">2</span>) <span class="comment">//[2]</span></div><div class="line"></div><div class="line"><span class="comment">//splice()</span></div><div class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</div><div class="line">a.splice(<span class="number">1</span>,<span class="number">1</span>) <span class="comment">//[2]</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</div><div class="line">a.splice(<span class="number">1</span>,<span class="number">1</span>,<span class="string">'hzzly'</span>) <span class="comment">//[2]</span></div><div class="line">a <span class="comment">//[1, "hzzly", 3, 4, 5]</span></div></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">es5</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/30/读书笔记-es5Array对象/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -782,11 +730,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es6</a>
+                <a href="javascript:void(0)" class="js-tag color4">es5</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">es5</a>
+                <a href="javascript:void(0)" class="js-tag color4">es6</a>
               </li>
             
             <div class="clearfix"></div>
