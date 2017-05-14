@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/11/读书笔记-es6Class/index.html">
 <meta property="og:site_name" content="Hzzly">
 <meta property="og:description" content="Class一、Class基本语法传统方法:12345678910function Point(x, y) &amp;#123;  this.x = x;  this.y = y;&amp;#125;Point.prototype.toString = function () &amp;#123;  return &apos;(&apos; + this.x + &apos;, &apos; + this.y + &apos;)&apos;;&amp;#125;;var p = new P">
-<meta property="og:updated_time" content="2017-05-11T15:48:30.000Z">
+<meta property="og:updated_time" content="2017-05-14T11:19:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记-es6Class">
 <meta name="twitter:description" content="Class一、Class基本语法传统方法:12345678910function Point(x, y) &amp;#123;  this.x = x;  this.y = y;&amp;#125;Point.prototype.toString = function () &amp;#123;  return &apos;(&apos; + this.x + &apos;, &apos; + this.y + &apos;)&apos;;&amp;#125;;var p = new P">
@@ -211,6 +211,7 @@
 <blockquote>
 <p>与ES5一样，实例的属性除非显式定义在其本身（即定义在this对象上），否则都是定义在原型上（即定义在class上）。</p>
 </blockquote>
+<a id="more"></a>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">constructor</span>(x, y) &#123;</div><div class="line">    <span class="keyword">this</span>.x = x;</div><div class="line">    <span class="keyword">this</span>.y = y;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  toString() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">'('</span> + <span class="keyword">this</span>.x + <span class="string">', '</span> + <span class="keyword">this</span>.y + <span class="string">')'</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> point = <span class="keyword">new</span> Point(<span class="number">2</span>, <span class="number">3</span>);</div><div class="line"></div><div class="line">point.toString() <span class="comment">// (2, 3)</span></div><div class="line"></div><div class="line">point.hasOwnProperty(<span class="string">'x'</span>) <span class="comment">// true</span></div><div class="line">point.hasOwnProperty(<span class="string">'y'</span>) <span class="comment">// true</span></div><div class="line">point.hasOwnProperty(<span class="string">'toString'</span>) <span class="comment">// false</span></div><div class="line">point.__proto__.hasOwnProperty(<span class="string">'toString'</span>) <span class="comment">// true</span></div></pre></td></tr></table></figure>
 <p>上面代码中，x和y都是实例对象point自身的属性（因为定义在this变量上），所以hasOwnProperty方法返回true，而toString是原型对象的属性（因为定义在Point类上），所以hasOwnProperty方法返回false。这些都与ES5的行为保持一致。</p>
 <blockquote>
@@ -482,11 +483,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">vuex</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color5">vuex</a>
               </li>
              
               <li class="article-tag-list-item">

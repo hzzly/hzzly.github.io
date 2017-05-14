@@ -289,30 +289,9 @@
 <li>forEach()：使用回调函数遍历每个成员</li>
 </ul>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="string">'red'</span>, <span class="string">'green'</span>, <span class="string">'blue'</span>]);</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> set.keys()) &#123;</div><div class="line">  <span class="built_in">console</span>.log(item);</div><div class="line">&#125;</div><div class="line"><span class="comment">// red</span></div><div class="line"><span class="comment">// green</span></div><div class="line"><span class="comment">// blue</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> set.values()) &#123;</div><div class="line">  <span class="built_in">console</span>.log(item);</div><div class="line">&#125;</div><div class="line"><span class="comment">// red</span></div><div class="line"><span class="comment">// green</span></div><div class="line"><span class="comment">// blue</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> set.entries()) &#123;</div><div class="line">  <span class="built_in">console</span>.log(item);</div><div class="line">&#125;</div><div class="line"><span class="comment">// ["red", "red"]</span></div><div class="line"><span class="comment">// ["green", "green"]</span></div><div class="line"><span class="comment">// ["blue", "blue"]</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]);</div><div class="line">set.forEach(<span class="function">(<span class="params">value, key</span>) =&gt;</span> <span class="built_in">console</span>.log(value * <span class="number">2</span>) )</div><div class="line"><span class="comment">// 2</span></div><div class="line"><span class="comment">// 4</span></div><div class="line"><span class="comment">// 6</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]);</div><div class="line">set = <span class="keyword">new</span> <span class="built_in">Set</span>([...set].map(<span class="function"><span class="params">x</span> =&gt;</span> x * <span class="number">2</span>));</div><div class="line"><span class="comment">// 返回Set结构：&#123;2, 4, 6&#125;</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]);</div><div class="line">set = <span class="keyword">new</span> <span class="built_in">Set</span>([...set].filter(<span class="function"><span class="params">x</span> =&gt;</span> (x % <span class="number">2</span>) == <span class="number">0</span>));</div><div class="line"><span class="comment">// 返回Set结构：&#123;2, 4&#125;</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> arr = [<span class="number">3</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">5</span>];</div><div class="line"><span class="keyword">let</span> unique = [...new <span class="built_in">Set</span>(arr)];</div><div class="line"><span class="comment">// [3, 5, 2]</span></div></pre></td></tr></table></figure>
-<h3 id="四、Map"><a href="#四、Map" class="headerlink" title="四、Map"></a>四、Map</h3><blockquote>
-<p>它类似于对象，也是键值对的集合，但是“键”的范围不限于字符串，各种类型的值（包括对象）都可以当作键。</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>([</div><div class="line">  [<span class="string">'name'</span>, <span class="string">'张三'</span>],</div><div class="line">  [<span class="string">'title'</span>, <span class="string">'Author'</span>]</div><div class="line">]);</div><div class="line"></div><div class="line">map.size <span class="comment">// 2</span></div><div class="line">map.has(<span class="string">'name'</span>) <span class="comment">// true</span></div><div class="line">map.get(<span class="string">'name'</span>) <span class="comment">// "张三"</span></div><div class="line">map.has(<span class="string">'title'</span>) <span class="comment">// true</span></div><div class="line">map.get(<span class="string">'title'</span>) <span class="comment">// "Author"</span></div></pre></td></tr></table></figure>
-<h3 id="五、Map-实例的属性和方法"><a href="#五、Map-实例的属性和方法" class="headerlink" title="五、Map 实例的属性和方法"></a>五、Map 实例的属性和方法</h3><blockquote>
-<ul>
-<li>属性<ul>
-<li>Map.prototype.constructor：构造函数，默认就是Map函数。</li>
-<li>Map.prototype.size：返回Map实例的成员总数。</li>
-</ul>
-</li>
-<li>方法<ul>
-<li>set(key, value)：set方法设置键名key对应的键值为value，然后返回整个 Map 结构。如果key已经有值，则键值会被更新，否则就新生成该键。可以采用链式写法。</li>
-<li>get(key)：get方法读取key对应的键值，如果找不到key，返回undefined。</li>
-<li>has(key)：has方法返回一个布尔值，表示某个键是否在当前 Map 对象之中。</li>
-<li>delete(key)：delete方法删除某个键，返回true。如果删除失败，返回false。</li>
-<li>clear(): clear方法清除所有成员，没有返回值。</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<h3 id="六、遍历操作"><a href="#六、遍历操作" class="headerlink" title="六、遍历操作"></a>六、遍历操作</h3><p>和 Set 一样</p>
-
+        
+          <a class="article-more-a" href="/2017/05/07/读书笔记-es6Set和Map数据结构/#more">more >></a>
+        
       
 
       
@@ -719,11 +698,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">vuex</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color5">vuex</a>
               </li>
              
               <li class="article-tag-list-item">
