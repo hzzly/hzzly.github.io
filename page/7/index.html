@@ -157,6 +157,82 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-前端入坑笔记–JavaScript类型检测" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/05/前端入坑笔记–JavaScript类型检测/">前端入坑笔记–JavaScript类型检测</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/05/前端入坑笔记–JavaScript类型检测/" class="archive-article-date">
+  	<time datetime="2017-03-05T12:29:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>JavaScript变量可以用来保存两种类型的值：基本类型值和引用类型值</strong></p>
+<blockquote>
+<ul>
+<li>5种基本数据类型：String Number Boolean Undefined  Null  </li>
+<li>引用类型：Object  Array  Data  RegExp  Function  Error  Map  …   </li>
+</ul>
+</blockquote>
+<p>ES6引入了一种新的原始数据类型Symbol，表示独一无二的值</p>
+<h2 id="一、typeof"><a href="#一、typeof" class="headerlink" title="一、typeof"></a>一、typeof</h2><p>   typeof 用来判断各种数据类型,有两种写法：typeof xxx, typeof(xxx) </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="string">'hzzly'</span>;</div><div class="line"><span class="keyword">var</span> b = <span class="literal">true</span>;</div><div class="line"><span class="keyword">var</span> c = <span class="number">22</span>;</div><div class="line"><span class="keyword">var</span> d;</div><div class="line"><span class="keyword">var</span> e = <span class="literal">null</span>;</div><div class="line"><span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">typeof</span> a );       <span class="comment">//string</span></div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">typeof</span> b );       <span class="comment">//boolean</span></div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">typeof</span> c );       <span class="comment">//number</span></div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">typeof</span> d );       <span class="comment">//undefined</span></div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">typeof</span> e );       <span class="comment">//object</span></div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">typeof</span> o );       <span class="comment">//object</span></div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">typeof</span> f );       <span class="comment">//function</span></div><div class="line"></div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">typeof</span> &#123;&#125; );      <span class="comment">//object</span></div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">typeof</span> [] );      <span class="comment">//object</span></div></pre></td></tr></table></figure>
+<p>这里面包含了js里面的五种数据类型  number   string    boolean   undefined     object和函数类型 function</p>
+<p>看到这里你肯定会问了：我怎么去区分对象，数组和null呢?</p>
+<p>接下来我们就用到另外两个利器：Object.prototype.toString.call   instanceof/constructor</p>
+        
+          <a class="article-more-a" href="/2017/03/05/前端入坑笔记–JavaScript类型检测/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/05/前端入坑笔记–JavaScript类型检测/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-手把手用Node的socket.io撸一个简单聊天室" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

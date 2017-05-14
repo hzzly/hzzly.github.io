@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017/5 | Hzzly</title>
+  <title>读书笔记-es6Module | Hzzly</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hzzly">
-<meta property="og:url" content="http://yoursite.com/archives/2017/05/page/2/index.html">
+  <meta name="description" content="Module概述 在 ES6 之前，社区制定了一些模块加载方案，最主要的有 CommonJS 和 AMD 两种。前者用于服务器，后者用于浏览器。ES6 在语言标准的层面上，实现了模块功能，ES6 模块的设计思想，是尽量的静态化，使得编译时就能确定模块的依赖关系，以及输入和输出的变量。CommonJS 和 AMD 模块，都只能在运行时确定这些东西。比如，CommonJS 模块就是对象，输入时必须查找">
+<meta name="keywords" content="随笔,es6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读书笔记-es6Module">
+<meta property="og:url" content="http://yoursite.com/2017/05/14/读书笔记-es6Module/index.html">
 <meta property="og:site_name" content="Hzzly">
+<meta property="og:description" content="Module概述 在 ES6 之前，社区制定了一些模块加载方案，最主要的有 CommonJS 和 AMD 两种。前者用于服务器，后者用于浏览器。ES6 在语言标准的层面上，实现了模块功能，ES6 模块的设计思想，是尽量的静态化，使得编译时就能确定模块的依赖关系，以及输入和输出的变量。CommonJS 和 AMD 模块，都只能在运行时确定这些东西。比如，CommonJS 模块就是对象，输入时必须查找">
+<meta property="og:updated_time" content="2017-05-14T11:14:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hzzly">
+<meta name="twitter:title" content="读书笔记-es6Module">
+<meta name="twitter:description" content="Module概述 在 ES6 之前，社区制定了一些模块加载方案，最主要的有 CommonJS 和 AMD 两种。前者用于服务器，后者用于浏览器。ES6 在语言标准的层面上，实现了模块功能，ES6 模块的设计思想，是尽量的静态化，使得编译时就能确定模块的依赖关系，以及输入和输出的变量。CommonJS 和 AMD 模块，都只能在运行时确定这些东西。比如，CommonJS 模块就是对象，输入时必须查找">
   
     <link rel="alternative" href="/atom.xml" title="Hzzly" type="application/atom+xml">
   
@@ -155,36 +160,111 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-读书笔记-es6Module" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      读书笔记-es6Module
+    </h1>
+  
+
+        
+        <a href="/2017/05/14/读书笔记-es6Module/" class="archive-article-date">
+  	<time datetime="2017-05-14T11:13:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-14</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a><strong>Module</strong></h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><blockquote>
+<p>在 ES6 之前，社区制定了一些模块加载方案，最主要的有 CommonJS 和 AMD 两种。前者用于服务器，后者用于浏览器。ES6 在语言标准的层面上，实现了模块功能，ES6 模块的设计思想，是尽量的静态化，使得编译时就能确定模块的依赖关系，以及输入和输出的变量。CommonJS 和 AMD 模块，都只能在运行时确定这些东西。比如，CommonJS 模块就是对象，输入时必须查找对象属性。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// CommonJS模块</span></div><div class="line"><span class="keyword">let</span> &#123; stat, exists, readFile &#125; = <span class="built_in">require</span>(<span class="string">'fs'</span>);</div><div class="line"></div><div class="line"><span class="comment">// 等同于</span></div><div class="line"><span class="keyword">let</span> _fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</div><div class="line"><span class="keyword">let</span> stat = _fs.stat;</div><div class="line"><span class="keyword">let</span> exists = _fs.exists;</div><div class="line"><span class="keyword">let</span> readfile = _fs.readfile;</div></pre></td></tr></table></figure>
+<p>上面代码的实质是整体加载fs模块（即加载fs的所有方法），生成一个对象（_fs），然后再从这个对象上面读取3个方法。这种加载称为“运行时加载”，因为只有运行时才能得到这个对象，导致完全没办法在编译时做“静态优化”。</p>
+<blockquote>
+<p>ES6 模块不是对象，而是通过export命令显式指定输出的代码，再通过import命令输入。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ES6模块</span></div><div class="line"><span class="keyword">import</span> &#123; stat, exists, readFile &#125; <span class="keyword">from</span> <span class="string">'fs'</span>;</div></pre></td></tr></table></figure>
+<p>上面代码的实质是从fs模块加载3个方法，其他方法不加载。这种加载称为“编译时加载”或者静态加载，即 ES6 可以在编译时就完成模块加载，效率要比 CommonJS 模块的加载方式高。</p>
+<h3 id="一、严格模式"><a href="#一、严格模式" class="headerlink" title="一、严格模式"></a>一、严格模式</h3><blockquote>
+<p>ES6 的模块自动采用严格模式，不管你有没有在模块头部加上”use strict”;。</p>
+</blockquote>
+<p>严格模式主要有以下限制:</p>
+<pre><code>* 变量必须声明后再使用
+* 函数的参数不能有同名属性，否则报错
+* 不能使用with语句
+* 不能对只读属性赋值，否则报错
+* 不能使用前缀0表示八进制数，否则报错
+* 不能删除不可删除的属性，否则报错
+* 不能删除变量delete prop，会报错，只能删除属性delete global[prop]
+* eval不会在它的外层作用域引入变量
+* eval和arguments不能被重新赋值
+* arguments不会自动反映函数参数的变化
+* 不能使用arguments.callee
+* 不能使用arguments.caller
+* 禁止this指向全局对象
+* 不能使用fn.caller和fn.arguments获取函数调用的堆栈
+* 增加了保留字（比如protected、static和interface）
+</code></pre><h3 id="二、export-命令"><a href="#二、export-命令" class="headerlink" title="二、export 命令"></a>二、export 命令</h3><blockquote>
+<p>export命令用于规定模块的对外接口</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 输出变量</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">let</span> firstName = <span class="string">'Michael'</span>;</div><div class="line"><span class="keyword">export</span> <span class="keyword">let</span> lastName = <span class="string">'Jackson'</span>;</div><div class="line"><span class="keyword">export</span> <span class="keyword">let</span> year = <span class="number">1958</span>;</div><div class="line"></div><div class="line"><span class="comment">//或者简写</span></div><div class="line"><span class="keyword">let</span> firstName = <span class="string">'Michael'</span>;</div><div class="line"><span class="keyword">let</span> lastName = <span class="string">'Jackson'</span>;</div><div class="line"><span class="keyword">let</span> year = <span class="number">1958</span>;</div><div class="line"></div><div class="line"><span class="keyword">export</span> &#123;firstName, lastName, year&#125;;</div><div class="line"></div><div class="line"><span class="comment">//输出函数或类（class）</span></div><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">multiply</span>(<span class="params">x, y</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> x * y;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="三、import-命令"><a href="#三、import-命令" class="headerlink" title="三、import 命令"></a>三、import 命令</h3><blockquote>
+<p>import命令用于输入其他模块提供的功能，import命令具有提升效果，会提升到整个模块的头部，首先执行</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123;firstName, lastName, year&#125; <span class="keyword">from</span> <span class="string">'./index'</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">setName</span>(<span class="params">element</span>) </span>&#123;</div><div class="line">  element.textContent = firstName + <span class="string">' '</span> + lastName;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>as关键字</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//为输入的变量重新取一个名字</span></div><div class="line"><span class="keyword">import</span> &#123; lastName <span class="keyword">as</span> surname &#125; <span class="keyword">from</span> <span class="string">'./index'</span>;</div><div class="line"></div><div class="line"><span class="comment">//模块整体加载</span></div><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> circle <span class="keyword">from</span> <span class="string">'./circle'</span></div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<h3 id="四、export-default-命令"><a href="#四、export-default-命令" class="headerlink" title="四、export default 命令"></a>四、export default 命令</h3><blockquote>
+<p>为模块指定默认输出</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// export-default.js</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'foo'</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// import-default.js</span></div><div class="line"><span class="keyword">import</span> customName <span class="keyword">from</span> <span class="string">'./export-default'</span>;</div><div class="line">customName(); <span class="comment">// 'foo'</span></div></pre></td></tr></table></figure>
+<h3 id="五、栗子"><a href="#五、栗子" class="headerlink" title="五、栗子"></a>五、栗子</h3><ul>
+<li>一个 vuex 模块（module）实例<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//com.js</span></div><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> types <span class="keyword">from</span> <span class="string">'../types'</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> state = &#123;</div><div class="line">    <span class="attr">showLoading</span>: <span class="literal">false</span>,</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> actions = &#123;</div><div class="line">    setShowLoading(&#123; commit &#125;, status) &#123;</div><div class="line">        commit(types.COM_SHOW_LOADING, status)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> getters = &#123;</div><div class="line">    <span class="attr">showLoading</span>: <span class="function"><span class="params">state</span> =&gt;</span> state.showLoading,</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">const</span> mutations = &#123;</div><div class="line">    [types.COM_SHOW_LOADING](state, status) &#123;</div><div class="line">        state.showLoading = status</div><div class="line">    &#125;,</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">    state,</div><div class="line">    actions,</div><div class="line">    getters,</div><div class="line">    mutations</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//serach.vue</span></div><div class="line"><span class="keyword">import</span> &#123; mapGetters &#125; <span class="keyword">from</span> <span class="string">'vuex'</span></div><div class="line"></div><div class="line">computed: &#123;</div><div class="line">	<span class="comment">//mapGetters(map: Array&lt;string&gt; | Object): Object,创建组件的计算属性返回 getter 的返回值</span></div><div class="line">	<span class="comment">//使用对象展开运算符将 getters 混入 computed 对象中</span></div><div class="line">    ...mapGetters([</div><div class="line">        <span class="string">'showLoading'</span></div><div class="line">	])</div><div class="line">&#125;,</div></pre></td></tr></table></figure></li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://hjingren.cn/publicImages/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="http://hjingren.cn/publicImages/wxpay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/08/读书笔记-es6Generator函数/" class="archive-article-date">
-  	<time datetime="2017-05-08T14:27:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/08/读书笔记-es6Generator函数/">读书笔记-es6Generator函数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -200,191 +280,88 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/14/读书笔记-es6Module/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/07/读书笔记-es6Set和Map数据结构/" class="archive-article-date">
-  	<time datetime="2017-05-07T11:10:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-07</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/07/读书笔记-es6Set和Map数据结构/">读书笔记-es6Set和Map数据结构</a>
-    </h1>
+  
+    <a href="/2017/05/13/读书笔记-es6Class的继承/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">读书笔记-es6Class的继承</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">es6</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/读书笔记-es6对象的扩展/" class="archive-article-date">
-  	<time datetime="2017-05-06T02:17:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/读书笔记-es6对象的扩展/">读书笔记-es6对象的扩展</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">es6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/05/读书笔记-es6函数的扩展/" class="archive-article-date">
-  	<time datetime="2017-05-05T08:26:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/05/读书笔记-es6函数的扩展/">读书笔记-es6函数的扩展</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">es6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/04/读书笔记-es6数组的扩展/" class="archive-article-date">
-  	<time datetime="2017-05-04T15:22:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/04/读书笔记-es6数组的扩展/">读书笔记-es6数组的扩展</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">es6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2017/05/">&laquo; Prev</a><a class="page-number" href="/archives/2017/05/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2017/05/page/3/">3</a><a class="extend next" rel="next" href="/archives/2017/05/page/3/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -410,8 +387,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
