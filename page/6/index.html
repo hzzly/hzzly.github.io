@@ -157,6 +157,84 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-移动端屏幕适配的解决" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/15/移动端屏幕适配的解决/">移动端屏幕适配的解决</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/15/移动端屏幕适配的解决/" class="archive-article-date">
+  	<time datetime="2017-03-15T14:01:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>随着手机硬件配置的飞速增长、屏幕尺寸的越来越大和网络带宽的逐渐提升，越来越多的PC业务和服务在向移动端转移。然而在这移动端的时代，为了处理各终端屏幕的适配，是否乱了手脚呢？</p>
+</blockquote>
+<p>虽然移动端的页面与PC的页面相比简单了不少，但让我们头痛的事情还是要想尽办法让页面能适配众多不同的终端设备。<br>在前几个外包项目中，我做的主要都是移动微信端的。期间也遇到了不同屏幕大小的适配问题，所以今天特来分享一下我的解决方法。</p>
+<p><strong>项目地址：</strong> <a href="https://github.com/hzzly/xyy-vue" target="_blank" rel="external">https://github.com/hzzly/xyy-vue</a><br><strong>demo地址：</strong> <a href="http://hjingren.cn/xyy-vue/" target="_blank" rel="external">http://hjingren.cn/xyy-vue/</a><br>欢迎大家的star啦~</p>
+<h3 id="一、meta标签"><a href="#一、meta标签" class="headerlink" title="一、meta标签"></a><strong>一、meta标签</strong></h3><blockquote>
+<p>meta之viewport，其主要用来告诉浏览器如何规范的渲染Web页面，而你则需要告诉它视窗有多大。在开发移动端页面，我们需要在html中设置meta标签如下：</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="二、手淘的flexible"><a href="#二、手淘的flexible" class="headerlink" title="二、手淘的flexible"></a><strong>二、手淘的flexible</strong></h3><blockquote>
+<p>flexible是一个制作H5适配的开源库，需要在html中引入，可以直接使用阿里CDN：</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>执行这个JS后，会在<html>元素上增加一个data-dpr属性，以及一个font-size样式。JS会根据不同的设备添加不同的data-dpr值，比如说1、2或者3，同时会给html加上对应的font-size的值，比如说37.5px。</html></p>
+<h3 id="三、放弃px拥抱rem"><a href="#三、放弃px拥抱rem" class="headerlink" title="三、放弃px拥抱rem"></a><strong>三、放弃px拥抱rem</strong></h3>
+        
+          <a class="article-more-a" href="/2017/03/15/移动端屏幕适配的解决/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/15/移动端屏幕适配的解决/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-移动端1px的解决方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -518,85 +596,9 @@
 
 
   
-    <article id="post-webpack工程化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/07/webpack工程化/">webpack工程化</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/07/webpack工程化/" class="archive-article-date">
-  	<time datetime="2017-03-07T12:01:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="一、webpack是什么"><a href="#一、webpack是什么" class="headerlink" title="一、webpack是什么"></a>一、webpack是什么</h3><blockquote>
-<p>webpack is a module bundler. webpack takes modules with dependencies and generates static assets representing those modules</p>
-</blockquote>
-<p>webpack 是一个模块打包工具，输入为包含依赖关系的模块集，输出为打包合并的前端静态资源。在上一节的前端工程化中，已经介绍过，webpack 是同时支持 AMD 和 CommonJs 的模块定义方式，不仅如此，webpack 可以将任何前端资源视为模块，如 css，图片，文本。</p>
-<h3 id="二、为什么要使用它"><a href="#二、为什么要使用它" class="headerlink" title="二、为什么要使用它"></a>二、为什么要使用它</h3><p>在 webpack 出现之前，已经有了一些打包工具，如 Browserify、grunt、gulp… 这些打包工具工具功能单一，只能完成特定的任务，然而 web 前端工程是复杂的，一个 webapp 对于业务代码的要求可能有：</p>
-<blockquote>
-<ul>
-<li>代码可以分块，实现按需加载</li>
-<li>首屏加载时间要尽量减少</li>
-<li>需要集成一些第三方库</li>
-</ul>
-</blockquote>
-<p>webpack 的出现正式为了解决这些问题，在 webpack 中，提供了一下这些功能：</p>
-        
-          <a class="article-more-a" href="/2017/03/07/webpack工程化/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/07/webpack工程化/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
     </nav>
   
 
@@ -694,11 +696,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">vuex</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">vuex</a>
               </li>
              
               <li class="article-tag-list-item">

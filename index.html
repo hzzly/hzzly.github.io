@@ -157,6 +157,149 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Ajax学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/17/Ajax学习笔记/">Ajax学习笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/17/Ajax学习笔记/" class="archive-article-date">
+  	<time datetime="2017-05-17T14:53:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>在上一个外包项目中，因为用到了前后端分离的思路，所以都要通过Ajax来请求数据然后把数据渲染到页面上，一开始想过直接引用Jquery，但感觉就使用Jquery的Ajax函数，有点太浪费，所以就自己撸了一个Ajax函数。本文由浅入深，一步一步带你封装属于自己的Ajax库。</p>
+</blockquote>
+<h2 id="Ajax简介"><a href="#Ajax简介" class="headerlink" title="Ajax简介"></a>Ajax简介</h2><blockquote>
+<ul>
+<li>Asynchronous Javascript And XML （异步的JavaScript和XML）</li>
+<li>它并不是一种单一的技术，而是有机利用一系列交互式网页应用相关的技术所形成的结合体</li>
+<li>Ajax是一种用于创建快速动态网页的技术。在前台与后台进行数据交换，Ajax可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，实现局部更新。</li>
+</ul>
+</blockquote>
+<h3 id="1、优点"><a href="#1、优点" class="headerlink" title="1、优点"></a>1、优点</h3><blockquote>
+<ul>
+<li>页面无刷新，用户体验好。</li>
+<li>异步通信，更加快的响应能力。</li>
+<li>减少冗余请求，减轻了服务器负担。</li>
+<li>基于标准化的并被广泛支持的技术</li>
+</ul>
+</blockquote>
+<h3 id="2、应用场景"><a href="#2、应用场景" class="headerlink" title="2、应用场景"></a>2、应用场景</h3><blockquote>
+<ul>
+<li>场景 1. 数据验证</li>
+<li>场景 2. 按需取数据</li>
+<li>场景 3. 自动更新页面</li>
+<li>…</li>
+</ul>
+</blockquote>
+<p>说了这么多，接下来来点干货。</p>
+<h2 id="创建ajax的步骤"><a href="#创建ajax的步骤" class="headerlink" title="创建ajax的步骤"></a>创建ajax的步骤</h2><blockquote>
+<p>Ajax的原理简单来说通过<code>XMLHttpRequest</code>对象来向服务器发异步请求，从服务器获得数据，然后用javascript来操作DOM而更新页面。这其中最关键的一步就是从服务器获得请求数据。原生创建ajax可分为以下四步</p>
+</blockquote>
+<h3 id="1、创建XMLHttpRequest对象"><a href="#1、创建XMLHttpRequest对象" class="headerlink" title="1、创建XMLHttpRequest对象"></a>1、创建XMLHttpRequest对象</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createRequest</span> (<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;</div><div class="line">        <span class="comment">//IE6以上</span></div><div class="line">        xhr = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        xhr = <span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> xhr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="2、准备请求"><a href="#2、准备请求" class="headerlink" title="2、准备请求"></a>2、准备请求</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xhr.open(method,url,<span class="keyword">async</span>);</div></pre></td></tr></table></figure>
+<ul>
+<li><p>第一个参数表示请求类型的字符串，其值可以是<code>GET</code>或者<code>POST</code><br><code>GET</code>请求：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xhr.open(<span class="string">"GET"</span>,demo.php?name=hzzly&amp;age=<span class="number">21</span>,<span class="literal">true</span>);</div></pre></td></tr></table></figure>
+<p><code>POST</code>请求：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xhr.open(<span class="string">"POST"</span>,demo.php,<span class="literal">true</span>);</div></pre></td></tr></table></figure>
+</li>
+<li><p>第二个参数是要作为请求发送目标的URL。</p>
+</li>
+<li>第三个参数是true或false，表示请求是以异步还是同步的模式发出。（默认为true，一般不建议为false）</li>
+</ul>
+<h3 id="3、发送请求"><a href="#3、发送请求" class="headerlink" title="3、发送请求"></a>3、发送请求</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xhr.send();</div></pre></td></tr></table></figure>
+<ul>
+<li><p><code>GET</code>请求：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">xhr.open(<span class="string">"GET"</span>,demo.php?name=hzzly&amp;age=<span class="number">21</span>,<span class="literal">true</span>);</div><div class="line">xhr.send();</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>POST</code>请求</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">xhr.open(<span class="string">"POST"</span>,demo.php,<span class="literal">true</span>);</div><div class="line">xhr.setRequestHeder(<span class="string">"Content-Type"</span>,<span class="string">"application/x-www-form-urlencoded;charset=UTF-8"</span>);</div><div class="line">xhr.send(param)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="4、处理响应"><a href="#4、处理响应" class="headerlink" title="4、处理响应"></a>4、处理响应</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(xhr.readyState == <span class="number">4</span> &amp;&amp; xhr.status == <span class="number">200</span>)&#123;</div><div class="line">        <span class="built_in">console</span>.log(xhr.responseText);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li><code>onreadystatechange</code>：当处理过程发生变化的时候执行下面的函数</li>
+<li><code>readyState</code>：ajax处理过程<ul>
+<li>0：请求未初始化（还没有调用 <code>open()</code>）</li>
+<li>1：请求已经建立，但是还没有发送（还没有调用 <code>send()</code>）</li>
+<li>2：请求已发送，正在处理中（通常现在可以从响应中获取内容头）</li>
+<li>3：请求在处理中；通常响应中已有部分数据可用了，但是服务器还没有完成响应的生成</li>
+<li>4：响应已完成；您可以获取并使用服务器的响应了</li>
+</ul>
+</li>
+<li><code>status</code>属性:<ul>
+<li>200: “OK”</li>
+<li>404: 未找到页面</li>
+</ul>
+</li>
+<li><code>responseText</code>：获得字符串形式的响应数据，可以用<code>JSON.parse(xhr.responseText)</code>转化为<code>JSON</code>对象</li>
+</ul>
+</blockquote>
+<h2 id="封装例子"><a href="#封装例子" class="headerlink" title="封装例子"></a>封装例子</h2><blockquote>
+<p>1.get请求函数</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 一个简单的get请求</div><div class="line"> * @param &#123;String&#125;   url     请求地址,文件名</div><div class="line"> * @param &#123;Function&#125; fnSucc  请求成功时执行的函数</div><div class="line"> * @param &#123;Function&#125; fnFaild 请求失败执行的函数</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Get</span>(<span class="params">url, fnSucc, fnFaild</span>) </span>&#123;</div><div class="line">    <span class="comment">//1.创建ajax对象</span></div><div class="line">    <span class="keyword">var</span> xhr = <span class="literal">null</span>;</div><div class="line">        <span class="comment">/**</span></div><div class="line">         * 此处必须需要使用window.的方式,表示为window对象的一个属性.不存在时值为undefined.</div><div class="line">         * 进入else若直接使用XMLHttpRequest在不支持的情况下会报错</div><div class="line">         **/</div><div class="line">    <span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;</div><div class="line">        <span class="comment">//IE6以上</span></div><div class="line">        xhr = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        xhr = <span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//2.连接服务器</span></div><div class="line">    <span class="comment">//open(方法,url,是否异步)</span></div><div class="line">    xhr.open(<span class="string">"GET"</span>, url, <span class="literal">true</span>);</div><div class="line">    <span class="comment">//3.发送请求</span></div><div class="line">    xhr.send();</div><div class="line">    <span class="comment">//4.接收返回</span></div><div class="line">    <span class="comment">//OnRedayStateChange事件</span></div><div class="line">    xhr.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (xhr.readyState === <span class="number">4</span>) &#123;</div><div class="line">            <span class="keyword">if</span> (xhr.status === <span class="number">200</span>) &#123;</div><div class="line">                <span class="comment">//alert("成功" + xhr.responseText);</span></div><div class="line">                fnSucc(xhr.responseText);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="comment">//alert("服务器响应失败!");</span></div><div class="line">                <span class="keyword">if</span> (fnFaild) &#123;</div><div class="line">                    fnFaild();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>2.get与post结合的请求函数</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * AJAX函数封装</div><div class="line"> * @param &#123;string&#125; url     请求地址（必须）</div><div class="line"> * @param &#123;object&#125; options 发送请求的选项参数</div><div class="line"> *   @config &#123;string&#125; [options.type] 请求发送的类型。默认为GET。</div><div class="line"> *   @config &#123;Object&#125; [options.data] 需要发送的数据。</div><div class="line"> *   @config &#123;Function&#125; [options.onsuccess] 请求成功时触发。（必须）</div><div class="line"> *   @config &#123;Function&#125; [options.onfail] 请求失败时触发。</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">AJAX</span>(<span class="params">url, options</span>) </span>&#123;</div><div class="line">    <span class="comment">//1.创建ajax对象</span></div><div class="line">    <span class="keyword">var</span> xhr = <span class="literal">null</span>;</div><div class="line">        <span class="comment">/**</span></div><div class="line">         * 此处必须需要使用window.的方式,表示为window对象的一个属性.不存在时值为undefined,进入else</div><div class="line">         * 若直接使用XMLHttpRequest,在不支持的情况下会报错</div><div class="line">         **/</div><div class="line">    <span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;</div><div class="line">        <span class="comment">//IE6以上</span></div><div class="line">        xhr = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        xhr = <span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//2.连接服务器</span></div><div class="line">    <span class="comment">//open(方法,url,是否异步)</span></div><div class="line">    <span class="keyword">var</span> param = <span class="string">""</span>; <span class="comment">//请求参数。</span></div><div class="line">    <span class="comment">//只有data存在，且为对象使才执行</span></div><div class="line">    <span class="keyword">var</span> data = options.data ? options.data : <span class="number">-1</span>; <span class="comment">//缓存data</span></div><div class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> (data) === <span class="string">"object"</span>) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> data) &#123; <span class="comment">//请求参数拼接</span></div><div class="line">            <span class="keyword">if</span> (data.hasOwnProperty(key)) &#123;</div><div class="line">                param += <span class="string">`<span class="subst">$&#123;key&#125;</span>=<span class="subst">$&#123;data[key]&#125;</span>&amp;`</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        param.replace(<span class="regexp">/&amp;$/</span>, <span class="string">""</span>);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        param = <span class="string">"timestamp="</span> + <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//3.发送请求</span></div><div class="line">    <span class="keyword">var</span> type = options.type ? options.type.toUpperCase() : <span class="string">"GET"</span>;</div><div class="line">    <span class="keyword">if</span> (type === <span class="string">"GET"</span>) &#123;</div><div class="line">        xhr.open(<span class="string">"GET"</span>, <span class="string">`<span class="subst">$&#123;url&#125;</span>?<span class="subst">$&#123;param&#125;</span>`</span>, <span class="literal">true</span>);</div><div class="line">        xhr.send();</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        xhr.open(<span class="string">"POST"</span>, url, <span class="literal">true</span>);</div><div class="line">        xhr.setRequestHeder(<span class="string">"Content-Type"</span>,<span class="string">"application/x-www-form-urlencoded;charset=UTF-8"</span>);</div><div class="line">        xhr.send(param);</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//4.接收返回</span></div><div class="line">    <span class="comment">//OnRedayStateChange事件</span></div><div class="line">    xhr.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (xhr.readyState === <span class="number">4</span>) &#123;</div><div class="line">            <span class="keyword">if</span> (xhr.status === <span class="number">200</span>) &#123;</div><div class="line">                <span class="comment">//请求成功。形参为获取到的字符串形式的响应数据</span></div><div class="line">                options.onsuccess(xhr.responseText);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="comment">//先判断是否存在请求失败函数</span></div><div class="line">                <span class="comment">//存在时，形参为XMLHttpRequest对象，便于进行错误进行处理</span></div><div class="line">                <span class="keyword">if</span> (options.onfail) &#123;</div><div class="line">                    options.onfail(xhr);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/17/Ajax学习笔记/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-读书笔记-es6编程风格" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -560,84 +703,9 @@
 
 
   
-    <article id="post-读书笔记-es6Async函数栗子" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/10/读书笔记-es6Async函数栗子/">读书笔记-es6Async函数栗子</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/10/读书笔记-es6Async函数栗子/" class="archive-article-date">
-  	<time datetime="2017-05-10T12:07:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="async函数栗子"><a href="#async函数栗子" class="headerlink" title="async函数栗子"></a><strong>async函数栗子</strong></h2><blockquote>
-<ul>
-<li>栗子一：从豆瓣 API 获取数据</li>
-</ul>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fetchDoubanApi = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  </div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line">    xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="keyword">if</span> (xhr.readyState === <span class="number">4</span>) &#123;</div><div class="line">        <span class="keyword">if</span> (xhr.status &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt; <span class="number">300</span>) &#123;</div><div class="line">          <span class="keyword">var</span> response;</div><div class="line">          <span class="keyword">try</span> &#123;</div><div class="line">            response = <span class="built_in">JSON</span>.parse(xhr.responseText);</div><div class="line">          &#125; <span class="keyword">catch</span> (e) &#123;</div><div class="line">            reject(e);</div><div class="line">          &#125;</div><div class="line">          <span class="keyword">if</span> (response) &#123;</div><div class="line">            resolve(response, xhr.status, xhr);</div><div class="line">          &#125;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">          reject(xhr);</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;;</div><div class="line">    xhr.open(<span class="string">'GET'</span>, <span class="string">'https://api.douban.com/v2/user/aisk'</span>, <span class="literal">true</span>);</div><div class="line">    xhr.setRequestHeader(<span class="string">"Content-Type"</span>, <span class="string">"text/plain"</span>);</div><div class="line">    xhr.send(data);</div><div class="line">  &#125;);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">(<span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">try</span> &#123;</div><div class="line">    <span class="keyword">let</span> result = <span class="keyword">await</span> fetchDoubanApi();</div><div class="line">    <span class="built_in">console</span>.log(result);</div><div class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</div><div class="line">    <span class="built_in">console</span>.log(e);</div><div class="line">  &#125;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
-<blockquote>
-<p>栗子二：根据电影文件名，自动下载对应的海报</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> fs <span class="keyword">from</span> <span class="string">'fs'</span>;</div><div class="line"><span class="keyword">import</span> path <span class="keyword">from</span> <span class="string">'path'</span>;</div><div class="line"><span class="keyword">import</span> request <span class="keyword">from</span> <span class="string">'request'</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> movieDir = __dirname + <span class="string">'/movies'</span>,</div><div class="line">    exts     = [<span class="string">'.mkv'</span>, <span class="string">'.avi'</span>, <span class="string">'.mp4'</span>, <span class="string">'.rm'</span>, <span class="string">'.rmvb'</span>, <span class="string">'.wmv'</span>];</div><div class="line"></div><div class="line"><span class="comment">// 读取文件列表</span></div><div class="line"><span class="keyword">var</span> readFiles = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</div><div class="line">        fs.readdir(movieDir, <span class="function"><span class="keyword">function</span> (<span class="params">err, files</span>) </span>&#123;</div><div class="line">            resolve(files.filter(<span class="function">(<span class="params">v</span>) =&gt;</span> exts.includes(path.parse(v).ext)));</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 获取海报</span></div><div class="line"><span class="keyword">var</span> getPoster = <span class="function"><span class="keyword">function</span> (<span class="params">movieName</span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> url = <span class="string">`https://api.douban.com/v2/movie/search?q=<span class="subst">$&#123;<span class="built_in">encodeURI</span>(movieName)&#125;</span>`</span>;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</div><div class="line">        request(&#123;<span class="attr">url</span>: url, <span class="attr">json</span>: <span class="literal">true</span>&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">error, response, body</span>) </span>&#123;</div><div class="line">            <span class="keyword">if</span> (error) <span class="keyword">return</span> reject(error);</div><div class="line"></div><div class="line">            resolve(body.subjects[<span class="number">0</span>].images.large);</div><div class="line">        &#125;)</div><div class="line">    &#125;);</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 保存海报</span></div><div class="line"><span class="keyword">var</span> savePoster = <span class="function"><span class="keyword">function</span> (<span class="params">movieName, url</span>) </span>&#123;</div><div class="line">    request.get(url).pipe(fs.createWriteStream(path.join(movieDir, movieName + <span class="string">'.jpg'</span>)));</div><div class="line">&#125;;</div><div class="line"></div><div class="line"></div><div class="line"><span class="function">(<span class="params"><span class="keyword">async</span> (</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">let</span> files = <span class="keyword">await</span> readFiles();</div><div class="line"></div><div class="line">    <span class="comment">// await只能使用在原生语法</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> file <span class="keyword">of</span> files) &#123;</div><div class="line">        <span class="keyword">let</span> name = path.parse(file).name;</div><div class="line"></div><div class="line">        <span class="built_in">console</span>.log(<span class="string">`正在获取【<span class="subst">$&#123;name&#125;</span>】的海报`</span>);</div><div class="line">        savePoster(name, <span class="keyword">await</span> getPoster(name));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'=== 获取海报完成 ==='</span>);</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">es6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/10/读书笔记-es6Async函数栗子/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -735,11 +803,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">vuex</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">vuex</a>
               </li>
              
               <li class="article-tag-list-item">
