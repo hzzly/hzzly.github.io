@@ -6,21 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>vuex学习实践笔记 | Hzzly</title>
+  <title>Tag: Fetch | Hzzly</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Vuex是什么？ Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。  栗如(travel store)：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515">
-<meta name="keywords" content="随笔,vuex">
-<meta property="og:type" content="article">
-<meta property="og:title" content="vuex学习实践笔记">
-<meta property="og:url" content="http://yoursite.com/2017/04/04/vuex学习实践笔记/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hzzly">
+<meta property="og:url" content="http://yoursite.com/tags/Fetch/index.html">
 <meta property="og:site_name" content="Hzzly">
-<meta property="og:description" content="Vuex是什么？ Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。  栗如(travel store)：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515">
-<meta property="og:image" content="http://omt3u4bph.bkt.clouddn.com/vuex2.jpg">
-<meta property="og:updated_time" content="2017-04-06T05:09:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vuex学习实践笔记">
-<meta name="twitter:description" content="Vuex是什么？ Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。  栗如(travel store)：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515">
-<meta name="twitter:image" content="http://omt3u4bph.bkt.clouddn.com/vuex2.jpg">
+<meta name="twitter:title" content="Hzzly">
   
     <link rel="alternative" href="/atom.xml" title="Hzzly" type="application/atom+xml">
   
@@ -162,110 +155,36 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-vuex学习实践笔记" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      vuex学习实践笔记
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/05/20/Fetch学习笔记/" class="archive-article-date">
+  	<time datetime="2017-05-20T15:52:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-20</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/05/20/Fetch学习笔记/">Fetch学习笔记</a>
     </h1>
   
 
-        
-        <a href="/2017/04/04/vuex学习实践笔记/" class="archive-article-date">
-  	<time datetime="2017-04-04T12:11:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Vuex是什么？"><a href="#Vuex是什么？" class="headerlink" title="Vuex是什么？"></a><strong>Vuex是什么？</strong></h3><blockquote>
-<p>Vuex 是一个专为 Vue.js 应用程序开发的<strong>状态管理模式</strong>。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。</p>
-</blockquote>
-<p>栗如(travel store)：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> types <span class="keyword">from</span> <span class="string">'../types'</span></div><div class="line"><span class="comment">//数据</span></div><div class="line"><span class="keyword">const</span> state = &#123;</div><div class="line">    <span class="attr">travelsList</span>: [],</div><div class="line">    <span class="attr">searchKey</span>: &#123;</div><div class="line">        <span class="attr">page</span>: <span class="number">0</span>,</div><div class="line">        <span class="attr">limit</span>: <span class="number">20</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">scroll</span>: <span class="literal">true</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//用户行为(可以处理异步),触发 mutations 来改变 state</span></div><div class="line"><span class="keyword">const</span> actions = &#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 获取约跑步列表</div><div class="line">     */</div><div class="line">    getTravelsList(&#123; commit &#125;) &#123;</div><div class="line">        <span class="keyword">if</span>(state.scroll) &#123;</div><div class="line">            commit(types.GET_TRAVELS_PAGE_NUM)</div><div class="line">            commit(types.COM_LOADING_STATUS, <span class="literal">true</span>),</div><div class="line">            commit(types.GET_TRAVELS_SCORLL_STATUS, <span class="literal">false</span>)</div><div class="line">            api.TravelsList()</div><div class="line">                .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</div><div class="line">                    <span class="built_in">console</span>.log(res)</div><div class="line">                    commit(types.COM_LOADING_STATUS, <span class="literal">false</span>),</div><div class="line">                    commit(types.GET_TRAVELS_SCORLL_STATUS, <span class="literal">true</span>)</div><div class="line">                    commit(types.GET_TRAVELS_LIST, res)</div><div class="line">                &#125;)</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 参加</div><div class="line">     */</div><div class="line">    joinTravel(&#123; commit &#125;, id) &#123;</div><div class="line">		...</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//可以过滤 state 中的数据</span></div><div class="line"><span class="keyword">const</span> getters = &#123;</div><div class="line">    <span class="attr">travelsList</span>: <span class="function"><span class="params">state</span> =&gt;</span> state.travelsList,</div><div class="line">    <span class="attr">travelListIndex</span>: <span class="function"><span class="params">state</span> =&gt;</span> state.travelsList.slice(<span class="number">0</span>,<span class="number">4</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">//唯一能改变 state 的方法(纯函数)</span></div><div class="line"><span class="keyword">const</span> mutations = &#123;</div><div class="line">    [types.GET_TRAVELS_LIST](state, res) &#123;</div><div class="line">        <span class="keyword">if</span>(state.searchKey.page &lt;= <span class="number">1</span>) &#123;</div><div class="line">            state.travelsList = res.data</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            state.travelsList = state.travelsList.concat(res.data)</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    [types.GET_TRAVELS_SEARCH_KEY](state, params) &#123;</div><div class="line">        state.searchKey = params</div><div class="line">    &#125;,</div><div class="line">    [types.GET_TRAVELS_PAGE_NUM](state) &#123;</div><div class="line">        state.searchKey[<span class="string">'page'</span>] += <span class="number">1</span></div><div class="line">    &#125;,</div><div class="line">    [types.GET_TRAVELS_SCORLL_STATUS](state, status) &#123;</div><div class="line">        state.scroll = status</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//导出一个 travel store 模块</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">    state,</div><div class="line">    actions,</div><div class="line">    getters,</div><div class="line">    mutations</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>每一个 Vuex 应用的核心就是 store（仓库）。”store” 基本上就是一个容器，它包含着你的应用中大部分的状态(state)数据。</p>
-<blockquote>
-<ul>
-<li>Vuex 的状态存储是响应式的。当 Vue 组件从 store 中读取状态的时候，若 store 中的状态发生变化，那么相应的组件也会相应地得到高效更新。</li>
-<li>你不能直接改变 store 中的状态。改变 store 中的状态的唯一途径就是显式地提交(commit) mutations。这样使得我们可以方便地跟踪每一个状态的变化，从而让我们能够实现一些工具帮助我们更好地了解我们的应用。</li>
-</ul>
-</blockquote>
-<p>用一张图来理解一下<br><img src="http://omt3u4bph.bkt.clouddn.com/vuex2.jpg" alt="vuex"></p>
-<blockquote>
-<p>客户端(Client) -&gt; action -&gt; mutations -&gt; state -&gt; 客户端</p>
-</blockquote>
-<p>可以看出在vuex中数据是单一流向的：视图(view)触发action，action提交(commit)到mutations，mutations改变state(数据)，state的改变，相应的组件也会相应的更新。</p>
-<a id="more"></a>
-<h3 id="1-State"><a href="#1-State" class="headerlink" title="1.State"></a><strong>1.State</strong></h3><blockquote>
-<p>单一状态树，唯一数据源，能够直接清晰的读懂数据的结构。</p>
-</blockquote>
-<h4 id="1-1在-Vue-组件中获得数据"><a href="#1-1在-Vue-组件中获得数据" class="headerlink" title="1.1在 Vue 组件中获得数据"></a>1.1在 Vue 组件中获得数据</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//store</span></div><div class="line"><span class="keyword">const</span> state = &#123;</div><div class="line">    <span class="attr">travelsList</span>: [],</div><div class="line">    <span class="attr">searchKey</span>: &#123;</div><div class="line">        <span class="attr">page</span>: <span class="number">0</span>,</div><div class="line">        <span class="attr">limit</span>: <span class="number">20</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">scroll</span>: <span class="literal">true</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//在view中直接获取</span></div><div class="line">data () &#123; </div><div class="line">	<span class="keyword">return</span> &#123;</div><div class="line">    	<span class="attr">scroll</span>: <span class="keyword">this</span>.$store.state.scroll</div><div class="line">	&#125;</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
-<h4 id="1-2mapState-辅助函数"><a href="#1-2mapState-辅助函数" class="headerlink" title="1.2mapState 辅助函数"></a>1.2mapState 辅助函数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">computed: mapState([</div><div class="line">	<span class="comment">// 映射 this.scroll 为 this.$store.state.scroll</span></div><div class="line">	<span class="string">'scroll'</span></div><div class="line">])</div><div class="line"></div><div class="line"><span class="comment">//或对象展开运算符</span></div><div class="line">computed: &#123;</div><div class="line">	...mapState(&#123;</div><div class="line">		<span class="string">'scroll'</span></div><div class="line">	&#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="2-Getters"><a href="#2-Getters" class="headerlink" title="2.Getters"></a><strong>2.Getters</strong></h3><blockquote>
-<p>对state数据进行过滤或直接返回</p>
-</blockquote>
-<h4 id="2-1在-Vue-组件中获得Getters数据"><a href="#2-1在-Vue-组件中获得Getters数据" class="headerlink" title="2.1在 Vue 组件中获得Getters数据"></a>2.1在 Vue 组件中获得Getters数据</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//store</span></div><div class="line"><span class="keyword">const</span> getters = &#123;</div><div class="line">    <span class="attr">travelsList</span>: <span class="function"><span class="params">state</span> =&gt;</span> state.travelsList,</div><div class="line">    <span class="attr">travelListIndex</span>: <span class="function"><span class="params">state</span> =&gt;</span> state.travelsList.slice(<span class="number">0</span>,<span class="number">4</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//在view中直接获取</span></div><div class="line">data () &#123; </div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">        <span class="attr">travelListIndex</span>: <span class="keyword">this</span>.$store.getters.travelListIndex</div><div class="line">    &#125;</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
-<h4 id="2-2mapGetters-辅助函数"><a href="#2-2mapGetters-辅助函数" class="headerlink" title="2.2mapGetters 辅助函数"></a>2.2mapGetters 辅助函数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">computed: mapGetters([</div><div class="line">    <span class="comment">// 映射 this.travelListIndex 为 this.$store.state.travelListIndex</span></div><div class="line">    <span class="string">'travelListIndex'</span></div><div class="line">])</div><div class="line"></div><div class="line"><span class="comment">//或对象展开运算符</span></div><div class="line">computed: &#123;</div><div class="line">    ...mapGetters(&#123;</div><div class="line">        <span class="string">'travelListIndex'</span></div><div class="line">    &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="3-Mutations"><a href="#3-Mutations" class="headerlink" title="3.Mutations"></a><strong>3.Mutations</strong></h3><blockquote>
-<p>要更改 Vuex 的 store 中的数据，唯一方法是提交 mutation。每个 mutation 都有一个字符串的 事件类型 (type) 和 一个 回调函数 (handler)。这个回调函数就是我们实际进行数据更改的地方。</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> mutations = &#123;</div><div class="line">    <span class="comment">//使用常量替代 Mutation 事件类型</span></div><div class="line">    [types.GET_TRAVELS_LIST](state, res) &#123;</div><div class="line">        <span class="keyword">if</span>(state.searchKey.page &lt;= <span class="number">1</span>) &#123;</div><div class="line">            state.travelsList = res.data</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            state.travelsList = state.travelsList.concat(res.data)</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>当我们在这改变数据时，其它引用此state数据的 Vue 组件也会自动得到更新。</p>
-</blockquote>
-<h3 id="4-Actions"><a href="#4-Actions" class="headerlink" title="4.Actions"></a><strong>4.Actions</strong></h3><blockquote>
-<p>用户的一些行为，来提交到mutations改变数据。可在这进行异步操作。</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> actions = &#123;</div><div class="line">    <span class="comment">//es6的参数解构</span></div><div class="line">    getTravelsList(&#123; commit &#125;) &#123;</div><div class="line">        <span class="keyword">if</span>(state.scroll) &#123;</div><div class="line">            commit(types.GET_TRAVELS_PAGE_NUM)</div><div class="line">            commit(types.COM_LOADING_STATUS, <span class="literal">true</span>),</div><div class="line">            commit(types.GET_TRAVELS_SCORLL_STATUS, <span class="literal">false</span>)</div><div class="line">            api.TravelsList()</div><div class="line">                .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</div><div class="line">                    <span class="built_in">console</span>.log(res)</div><div class="line">                    commit(types.COM_LOADING_STATUS, <span class="literal">false</span>),</div><div class="line">                    commit(types.GET_TRAVELS_SCORLL_STATUS, <span class="literal">true</span>)</div><div class="line">                    commit(types.GET_TRAVELS_LIST, res)</div><div class="line">                &#125;)</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    joinTravel(&#123; commit &#125;, id) &#123;</div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="4-1分发-Action"><a href="#4-1分发-Action" class="headerlink" title="4.1分发 Action"></a>4.1分发 Action</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">created() &#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.travelListIndex.length == <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">this</span>.$store.dispatch(<span class="string">'getTravelsList'</span>)</div><div class="line">    &#125;</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
-<h4 id="4-2mapActions-辅助函数"><a href="#4-2mapActions-辅助函数" class="headerlink" title="4.2mapActions 辅助函数"></a>4.2mapActions 辅助函数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">methods: &#123;</div><div class="line">    ...mapActions([</div><div class="line">      <span class="string">'getTravelsList'</span> <span class="comment">// 映射 this.getTravelsList() 为 this.$store.dispatch('getTravelsList')</span></div><div class="line">    ]),</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="5-Modules"><a href="#5-Modules" class="headerlink" title="5.Modules"></a><strong>5.Modules</strong></h3><blockquote>
-<p>当应用变得很大时，store 对象会变得臃肿不堪。为了解决这个问题，Vuex 允许我们将 store 分割到模块（module）。每个模块拥有自己的 state、mutation、action、getters</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> moduleA = &#123;</div><div class="line">  <span class="attr">state</span>: &#123; ... &#125;,</div><div class="line">  <span class="attr">mutations</span>: &#123; ... &#125;,</div><div class="line">  <span class="attr">actions</span>: &#123; ... &#125;,</div><div class="line">  <span class="attr">getters</span>: &#123; ... &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> moduleB = &#123;</div><div class="line">  <span class="attr">state</span>: &#123; ... &#125;,</div><div class="line">  <span class="attr">mutations</span>: &#123; ... &#125;,</div><div class="line">  <span class="attr">actions</span>: &#123; ... &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</div><div class="line">  <span class="attr">modules</span>: &#123;</div><div class="line">    <span class="attr">a</span>: moduleA,</div><div class="line">    <span class="attr">b</span>: moduleB</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line"></div><div class="line">store.state.a <span class="comment">// -&gt; moduleA 的状态</span></div><div class="line">store.state.b <span class="comment">// -&gt; moduleB 的状态</span></div></pre></td></tr></table></figure>
-<h3 id="6-项目实践"><a href="#6-项目实践" class="headerlink" title="6.项目实践"></a><strong>6.项目实践</strong></h3><p><a href="https://hzzly.github.io/2017/03/08/%E8%BF%9B%E9%98%B6vue%E5%85%A8%E5%AE%B6%E6%A1%B6/" target="_blank" rel="external">进阶vue全家桶</a></p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="http://hjingren.cn/publicImages/alipay.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="http://hjingren.cn/publicImages/wxpay.jpg">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -275,103 +194,29 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">vuex</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Fetch</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/04/04/vuex学习实践笔记/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/04/09/读书笔记-es6let与const/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          读书笔记-es6let与const
-        
-      </div>
-    </a>
   
   
-    <a href="/2017/03/30/读书笔记-es5Array对象/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">读书笔记-es5Array对象</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-
-  
-    <div class="duoshuo"></div>
+    </div></section>
   
 
-
+    
 
 
           </div>
@@ -397,9 +242,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",

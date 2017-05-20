@@ -157,6 +157,93 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Fetch学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/20/Fetch学习笔记/">Fetch学习笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/20/Fetch学习笔记/" class="archive-article-date">
+  	<time datetime="2017-05-20T15:52:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>前言: 前几天面试问到 Ajax和Fetch的区别，因为以前也用过这两个东西，所以也没难倒我，现在回头整理一遍。</p>
+</blockquote>
+<h2 id="fetch"><a href="#fetch" class="headerlink" title="fetch"></a>fetch</h2><blockquote>
+<p>与XMLHttpRequest(XHR)类似，fetch()方法允许你发出AJAX请求。区别在于Fetch API使用Promise，因此是一种简洁明了的API，比XMLHttpRequest更加简单易用。</p>
+</blockquote>
+<p>如果还不了解<code>Promise</code>，可以移步👉<a href="https://hzzly.github.io/2017/03/25/%E6%B5%85%E8%B0%88Promise/" target="_blank" rel="external">浅谈Promise</a>这篇博客</p>
+<h3 id="比较XMLHttpRequest（传统Ajax）"><a href="#比较XMLHttpRequest（传统Ajax）" class="headerlink" title="比较XMLHttpRequest（传统Ajax）"></a>比较XMLHttpRequest（传统Ajax）</h3><p><strong>创建步骤：</strong></p>
+<pre><code>* 创建`XMLHttpRequest`对象，也就是创建一个异步调用对象
+* 创建一个新的`HTTP`请求，并指定该`HTTP`请求的方法、`URL`及验证信息
+* 发送`HTTP`请求
+* 处理响应，获取异步调用返回的数据
+</code></pre><p>可以发现，主要的不同点在于：传统Ajax使用事件处理器，而不是Promise对象，并且请求的发起完全依赖于xhr对象所提供的方法。</p>
+<p>想详细了解 Ajax的封装可以查看我上一篇博客，一步步教你 Ajax的封装👉<a href="https://hzzly.github.io/2017/05/17/Ajax%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_blank" rel="external">Ajax学习笔记</a></p>
+<h3 id="fetch语法"><a href="#fetch语法" class="headerlink" title="fetch语法"></a>fetch语法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">fetch(url)</div><div class="line">	.then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</div><div class="line">		<span class="keyword">return</span> response.json();</div><div class="line">	&#125;)</div><div class="line">	.then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(data);</div><div class="line">	&#125;)</div><div class="line">	.catch(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="string">"Oops, error"</span>);</div><div class="line">	&#125;);</div></pre></td></tr></table></figure>
+<p>使用 ES6 的 <code>箭头函数</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">fetch(url)</div><div class="line">	.then(<span class="function"><span class="params">response</span> =&gt;</span> response.json())</div><div class="line">	.then(<span class="function"><span class="params">data</span> =&gt;</span> <span class="built_in">console</span>.log(data))</div><div class="line">	.catch(<span class="function"><span class="params">e</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">"Oops, error"</span>, e))</div><div class="line"><span class="string">``</span><span class="string">` </span></div><div class="line"></div><div class="line">使用 `<span class="keyword">async</span>/<span class="keyword">await</span><span class="string">` 来做最终优化：</span></div><div class="line">`<span class="string">``</span>javascript</div><div class="line">(<span class="keyword">async</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="keyword">try</span> &#123;</div><div class="line">		<span class="keyword">let</span> response = <span class="keyword">await</span> fetch(url);</div><div class="line">		<span class="keyword">let</span> data = response.json();</div><div class="line">		<span class="built_in">console</span>.log(data);</div><div class="line">	&#125; <span class="keyword">catch</span>(e) &#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="string">"Oops, error"</span>, e);</div><div class="line">	&#125;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure></p>
+<p>使用 await 后，<strong>写异步代码就像写同步代码一样爽</strong>。await 后面可以跟 Promise 对象，表示等待 Promise resolve() 才会继续向下执行，如果 Promise 被 reject() 或抛出异常则会被外面的 try…catch 捕获。</p>
+<p>如果还不了解<code>async/await</code>，可以移步👉<a href="https://hzzly.github.io/2017/05/09/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-es6Async%E5%87%BD%E6%95%B0/" target="_blank" rel="external">es6Async</a>这篇博客</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Fetch</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/20/Fetch学习笔记/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-Ajax学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -605,104 +692,6 @@
 
 
   
-    <article id="post-读书笔记-es6Class" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/11/读书笔记-es6Class/">读书笔记-es6Class</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/11/读书笔记-es6Class/" class="archive-article-date">
-  	<time datetime="2017-05-11T15:46:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Class"><a href="#Class" class="headerlink" title="Class"></a><strong>Class</strong></h2><h3 id="一、Class基本语法"><a href="#一、Class基本语法" class="headerlink" title="一、Class基本语法"></a>一、Class基本语法</h3><p>传统方法:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Point</span>(<span class="params">x, y</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.x = x;</div><div class="line">  <span class="keyword">this</span>.y = y;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Point.prototype.toString = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="string">'('</span> + <span class="keyword">this</span>.x + <span class="string">', '</span> + <span class="keyword">this</span>.y + <span class="string">')'</span>;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Point(<span class="number">1</span>, <span class="number">2</span>);</div></pre></td></tr></table></figure></p>
-<p>ES6:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(x, y) &#123;</div><div class="line">    <span class="keyword">this</span>.x = x;</div><div class="line">    <span class="keyword">this</span>.y = y;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  toString() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">'('</span> + <span class="keyword">this</span>.x + <span class="string">', '</span> + <span class="keyword">this</span>.y + <span class="string">')'</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Point(<span class="number">1</span>, <span class="number">2</span>);</div></pre></td></tr></table></figure></p>
-<blockquote>
-<p>ES6的类，完全可以看作构造函数的另一种写法:</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">typeof</span> Point <span class="comment">// "function"</span></div><div class="line">Point === Point.prototype.constructor <span class="comment">// true</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>构造函数的prototype属性，在ES6的“类”上面继续存在。事实上，类的所有方法都定义在类的prototype属性上面。</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>()&#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">  &#125;</div><div class="line">  toString()&#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">  &#125;</div><div class="line">  toValue()&#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 等同于</span></div><div class="line">Point.prototype = &#123;</div><div class="line">  toString()&#123;&#125;,</div><div class="line">  toValue()&#123;&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>在类的实例上面调用方法，其实就是调用原型上的方法。</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> </span>&#123;&#125;</div><div class="line"><span class="keyword">let</span> b = <span class="keyword">new</span> B();</div><div class="line"></div><div class="line">b.constructor === B.prototype.constructor <span class="comment">// true</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>由于类的方法都定义在prototype对象上面，所以类的新方法可以添加在prototype对象上面。Object.assign方法可以很方便地一次向类添加多个方法。</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>()&#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">Object</span>.assign(Point.prototype, &#123;</div><div class="line">  toString()&#123;&#125;,</div><div class="line">  toValue()&#123;&#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">//prototype对象的constructor属性，直接指向“类”的本身，这与ES5的行为是一致的。</span></div><div class="line">Point.prototype.constructor === Point <span class="comment">// true</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>类的内部所有定义的方法，都是不可枚举的（non-enumerable）。<strong>这一点与ES5的行为不一致</strong>。</p>
-</blockquote>
-<h3 id="二、constructor方法"><a href="#二、constructor方法" class="headerlink" title="二、constructor方法"></a>二、constructor方法</h3><blockquote>
-<p>constructor方法是类的默认方法，通过new命令生成对象实例时，自动调用该方法。一个类必须有constructor方法，如果没有显式定义，一个空的constructor方法会被默认添加。</p>
-</blockquote>
-<h3 id="三、类的实例对象"><a href="#三、类的实例对象" class="headerlink" title="三、类的实例对象"></a>三、类的实例对象</h3><blockquote>
-<p>生成类的实例对象的写法，与ES5完全一样，也是使用new命令。如果忘记加上new，像函数那样调用Class，将会报错。</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 报错</span></div><div class="line"><span class="keyword">var</span> point = Point(<span class="number">2</span>, <span class="number">3</span>);</div><div class="line"></div><div class="line"><span class="comment">// 正确</span></div><div class="line"><span class="keyword">var</span> point = <span class="keyword">new</span> Point(<span class="number">2</span>, <span class="number">3</span>);</div></pre></td></tr></table></figure>
-<blockquote>
-<p>与ES5一样，实例的属性除非显式定义在其本身（即定义在this对象上），否则都是定义在原型上（即定义在class上）。</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2017/05/11/读书笔记-es6Class/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">es6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/11/读书笔记-es6Class/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -804,6 +793,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Fetch</a>
               </li>
              
               <li class="article-tag-list-item">
