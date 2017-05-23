@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>HTML5图片上传、预览 | Hzzly</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="随笔,html5," />
+  
+
+  <meta name="description" content="File API  File - 独立文件；提供只读信息，例如名称、文件大小、mimetype 和对文件句柄的引用。 FileList - File 对象的类数组序列（考虑多文件上传或者从桌面拖动目录或文件）。 Blob - 可将文件分割为字节范围。 FileReader - 读取File或Blob URL scheme   检测浏览器是否支持123456// 检测是否支持File APIif (">
+<meta name="keywords" content="随笔,html5">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML5图片上传、预览">
+<meta property="og:url" content="http://yoursite.com/2017/05/23/HTML5图片上传、预览/index.html">
+<meta property="og:site_name" content="Hzzly">
+<meta property="og:description" content="File API  File - 独立文件；提供只读信息，例如名称、文件大小、mimetype 和对文件句柄的引用。 FileList - File 对象的类数组序列（考虑多文件上传或者从桌面拖动目录或文件）。 Blob - 可将文件分割为字节范围。 FileReader - 读取File或Blob URL scheme   检测浏览器是否支持123456// 检测是否支持File APIif (">
+<meta property="og:updated_time" content="2017-05-23T15:14:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML5图片上传、预览">
+<meta name="twitter:description" content="File API  File - 独立文件；提供只读信息，例如名称、文件大小、mimetype 和对文件句柄的引用。 FileList - File 对象的类数组序列（考虑多文件上传或者从桌面拖动目录或文件）。 Blob - 可将文件分割为字节范围。 FileReader - 读取File或Blob URL scheme   检测浏览器是否支持123456// 检测是否支持File APIif (">
+
+  
+
+  
+    <link rel="icon" href="http://hjingren.cn/publicImages/logo.jpg">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/project/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            项目
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#File-API"><span class="toc-text">File API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#检测浏览器是否支持"><span class="toc-text">检测浏览器是否支持</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#选取一张图片，并预览"><span class="toc-text">选取一张图片，并预览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拖拽上传"><span class="toc-text">拖拽上传</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#美化上传框"><span class="toc-text">美化上传框</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用Base64的方式-实现本地预览"><span class="toc-text">使用Base64的方式,实现本地预览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用Ajax上传图片信息，并显示图片上传的进度"><span class="toc-text">使用Ajax上传图片信息，并显示图片上传的进度</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-HTML5图片上传、预览" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">HTML5图片上传、预览</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.05.23</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>hzzly</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="File-API"><a href="#File-API" class="headerlink" title="File API"></a>File API</h2><blockquote>
+<ul>
+<li>File - 独立文件；提供只读信息，例如名称、文件大小、mimetype 和对文件句柄的引用。</li>
+<li>FileList - File 对象的类数组序列（考虑多文件上传或者从桌面拖动目录或文件）。</li>
+<li>Blob - 可将文件分割为字节范围。</li>
+<li>FileReader - 读取File或Blob</li>
+<li>URL scheme</li>
+</ul>
+</blockquote>
+<h2 id="检测浏览器是否支持"><a href="#检测浏览器是否支持" class="headerlink" title="检测浏览器是否支持"></a>检测浏览器是否支持</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 检测是否支持File API</span></div><div class="line"><span class="keyword">if</span> (<span class="built_in">window</span>.File &amp;&amp; <span class="built_in">window</span>.FileReader &amp;&amp; <span class="built_in">window</span>.FileList &amp;&amp; <span class="built_in">window</span>.Blob) &#123;</div><div class="line">	<span class="comment">//  支持</span></div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">	alert(<span class="string">'不支持'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="选取一张图片，并预览"><a href="#选取一张图片，并预览" class="headerlink" title="选取一张图片，并预览"></a>选取一张图片，并预览</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"img_input"</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">accept</span>=<span class="string">"image/*"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"img_input"</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"preview_box"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"> </div><div class="line">.preview_box img &#123;</div><div class="line">	width: 200px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"#img_input"</span>).on(<span class="string">"change"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line"> </div><div class="line">	<span class="keyword">let</span> file = e.target.files[<span class="number">0</span>]; <span class="comment">//获取图片资源</span></div><div class="line"> </div><div class="line">	<span class="comment">// 只选择图片文件</span></div><div class="line">	<span class="keyword">if</span> (!file.type.match(<span class="string">'image.*'</span>)) &#123;</div><div class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">	&#125;</div><div class="line"> </div><div class="line">	<span class="keyword">let</span> reader = <span class="keyword">new</span> FileReader();</div><div class="line">	reader.readAsDataURL(file); <span class="comment">// 读取文件</span></div><div class="line"> </div><div class="line">	<span class="comment">// 渲染文件</span></div><div class="line">	reader.onload = <span class="function"><span class="keyword">function</span>(<span class="params">arg</span>) </span>&#123;</div><div class="line">		<span class="keyword">let</span> img = <span class="string">'&lt;img class="preview" src="'</span> + arg.target.result + <span class="string">'" alt="preview"/&gt;'</span>;</div><div class="line">		$(<span class="string">".preview_box"</span>).empty().append(img);</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>上传到服务器</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> form_data = <span class="keyword">new</span> FormData();</div><div class="line"><span class="keyword">let</span> file_data = $(<span class="string">"#img_input"</span>).prop(<span class="string">"files"</span>)[<span class="number">0</span>];</div><div class="line"> </div><div class="line"><span class="comment">// 把上传的数据放入form_data</span></div><div class="line">form_data.append(<span class="string">"user"</span>, <span class="string">"hzzly"</span>);</div><div class="line">form_data.append(<span class="string">"img"</span>, file_data);</div><div class="line"> </div><div class="line">$.ajax(&#123;</div><div class="line">    <span class="attr">type</span>: <span class="string">"POST"</span>, <span class="comment">// 上传文件要用POST</span></div><div class="line">    url: <span class="string">""</span>,</div><div class="line">    <span class="attr">dataType</span> : <span class="string">"json"</span>,</div><div class="line">    <span class="attr">crossDomain</span>: <span class="literal">true</span>, <span class="comment">// 如果用到跨域，需要后台开启CORS</span></div><div class="line">  	processData: <span class="literal">false</span>,  <span class="comment">// 注意：不要 process data</span></div><div class="line">  	contentType: <span class="literal">false</span>,  <span class="comment">// 注意：不设置 contentType</span></div><div class="line">    data: form_data</div><div class="line">&#125;).success(<span class="function"><span class="keyword">function</span>(<span class="params">msg</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(msg);</div><div class="line">&#125;).fail(<span class="function"><span class="keyword">function</span>(<span class="params">msg</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(msg);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="拖拽上传"><a href="#拖拽上传" class="headerlink" title="拖拽上传"></a>拖拽上传</h2><p>三个相关事件：</p>
+<blockquote>
+<ul>
+<li>dragenter</li>
+<li>dragover</li>
+<li>drop</li>
+</ul>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"drop_zone"</span>&gt;</span>Drop files here<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"list"</span>&gt;</span><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 必须阻止dragenter和dragover事件的默认行为，这样才能触发 drop 事件</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fileSelect</span>(<span class="params">evt</span>) </span>&#123;</div><div class="line"> </div><div class="line">	evt.stopPropagation();</div><div class="line">	evt.preventDefault();</div><div class="line"> </div><div class="line">	<span class="keyword">let</span> files = evt.dataTransfer.files; <span class="comment">// 文件对象</span></div><div class="line">	<span class="keyword">let</span> output = [];</div><div class="line"> </div><div class="line">	<span class="comment">// 处理多文件</span></div><div class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>, f; f = files[i]; i++) &#123;</div><div class="line">		output.push(<span class="string">'&lt;li&gt;&lt;strong&gt;'</span>, <span class="built_in">escape</span>(f.name), <span class="string">'&lt;/strong&gt; ('</span>, f.type || <span class="string">'n/a'</span>, <span class="string">') - '</span>,f.size, <span class="string">' bytes, last modified: '</span>,f.lastModifiedDate.toLocaleDateString(), <span class="string">'&lt;/li&gt;'</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="comment">// 显示文件信息</span></div><div class="line">	<span class="built_in">document</span>.getElementById(<span class="string">'list'</span>).innerHTML = output.join(<span class="string">''</span>);</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">dragOver</span>(<span class="params">evt</span>) </span>&#123;</div><div class="line">	evt.stopPropagation();</div><div class="line">	evt.preventDefault();</div><div class="line">	evt.dataTransfer.dropEffect = <span class="string">'copy'</span>;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="comment">// 监听器</span></div><div class="line"><span class="keyword">let</span> dropZone = <span class="built_in">document</span>.getElementById(<span class="string">'drop_zone'</span>);</div><div class="line">dropZone.addEventListener(<span class="string">'dragover'</span>, dragOver, <span class="literal">false</span>);</div><div class="line">dropZone.addEventListener(<span class="string">'drop'</span>, fileSelect, <span class="literal">false</span>);</div></pre></td></tr></table></figure>
+<h2 id="美化上传框"><a href="#美化上传框" class="headerlink" title="美化上传框"></a>美化上传框</h2><blockquote>
+<p>方法一： 在隐藏的文件输入框上调用click()方法</p>
+</blockquote>
+<p>隐藏掉默认的的文件输入框<code>&lt;input&gt;</code>元素，使用自定义的界面来充当打开文件选择对话框的按钮。要使用样式display:none把原本的文件输入框隐藏掉，然后在需要的时候调用它的click()方法就行了。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">id</span>=<span class="string">"fileElem"</span> <span class="attr">multiple</span> <span class="attr">accept</span>=<span class="string">"image/*"</span> <span class="attr">style</span>=<span class="string">"display：none"</span> <span class="attr">onchange</span>=<span class="string">"handleFiles(this.files)"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">id</span>=<span class="string">"fileSelect"</span>&gt;</span>选择文件<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> fileSelect = <span class="built_in">document</span>.getElementById(<span class="string">"fileSelect"</span>),</div><div class="line">	fileElem = <span class="built_in">document</span>.getElementById(<span class="string">"fileElem"</span>);</div><div class="line"> </div><div class="line">fileSelect.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</div><div class="line">	<span class="keyword">if</span> (fileElem) &#123;</div><div class="line">		fileElem.click();  <span class="comment">// jQuery可以使用 trigger()</span></div><div class="line">	&#125;</div><div class="line">	e.preventDefault(); <span class="comment">// prevent navigation to "#"</span></div><div class="line">&#125;, <span class="literal">false</span>);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>方法二：用label</p>
+</blockquote>
+<p>隐藏input，把样式写到label上，点击label就是对input进行操作。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"img_input2"</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">accept</span>=<span class="string">"image/*"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"img_input2"</span> <span class="attr">id</span>=<span class="string">"img_label2"</span>&gt;</span>选择文件</div><div class="line">    <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-plus fa-lg"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"preview_box2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"> </div><div class="line"> </div><div class="line">#img_input2 &#123;</div><div class="line">	display: none;</div><div class="line">&#125;</div><div class="line">#img_label2 &#123;</div><div class="line">	background-color: #f2d547;</div><div class="line">	border-radius: 5px;</div><div class="line">	display: inline-block;</div><div class="line">	padding: 10px;</div><div class="line">&#125;</div><div class="line">#preview_box2 img &#123;</div><div class="line">	width: 200px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"#img_input2"</span>).on(<span class="string">"change"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line"> </div><div class="line">	<span class="keyword">let</span> file = e.target.files[<span class="number">0</span>]; <span class="comment">//获取图片资源</span></div><div class="line"> </div><div class="line">	<span class="comment">// 只选择图片文件</span></div><div class="line">	<span class="keyword">if</span> (!file.type.match(<span class="string">'image.*'</span>)) &#123;</div><div class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">	&#125;</div><div class="line"> </div><div class="line">	<span class="keyword">let</span> reader = <span class="keyword">new</span> FileReader();</div><div class="line">	reader.readAsDataURL(file); <span class="comment">// 读取文件</span></div><div class="line"> </div><div class="line">	<span class="comment">// 渲染文件</span></div><div class="line">	reader.onload = <span class="function"><span class="keyword">function</span>(<span class="params">arg</span>) </span>&#123;</div><div class="line"> </div><div class="line">		<span class="keyword">let</span> img = <span class="string">'&lt;img class="preview" src="'</span> + arg.target.result + <span class="string">'" alt="preview"/&gt;'</span>;</div><div class="line">		$(<span class="string">"#preview_box2"</span>).empty().append(img);</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="使用Base64的方式-实现本地预览"><a href="#使用Base64的方式-实现本地预览" class="headerlink" title="使用Base64的方式,实现本地预览"></a>使用Base64的方式,实现本地预览</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="built_in">window</span>.FileReader) &#123;</div><div class="line">	<span class="keyword">let</span> oFileReader = <span class="keyword">new</span> FileReader(),</div><div class="line">	oFile = e.target.files[<span class="number">0</span>];</div><div class="line">	<span class="keyword">if</span> (<span class="regexp">/^image*/</span>.test(oFile.type)) &#123;</div><div class="line">		oFileReader.onloadend = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</div><div class="line">			<span class="keyword">let</span> binfo64 = e.target.result;</div><div class="line">			<span class="keyword">let</span> postinfo = &#123;</div><div class="line">				<span class="attr">image</span>: binfo64,</div><div class="line">				<span class="attr">filename</span>: <span class="string">`passport-<span class="subst">$&#123;<span class="keyword">new</span> <span class="built_in">Date</span>().getTime()&#125;</span>`</span></div><div class="line">			&#125;</div><div class="line">    	&#125;;</div><div class="line">		oFileReader.readAsDataURL(oFile);</div><div class="line">	&#125; <span class="keyword">else</span> &#123;</div><div class="line">		alert(<span class="string">'传入图片文件'</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="使用Ajax上传图片信息，并显示图片上传的进度"><a href="#使用Ajax上传图片信息，并显示图片上传的进度" class="headerlink" title="使用Ajax上传图片信息，并显示图片上传的进度"></a>使用Ajax上传图片信息，并显示图片上传的进度</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"fileupload-form"</span>&gt;</span>    </div><div class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"fileupload"</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"file"</span> &gt;</span>   </div><div class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//绑定了`submit`事件。    </span></div><div class="line">   $(<span class="string">'#fileupload-form'</span>).on(<span class="string">'submit'</span>,(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">       e.preventDefault();</div><div class="line">       <span class="comment">//序列化表单   </span></div><div class="line">      <span class="keyword">var</span> serializeData = $(<span class="keyword">this</span>).serialize();</div><div class="line">      </div><div class="line">      <span class="comment">// var formData = new FormData(this);</span></div><div class="line">      $(<span class="keyword">this</span>).ajaxSubmit(&#123;</div><div class="line">           <span class="attr">type</span>:<span class="string">'POST'</span>,</div><div class="line">           <span class="attr">url</span>: *yoururl*,</div><div class="line">           <span class="attr">dataType</span>: <span class="string">'json'</span>, </div><div class="line">           <span class="attr">data</span>: serializeData,            </div><div class="line">           <span class="comment">// data: formData,</span></div><div class="line">           </div><div class="line">           <span class="comment">//attention!!!   </span></div><div class="line">           contentType: <span class="literal">false</span>,      </div><div class="line">           <span class="attr">cache</span>: <span class="literal">false</span>,             </div><div class="line">           <span class="attr">processData</span>:<span class="literal">false</span>,      </div><div class="line">             </div><div class="line">           <span class="attr">beforeSubmit</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">                   <span class="comment">//上传图片之前的处理   </span></div><div class="line">           &#125;,</div><div class="line">           <span class="attr">uploadProgress</span>: <span class="function"><span class="keyword">function</span> (<span class="params">event, position, total, percentComplete</span>)</span>&#123; </div><div class="line">               <span class="comment">//在这里控制进度条   </span></div><div class="line">           &#125;,</div><div class="line">           <span class="attr">success</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">               </div><div class="line">           &#125;,</div><div class="line">           <span class="attr">error</span>:<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">               alert(<span class="string">'上传图片出错'</span>);</div><div class="line">           &#125;</div><div class="line">       &#125;);</div><div class="line">   &#125;));</div><div class="line"> </div><div class="line"><span class="comment">//绑定文件选择事件，一选择了图片，就让`form`提交。   </span></div><div class="line"> </div><div class="line">   $(<span class="string">"#fileupload"</span>).on(<span class="string">"change"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">       $(<span class="keyword">this</span>).parent().submit();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>说明：<br>1.使用.serialize()获取表单的数据，不同通过val和text获取值<br>2.ajax上传图片这三个参数必须配置contentType: false, cache: false, processData:false<br>3.该处使用了uploadProgress 来获取文件上传的进度（本人没实验，待测）</p>
+</blockquote>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">谢谢你请我吃糖果</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="http://hjingren.cn/publicImages/wxpay.jpg" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="http://hjingren.cn/publicImages/alipay.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/05/20/Fetch学习笔记/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/project/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              项目
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
