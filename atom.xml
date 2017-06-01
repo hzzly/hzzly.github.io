@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-05-31T12:19:15.000Z</updated>
+  <updated>2017-06-01T05:50:49.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/05/31/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E6%95%B4%E7%90%86/"/>
     <id>http://yoursite.com/2017/05/31/前端面试整理/</id>
     <published>2017-05-31T08:52:12.000Z</published>
-    <updated>2017-05-31T12:19:15.000Z</updated>
+    <updated>2017-06-01T05:50:49.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h1><h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h2><blockquote>
 <p>我们创建的每一个函数，都可以有一个prototype属性，该属性指向一个对象。这个对象，就是原型。</p>
@@ -81,7 +81,7 @@
 <li>localStorage用于持久化的本地存储，除非主动删除数据，否则数据是永远不会过期的。</li>
 </ul>
 </blockquote>
-<p>具体参见：<a href="http://hzzly.net/2017/04/26/%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8sessionStorage%E4%B8%8ElocalStorage/" target="_blank" rel="external">本地存储sessionStorage与localStorage</a></p>
+<p>具体参见：<a href="http://hjingren.cn/2017/04/26/%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8sessionStorage%E4%B8%8ElocalStorage/" target="_blank" rel="external">本地存储sessionStorage与localStorage</a></p>
 <h2 id="cookie-和session"><a href="#cookie-和session" class="headerlink" title="cookie 和session"></a>cookie 和session</h2><p>1、cookie数据存放在客户的浏览器上，session数据放在服务器上。<br>2、cookie不是很安全，别人可以分析存放在本地的COOKIE并进行COOKIE欺骗，考虑到安全应当使用session。<br>3、session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能，考虑到减轻服务器性能方面，应当使用COOKIE。<br>4、单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。每次请求一个新的页面的时候Cookie都会被发送过去，与服务器进行交互。</p>
 <h2 id="XML和JSON的区别？"><a href="#XML和JSON的区别？" class="headerlink" title="XML和JSON的区别？"></a>XML和JSON的区别？</h2><p>1、数据体积方面。<br>JSON相对于XML来讲，数据的体积小，传递的速度更快些。<br>2、数据交互方面。<br>JSON与JavaScript的交互更加方便，更容易解析处理，更好的数据交互。<br>3、数据描述方面。<br>JSON对数据的描述性比XML较差。<br>4、传输速度方面。<br>JSON的速度要远远快于XML。</p>
 <h2 id="如何实现浏览器内多个标签页之间的通信"><a href="#如何实现浏览器内多个标签页之间的通信" class="headerlink" title="如何实现浏览器内多个标签页之间的通信?"></a>如何实现浏览器内多个标签页之间的通信?</h2><p>调用localstorge、cookies等本地存储方式</p>
@@ -1668,13 +1668,13 @@
     <link href="http://yoursite.com/2017/04/27/%E2%80%99DIY%E4%B8%80%E4%B8%AA%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/"/>
     <id>http://yoursite.com/2017/04/27/’DIY一个自己的音乐播放器/</id>
     <published>2017-04-27T06:47:55.000Z</published>
-    <updated>2017-05-21T14:09:57.000Z</updated>
+    <updated>2017-06-01T05:49:34.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>前言：在最近的一个外包项目<a href="http://www.zblmchina.com/#/post" target="_blank" rel="external">中包联盟</a>(PC端)中使用到了video，遇到了好多坑。突发奇想来踩一踩audio的坑😀，果然一入深似海，👇下面将分享我的DIY之路-Vue音乐播放器。<br>注：本项目为开源项目，不能用于商业应用，仅供学习。有问题或建议发我邮箱：hjingren@aliyun.com</p>
 </blockquote>
 <p>[温馨提示：pc浏览f12手机模式最佳,手机建议wifi下访问]</p>
-<h3 id="预览地址：-http-hjingren-cn-magic-music"><a href="#预览地址：-http-hjingren-cn-magic-music" class="headerlink" title="预览地址： http://hjingren.cn/magic-music"></a><strong>预览地址：</strong> <a href="http://hjingren.cn/magic-music" target="_blank" rel="external">http://hjingren.cn/magic-music</a></h3><h3 id="Github地址：-https-github-com-hzzly-MagicMusic"><a href="#Github地址：-https-github-com-hzzly-MagicMusic" class="headerlink" title="Github地址： https://github.com/hzzly/MagicMusic"></a><strong>Github地址：</strong> <a href="https://github.com/hzzly/MagicMusic" target="_blank" rel="external">https://github.com/hzzly/MagicMusic</a></h3><p>欢迎大家的star啦😄~</p>
+<h3 id="预览地址：-http-hzzly-net-magic-music"><a href="#预览地址：-http-hzzly-net-magic-music" class="headerlink" title="预览地址： http://hzzly.net/magic-music"></a><strong>预览地址：</strong> <a href="http://hzzly.net/magic-music" target="_blank" rel="external">http://hzzly.net/magic-music</a></h3><h3 id="Github地址：-https-github-com-hzzly-MagicMusic"><a href="#Github地址：-https-github-com-hzzly-MagicMusic" class="headerlink" title="Github地址： https://github.com/hzzly/MagicMusic"></a><strong>Github地址：</strong> <a href="https://github.com/hzzly/MagicMusic" target="_blank" rel="external">https://github.com/hzzly/MagicMusic</a></h3><p>欢迎大家的star啦😄~</p>
 <p>先来个预览：</p>
 <p><img src="http://omt3u4bph.bkt.clouddn.com/magic-music1.gif" alt="magic-music1"></p>
 <p>更多预览：<a href="http://hjingren.cn/magic-music/pic.html" target="_blank" rel="external">更多</a></p>
@@ -1814,7 +1814,7 @@
 &lt;p&gt;前言：在最近的一个外包项目&lt;a href=&quot;http://www.zblmchina.com/#/post&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;中包联盟&lt;/a&gt;(PC端)中使用到了video，遇到了好多坑。突发奇想来踩一踩audio的坑😀，果然一入深似海，👇下面将分享我的DIY之路-Vue音乐播放器。&lt;br&gt;注：本项目为开源项目，不能用于商业应用，仅供学习。有问题或建议发我邮箱：hjingren@aliyun.com&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;[温馨提示：pc浏览f12手机模式最佳,手机建议wifi下访问]&lt;/p&gt;
-&lt;h3 id=&quot;预览地址：-http-hjingren-cn-magic-music&quot;&gt;&lt;a href=&quot;#预览地址：-http-hjingren-cn-magic-music&quot; class=&quot;headerlink&quot; title=&quot;预览地址： http://hjingren.cn/magic-music&quot;&gt;&lt;/a&gt;&lt;strong&gt;预览地址：&lt;/strong&gt; &lt;a href=&quot;http://hjingren.cn/magic-music&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://hjingren.cn/magic-music&lt;/a&gt;&lt;/h3&gt;&lt;h3 id=&quot;Github地址：-https-github-com-hzzly-MagicMusic&quot;&gt;&lt;a href=&quot;#Github地址：-https-github-com-hzzly-MagicMusic&quot; class=&quot;headerlink&quot; title=&quot;Github地址： https://github.com/hzzly/MagicMusic&quot;&gt;&lt;/a&gt;&lt;strong&gt;Github地址：&lt;/strong&gt; &lt;a href=&quot;https://github.com/hzzly/MagicMusic&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/hzzly/MagicMusic&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;欢迎大家的star啦😄~&lt;/p&gt;
+&lt;h3 id=&quot;预览地址：-http-hzzly-net-magic-music&quot;&gt;&lt;a href=&quot;#预览地址：-http-hzzly-net-magic-music&quot; class=&quot;headerlink&quot; title=&quot;预览地址： http://hzzly.net/magic-music&quot;&gt;&lt;/a&gt;&lt;strong&gt;预览地址：&lt;/strong&gt; &lt;a href=&quot;http://hzzly.net/magic-music&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://hzzly.net/magic-music&lt;/a&gt;&lt;/h3&gt;&lt;h3 id=&quot;Github地址：-https-github-com-hzzly-MagicMusic&quot;&gt;&lt;a href=&quot;#Github地址：-https-github-com-hzzly-MagicMusic&quot; class=&quot;headerlink&quot; title=&quot;Github地址： https://github.com/hzzly/MagicMusic&quot;&gt;&lt;/a&gt;&lt;strong&gt;Github地址：&lt;/strong&gt; &lt;a href=&quot;https://github.com/hzzly/MagicMusic&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/hzzly/MagicMusic&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;欢迎大家的star啦😄~&lt;/p&gt;
 &lt;p&gt;先来个预览：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://omt3u4bph.bkt.clouddn.com/magic-music1.gif&quot; alt=&quot;magic-music1&quot;&gt;&lt;/p&gt;
 &lt;p&gt;更多预览：&lt;a href=&quot;http://hjingren.cn/magic-music/pic.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;更多&lt;/a&gt;&lt;/p&gt;

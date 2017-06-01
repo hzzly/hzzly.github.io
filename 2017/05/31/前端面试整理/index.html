@@ -24,7 +24,7 @@
 <meta property="og:description" content="JavaScript原型 我们创建的每一个函数，都可以有一个prototype属性，该属性指向一个对象。这个对象，就是原型。  当我们在创建对象时，可以根据自己的需求，选择性的将一些属性和方法通过prototype属性，挂载在原型对象上。而每一个new出来的实例，都有一个proto属性，该属性指向构造函数的原型对象，通过这个属性，让实例对象也能够访问原型对象上的方法。因此，当所有的实例都能够通过p">
 <meta property="og:image" content="http://omt3u4bph.bkt.clouddn.com/599584-2fc7dad23d112791.png">
 <meta property="og:image" content="http://omt3u4bph.bkt.clouddn.com/599584-da97dde356289ade.png">
-<meta property="og:updated_time" content="2017-05-31T12:19:15.000Z">
+<meta property="og:updated_time" content="2017-06-01T05:50:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="征服前端面试">
 <meta name="twitter:description" content="JavaScript原型 我们创建的每一个函数，都可以有一个prototype属性，该属性指向一个对象。这个对象，就是原型。  当我们在创建对象时，可以根据自己的需求，选择性的将一些属性和方法通过prototype属性，挂载在原型对象上。而每一个new出来的实例，都有一个proto属性，该属性指向构造函数的原型对象，通过这个属性，让实例对象也能够访问原型对象上的方法。因此，当所有的实例都能够通过p">
@@ -289,7 +289,7 @@
 <li>localStorage用于持久化的本地存储，除非主动删除数据，否则数据是永远不会过期的。</li>
 </ul>
 </blockquote>
-<p>具体参见：<a href="http://hzzly.net/2017/04/26/%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8sessionStorage%E4%B8%8ElocalStorage/" target="_blank" rel="external">本地存储sessionStorage与localStorage</a></p>
+<p>具体参见：<a href="http://hjingren.cn/2017/04/26/%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8sessionStorage%E4%B8%8ElocalStorage/" target="_blank" rel="external">本地存储sessionStorage与localStorage</a></p>
 <h2 id="cookie-和session"><a href="#cookie-和session" class="headerlink" title="cookie 和session"></a>cookie 和session</h2><p>1、cookie数据存放在客户的浏览器上，session数据放在服务器上。<br>2、cookie不是很安全，别人可以分析存放在本地的COOKIE并进行COOKIE欺骗，考虑到安全应当使用session。<br>3、session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能，考虑到减轻服务器性能方面，应当使用COOKIE。<br>4、单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。每次请求一个新的页面的时候Cookie都会被发送过去，与服务器进行交互。</p>
 <h2 id="XML和JSON的区别？"><a href="#XML和JSON的区别？" class="headerlink" title="XML和JSON的区别？"></a>XML和JSON的区别？</h2><p>1、数据体积方面。<br>JSON相对于XML来讲，数据的体积小，传递的速度更快些。<br>2、数据交互方面。<br>JSON与JavaScript的交互更加方便，更容易解析处理，更好的数据交互。<br>3、数据描述方面。<br>JSON对数据的描述性比XML较差。<br>4、传输速度方面。<br>JSON的速度要远远快于XML。</p>
 <h2 id="如何实现浏览器内多个标签页之间的通信"><a href="#如何实现浏览器内多个标签页之间的通信" class="headerlink" title="如何实现浏览器内多个标签页之间的通信?"></a>如何实现浏览器内多个标签页之间的通信?</h2><p>调用localstorge、cookies等本地存储方式</p>
