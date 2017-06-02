@@ -15,19 +15,19 @@
     <meta name="keywords" content="随笔,面试," />
   
 
-  <meta name="description" content="JavaScript原型 我们创建的每一个函数，都可以有一个prototype属性，该属性指向一个对象。这个对象，就是原型。  当我们在创建对象时，可以根据自己的需求，选择性的将一些属性和方法通过prototype属性，挂载在原型对象上。而每一个new出来的实例，都有一个proto属性，该属性指向构造函数的原型对象，通过这个属性，让实例对象也能够访问原型对象上的方法。因此，当所有的实例都能够通过p">
+  <meta name="description" content="前言：以下是整理一些面试中经常会遇到的经典面试题以及自己面试过程中有一些未解决的问题，通过对知识的整理以及经验的总结，重新巩固自身的前端基础知识，如有错误或更好的答案，欢迎指正，水平有限，望各位不吝指教。:）  JavaScript原型 我们创建的每一个函数，都可以有一个prototype属性，该属性指向一个对象。这个对象，就是原型。  当我们在创建对象时，可以根据自己的需求，选择性的将一些属性">
 <meta name="keywords" content="随笔,面试">
 <meta property="og:type" content="article">
 <meta property="og:title" content="征服前端面试">
 <meta property="og:url" content="http://yoursite.com/2017/05/31/前端面试整理/index.html">
 <meta property="og:site_name" content="Hzzly">
-<meta property="og:description" content="JavaScript原型 我们创建的每一个函数，都可以有一个prototype属性，该属性指向一个对象。这个对象，就是原型。  当我们在创建对象时，可以根据自己的需求，选择性的将一些属性和方法通过prototype属性，挂载在原型对象上。而每一个new出来的实例，都有一个proto属性，该属性指向构造函数的原型对象，通过这个属性，让实例对象也能够访问原型对象上的方法。因此，当所有的实例都能够通过p">
+<meta property="og:description" content="前言：以下是整理一些面试中经常会遇到的经典面试题以及自己面试过程中有一些未解决的问题，通过对知识的整理以及经验的总结，重新巩固自身的前端基础知识，如有错误或更好的答案，欢迎指正，水平有限，望各位不吝指教。:）  JavaScript原型 我们创建的每一个函数，都可以有一个prototype属性，该属性指向一个对象。这个对象，就是原型。  当我们在创建对象时，可以根据自己的需求，选择性的将一些属性">
 <meta property="og:image" content="http://omt3u4bph.bkt.clouddn.com/599584-2fc7dad23d112791.png">
 <meta property="og:image" content="http://omt3u4bph.bkt.clouddn.com/599584-da97dde356289ade.png">
-<meta property="og:updated_time" content="2017-06-01T05:50:49.000Z">
+<meta property="og:updated_time" content="2017-06-02T02:27:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="征服前端面试">
-<meta name="twitter:description" content="JavaScript原型 我们创建的每一个函数，都可以有一个prototype属性，该属性指向一个对象。这个对象，就是原型。  当我们在创建对象时，可以根据自己的需求，选择性的将一些属性和方法通过prototype属性，挂载在原型对象上。而每一个new出来的实例，都有一个proto属性，该属性指向构造函数的原型对象，通过这个属性，让实例对象也能够访问原型对象上的方法。因此，当所有的实例都能够通过p">
+<meta name="twitter:description" content="前言：以下是整理一些面试中经常会遇到的经典面试题以及自己面试过程中有一些未解决的问题，通过对知识的整理以及经验的总结，重新巩固自身的前端基础知识，如有错误或更好的答案，欢迎指正，水平有限，望各位不吝指教。:）  JavaScript原型 我们创建的每一个函数，都可以有一个prototype属性，该属性指向一个对象。这个对象，就是原型。  当我们在创建对象时，可以根据自己的需求，选择性的将一些属性">
 <meta name="twitter:image" content="http://omt3u4bph.bkt.clouddn.com/599584-2fc7dad23d112791.png">
 
   
@@ -230,7 +230,10 @@
 
   <div class="article-content">
     
-      <h1 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h1><h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h2><blockquote>
+      <blockquote>
+<p>前言：以下是整理一些面试中经常会遇到的经典面试题以及自己面试过程中有一些未解决的问题，通过对知识的整理以及经验的总结，重新巩固自身的前端基础知识，如有错误或更好的答案，欢迎指正，水平有限，望各位不吝指教。:）</p>
+</blockquote>
+<h1 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h1><h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h2><blockquote>
 <p>我们创建的每一个函数，都可以有一个prototype属性，该属性指向一个对象。这个对象，就是原型。</p>
 </blockquote>
 <p>当我们在创建对象时，可以根据自己的需求，选择性的将一些属性和方法通过prototype属性，挂载在原型对象上。而每一个new出来的实例，都有一个<strong>proto</strong>属性，该属性指向构造函数的原型对象，通过这个属性，让实例对象也能够访问原型对象上的方法。因此，当所有的实例都能够通过<strong>proto</strong>访问到原型对象时，原型对象的方法与属性就变成了共有方法与属性。</p>
