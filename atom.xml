@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-06-05T05:52:53.000Z</updated>
+  <updated>2017-06-05T13:39:13.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,92 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>DIY一个人自己的音乐播放器2.0来袭</title>
+    <link href="http://yoursite.com/2017/06/05/DIY%E4%B8%80%E4%B8%AA%E4%BA%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A82-0%E6%9D%A5%E8%A2%AD/"/>
+    <id>http://yoursite.com/2017/06/05/DIY一个人自己的音乐播放器2-0来袭/</id>
+    <published>2017-06-05T13:32:59.000Z</published>
+    <updated>2017-06-05T13:39:13.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>前言：之前做的第一版播放器功能做出来了，但发现结构不是很优雅以及后端api很不稳定，所以进行了一次小升级。此次升级 <strong>功能更全，体验更好，api更稳定，技术栈更多，收获也更多</strong>👍。</p>
+</blockquote>
+<p>[温馨提示：pc浏览f12手机模式最佳,手机建议wifi下访问]</p>
+<h2 id="预览地址：-http-hzzly-net-magic-music"><a href="#预览地址：-http-hzzly-net-magic-music" class="headerlink" title="预览地址： http://hzzly.net/magic-music"></a>预览地址： <a href="http://hzzly.net/magic-music" target="_blank" rel="external">http://hzzly.net/magic-music</a></h2><h2 id="Github地址：-https-github-com-hzzly-MagicMusic"><a href="#Github地址：-https-github-com-hzzly-MagicMusic" class="headerlink" title="Github地址： https://github.com/hzzly/MagicMusic"></a>Github地址： <a href="https://github.com/hzzly/MagicMusic" target="_blank" rel="external">https://github.com/hzzly/MagicMusic</a></h2><p>欢迎大家的star和fork😄~</p>
+<h2 id="实现的功能"><a href="#实现的功能" class="headerlink" title="实现的功能"></a>实现的功能</h2><ul>
+<li><strong>首页</strong><ul>
+<li>轮播</li>
+<li>个性推荐[流行、古典、轻音乐、流行]</li>
+<li>歌曲操作（动画）</li>
+</ul>
+</li>
+<li><strong>底部播放控件</strong><ul>
+<li>播放、暂停、下一曲</li>
+<li>实时播放进度条</li>
+</ul>
+</li>
+<li><strong>播放页</strong><ul>
+<li>上一曲、播放、暂停、下一曲</li>
+<li>播放进度条（弧形进度条）</li>
+<li>歌词滚动、歌词高亮</li>
+</ul>
+</li>
+<li><strong>播放列表</strong><ul>
+<li>播放歌曲高亮</li>
+<li>切歌(单击切歌)</li>
+<li>删歌(点击右侧小X)</li>
+<li>清空播放列表</li>
+<li>本地缓存播放列表</li>
+</ul>
+</li>
+<li><strong>排行榜</strong><ul>
+<li>排行榜列表</li>
+<li>排行榜里的歌曲(单击播放)、全部播放</li>
+</ul>
+</li>
+<li><strong>音乐搜索</strong><ul>
+<li>搜索单曲、歌手</li>
+<li>搜索历史记录</li>
+</ul>
+</li>
+<li><strong>侧边栏</strong></li>
+</ul>
+<h2 id="未实现的功能"><a href="#未实现的功能" class="headerlink" title="未实现的功能"></a>未实现的功能</h2><ul>
+<li>喜欢、分享、下载、切换播放模式</li>
+</ul>
+<h2 id="预览"><a href="#预览" class="headerlink" title="预览"></a>预览</h2><p><img src="http://hzzly.net/magic-music/screenshots/music.gif" alt="http://hzzly.net/magic-music/screenshots/music.gif"></p>
+<p><strong>更多预览👉</strong><a href="http://hzzly.net/magic-music/screenshots/" target="_blank" rel="external">更多</a></p>
+<h2 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h2><p>1、<code>Vue全家桶(vue2、vue-router、vuex)</code> 快速开发SPA神器<br>2、<code>Axios</code> vue作者推荐的数据请求方案<br>3、<code>ES6</code> 全面过度es6的写法 趋势<br>4、<code>Webpack2</code> 脚手架已经配置好了，超贴心<br>5、<code>Promise</code> 把请求封装在promise中，方便的可以使用.then回调<br>6、<code>flex布局</code> 对于移动端可以放心大胆的使用<br>7、<code>移动端屏幕适配</code> 采用手淘的flexible+rem方案<br>8、<code>本地存储(sessionStorage、localStorage)</code> 避免重复资源请求，快速读取<br>9、<code>图片懒加载</code> vue-lazyload 提升用户体验</p>
+<h2 id="本次更新日志"><a href="#本次更新日志" class="headerlink" title="本次更新日志"></a>本次更新日志</h2><ul>
+<li>后端api采用pm2来部署，防止断开后数据无法请求的尴尬。</li>
+<li>把监听audio加载完数据事件统一管理起来，避免重复监听，优化代码结构。</li>
+<li>更新axios请求，让请求更加优美。</li>
+<li>修改播放页面，优化用户体验。</li>
+<li>添加加载音乐loading等待，提升用户体验。</li>
+<li>添加播放全部，避免一个一个添加。</li>
+<li>本地缓存播放列表与清空。</li>
+</ul>
+<p><a href="http://hjingren.cn/2017/04/27/%E2%80%99DIY%E4%B8%80%E4%B8%AA%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/" target="_blank" rel="external">DIY一个自己的音乐播放器1.0</a></p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>MagicMusic还在不断努力的改进，觉得还行的可以点个star，<strong>你的star是我继续开源创作的动力</strong>，谢谢！！！当然有建议可以在issues里提。<br><strong>项目地址：</strong> <a href="https://github.com/hzzly/MagicMusic" target="_blank" rel="external">https://github.com/hzzly/MagicMusic</a><br>欢迎大家的star啦~</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;前言：之前做的第一版播放器功能做出来了，但发现结构不是很优雅以及后端api很不稳定，所以进行了一次小升级。此次升级 &lt;strong&gt;功能更全，体验更好，api更稳定，技术栈更多，收获也更多&lt;/strong&gt;👍。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="vue" scheme="http://yoursite.com/tags/vue/"/>
+    
+      <category term="vuex" scheme="http://yoursite.com/tags/vuex/"/>
+    
+  </entry>
   
   <entry>
     <title>CentOS 7 Nginx的折腾</title>
@@ -1732,7 +1818,7 @@
     <link href="http://yoursite.com/2017/04/27/%E2%80%99DIY%E4%B8%80%E4%B8%AA%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/"/>
     <id>http://yoursite.com/2017/04/27/’DIY一个自己的音乐播放器/</id>
     <published>2017-04-27T06:47:55.000Z</published>
-    <updated>2017-06-04T11:19:33.000Z</updated>
+    <updated>2017-06-05T09:43:12.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>前言：在最近的一个外包项目<a href="http://www.zblmchina.com/#/post" target="_blank" rel="external">中包联盟</a>(PC端)中使用到了video，遇到了好多坑。突发奇想来踩一踩audio的坑😀，果然一入深似海，👇下面将分享我的DIY之路-Vue音乐播放器。<br>注：本项目为开源项目，不能用于商业应用，仅供学习。有问题或建议发我邮箱：hjingren@aliyun.com</p>
@@ -1797,8 +1883,8 @@
 <li>[x] 播放歌曲高亮</li>
 <li>[x] 切歌(单击切歌)</li>
 <li>[x] 删歌(点击右侧小X)</li>
-<li>[x] 清空播放列表</li>
-<li>[x] 本地缓存播放列表</li>
+<li>[ ] 清空播放列表</li>
+<li>[ ] 本地缓存播放列表</li>
 </ul>
 </blockquote>
 <h4 id="5、排行榜"><a href="#5、排行榜" class="headerlink" title="5、排行榜"></a>5、排行榜</h4><blockquote>
@@ -1925,9 +2011,9 @@
     
       <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
     
-      <category term="vuex" scheme="http://yoursite.com/tags/vuex/"/>
-    
       <category term="vue" scheme="http://yoursite.com/tags/vue/"/>
+    
+      <category term="vuex" scheme="http://yoursite.com/tags/vuex/"/>
     
   </entry>
   
@@ -1980,56 +2066,6 @@
     
     
       <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>读书笔记-es6字符串的扩展</title>
-    <link href="http://yoursite.com/2017/04/22/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-es6%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%89%A9%E5%B1%95/"/>
-    <id>http://yoursite.com/2017/04/22/读书笔记-es6字符串的扩展/</id>
-    <published>2017-04-22T15:07:23.000Z</published>
-    <updated>2017-05-21T14:12:21.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="字符串的扩展"><a href="#字符串的扩展" class="headerlink" title="字符串的扩展"></a><strong>字符串的扩展</strong></h2><h3 id="一、字符串的遍历器接口"><a href="#一、字符串的遍历器接口" class="headerlink" title="一、字符串的遍历器接口"></a>一、字符串的遍历器接口</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> codePoint <span class="keyword">of</span> <span class="string">'foo'</span>) &#123;</div><div class="line">  <span class="built_in">console</span>.log(codePoint)</div><div class="line">&#125;</div><div class="line"><span class="comment">// "f"</span></div><div class="line"><span class="comment">// "o"</span></div><div class="line"><span class="comment">// "o"</span></div></pre></td></tr></table></figure>
-<h3 id="二、at"><a href="#二、at" class="headerlink" title="二、at"></a>二、at</h3><p>返回字符串给定位置的字符<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//es5</span></div><div class="line"><span class="string">'abc'</span>.charAt(<span class="number">0</span>) <span class="comment">// "a"</span></div><div class="line"><span class="comment">//es6</span></div><div class="line"><span class="string">'abc'</span>.at(<span class="number">0</span>) <span class="comment">// "a"</span></div></pre></td></tr></table></figure></p>
-<h3 id="三、indexOf-includes-startsWith-endsWith"><a href="#三、indexOf-includes-startsWith-endsWith" class="headerlink" title="三、indexOf(), includes(), startsWith(), endsWith()"></a>三、indexOf(), includes(), startsWith(), endsWith()</h3><blockquote>
-<ul>
-<li>indexOf() 确定一个字符串是否包含在另一个字符串中(es5)</li>
-<li>includes() 返回布尔值，表示是否找到了参数字符串。</li>
-<li>startsWith() 返回布尔值，表示参数字符串是否在源字符串的头部。</li>
-<li>endsWith()返回布尔值，表示参数字符串是否在源字符串的尾部。</li>
-</ul>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = <span class="string">'Hello world!'</span>;</div><div class="line">s.startsWith(<span class="string">'Hello'</span>) <span class="comment">// true</span></div><div class="line">s.endsWith(<span class="string">'!'</span>) <span class="comment">// true</span></div><div class="line">s.includes(<span class="string">'o'</span>) <span class="comment">// true</span></div></pre></td></tr></table></figure>
-<p>支持第二个参数，表示开始搜索的位置<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = <span class="string">'Hello world!'</span>;</div><div class="line">s.startsWith(<span class="string">'Hello'</span>) <span class="comment">// true</span></div><div class="line">s.endsWith(<span class="string">'!'</span>) <span class="comment">// true</span></div><div class="line">s.includes(<span class="string">'o'</span>) <span class="comment">// true</span></div></pre></td></tr></table></figure></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = <span class="string">'Hello world!'</span>;</div><div class="line">s.startsWith(<span class="string">'world'</span>, <span class="number">6</span>) <span class="comment">// true</span></div><div class="line">s.endsWith(<span class="string">'Hello'</span>, <span class="number">5</span>) <span class="comment">// true</span></div><div class="line">s.includes(<span class="string">'Hello'</span>, <span class="number">6</span>) <span class="comment">// false</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>endsWith的行为与其他两个方法有所不同。它针对前n个字符，而其他两个方法针对从第n个位置直到字符串结束。</p>
-</blockquote>
-<h3 id="四、repeat"><a href="#四、repeat" class="headerlink" title="四、repeat()"></a>四、repeat()</h3><blockquote>
-<p>返回一个新字符串，表示将原字符串重复n次。</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">'x'</span>.repeat(<span class="number">3</span>) <span class="comment">// "xxx"</span></div><div class="line"><span class="string">'hello'</span>.repeat(<span class="number">2</span>) <span class="comment">// "hellohello"</span></div></pre></td></tr></table></figure>
-<h3 id="五、padStart-，padEnd"><a href="#五、padStart-，padEnd" class="headerlink" title="五、padStart()，padEnd()"></a>五、padStart()，padEnd()</h3><blockquote>
-<p>字符串补全长度</p>
-<ul>
-<li>padStart() 头部补全</li>
-<li>padEnd() 尾部补全<br>第一个参数用来指定字符串的最小长度，第二个参数是用来补全的字符串。如果省略第二个参数，默认使用空格补全长度</li>
-</ul>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="string">'x'</span>.padStart(<span class="number">5</span>, <span class="string">'ab'</span>) <span class="comment">// 'ababx'</span></div><div class="line"><span class="string">'x'</span>.padStart(<span class="number">4</span>, <span class="string">'ab'</span>) <span class="comment">// 'abax'</span></div><div class="line"><span class="string">'x'</span>.padEnd(<span class="number">5</span>, <span class="string">'ab'</span>) <span class="comment">// 'xabab'</span></div><div class="line"><span class="string">'x'</span>.padEnd(<span class="number">4</span>, <span class="string">'ab'</span>) <span class="comment">// 'xaba'</span></div></pre></td></tr></table></figure>
-<h3 id="六、模板字符串"><a href="#六、模板字符串" class="headerlink" title="六、模板字符串"></a>六、模板字符串</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 字符串中嵌入变量</span></div><div class="line"><span class="keyword">let</span> name = <span class="string">"hzzly"</span>, time = <span class="string">"today"</span>;</div><div class="line"><span class="string">`Hello <span class="subst">$&#123;name&#125;</span>, how are you <span class="subst">$&#123;time&#125;</span>?`</span></div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;字符串的扩展&quot;&gt;&lt;a href=&quot;#字符串的扩展&quot; class=&quot;headerlink&quot; title=&quot;字符串的扩展&quot;&gt;&lt;/a&gt;&lt;strong&gt;字符串的扩展&lt;/strong&gt;&lt;/h2&gt;&lt;h3 id=&quot;一、字符串的遍历器接口&quot;&gt;&lt;a href=&quot;#一、字符串的遍历器
-    
-    </summary>
-    
-    
-      <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
-    
-      <category term="es6" scheme="http://yoursite.com/tags/es6/"/>
     
   </entry>
   
