@@ -24,7 +24,7 @@
 <meta property="og:description" content="前言：以下是整理一些面试中经常会遇到的经典面试题以及自己面试过程中有一些未解决的问题，通过对知识的整理以及经验的总结，重新巩固自身的前端基础知识，如有错误或更好的答案，欢迎指正，水平有限，望各位不吝指教。:）  JavaScript原型 我们创建的每一个函数，都可以有一个prototype属性，该属性指向一个对象。这个对象，就是原型。  当我们在创建对象时，可以根据自己的需求，选择性的将一些属性">
 <meta property="og:image" content="http://omt3u4bph.bkt.clouddn.com/599584-2fc7dad23d112791.png">
 <meta property="og:image" content="http://omt3u4bph.bkt.clouddn.com/599584-da97dde356289ade.png">
-<meta property="og:updated_time" content="2017-06-02T02:27:10.000Z">
+<meta property="og:updated_time" content="2017-06-05T05:50:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="征服前端面试">
 <meta name="twitter:description" content="前言：以下是整理一些面试中经常会遇到的经典面试题以及自己面试过程中有一些未解决的问题，通过对知识的整理以及经验的总结，重新巩固自身的前端基础知识，如有错误或更好的答案，欢迎指正，水平有限，望各位不吝指教。:）  JavaScript原型 我们创建的每一个函数，都可以有一个prototype属性，该属性指向一个对象。这个对象，就是原型。  当我们在创建对象时，可以根据自己的需求，选择性的将一些属性">
@@ -266,7 +266,7 @@
 <p>JavaScript的this总是指向一个对象，而具体指向哪个对象是在运行时基于函数的执行环境动态绑定的，而非函数被声明时的环境。</p>
 </blockquote>
 <p><strong>this的指向：</strong></p>
-<p>1、作为普通函数调用（this指向该对象）<br>2、作为对象的方法调用（this指向全局对象window对象）<br>3、构造器调用（this指向用new返回的这个对象）<br>4、call、apply、bind的调用（this指向第一个参数对象）</p>
+<p>1、作为普通函数调用（this指向全局对象window对象）<br>2、作为对象的方法调用（this指向该对象）<br>3、构造器调用（this指向用new返回的这个对象）<br>4、call、apply、bind的调用（this指向第一个参数对象）</p>
 <h2 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h2><p>1、函数作为参数传递<br>2、函数作为返回值输出</p>
 <h2 id="new操作符具体干了什么呢"><a href="#new操作符具体干了什么呢" class="headerlink" title="new操作符具体干了什么呢?"></a>new操作符具体干了什么呢?</h2><p>1、创建一个新对象<br>2、将构造函数的作用域赋给新对象（因此this就指向了这个新对象）<br>3、执行构造函数中的代码（为这个新对象添加属性）<br>4、返回新对象</p>
 <h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>1、简单原型链继承<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Super</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.name = <span class="string">'hzzly'</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Sub</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="comment">// ...</span></div><div class="line">&#125;</div><div class="line">Sub.prototype = <span class="keyword">new</span> Super();    <span class="comment">// 核心</span></div></pre></td></tr></table></figure></p>
@@ -484,7 +484,7 @@
 <p>UDP（User Data Protocol，用户数据报协议）是与TCP相对应的协议。它是面向非连接的协议，它不与对方建立连接，而是直接就把数据包发送过去！<br>UDP适用于一次只传送少量数据、对可靠性要求不高的应用环境。</p>
 <h2 id="HTTP和HTTPS"><a href="#HTTP和HTTPS" class="headerlink" title="HTTP和HTTPS"></a>HTTP和HTTPS</h2><p>1、HTTP协议通常承载于TCP协议之上，在HTTP和TCP之间添加一个安全协议层（SSL或TSL），这个时候，就成了我们常说的HTTPS<br>2、默认HTTP的端口号为80，HTTPS的端口号为443</p>
 <p>HTTPS 相对于 HTTP 性能上差点，因为多了 SSL/TLS 的几次握手和加密解密的运算处理，但是加密解密的运算处理已经可以通过特有的硬件来加速处理。</p>
-<h2 id="什么是Etag？"><a href="#什么是Etag？" class="headerlink" title="什么是Etag？"></a>什么是Etag？</h2><p>浏览器下载组件的时候，会将它们存储到浏览器缓存中。如果需要再次获取相同的组件，浏览器将检查组件的缓存时间，<br>假如已经过期，那么浏览器将发送一个条件GET请求到服务器，服务器判断缓存还有效，则发送一个304响应，告诉浏览器可以重用缓存组件。</p>
+<h2 id="什么是Etag？"><a href="#什么是Etag？" class="headerlink" title="什么是Etag？"></a>什么是Etag？</h2><p>把Last-Modified和ETag请求的http报头一起使用，可利用客户端（例如浏览器）的缓存。ETag用于标识资源的状态，当资源发生变更时，如果其头信息中一个或者多个发生变化，或者消息实体发生变化，那么ETag也随之发生变化。浏览器下载组件的时候，会将它们存储到浏览器缓存中。如果需要再次获取相同的组件，浏览器将检查组件的缓存时间，<br>假如已经过期，那么浏览器将发送一个条件GET请求到服务器，服务器判断缓存还有效，则发送一个304响应，告诉浏览器可以重用缓存组件。</p>
 <h2 id="Expires和Cache-Control"><a href="#Expires和Cache-Control" class="headerlink" title="Expires和Cache-Control"></a>Expires和Cache-Control</h2><p>Expires 用来控制缓存的失效日期<br>Cache-Control 用来控制网页的缓存 常见的取值有private、no-cache、max-age、must-revalidate等，默认为private。</p>
 <h2 id="关于Http-2-0-你知道多少？"><a href="#关于Http-2-0-你知道多少？" class="headerlink" title="关于Http 2.0 你知道多少？"></a>关于Http 2.0 你知道多少？</h2><p>HTTP/2引入了“服务端推（server push）”的概念，它允许服务端在客户端需要数据之前就主动地将数据发送到客户端缓存中，从而提高性能。<br>HTTP/2提供更多的加密支持<br>HTTP/2使用多路技术，允许多个消息在一个连接上同时交差。<br>它增加了头压缩（header compression），因此即使非常小的请求，其请求和响应的header都只会占用很小比例的带宽。</p>
 <h2 id="一个页面从输入-URL-到页面加载显示完成，这个过程中都发生了什么？"><a href="#一个页面从输入-URL-到页面加载显示完成，这个过程中都发生了什么？" class="headerlink" title="一个页面从输入 URL 到页面加载显示完成，这个过程中都发生了什么？"></a>一个页面从输入 URL 到页面加载显示完成，这个过程中都发生了什么？</h2><p>1、浏览器根据请求的URL交给DNS域名解析，找到真实IP，向服务器发起请求（TCP三次握手）；<br>2、服务器交给后台处理完成后返回数据，浏览器接收文件（HTML、JS、CSS、图象等）；<br>3、浏览器对加载到的资源（HTML、JS、CSS等）进行语法解析，建立相应的内部数据结构（如HTML的DOM）；<br>4、载入解析到的资源文件，渲染页面，完成。</p>
@@ -572,7 +572,7 @@
     <a class="show pull-left" href="/2017/05/23/HTML5图片上传、预览/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="hide pull-right" href="/">
+    <a class="show pull-right" href="/2017/06/05/CentOS-7-Nginx的折腾/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>

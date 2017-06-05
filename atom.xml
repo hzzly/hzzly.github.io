@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-06-02T02:27:10.000Z</updated>
+  <updated>2017-06-05T05:52:53.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,69 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>CentOS 7 Nginx的折腾</title>
+    <link href="http://yoursite.com/2017/06/05/CentOS-7-Nginx%E7%9A%84%E6%8A%98%E8%85%BE/"/>
+    <id>http://yoursite.com/2017/06/05/CentOS-7-Nginx的折腾/</id>
+    <published>2017-06-05T05:52:23.000Z</published>
+    <updated>2017-06-05T05:52:53.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="CentOS-7-下安装-Nginx"><a href="#CentOS-7-下安装-Nginx" class="headerlink" title="CentOS 7 下安装 Nginx"></a><strong>CentOS 7 下安装 Nginx</strong></h2><h3 id="查看centos版本"><a href="#查看centos版本" class="headerlink" title="查看centos版本"></a>查看centos版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cat /etc/redhat-release</div></pre></td></tr></table></figure>
+<h3 id="一-gcc-安装"><a href="#一-gcc-安装" class="headerlink" title="一. gcc 安装"></a>一. gcc 安装</h3><blockquote>
+<p>安装 nginx 需要先将官网下载的源码进行编译，编译依赖 gcc 环境，如果没有 gcc 环境，则需要安装：</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ yum install gcc-c++</div></pre></td></tr></table></figure>
+<h3 id="二-pcre-pcre-devel-安装"><a href="#二-pcre-pcre-devel-安装" class="headerlink" title="二. pcre pcre-devel 安装"></a>二. pcre pcre-devel 安装</h3><blockquote>
+<p>PCRE(Perl Compatible Regular Expressions) 是一个Perl库，包括 perl 兼容的正则表达式库。nginx 的 http 模块使用 pcre 来解析正则表达式，所以需要在 linux 上安装 pcre 库，pcre-devel 是使用 pcre 开发的一个二次开发库。nginx也需要此库。命令：</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ yum install -y pcre pcre-devel</div></pre></td></tr></table></figure>
+<h3 id="三-zlib-安装"><a href="#三-zlib-安装" class="headerlink" title="三. zlib 安装"></a>三. zlib 安装</h3><blockquote>
+<p>zlib 库提供了很多种压缩和解压缩的方式， nginx 使用 zlib 对 http 包的内容进行 gzip ，所以需要在 Centos 上安装 zlib 库。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ yum install -y zlib zlib-devel</div></pre></td></tr></table></figure>
+<h3 id="四-OpenSSL-安装"><a href="#四-OpenSSL-安装" class="headerlink" title="四. OpenSSL 安装"></a>四. OpenSSL 安装</h3><blockquote>
+<p>OpenSSL 是一个强大的安全套接字层密码库，囊括主要的密码算法、常用的密钥和证书封装管理功能及 SSL 协议，并提供丰富的应用程序供测试或其它目的使用。<br>nginx 不仅支持 http 协议，还支持 https（即在ssl协议上传输http），所以需要在 Centos 安装 OpenSSL 库。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ yum install -y openssl openssl-devel</div></pre></td></tr></table></figure>
+<h3 id="五、官网下载"><a href="#五、官网下载" class="headerlink" title="五、官网下载"></a>五、官网下载</h3><blockquote>
+<ul>
+<li>打开<a href="http://nginx.org/en/download.html" target="_blank" rel="external">http://nginx.org/en/download.html</a></li>
+<li>找到Stable version下的 <a href="http://nginx.org/download/nginx-1.12.0.tar.gz" target="_blank" rel="external">nginx-1.12.0</a></li>
+<li>右键 复制链接</li>
+<li>使用wget命令下载</li>
+</ul>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> /usr/<span class="built_in">local</span>/</div><div class="line">$ wget -c http://nginx.org/download/nginx-1.12.0.tar.gz</div></pre></td></tr></table></figure>
+<h3 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ tar -zxvf nginx-1.12.0.tar.gz</div><div class="line">$ <span class="built_in">cd</span> nginx-1.12.0</div></pre></td></tr></table></figure>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><blockquote>
+<p>使用默认配置</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ./configure</div></pre></td></tr></table></figure>
+<h3 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ make</div><div class="line">$ make install</div></pre></td></tr></table></figure>
+<p>查找安装路径：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ whereis nginx</div></pre></td></tr></table></figure></p>
+<h3 id="启动、停止nginx"><a href="#启动、停止nginx" class="headerlink" title="启动、停止nginx"></a>启动、停止nginx</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> /usr/<span class="built_in">local</span>/nginx/sbin/</div><div class="line">$ ./nginx </div><div class="line">$ ./nginx <span class="_">-s</span> stop      //此方式相当于先查出nginx进程id再使用<span class="built_in">kill</span>命令强制杀掉进程。</div><div class="line">$ ./nginx <span class="_">-s</span> quit      //此方式停止步骤是待nginx进程处理任务完毕进行停止。</div><div class="line">$ ./nginx <span class="_">-s</span> reload    //重启，当 ngin x的配置文件 nginx.conf 修改后，要想让配置生效需要重启 nginx，使用<span class="_">-s</span> reload不用先停止 ngin x再启动 nginx 即可将配置信息在 nginx 中生效</div></pre></td></tr></table></figure>
+<h3 id="检验是否安装成功"><a href="#检验是否安装成功" class="headerlink" title="检验是否安装成功"></a>检验是否安装成功</h3><p>打开浏览器访问此机器的 IP，如果浏览器出现 Welcome to nginx! 则表示 Nginx 已经安装并运行成功。</p>
+<h3 id="开机自启动"><a href="#开机自启动" class="headerlink" title="开机自启动"></a>开机自启动</h3><p>即在rc.local增加启动代码就可以了。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ vi /etc/rc.local</div></pre></td></tr></table></figure></p>
+<p>增加一行 /usr/local/nginx/sbin/nginx</p>
+<p>设置执行权限：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ chmod 755 /etc/rc.local</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;CentOS-7-下安装-Nginx&quot;&gt;&lt;a href=&quot;#CentOS-7-下安装-Nginx&quot; class=&quot;headerlink&quot; title=&quot;CentOS 7 下安装 Nginx&quot;&gt;&lt;/a&gt;&lt;strong&gt;CentOS 7 下安装 Nginx&lt;/stro
+    
+    </summary>
+    
+    
+      <category term="nginx" scheme="http://yoursite.com/tags/nginx/"/>
+    
+  </entry>
+  
+  <entry>
     <title>征服前端面试</title>
     <link href="http://yoursite.com/2017/05/31/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E6%95%B4%E7%90%86/"/>
     <id>http://yoursite.com/2017/05/31/前端面试整理/</id>
     <published>2017-05-31T08:52:12.000Z</published>
-    <updated>2017-06-02T02:27:10.000Z</updated>
+    <updated>2017-06-05T05:50:51.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>前言：以下是整理一些面试中经常会遇到的经典面试题以及自己面试过程中有一些未解决的问题，通过对知识的整理以及经验的总结，重新巩固自身的前端基础知识，如有错误或更好的答案，欢迎指正，水平有限，望各位不吝指教。:）</p>
@@ -58,7 +116,7 @@
 <p>JavaScript的this总是指向一个对象，而具体指向哪个对象是在运行时基于函数的执行环境动态绑定的，而非函数被声明时的环境。</p>
 </blockquote>
 <p><strong>this的指向：</strong></p>
-<p>1、作为普通函数调用（this指向该对象）<br>2、作为对象的方法调用（this指向全局对象window对象）<br>3、构造器调用（this指向用new返回的这个对象）<br>4、call、apply、bind的调用（this指向第一个参数对象）</p>
+<p>1、作为普通函数调用（this指向全局对象window对象）<br>2、作为对象的方法调用（this指向该对象）<br>3、构造器调用（this指向用new返回的这个对象）<br>4、call、apply、bind的调用（this指向第一个参数对象）</p>
 <h2 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h2><p>1、函数作为参数传递<br>2、函数作为返回值输出</p>
 <h2 id="new操作符具体干了什么呢"><a href="#new操作符具体干了什么呢" class="headerlink" title="new操作符具体干了什么呢?"></a>new操作符具体干了什么呢?</h2><p>1、创建一个新对象<br>2、将构造函数的作用域赋给新对象（因此this就指向了这个新对象）<br>3、执行构造函数中的代码（为这个新对象添加属性）<br>4、返回新对象</p>
 <h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>1、简单原型链继承<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Super</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.name = <span class="string">'hzzly'</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Sub</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="comment">// ...</span></div><div class="line">&#125;</div><div class="line">Sub.prototype = <span class="keyword">new</span> Super();    <span class="comment">// 核心</span></div></pre></td></tr></table></figure></p>
@@ -276,7 +334,7 @@
 <p>UDP（User Data Protocol，用户数据报协议）是与TCP相对应的协议。它是面向非连接的协议，它不与对方建立连接，而是直接就把数据包发送过去！<br>UDP适用于一次只传送少量数据、对可靠性要求不高的应用环境。</p>
 <h2 id="HTTP和HTTPS"><a href="#HTTP和HTTPS" class="headerlink" title="HTTP和HTTPS"></a>HTTP和HTTPS</h2><p>1、HTTP协议通常承载于TCP协议之上，在HTTP和TCP之间添加一个安全协议层（SSL或TSL），这个时候，就成了我们常说的HTTPS<br>2、默认HTTP的端口号为80，HTTPS的端口号为443</p>
 <p>HTTPS 相对于 HTTP 性能上差点，因为多了 SSL/TLS 的几次握手和加密解密的运算处理，但是加密解密的运算处理已经可以通过特有的硬件来加速处理。</p>
-<h2 id="什么是Etag？"><a href="#什么是Etag？" class="headerlink" title="什么是Etag？"></a>什么是Etag？</h2><p>浏览器下载组件的时候，会将它们存储到浏览器缓存中。如果需要再次获取相同的组件，浏览器将检查组件的缓存时间，<br>假如已经过期，那么浏览器将发送一个条件GET请求到服务器，服务器判断缓存还有效，则发送一个304响应，告诉浏览器可以重用缓存组件。</p>
+<h2 id="什么是Etag？"><a href="#什么是Etag？" class="headerlink" title="什么是Etag？"></a>什么是Etag？</h2><p>把Last-Modified和ETag请求的http报头一起使用，可利用客户端（例如浏览器）的缓存。ETag用于标识资源的状态，当资源发生变更时，如果其头信息中一个或者多个发生变化，或者消息实体发生变化，那么ETag也随之发生变化。浏览器下载组件的时候，会将它们存储到浏览器缓存中。如果需要再次获取相同的组件，浏览器将检查组件的缓存时间，<br>假如已经过期，那么浏览器将发送一个条件GET请求到服务器，服务器判断缓存还有效，则发送一个304响应，告诉浏览器可以重用缓存组件。</p>
 <h2 id="Expires和Cache-Control"><a href="#Expires和Cache-Control" class="headerlink" title="Expires和Cache-Control"></a>Expires和Cache-Control</h2><p>Expires 用来控制缓存的失效日期<br>Cache-Control 用来控制网页的缓存 常见的取值有private、no-cache、max-age、must-revalidate等，默认为private。</p>
 <h2 id="关于Http-2-0-你知道多少？"><a href="#关于Http-2-0-你知道多少？" class="headerlink" title="关于Http 2.0 你知道多少？"></a>关于Http 2.0 你知道多少？</h2><p>HTTP/2引入了“服务端推（server push）”的概念，它允许服务端在客户端需要数据之前就主动地将数据发送到客户端缓存中，从而提高性能。<br>HTTP/2提供更多的加密支持<br>HTTP/2使用多路技术，允许多个消息在一个连接上同时交差。<br>它增加了头压缩（header compression），因此即使非常小的请求，其请求和响应的header都只会占用很小比例的带宽。</p>
 <h2 id="一个页面从输入-URL-到页面加载显示完成，这个过程中都发生了什么？"><a href="#一个页面从输入-URL-到页面加载显示完成，这个过程中都发生了什么？" class="headerlink" title="一个页面从输入 URL 到页面加载显示完成，这个过程中都发生了什么？"></a>一个页面从输入 URL 到页面加载显示完成，这个过程中都发生了什么？</h2><p>1、浏览器根据请求的URL交给DNS域名解析，找到真实IP，向服务器发起请求（TCP三次握手）；<br>2、服务器交给后台处理完成后返回数据，浏览器接收文件（HTML、JS、CSS、图象等）；<br>3、浏览器对加载到的资源（HTML、JS、CSS等）进行语法解析，建立相应的内部数据结构（如HTML的DOM）；<br>4、载入解析到的资源文件，渲染页面，完成。</p>
@@ -1674,7 +1732,7 @@
     <link href="http://yoursite.com/2017/04/27/%E2%80%99DIY%E4%B8%80%E4%B8%AA%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/"/>
     <id>http://yoursite.com/2017/04/27/’DIY一个自己的音乐播放器/</id>
     <published>2017-04-27T06:47:55.000Z</published>
-    <updated>2017-06-01T05:49:34.000Z</updated>
+    <updated>2017-06-04T11:19:33.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>前言：在最近的一个外包项目<a href="http://www.zblmchina.com/#/post" target="_blank" rel="external">中包联盟</a>(PC端)中使用到了video，遇到了好多坑。突发奇想来踩一踩audio的坑😀，果然一入深似海，👇下面将分享我的DIY之路-Vue音乐播放器。<br>注：本项目为开源项目，不能用于商业应用，仅供学习。有问题或建议发我邮箱：hjingren@aliyun.com</p>
@@ -1739,8 +1797,8 @@
 <li>[x] 播放歌曲高亮</li>
 <li>[x] 切歌(单击切歌)</li>
 <li>[x] 删歌(点击右侧小X)</li>
-<li>[ ] 清空播放列表</li>
-<li>[ ] 本地缓存播放列表</li>
+<li>[x] 清空播放列表</li>
+<li>[x] 本地缓存播放列表</li>
 </ul>
 </blockquote>
 <h4 id="5、排行榜"><a href="#5、排行榜" class="headerlink" title="5、排行榜"></a>5、排行榜</h4><blockquote>
@@ -1867,6 +1925,8 @@
     
       <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
     
+      <category term="vuex" scheme="http://yoursite.com/tags/vuex/"/>
+    
       <category term="vue" scheme="http://yoursite.com/tags/vue/"/>
     
   </entry>
@@ -1963,63 +2023,6 @@
     <summary type="html">
     
       &lt;h2 id=&quot;字符串的扩展&quot;&gt;&lt;a href=&quot;#字符串的扩展&quot; class=&quot;headerlink&quot; title=&quot;字符串的扩展&quot;&gt;&lt;/a&gt;&lt;strong&gt;字符串的扩展&lt;/strong&gt;&lt;/h2&gt;&lt;h3 id=&quot;一、字符串的遍历器接口&quot;&gt;&lt;a href=&quot;#一、字符串的遍历器
-    
-    </summary>
-    
-    
-      <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
-    
-      <category term="es6" scheme="http://yoursite.com/tags/es6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>读书笔记-es6变量的解构赋值</title>
-    <link href="http://yoursite.com/2017/04/21/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-es6%E5%8F%98%E9%87%8F%E7%9A%84%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/"/>
-    <id>http://yoursite.com/2017/04/21/读书笔记-es6变量的解构赋值/</id>
-    <published>2017-04-21T14:59:09.000Z</published>
-    <updated>2017-05-21T14:13:29.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="变量的解构赋值"><a href="#变量的解构赋值" class="headerlink" title="变量的解构赋值"></a><strong>变量的解构赋值</strong></h2><blockquote>
-<p>这种写法属于“模式匹配”，只要等号两边的模式相同，左边的变量就会被赋予对应的值。</p>
-</blockquote>
-<h3 id="一、数组的解构赋值"><a href="#一、数组的解构赋值" class="headerlink" title="一、数组的解构赋值"></a>一、数组的解构赋值</h3><p>数组的元素是按次序排列的，变量的取值由它的位置决定</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> [a, b, c] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line">a <span class="comment">// 1</span></div><div class="line">b <span class="comment">// 2</span></div><div class="line">c <span class="comment">// 3</span></div><div class="line"><span class="keyword">let</span> [head, ...tail] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</div><div class="line">head <span class="comment">// 1</span></div><div class="line">tail <span class="comment">// [2, 3, 4]</span></div></pre></td></tr></table></figure>
-<blockquote>
-<ul>
-<li>默认值</li>
-</ul>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> [foo = <span class="literal">true</span>] = [];</div><div class="line">foo <span class="comment">// true</span></div></pre></td></tr></table></figure>
-<h4 id="栗子："><a href="#栗子：" class="headerlink" title="栗子："></a>栗子：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 返回一个数组</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">example</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> [a, b, c] = example();</div></pre></td></tr></table></figure>
-<h3 id="二、对象的解构赋值"><a href="#二、对象的解构赋值" class="headerlink" title="二、对象的解构赋值"></a>二、对象的解构赋值</h3><p>对象的属性没有次序，变量必须与属性同名，才能取到正确的值</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> &#123; foo, bar &#125; = &#123; <span class="attr">foo</span>: <span class="string">"aaa"</span>, <span class="attr">bar</span>: <span class="string">"bbb"</span> &#125;;</div><div class="line">foo <span class="comment">// "aaa"</span></div><div class="line">bar <span class="comment">// "bbb"</span></div></pre></td></tr></table></figure>
-<blockquote>
-<ul>
-<li>默认值</li>
-</ul>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> &#123;x = <span class="number">3</span>&#125; = &#123;&#125;;</div><div class="line">x <span class="comment">// 3</span></div><div class="line"><span class="keyword">var</span> &#123;x, y = <span class="number">5</span>&#125; = &#123;<span class="attr">x</span>: <span class="number">1</span>&#125;;</div><div class="line">x <span class="comment">// 1</span></div><div class="line">y <span class="comment">// 5</span></div></pre></td></tr></table></figure>
-<h4 id="栗子：-1"><a href="#栗子：-1" class="headerlink" title="栗子："></a>栗子：</h4><blockquote>
-<ul>
-<li>将现有对象的方法，赋值到某个变量。</li>
-</ul>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//将Math对象的对数、正弦、余弦三个方法，赋值到对应的变量上</span></div><div class="line"><span class="keyword">let</span> &#123; log, sin, cos &#125; = <span class="built_in">Math</span>    </div><div class="line"><span class="comment">// 返回一个对象</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">example</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">foo</span>: <span class="number">1</span>,</div><div class="line">    <span class="attr">bar</span>: <span class="number">2</span></div><div class="line">  &#125;;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> &#123; foo, bar &#125; = example();</div></pre></td></tr></table></figure>
-<blockquote>
-<ul>
-<li>提取json数据</li>
-</ul>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> jsonData = &#123;</div><div class="line">  <span class="attr">id</span>: <span class="number">42</span>,</div><div class="line">  <span class="attr">status</span>: <span class="string">"OK"</span>,</div><div class="line">  <span class="attr">data</span>: [<span class="number">867</span>, <span class="number">5309</span>]</div><div class="line">&#125;;</div><div class="line"><span class="keyword">let</span> &#123; id, status, <span class="attr">data</span>: number &#125; = jsonData;</div><div class="line"><span class="built_in">console</span>.log(id, status, number);</div><div class="line"><span class="comment">// 42, "OK", [867, 5309]</span></div></pre></td></tr></table></figure>
-<h3 id="三、字符串的解构赋值"><a href="#三、字符串的解构赋值" class="headerlink" title="三、字符串的解构赋值"></a>三、字符串的解构赋值</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> [a, b, c, d, e] = <span class="string">'hzzly'</span></div><div class="line">a <span class="comment">// "h"</span></div><div class="line">b <span class="comment">// "z"</span></div><div class="line">c <span class="comment">// "z"</span></div><div class="line">d <span class="comment">// "l"</span></div><div class="line">e <span class="comment">// "y"</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//length属性</span></div><div class="line"><span class="keyword">let</span> &#123;<span class="attr">length</span> : len&#125; = <span class="string">'hello'</span>;</div><div class="line">len <span class="comment">// 5</span></div></pre></td></tr></table></figure>
-<h3 id="四、函数参数的解构赋值"><a href="#四、函数参数的解构赋值" class="headerlink" title="四、函数参数的解构赋值"></a>四、函数参数的解构赋值</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">[x, y]</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> x + y;</div><div class="line">&#125;</div><div class="line">add([<span class="number">1</span>, <span class="number">2</span>]); <span class="comment">// 3</span></div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;变量的解构赋值&quot;&gt;&lt;a href=&quot;#变量的解构赋值&quot; class=&quot;headerlink&quot; title=&quot;变量的解构赋值&quot;&gt;&lt;/a&gt;&lt;strong&gt;变量的解构赋值&lt;/strong&gt;&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;这种写法属于“模式匹配”，只要等号两边的
     
     </summary>
     
