@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-06-05T13:39:13.000Z</updated>
+  <updated>2017-06-06T01:42:59.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,12 +20,12 @@
     <link href="http://yoursite.com/2017/06/05/DIY%E4%B8%80%E4%B8%AA%E4%BA%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A82-0%E6%9D%A5%E8%A2%AD/"/>
     <id>http://yoursite.com/2017/06/05/DIY一个人自己的音乐播放器2-0来袭/</id>
     <published>2017-06-05T13:32:59.000Z</published>
-    <updated>2017-06-05T13:39:13.000Z</updated>
+    <updated>2017-06-06T01:42:59.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>前言：之前做的第一版播放器功能做出来了，但发现结构不是很优雅以及后端api很不稳定，所以进行了一次小升级。此次升级 <strong>功能更全，体验更好，api更稳定，技术栈更多，收获也更多</strong>👍。</p>
 </blockquote>
-<p>[温馨提示：pc浏览f12手机模式最佳,手机建议wifi下访问]</p>
+<p>[温馨提示：pc浏览f12手机模式最佳,手机建议wifi下访问,低版本浏览器可能有兼容性问题]</p>
 <h2 id="预览地址：-http-hzzly-net-magic-music"><a href="#预览地址：-http-hzzly-net-magic-music" class="headerlink" title="预览地址： http://hzzly.net/magic-music"></a>预览地址： <a href="http://hzzly.net/magic-music" target="_blank" rel="external">http://hzzly.net/magic-music</a></h2><h2 id="Github地址：-https-github-com-hzzly-MagicMusic"><a href="#Github地址：-https-github-com-hzzly-MagicMusic" class="headerlink" title="Github地址： https://github.com/hzzly/MagicMusic"></a>Github地址： <a href="https://github.com/hzzly/MagicMusic" target="_blank" rel="external">https://github.com/hzzly/MagicMusic</a></h2><p>欢迎大家的star和fork😄~</p>
 <h2 id="实现的功能"><a href="#实现的功能" class="headerlink" title="实现的功能"></a>实现的功能</h2><ul>
 <li><strong>首页</strong><ul>
@@ -79,6 +79,7 @@
 <li>添加加载音乐loading等待，提升用户体验。</li>
 <li>添加播放全部，避免一个一个添加。</li>
 <li>本地缓存播放列表与清空。</li>
+<li>修改首页tab切换动效</li>
 </ul>
 <p><a href="http://hjingren.cn/2017/04/27/%E2%80%99DIY%E4%B8%80%E4%B8%AA%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/" target="_blank" rel="external">DIY一个自己的音乐播放器1.0</a></p>
 <h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>MagicMusic还在不断努力的改进，觉得还行的可以点个star，<strong>你的star是我继续开源创作的动力</strong>，谢谢！！！当然有建议可以在issues里提。<br><strong>项目地址：</strong> <a href="https://github.com/hzzly/MagicMusic" target="_blank" rel="external">https://github.com/hzzly/MagicMusic</a><br>欢迎大家的star啦~</p>
@@ -1818,7 +1819,7 @@
     <link href="http://yoursite.com/2017/04/27/%E2%80%99DIY%E4%B8%80%E4%B8%AA%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/"/>
     <id>http://yoursite.com/2017/04/27/’DIY一个自己的音乐播放器/</id>
     <published>2017-04-27T06:47:55.000Z</published>
-    <updated>2017-06-05T09:43:12.000Z</updated>
+    <updated>2017-06-06T01:41:52.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>前言：在最近的一个外包项目<a href="http://www.zblmchina.com/#/post" target="_blank" rel="external">中包联盟</a>(PC端)中使用到了video，遇到了好多坑。突发奇想来踩一踩audio的坑😀，果然一入深似海，👇下面将分享我的DIY之路-Vue音乐播放器。<br>注：本项目为开源项目，不能用于商业应用，仅供学习。有问题或建议发我邮箱：hjingren@aliyun.com</p>
@@ -1836,8 +1837,6 @@
 <li><a href="https://vuex.vuejs.org/zh-cn/" target="_blank" rel="external">vuex文档</a> 不想看文档的可以看看我这篇博客<a href="https://hzzly.github.io/2017/04/04/vuex%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/" target="_blank" rel="external">vuex学习实践笔记</a></li>
 <li><a href="https://www.npmjs.com/package/axios" target="_blank" rel="external">axios文档</a> 或者这篇博客 <a href="https://blog.ygxdxx.com/2017/02/01/Vuex2&amp;Axios-Develop/" target="_blank" rel="external">Vuex2 与 Axios 开发</a>(我也是参考这篇，感谢作者😁)</li>
 <li><a href="http://es6.ruanyifeng.com/" target="_blank" rel="external">es6(阮一峰的es6入门)</a> 可以参考<a href="https://hzzly.github.io/tags/es6/" target="_blank" rel="external">我的es6之路</a>(还在继续,轻喷)</li>
-<li><a href="https://doc.webpack-china.org/" target="_blank" rel="external">webpack2(中文网站)</a></li>
-<li><a href="https://hzzly.github.io/2017/03/25/%E6%B5%85%E8%B0%88Promise/" target="_blank" rel="external">Promise (浅谈Promise)</a></li>
 <li><a href="https://hzzly.github.io/2017/03/03/Web%E7%9A%84Flex%E5%BC%B9%E6%80%A7%E7%9B%92%E6%A8%A1%E5%9E%8B/" target="_blank" rel="external">flex (Web的flex弹性盒模型)</a></li>
 <li><a href="https://hzzly.github.io/2017/03/15/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D%E7%9A%84%E8%A7%A3%E5%86%B3/" target="_blank" rel="external">移动端屏幕适配的解决 (flexible+rem)</a></li>
 <li><a href="https://hzzly.github.io/2017/04/26/%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8sessionStorage%E4%B8%8ElocalStorage/" target="_blank" rel="external">本地存储(sessionStorage、localStorage)</a></li>
@@ -1976,8 +1975,6 @@
 &lt;li&gt;&lt;a href=&quot;https://vuex.vuejs.org/zh-cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;vuex文档&lt;/a&gt; 不想看文档的可以看看我这篇博客&lt;a href=&quot;https://hzzly.github.io/2017/04/04/vuex%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;vuex学习实践笔记&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://www.npmjs.com/package/axios&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;axios文档&lt;/a&gt; 或者这篇博客 &lt;a href=&quot;https://blog.ygxdxx.com/2017/02/01/Vuex2&amp;amp;Axios-Develop/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Vuex2 与 Axios 开发&lt;/a&gt;(我也是参考这篇，感谢作者😁)&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://es6.ruanyifeng.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;es6(阮一峰的es6入门)&lt;/a&gt; 可以参考&lt;a href=&quot;https://hzzly.github.io/tags/es6/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;我的es6之路&lt;/a&gt;(还在继续,轻喷)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://doc.webpack-china.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;webpack2(中文网站)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://hzzly.github.io/2017/03/25/%E6%B5%85%E8%B0%88Promise/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Promise (浅谈Promise)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://hzzly.github.io/2017/03/03/Web%E7%9A%84Flex%E5%BC%B9%E6%80%A7%E7%9B%92%E6%A8%A1%E5%9E%8B/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;flex (Web的flex弹性盒模型)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://hzzly.github.io/2017/03/15/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D%E7%9A%84%E8%A7%A3%E5%86%B3/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;移动端屏幕适配的解决 (flexible+rem)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://hzzly.github.io/2017/04/26/%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8sessionStorage%E4%B8%8ElocalStorage/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;本地存储(sessionStorage、localStorage)&lt;/a&gt;&lt;/li&gt;
