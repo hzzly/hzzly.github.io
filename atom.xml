@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-06-06T02:05:06.000Z</updated>
+  <updated>2017-06-06T02:11:34.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>DIY一个人自己的音乐播放器2.0来袭</title>
-    <link href="http://yoursite.com/2017/06/05/DIY%E4%B8%80%E4%B8%AA%E4%BA%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A82-0%E6%9D%A5%E8%A2%AD/"/>
-    <id>http://yoursite.com/2017/06/05/DIY一个人自己的音乐播放器2-0来袭/</id>
+    <title>DIY一个自己的音乐播放器2.0来袭</title>
+    <link href="http://yoursite.com/2017/06/05/DIY%E4%B8%80%E4%B8%AA%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A82-0%E6%9D%A5%E8%A2%AD/"/>
+    <id>http://yoursite.com/2017/06/05/DIY一个自己的音乐播放器2-0来袭/</id>
     <published>2017-06-05T13:32:59.000Z</published>
-    <updated>2017-06-06T02:05:06.000Z</updated>
+    <updated>2017-06-06T02:11:34.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>前言：之前做的第一版播放器功能做出来了，但发现结构不是很优雅以及后端api很不稳定，所以进行了一次小升级。此次升级 <strong>功能更全，体验更好，api更稳定，技术栈更多，收获也更多</strong>👍。</p>
