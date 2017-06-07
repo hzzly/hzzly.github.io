@@ -22,7 +22,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/03/30/读书笔记-es5Array对象/index.html">
 <meta property="og:site_name" content="Hzzly">
 <meta property="og:description" content="1.创建 Array 对象的语法：123new Array();new Array(size);new Array(element0, element1, ..., elementn) 2.属性   属性 描述     constructor 返回对创建此对象的数组函数的引用   length 设置或返回数组中元素的数目   prototype 允许向对象添加属性和方法    3.常用方法   方">
-<meta property="og:updated_time" content="2017-05-21T14:17:43.000Z">
+<meta property="og:updated_time" content="2017-06-07T02:23:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记-es5Array对象">
 <meta name="twitter:description" content="1.创建 Array 对象的语法：123new Array();new Array(size);new Array(element0, element1, ..., elementn) 2.属性   属性 描述     constructor 返回对创建此对象的数组函数的引用   length 设置或返回数组中元素的数目   prototype 允许向对象添加属性和方法    3.常用方法   方">
@@ -280,7 +280,7 @@
 </tr>
 <tr>
 <td>shift()</td>
-<td style="text-align:right">删除并返回数组的第一个元素</td>
+<td style="text-align:right">删除并返回数组的第一个元素，会修改原数组</td>
 </tr>
 <tr>
 <td>unshift()</td>
@@ -288,7 +288,7 @@
 </tr>
 <tr>
 <td>slice()</td>
-<td style="text-align:right">从某个已有的数组返回选定的元素</td>
+<td style="text-align:right">从某个已有的数组返回选定的元素，不修改原数组</td>
 </tr>
 <tr>
 <td>sort()</td>
@@ -296,7 +296,7 @@
 </tr>
 <tr>
 <td>splice()</td>
-<td style="text-align:right">删除元素，并向数组添加新元素</td>
+<td style="text-align:right">删除元素，并向数组添加新元素，返回删除的元素，会修改原数组</td>
 </tr>
 <tr>
 <td>valueOf()</td>
@@ -304,7 +304,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="4-栗子"><a href="#4-栗子" class="headerlink" title="4.栗子"></a>4.栗子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//concat()</span></div><div class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line">a.concat(<span class="number">4</span>,<span class="number">5</span>) <span class="comment">//[1,2,3,4,5]</span></div><div class="line">-</div><div class="line"><span class="comment">//join()</span></div><div class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line">a.join() <span class="comment">//1,2,3</span></div><div class="line">-</div><div class="line"><span class="comment">//slice()</span></div><div class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line">a.slice(<span class="number">1</span>) <span class="comment">//[2,3]</span></div><div class="line">-</div><div class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line">a.slice(<span class="number">1</span>,<span class="number">2</span>) <span class="comment">//[2]</span></div><div class="line">-</div><div class="line"><span class="comment">//splice()</span></div><div class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</div><div class="line">a.splice(<span class="number">1</span>,<span class="number">1</span>) <span class="comment">//[2]</span></div><div class="line">-</div><div class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</div><div class="line">a.splice(<span class="number">1</span>,<span class="number">1</span>,<span class="string">'hzzly'</span>) <span class="comment">//[2]</span></div><div class="line">a <span class="comment">//[1, "hzzly", 3, 4, 5]</span></div></pre></td></tr></table></figure>
+<h3 id="4-栗子"><a href="#4-栗子" class="headerlink" title="4.栗子"></a>4.栗子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//concat()</span></div><div class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line">a.concat(<span class="number">4</span>,<span class="number">5</span>) <span class="comment">//[1,2,3,4,5]</span></div><div class="line"> </div><div class="line"><span class="comment">//join()</span></div><div class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line">a.join() <span class="comment">//1,2,3</span></div><div class="line"> </div><div class="line"><span class="comment">//shift()</span></div><div class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</div><div class="line">a.shift() <span class="comment">//1</span></div><div class="line">a <span class="comment">//[2,3,4]</span></div><div class="line"> </div><div class="line"><span class="comment">//unshift()</span></div><div class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</div><div class="line">a.unshift(<span class="number">6</span>) <span class="comment">//5</span></div><div class="line">a <span class="comment">//[6,1,2,3,4]</span></div><div class="line"> </div><div class="line"><span class="comment">//slice()</span></div><div class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line">a.slice(<span class="number">1</span>) <span class="comment">//[2,3]</span></div><div class="line"> </div><div class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line">a.slice(<span class="number">1</span>,<span class="number">2</span>) <span class="comment">//[2]</span></div><div class="line"> </div><div class="line"><span class="comment">//splice()</span></div><div class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</div><div class="line">a.splice(<span class="number">1</span>,<span class="number">1</span>) <span class="comment">//[2]</span></div><div class="line"> </div><div class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</div><div class="line">a.splice(<span class="number">1</span>,<span class="number">1</span>,<span class="string">'hzzly'</span>) <span class="comment">//[2]</span></div><div class="line">a <span class="comment">//[1, "hzzly", 3, 4, 5]</span></div></pre></td></tr></table></figure>
     
   </div>
 </article>
