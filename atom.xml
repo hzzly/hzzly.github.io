@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-06-06T02:11:34.000Z</updated>
+  <updated>2017-06-09T14:47:03.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,63 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>js实现图片懒加载</title>
+    <link href="http://yoursite.com/2017/06/09/js%E5%AE%9E%E7%8E%B0%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD/"/>
+    <id>http://yoursite.com/2017/06/09/js实现图片懒加载/</id>
+    <published>2017-06-09T14:23:39.000Z</published>
+    <updated>2017-06-09T14:47:03.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>前言：最近面试都被问到了这个问题，所以在这里整理一波。</p>
+</blockquote>
+<h1 id="懒加载的意义"><a href="#懒加载的意义" class="headerlink" title="懒加载的意义"></a>懒加载的意义</h1><blockquote>
+<p>懒加载的主要目的是作为服务器前端的优化，减少请求数或延迟请求数，对服务器缓压。</p>
+</blockquote>
+<p><strong>预加载:</strong>提前加载好，缓存到本地，当需要的时候直接读取缓存，对服务器增压</p>
+<h1 id="懒加载实现方式"><a href="#懒加载实现方式" class="headerlink" title="懒加载实现方式"></a>懒加载实现方式</h1><ul>
+<li><p>第一种是纯粹的延迟加载，使用setTimeOut或setInterval进行加载延迟</p>
+</li>
+<li><p>第二种是条件加载，符合某些条件，或触发了某些事件才开始异步下载</p>
+</li>
+<li><p>第三种是可视区加载，即仅加载用户可以看到的区域，这个主要由监控滚动条来实现，一般会在距用户看到某图片前一定距离遍开始加载，这样能保证用户拉下时正好能看到图片</p>
+</li>
+</ul>
+<p>Web 图片的懒加载就是通过读取img元素，然后获得img元素的data-src（也可以约定为其他属性名）属性的值，并赋予img的src，从而实现动态加载图片的机制</p>
+<h2 id="1、懒加载HTML约定"><a href="#1、懒加载HTML约定" class="headerlink" title="1、懒加载HTML约定"></a>1、懒加载HTML约定</h2><p>我们首先需要给准备实施懒加载的img元素添加指定的class 这里为m-lazyload ,同时将img src赋值给 data-src属性。<br>具体示例为：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"m-lazyload"</span> <span class="attr">data-src</span>=<span class="string">"imgUrl"</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="2、懒加载JavaScript实现"><a href="#2、懒加载JavaScript实现" class="headerlink" title="2、懒加载JavaScript实现"></a>2、懒加载JavaScript实现</h2><p>动态加载总共分为以下几个步骤:<br>1、添加页面滚动监听事件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'scroll'</span>, _delay, <span class="literal">false</span>);</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">_delay</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	clearTimeout(delay);</div><div class="line">	delay = setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">		_loadImage();</div><div class="line">	&#125;, time);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>2、当触发监听事件时会执行 _loadImage 函数，该函数负责加载图片<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">_loadImage</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = imgList.length; i--;) &#123;</div><div class="line">		<span class="keyword">var</span> el = imgList[i];</div><div class="line">		<span class="keyword">if</span> (_isShow(el)) &#123;</div><div class="line">			el.src = el.getAttribute(<span class="string">'data-src'</span>);</div><div class="line">			el.className = el.className.replace(<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"(\\s|^)"</span> + _selector.substring(<span class="number">1</span>, _selector.length) + <span class="string">"(\\s|$)"</span>), <span class="string">" "</span>);</div><div class="line">			imgList.splice(i, <span class="number">1</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>3、判断该图片是否在当前窗口的可视区域内<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">_isShow</span>(<span class="params">el</span>) </span>&#123;</div><div class="line">	<span class="keyword">var</span> coords = el.getBoundingClientRect();</div><div class="line">	<span class="keyword">return</span> ( (coords.top &gt;= <span class="number">0</span> &amp;&amp; coords.left &gt;= <span class="number">0</span> &amp;&amp; coords.top) &lt;= (<span class="built_in">window</span>.innerHeight || <span class="built_in">document</span>.documentElement.clientHeight) + <span class="built_in">parseInt</span>(offset));</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>到这一个简单的图片懒加载就写成了</p>
+<blockquote>
+<p>当网页滚动的事件被触发 -&gt; 执行加载图片操作 -&gt; 判断图片是否在可视区域内 -&gt; 在，则动态将data-src的值赋予该图片。</p>
+</blockquote>
+<h1 id="封装一个懒加载插件"><a href="#封装一个懒加载插件" class="headerlink" title="封装一个懒加载插件"></a>封装一个懒加载插件</h1><ul>
+<li>添加一些自定义参数，谁都喜欢自定义，不是吗？</li>
+<li>支持iScroll, iScroll是一个高性能，资源占用少，无依赖，多平台的javascript滚动插件。</li>
+</ul>
+<p>优化：</p>
+<p>1、图片加载后移除选择器，避免重复判断<br>2、缓存img元素结合，减少dom元素查询性能损耗<br>3、扩展prototype添加getNode方法，支持分页数据懒加载（由于我们之前缓存了dom元素）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="keyword">var</span> imgList = [],  <span class="comment">// 页面所有img元素集合</span></div><div class="line">		delay,   <span class="comment">// setTimeout 对象</span></div><div class="line">		offset,  <span class="comment">//偏移量，用于指定图片距离可视区域多少距离，进行加载</span></div><div class="line">		time,  <span class="comment">// 延迟载入时间</span></div><div class="line">		_selector; <span class="comment">// 选择器 默认为 .m-lazyload</span></div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">_isShow</span>(<span class="params">el</span>) </span>&#123;</div><div class="line">    	<span class="keyword">var</span> coords = el.getBoundingClientRect();</div><div class="line">    	<span class="keyword">return</span> ( (coords.top &gt;= <span class="number">0</span> &amp;&amp; coords.left &gt;= <span class="number">0</span> &amp;&amp; coords.top) &lt;= (<span class="built_in">window</span>.innerHeight || <span class="built_in">document</span>.documentElement.clientHeight) + <span class="built_in">parseInt</span>(offset));</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">_loadImage</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    	<span class="keyword">for</span> (<span class="keyword">var</span> i = imgList.length; i--;) &#123;</div><div class="line">    		<span class="keyword">var</span> el = imgList[i];</div><div class="line">    		<span class="keyword">if</span> (_isShow(el)) &#123;</div><div class="line">    			el.src = el.getAttribute(<span class="string">'data-src'</span>);</div><div class="line">    			el.className = el.className.replace(<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"(\\s|^)"</span> + _selector.substring(<span class="number">1</span>, _selector.length) + <span class="string">"(\\s|$)"</span>), <span class="string">" "</span>);el</div><div class="line">    			imgList.splice(i, <span class="number">1</span>);</div><div class="line">    		&#125;</div><div class="line">    	&#125;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">_delay</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    	clearTimeout(delay);</div><div class="line">    	delay = setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    		_loadImage();</div><div class="line">    	&#125;, time);</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">ImageLazyload</span>(<span class="params">selector, options</span>) </span>&#123;</div><div class="line">    	<span class="keyword">var</span> defaults = options || &#123;&#125;;</div><div class="line">    	offset = defaults.offset || <span class="number">0</span>;</div><div class="line">    	time = defaults.time || <span class="number">250</span>;</div><div class="line">    	_selector = selector || <span class="string">'.m-lazyload'</span>;</div><div class="line">    	<span class="keyword">this</span>.getNode();</div><div class="line">    	_delay();<span class="comment">//避免首次加载未触发touch事件,主动触发一次加载函数</span></div><div class="line">    	<span class="keyword">if</span> (defaults.iScroll) &#123;</div><div class="line">    		defaults.iScroll.on(<span class="string">'scroll'</span>, _delay);</div><div class="line">    		defaults.iScroll.on(<span class="string">'scrollEnd'</span>, _delay);</div><div class="line">    	&#125; <span class="keyword">else</span> &#123;</div><div class="line">    		<span class="built_in">window</span>.addEventListener(<span class="string">'scroll'</span>, _delay, <span class="literal">false</span>);</div><div class="line">    	&#125;</div><div class="line">	&#125;</div><div class="line"> </div><div class="line">	ImageLazyload.prototype.getNode = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">		imgList = [];</div><div class="line">		<span class="keyword">var</span> nodes = <span class="built_in">document</span>.querySelectorAll(_selector);</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, l = nodes.length; i &lt; l; i++) &#123;</div><div class="line">			imgList.push(nodes[i]);</div><div class="line">		&#125;</div><div class="line">	&#125;;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<p>OK！封装完成。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;前言：最近面试都被问到了这个问题，所以在这里整理一波。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;懒加载的意义&quot;&gt;&lt;a href=&quot;#懒加载的意义&quot; class=&quot;headerlink&quot; title=&quot;懒加载的意义&quot;&gt;&lt;/a&gt;懒加载的意义
+    
+    </summary>
+    
+    
+      <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>DIY一个自己的音乐播放器2.0来袭</title>
@@ -2012,58 +2069,6 @@
       <category term="vue" scheme="http://yoursite.com/tags/vue/"/>
     
       <category term="vuex" scheme="http://yoursite.com/tags/vuex/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>本地存储sessionStorage与localStorage</title>
-    <link href="http://yoursite.com/2017/04/26/%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8sessionStorage%E4%B8%8ElocalStorage/"/>
-    <id>http://yoursite.com/2017/04/26/本地存储sessionStorage与localStorage/</id>
-    <published>2017-04-26T15:44:04.000Z</published>
-    <updated>2017-05-21T14:11:46.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<ul>
-<li>sessionStorage 数据的存储仅特定于某个会话中，也就是说数据只保持到浏览器关闭，当浏览器关闭后重新打开这个页面时， 之前的存储已经被清除。</li>
-<li>localStorage 是一个持久化的存储，它并不局限于会话。除非主动删除数据，否则数据是永远不会过期的。</li>
-</ul>
-</blockquote>
-<h3 id="一、localStorage和sessionStorage操作"><a href="#一、localStorage和sessionStorage操作" class="headerlink" title="一、localStorage和sessionStorage操作"></a>一、localStorage和sessionStorage操作</h3><blockquote>
-<p>localStorage和sessionStorage都具有相同的操作方法，例如setItem、getItem和removeItem等</p>
-</blockquote>
-<h3 id="1-setItem存储value"><a href="#1-setItem存储value" class="headerlink" title="1.setItem存储value"></a>1.setItem存储value</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sessionStorage.setItem(<span class="string">"name"</span>, <span class="string">"hzzly"</span>);</div><div class="line">localStorage.setItem(<span class="string">"blog"</span>, <span class="string">"hzzly.github.io"</span>);</div></pre></td></tr></table></figure>
-<h3 id="2-getItem获取value"><a href="#2-getItem获取value" class="headerlink" title="2.getItem获取value"></a>2.getItem获取value</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> name = sessionStorage.getItem(<span class="string">"name"</span>);</div><div class="line"><span class="keyword">let</span> blog = localStorage.getItem(<span class="string">"blog"</span>);</div></pre></td></tr></table></figure>
-<h3 id="3-removeItem删除key"><a href="#3-removeItem删除key" class="headerlink" title="3.removeItem删除key"></a>3.removeItem删除key</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sessionStorage.removeItem(<span class="string">"name"</span>);</div><div class="line">localStorage.removeItem(<span class="string">"blog"</span>);</div></pre></td></tr></table></figure>
-<h3 id="4-clear清除所有的key-value"><a href="#4-clear清除所有的key-value" class="headerlink" title="4.clear清除所有的key/value"></a>4.clear清除所有的key/value</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sessionStorage.clear();</div><div class="line">localStorage.clear();</div></pre></td></tr></table></figure>
-<h3 id="5-其他操作方法：点操作和"><a href="#5-其他操作方法：点操作和" class="headerlink" title="5.其他操作方法：点操作和[]"></a>5.其他操作方法：点操作和[]</h3><blockquote>
-<p>web Storage不但可以用自身的setItem,getItem等方便存取，也可以像普通对象一样用点(.)操作符，及[]的方式进行数据存储及读取，像如下的代码：</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//存</span></div><div class="line">localStorage.name = <span class="string">"hzzly"</span>; </div><div class="line">localStorage[<span class="string">"age"</span>] = <span class="string">"21"</span>; </div><div class="line">sessionStorage.name = <span class="string">"hzzly"</span>; </div><div class="line">sessionStorage[<span class="string">"age"</span>] = <span class="string">"21"</span>;</div><div class="line"><span class="comment">//取</span></div><div class="line"><span class="keyword">let</span> name1 = localStorage.name</div><div class="line"><span class="keyword">let</span> age1 = localStorage[<span class="string">"age"</span>]</div><div class="line"><span class="keyword">let</span> name2 = sessionStorage.name</div><div class="line"><span class="keyword">let</span> age2 = sessionStorage[<span class="string">"age"</span>]</div></pre></td></tr></table></figure>
-<h3 id="6-localStorage和sessionStorage的key和length属性实现遍历"><a href="#6-localStorage和sessionStorage的key和length属性实现遍历" class="headerlink" title="6.localStorage和sessionStorage的key和length属性实现遍历"></a>6.localStorage和sessionStorage的key和length属性实现遍历</h3><blockquote>
-<p>sessionStorage和localStorage提供的key()和length可以方便的实现存储的数据遍历，例如下面的代码：</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> storage = <span class="built_in">window</span>.localStorage; </div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>, len = storage.length; i  &lt;  len; i++)&#123;     </div><div class="line">	<span class="keyword">let</span> key = storage.key(i);     </div><div class="line">	<span class="keyword">let</span> value = storage.getItem(key);     </div><div class="line">	<span class="built_in">console</span>.log(key + <span class="string">"="</span> + value); </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="二、实例"><a href="#二、实例" class="headerlink" title="二、实例"></a>二、实例</h3><blockquote>
-<p>storage只能存储字符串的数据，对于JS中常用的数组或对象却不能直接存储，可以用下面两个方法进行转换：</p>
-<ul>
-<li>JSON.stringify() 用于从一个对象解析出字符串</li>
-<li>JSON.parse() 用于从一个字符串中解析出json对象</li>
-</ul>
-</blockquote>
-<h3 id="1-localStorage-sessionStorage存取数组"><a href="#1-localStorage-sessionStorage存取数组" class="headerlink" title="1.localStorage/sessionStorage存取数组"></a>1.localStorage/sessionStorage存取数组</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//存</span></div><div class="line"><span class="keyword">let</span> language = [<span class="string">'HTML/HTML5'</span>, <span class="string">'CSS/CSS3'</span>, <span class="string">'JavaScript'</span>, <span class="string">'Vue'</span>, <span class="string">'React'</span>]</div><div class="line">localStorage.language = <span class="built_in">JSON</span>.stringify(language)</div><div class="line">sessionStorag.language = <span class="built_in">JSON</span>.stringify(language)</div><div class="line"><span class="comment">//取</span></div><div class="line"><span class="keyword">let</span> storageLanguage = <span class="built_in">JSON</span>.parse(localStorage.language)</div></pre></td></tr></table></figure>
-<h3 id="2-localStorage存取对象"><a href="#2-localStorage存取对象" class="headerlink" title="2.localStorage存取对象"></a>2.localStorage存取对象</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//存</span></div><div class="line"><span class="keyword">let</span> myInfo = &#123;</div><div class="line">	<span class="string">'name'</span>: <span class="string">'hzzly'</span>,</div><div class="line">	<span class="string">'age'</span>: <span class="number">21</span>,</div><div class="line">	<span class="string">'school'</span>: <span class="string">'ECUT'</span>,</div><div class="line">	<span class="string">'city'</span>: <span class="string">'NanChang'</span></div><div class="line">&#125;</div><div class="line">localStorage.myInfo = <span class="built_in">JSON</span>.stringify(myInfo)</div><div class="line">sessionStorag.myInfo = <span class="built_in">JSON</span>.stringify(myInfo)</div><div class="line"><span class="comment">//取</span></div><div class="line"><span class="keyword">let</span> storageLanguage = <span class="built_in">JSON</span>.parse(localStorage.myInfo)</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;sessionStorage 数据的存储仅特定于某个会话中，也就是说数据只保持到浏览器关闭，当浏览器关闭后重新打开这个页面时， 之前的存储已经被清除。&lt;/li&gt;
-&lt;li&gt;localStorage 是一个持久化的存储，它并不局限于会话。除
-    
-    </summary>
-    
-    
-      <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>js实现图片懒加载 | Hzzly</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="随笔,JavaScript," />
+  
+
+  <meta name="description" content="前言：最近面试都被问到了这个问题，所以在这里整理一波。  懒加载的意义 懒加载的主要目的是作为服务器前端的优化，减少请求数或延迟请求数，对服务器缓压。  预加载:提前加载好，缓存到本地，当需要的时候直接读取缓存，对服务器增压 懒加载实现方式 第一种是纯粹的延迟加载，使用setTimeOut或setInterval进行加载延迟  第二种是条件加载，符合某些条件，或触发了某些事件才开始异步下载  第">
+<meta name="keywords" content="随笔,JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js实现图片懒加载">
+<meta property="og:url" content="http://yoursite.com/2017/06/09/js实现图片懒加载/index.html">
+<meta property="og:site_name" content="Hzzly">
+<meta property="og:description" content="前言：最近面试都被问到了这个问题，所以在这里整理一波。  懒加载的意义 懒加载的主要目的是作为服务器前端的优化，减少请求数或延迟请求数，对服务器缓压。  预加载:提前加载好，缓存到本地，当需要的时候直接读取缓存，对服务器增压 懒加载实现方式 第一种是纯粹的延迟加载，使用setTimeOut或setInterval进行加载延迟  第二种是条件加载，符合某些条件，或触发了某些事件才开始异步下载  第">
+<meta property="og:updated_time" content="2017-06-09T14:47:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js实现图片懒加载">
+<meta name="twitter:description" content="前言：最近面试都被问到了这个问题，所以在这里整理一波。  懒加载的意义 懒加载的主要目的是作为服务器前端的优化，减少请求数或延迟请求数，对服务器缓压。  预加载:提前加载好，缓存到本地，当需要的时候直接读取缓存，对服务器增压 懒加载实现方式 第一种是纯粹的延迟加载，使用setTimeOut或setInterval进行加载延迟  第二种是条件加载，符合某些条件，或触发了某些事件才开始异步下载  第">
+
+  
+
+  
+    <link rel="icon" href="http://omt3u4bph.bkt.clouddn.com/avatar.jpg">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/project/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            项目
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#懒加载的意义"><span class="toc-text">懒加载的意义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#懒加载实现方式"><span class="toc-text">懒加载实现方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、懒加载HTML约定"><span class="toc-text">1、懒加载HTML约定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、懒加载JavaScript实现"><span class="toc-text">2、懒加载JavaScript实现</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#封装一个懒加载插件"><span class="toc-text">封装一个懒加载插件</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-js实现图片懒加载" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">js实现图片懒加载</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.06.09</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>hzzly</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <blockquote>
+<p>前言：最近面试都被问到了这个问题，所以在这里整理一波。</p>
+</blockquote>
+<h1 id="懒加载的意义"><a href="#懒加载的意义" class="headerlink" title="懒加载的意义"></a>懒加载的意义</h1><blockquote>
+<p>懒加载的主要目的是作为服务器前端的优化，减少请求数或延迟请求数，对服务器缓压。</p>
+</blockquote>
+<p><strong>预加载:</strong>提前加载好，缓存到本地，当需要的时候直接读取缓存，对服务器增压</p>
+<h1 id="懒加载实现方式"><a href="#懒加载实现方式" class="headerlink" title="懒加载实现方式"></a>懒加载实现方式</h1><ul>
+<li><p>第一种是纯粹的延迟加载，使用setTimeOut或setInterval进行加载延迟</p>
+</li>
+<li><p>第二种是条件加载，符合某些条件，或触发了某些事件才开始异步下载</p>
+</li>
+<li><p>第三种是可视区加载，即仅加载用户可以看到的区域，这个主要由监控滚动条来实现，一般会在距用户看到某图片前一定距离遍开始加载，这样能保证用户拉下时正好能看到图片</p>
+</li>
+</ul>
+<p>Web 图片的懒加载就是通过读取img元素，然后获得img元素的data-src（也可以约定为其他属性名）属性的值，并赋予img的src，从而实现动态加载图片的机制</p>
+<h2 id="1、懒加载HTML约定"><a href="#1、懒加载HTML约定" class="headerlink" title="1、懒加载HTML约定"></a>1、懒加载HTML约定</h2><p>我们首先需要给准备实施懒加载的img元素添加指定的class 这里为m-lazyload ,同时将img src赋值给 data-src属性。<br>具体示例为：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"m-lazyload"</span> <span class="attr">data-src</span>=<span class="string">"imgUrl"</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="2、懒加载JavaScript实现"><a href="#2、懒加载JavaScript实现" class="headerlink" title="2、懒加载JavaScript实现"></a>2、懒加载JavaScript实现</h2><p>动态加载总共分为以下几个步骤:<br>1、添加页面滚动监听事件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'scroll'</span>, _delay, <span class="literal">false</span>);</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">_delay</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	clearTimeout(delay);</div><div class="line">	delay = setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">		_loadImage();</div><div class="line">	&#125;, time);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>2、当触发监听事件时会执行 _loadImage 函数，该函数负责加载图片<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">_loadImage</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = imgList.length; i--;) &#123;</div><div class="line">		<span class="keyword">var</span> el = imgList[i];</div><div class="line">		<span class="keyword">if</span> (_isShow(el)) &#123;</div><div class="line">			el.src = el.getAttribute(<span class="string">'data-src'</span>);</div><div class="line">			el.className = el.className.replace(<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"(\\s|^)"</span> + _selector.substring(<span class="number">1</span>, _selector.length) + <span class="string">"(\\s|$)"</span>), <span class="string">" "</span>);</div><div class="line">			imgList.splice(i, <span class="number">1</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>3、判断该图片是否在当前窗口的可视区域内<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">_isShow</span>(<span class="params">el</span>) </span>&#123;</div><div class="line">	<span class="keyword">var</span> coords = el.getBoundingClientRect();</div><div class="line">	<span class="keyword">return</span> ( (coords.top &gt;= <span class="number">0</span> &amp;&amp; coords.left &gt;= <span class="number">0</span> &amp;&amp; coords.top) &lt;= (<span class="built_in">window</span>.innerHeight || <span class="built_in">document</span>.documentElement.clientHeight) + <span class="built_in">parseInt</span>(offset));</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>到这一个简单的图片懒加载就写成了</p>
+<blockquote>
+<p>当网页滚动的事件被触发 -&gt; 执行加载图片操作 -&gt; 判断图片是否在可视区域内 -&gt; 在，则动态将data-src的值赋予该图片。</p>
+</blockquote>
+<h1 id="封装一个懒加载插件"><a href="#封装一个懒加载插件" class="headerlink" title="封装一个懒加载插件"></a>封装一个懒加载插件</h1><ul>
+<li>添加一些自定义参数，谁都喜欢自定义，不是吗？</li>
+<li>支持iScroll, iScroll是一个高性能，资源占用少，无依赖，多平台的javascript滚动插件。</li>
+</ul>
+<p>优化：</p>
+<p>1、图片加载后移除选择器，避免重复判断<br>2、缓存img元素结合，减少dom元素查询性能损耗<br>3、扩展prototype添加getNode方法，支持分页数据懒加载（由于我们之前缓存了dom元素）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="keyword">var</span> imgList = [],  <span class="comment">// 页面所有img元素集合</span></div><div class="line">		delay,   <span class="comment">// setTimeout 对象</span></div><div class="line">		offset,  <span class="comment">//偏移量，用于指定图片距离可视区域多少距离，进行加载</span></div><div class="line">		time,  <span class="comment">// 延迟载入时间</span></div><div class="line">		_selector; <span class="comment">// 选择器 默认为 .m-lazyload</span></div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">_isShow</span>(<span class="params">el</span>) </span>&#123;</div><div class="line">    	<span class="keyword">var</span> coords = el.getBoundingClientRect();</div><div class="line">    	<span class="keyword">return</span> ( (coords.top &gt;= <span class="number">0</span> &amp;&amp; coords.left &gt;= <span class="number">0</span> &amp;&amp; coords.top) &lt;= (<span class="built_in">window</span>.innerHeight || <span class="built_in">document</span>.documentElement.clientHeight) + <span class="built_in">parseInt</span>(offset));</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">_loadImage</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    	<span class="keyword">for</span> (<span class="keyword">var</span> i = imgList.length; i--;) &#123;</div><div class="line">    		<span class="keyword">var</span> el = imgList[i];</div><div class="line">    		<span class="keyword">if</span> (_isShow(el)) &#123;</div><div class="line">    			el.src = el.getAttribute(<span class="string">'data-src'</span>);</div><div class="line">    			el.className = el.className.replace(<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"(\\s|^)"</span> + _selector.substring(<span class="number">1</span>, _selector.length) + <span class="string">"(\\s|$)"</span>), <span class="string">" "</span>);el</div><div class="line">    			imgList.splice(i, <span class="number">1</span>);</div><div class="line">    		&#125;</div><div class="line">    	&#125;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">_delay</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    	clearTimeout(delay);</div><div class="line">    	delay = setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    		_loadImage();</div><div class="line">    	&#125;, time);</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">ImageLazyload</span>(<span class="params">selector, options</span>) </span>&#123;</div><div class="line">    	<span class="keyword">var</span> defaults = options || &#123;&#125;;</div><div class="line">    	offset = defaults.offset || <span class="number">0</span>;</div><div class="line">    	time = defaults.time || <span class="number">250</span>;</div><div class="line">    	_selector = selector || <span class="string">'.m-lazyload'</span>;</div><div class="line">    	<span class="keyword">this</span>.getNode();</div><div class="line">    	_delay();<span class="comment">//避免首次加载未触发touch事件,主动触发一次加载函数</span></div><div class="line">    	<span class="keyword">if</span> (defaults.iScroll) &#123;</div><div class="line">    		defaults.iScroll.on(<span class="string">'scroll'</span>, _delay);</div><div class="line">    		defaults.iScroll.on(<span class="string">'scrollEnd'</span>, _delay);</div><div class="line">    	&#125; <span class="keyword">else</span> &#123;</div><div class="line">    		<span class="built_in">window</span>.addEventListener(<span class="string">'scroll'</span>, _delay, <span class="literal">false</span>);</div><div class="line">    	&#125;</div><div class="line">	&#125;</div><div class="line"> </div><div class="line">	ImageLazyload.prototype.getNode = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">		imgList = [];</div><div class="line">		<span class="keyword">var</span> nodes = <span class="built_in">document</span>.querySelectorAll(_selector);</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, l = nodes.length; i &lt; l; i++) &#123;</div><div class="line">			imgList.push(nodes[i]);</div><div class="line">		&#125;</div><div class="line">	&#125;;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<p>OK！封装完成。</p>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">谢谢你请我吃糖果</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="http://hjingren.cn/publicImages/wxpay.jpg" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="http://hjingren.cn/publicImages/alipay.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/06/05/DIY一个自己的音乐播放器2-0来袭/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/project/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              项目
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
