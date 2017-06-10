@@ -12,17 +12,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="随笔," />
+    <meta name="keywords" content="随笔,promise," />
   
 
   <meta name="description" content="接触过promise的的都知道它的应用场景和用途，Promise可以用来避免异步操作函数里的嵌套回调（callback hell）问题，因为解决异步最直接的方法是回调嵌套，将后一个的操作放在前一个操作的异步回调里，但如果操作多了，就会有很多层的嵌套(回调地狱)。 12345678910$.ajax(url1, function(data1)&amp;#123;    // do something...">
-<meta name="keywords" content="随笔">
+<meta name="keywords" content="随笔,promise">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浅谈Promise">
 <meta property="og:url" content="http://yoursite.com/2017/03/25/浅谈Promise/index.html">
 <meta property="og:site_name" content="Hzzly">
 <meta property="og:description" content="接触过promise的的都知道它的应用场景和用途，Promise可以用来避免异步操作函数里的嵌套回调（callback hell）问题，因为解决异步最直接的方法是回调嵌套，将后一个的操作放在前一个操作的异步回调里，但如果操作多了，就会有很多层的嵌套(回调地狱)。 12345678910$.ajax(url1, function(data1)&amp;#123;    // do something...">
-<meta property="og:updated_time" content="2017-05-21T14:20:48.000Z">
+<meta property="og:updated_time" content="2017-06-10T15:44:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈Promise">
 <meta name="twitter:description" content="接触过promise的的都知道它的应用场景和用途，Promise可以用来避免异步操作函数里的嵌套回调（callback hell）问题，因为解决异步最直接的方法是回调嵌套，将后一个的操作放在前一个操作的异步回调里，但如果操作多了，就会有很多层的嵌套(回调地狱)。 12345678910$.ajax(url1, function(data1)&amp;#123;    // do something...">
@@ -235,7 +235,7 @@
 </blockquote>
 <p>这使得异步方法可以像同步方法那样返回值：异步方法会返回一个包含了原返回状态的 promise 对象来替代原返回状态。</p>
 <h3 id="Promise的表现"><a href="#Promise的表现" class="headerlink" title="Promise的表现"></a><strong>Promise的表现</strong></h3><p>如果使用回调方法处理多个操作的异步场景，判断某个操作成功或失败的控制在于声明的匿名函数里面，使用Promise对象则可以重新定义异步执行的状态和控制逻辑。</p>
-<p>promises的最重要的特点就是它把我们处理任何函数调用的成功或者失败的方式规范成了可预测的形式，特别是如果这个调用实际上的异步的。</p>
+<p>promise的最重要的特点就是它把我们处理任何函数调用的成功或者失败的方式规范成了可预测的形式，特别是如果这个调用实际上的异步的。</p>
 <p>Promise中有几个状态：</p>
 <blockquote>
 <ul>
