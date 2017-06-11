@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-06-09T14:47:03.000Z</updated>
+  <updated>2017-06-11T12:13:53.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,79 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Nginx与Node的纠缠</title>
+    <link href="http://yoursite.com/2017/06/11/Nginx%E4%B8%8ENode%E7%9A%84%E7%BA%A0%E7%BC%A0/"/>
+    <id>http://yoursite.com/2017/06/11/Nginx与Node的纠缠/</id>
+    <published>2017-06-11T12:10:54.000Z</published>
+    <updated>2017-06-11T12:13:53.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>前言：前几天面试被问到：“nginx的好处？nginx和node的比较”，所以在这里总结一波。</p>
+</blockquote>
+<h1 id="nginx的好处"><a href="#nginx的好处" class="headerlink" title="nginx的好处"></a>nginx的好处</h1><ul>
+<li>热部署</li>
+<li>高并发连接</li>
+<li>处理响应请求很快</li>
+<li>具有很高的可靠性</li>
+</ul>
+<h2 id="热部署"><a href="#热部署" class="headerlink" title="热部署"></a>热部署</h2><p>在不停止服务的情况下修改配置文件，更换日志文件等功能。</p>
+<h2 id="高并发连接"><a href="#高并发连接" class="headerlink" title="高并发连接"></a>高并发连接</h2><p>高并发：是指在同一个时间点，有很多用户同时的访问URL地址，比如：淘宝的双11，双12，就会产生高并发。</p>
+<p>这是一个很重要的一个特性！在这一个 互联网 快速发展， 互联网 用户数量不断增加，一些大公司、网站都需要面对高并发请求，如果有一个能够在峰值顶住10万以上并发请求的Server，肯定会得到大家的青睐。理论上，Nginx支持的并发连接上限取决于你的内存，10万远未封顶。</p>
+<h1 id="Nginx能做什么"><a href="#Nginx能做什么" class="headerlink" title="Nginx能做什么"></a>Nginx能做什么</h1><ul>
+<li>反向代理</li>
+<li>负载均衡</li>
+<li>HTTP服务器（包含动静分离）</li>
+<li>正向代理</li>
+</ul>
+<h2 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h2><p>反向代理应该是Nginx做的最多的一件事了，什么是反向代理呢，以下是百度百科的说法：反向代理（Reverse Proxy）方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个反向代理服务器。简单来说就是真实的服务器不能直接被外部网络访问，所以需要一台代理服务器，而代理服务器能被外部网络访问的同时又跟真实服务器在同一个网络环境，当然也可能是同一台服务器，端口不同而已。 </p>
+<p>下面贴上一段简单的实现反向代理的代码：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="section">server</span> &#123;  </div><div class="line">	<span class="attribute">listen</span>       <span class="number">80</span>;</div><div class="line">	<span class="attribute">server_name</span>  localhost;</div><div class="line"> </div><div class="line">	<span class="attribute">location</span> / &#123;</div><div class="line">		<span class="attribute">proxy_pass</span> http://localhost:8081;</div><div class="line">		<span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>:<span class="variable">$server_port</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当我们访问localhost的时候，就相当于访问localhost:8081了</p>
+<h2 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h2><p>负载均衡可以把用户的请求分摊到多个服务器上进行处理，从而实现了对海量用户的访问支持。负载均衡的架构如图所示：</p>
+<p>简单而言就是当有2台或以上服务器时，根据规则随机的将请求分发到指定的服务器上处理，负载均衡配置一般都需要同时配置反向代理，通过反向代理跳转到负载均衡。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">upstream</span> test &#123;</div><div class="line">	<span class="attribute">server</span> localhost:<span class="number">8080</span>;</div><div class="line">	<span class="attribute">server</span> localhost:<span class="number">8081</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="section">server</span> &#123;</div><div class="line">	<span class="attribute">listen</span>       <span class="number">81</span>;</div><div class="line">	<span class="attribute">server_name</span>  localhost;</div><div class="line"> </div><div class="line">	<span class="attribute">location</span> / &#123;</div><div class="line">		<span class="attribute">proxy_pass</span> http://test;</div><div class="line">		<span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>:<span class="variable">$server_port</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="HTTP服务器"><a href="#HTTP服务器" class="headerlink" title="HTTP服务器"></a>HTTP服务器</h2><p>Nginx本身也是一个静态资源的服务器，当只有静态资源的时候，就可以使用Nginx来做服务器，同时现在也很流行动静分离，就可以通过Nginx来实现。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="section">server</span> &#123;</div><div class="line">	<span class="attribute">listen</span>       <span class="number">80</span>;</div><div class="line">	<span class="attribute">server_name</span>  localhost;</div><div class="line"> </div><div class="line">	<span class="attribute">location</span> / &#123;</div><div class="line">		<span class="attribute">root</span>   /home/hzzly;</div><div class="line">		<span class="attribute">index</span>  index.html index.htm;</div><div class="line">	&#125;</div><div class="line"> </div><div class="line">	<span class="comment">#error_page  404              /404.html;</span></div><div class="line"> </div><div class="line">	<span class="comment"># redirect server error pages to the static page /50x.html</span></div><div class="line">	<span class="comment">#</span></div><div class="line">	<span class="attribute">error_page</span>   <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span>  /50x.html;</div><div class="line">	<span class="attribute">location</span> = /50x.html &#123;</div><div class="line">		<span class="attribute">root</span>   html;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="正向代理"><a href="#正向代理" class="headerlink" title="正向代理"></a>正向代理</h2><p>正向代理，意思是一个位于客户端和原始服务器(origin server)之间的服务器，为了从原始服务器取得内容，客户端向代理发送一个请求并指定目标(原始服务器)，然后代理向原始服务器转交请求并将获得的内容返回给客户端。客户端才能使用正向代理。当你需要把你的服务器作为代理服务器的时候，可以用Nginx来实现正向代理。</p>
+<h1 id="node的特点"><a href="#node的特点" class="headerlink" title="node的特点"></a>node的特点</h1><ul>
+<li>它是一个javascript运行环境</li>
+<li>依赖于Chrome V8引擎进行代码解释</li>
+<li>事件驱动</li>
+<li>非阻塞I/O</li>
+<li>轻量、可伸缩，适于实时数据交互应用</li>
+<li>并发连接（高并发）</li>
+</ul>
+<h2 id="node应用场景"><a href="#node应用场景" class="headerlink" title="node应用场景"></a>node应用场景</h2><p>NodeJS适合运用在高并发、I/O密集、少量业务逻辑的场景。（RESTful API，聊天）</p>
+<h2 id="Event-Loop、消息队列、事件轮询"><a href="#Event-Loop、消息队列、事件轮询" class="headerlink" title="Event Loop、消息队列、事件轮询"></a>Event Loop、消息队列、事件轮询</h2><p>通过回调函数（Callback）和异步机制来实现非阻塞。<br>通过事件队列和事件循环来实现并发连接。</p>
+<p>异步函数在执行结束后，会在事件队列中添加一个事件（回调函数）(遵循先进先出原则)，主线程中的代码执行完毕后（即一次循环结束），下一次循环开始就在事件队列中“读取”事件，然后调用它所对应的回调函数。这个过程是循环不断的，所以整个的这种运行机制又称为Event Loop（事件循环）</p>
+<h1 id="nginx和node的比较"><a href="#nginx和node的比较" class="headerlink" title="nginx和node的比较"></a>nginx和node的比较</h1><ul>
+<li>一个更专业，一个更全面。</li>
+<li>Nginx 采用C编写，性能更高，但是它仅适合于做web服务器，用于反向代理或者负载均衡等服务。</li>
+<li>NodeJs高性能平台，web服务只是其中一块，NodeJs在处理业务层用的是JS编写,采用的是异步编程方式和思维方式。</li>
+<li>Node.js发展方向不再单独是一个Web服务器，而是一个面向网络的平台，它甚至可以是TCP服务器，或者变身为远端服务器的客户端。</li>
+</ul>
+<h1 id="nginx与node的完美搭配"><a href="#nginx与node的完美搭配" class="headerlink" title="nginx与node的完美搭配"></a>nginx与node的完美搭配</h1><p>node自己本身可以作为服务器进行驱动，但是node本身对文件的处理能力并不是很好，所以当我们的生产环境中应尽量使用nginx来处理静态的资源以及反向代理，同时也解决了node分布式以及负载均衡的相关问题。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;前言：前几天面试被问到：“nginx的好处？nginx和node的比较”，所以在这里总结一波。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;nginx的好处&quot;&gt;&lt;a href=&quot;#nginx的好处&quot; class=&quot;headerlink&quot; t
+    
+    </summary>
+    
+    
+      <category term="nginx" scheme="http://yoursite.com/tags/nginx/"/>
+    
+      <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="node" scheme="http://yoursite.com/tags/node/"/>
+    
+  </entry>
   
   <entry>
     <title>js实现图片懒加载</title>
@@ -223,7 +296,7 @@
     <link href="http://yoursite.com/2017/05/31/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E6%95%B4%E7%90%86/"/>
     <id>http://yoursite.com/2017/05/31/前端面试整理/</id>
     <published>2017-05-31T08:52:12.000Z</published>
-    <updated>2017-06-05T05:50:51.000Z</updated>
+    <updated>2017-06-11T08:36:25.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>前言：以下是整理一些面试中经常会遇到的经典面试题以及自己面试过程中有一些未解决的问题，通过对知识的整理以及经验的总结，重新巩固自身的前端基础知识，如有错误或更好的答案，欢迎指正，水平有限，望各位不吝指教。:）</p>
@@ -446,7 +519,8 @@
 <h2 id="你知道多少种Doctype文档类型？"><a href="#你知道多少种Doctype文档类型？" class="headerlink" title="你知道多少种Doctype文档类型？"></a>你知道多少种Doctype文档类型？</h2><p>该标签可声明三种 DTD 类型，分别表示严格版本、过渡版本以及基于框架的 HTML 文档。<br>HTML 4.01 规定了三种文档类型：Strict、Transitional 以及 Frameset。<br>XHTML 1.0 规定了三种 XML 文档类型：Strict、Transitional 以及 Frameset。<br>Standards （标准）模式（也就是严格呈现模式）用于呈现遵循最新标准的网页，而 Quirks（包容）模式（也就是松散呈现模式或者兼容模式）用于呈现为传统浏览器而设计的网页。</p>
 <h2 id="HTML与XHTML——二者有什么区别"><a href="#HTML与XHTML——二者有什么区别" class="headerlink" title="HTML与XHTML——二者有什么区别"></a>HTML与XHTML——二者有什么区别</h2><p>1、所有的标记都必须要有一个相应的结束标记<br>2、所有标签的元素和属性的名字都必须使用小写<br>3、所有的XML标记都必须合理嵌套<br>4、所有的属性必须用引号””括起来<br>5、把所有&lt;和&amp;特殊符号用编码表示<br>6、给所有属性赋一个值<br>7、不要在注释内容中使“–”<br>8、图片必须有说明文字</p>
 <h2 id="html5有哪些新特性"><a href="#html5有哪些新特性" class="headerlink" title="html5有哪些新特性"></a>html5有哪些新特性</h2><p>语义化更好的内容标签（header,nav,footer,aside,article,section）<br>音频、视频API(audio,video)<br>画布(Canvas) API<br>地理(Geolocation) API<br>拖拽释放(Drag and drop) API<br>本地离线存储<br>表单控件，calendar、date、time、email、url、search  </p>
-<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="HTTP请求四部分"><a href="#HTTP请求四部分" class="headerlink" title="HTTP请求四部分"></a>HTTP请求四部分</h2><p>1、HTTP请求的方法或动作，比如是get还是post请求；<br>2、正在请求的URL（请求的地址）；<br>3、请求头，包含一些客户端环境信息、身份验证信息等；<br>4、请求体（请求正文），可以包含客户提交的查询字符串信息、表单信息等。</p>
+<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="HTTP请求类型"><a href="#HTTP请求类型" class="headerlink" title="HTTP请求类型"></a>HTTP请求类型</h2><p>GET：向特定的资源发出请求<br>POST：向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST请求可能会导致新的资源的创建和/或已有资源的修改<br>PUT：向指定资源位置上传其最新内容<br>DELETE：请求服务器删除Request-URI所标识的资源<br>OPTIONS：返回服务器针对特定资源所支持的HTTP请求方法。也可以利用向Web服务器发送’*’的请求来测试服务器的性能。</p>
+<h2 id="HTTP请求四部分"><a href="#HTTP请求四部分" class="headerlink" title="HTTP请求四部分"></a>HTTP请求四部分</h2><p>1、HTTP请求的方法或动作，比如是get还是post请求；<br>2、正在请求的URL（请求的地址）；<br>3、请求头，包含一些客户端环境信息、身份验证信息等；<br>4、请求体（请求正文），可以包含客户提交的查询字符串信息、表单信息等。</p>
 <p><strong>请求头字段：</strong></p>
 <ul>
 <li>Accept:text/html,image/*(告诉服务器，浏览器可以接受文本，网页图片)</li>
@@ -1869,206 +1943,6 @@
       <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
     
       <category term="es6" scheme="http://yoursite.com/tags/es6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>DIY一个自己的音乐播放器</title>
-    <link href="http://yoursite.com/2017/04/27/%E2%80%99DIY%E4%B8%80%E4%B8%AA%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/"/>
-    <id>http://yoursite.com/2017/04/27/’DIY一个自己的音乐播放器/</id>
-    <published>2017-04-27T06:47:55.000Z</published>
-    <updated>2017-06-06T01:41:52.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>前言：在最近的一个外包项目<a href="http://www.zblmchina.com/#/post" target="_blank" rel="external">中包联盟</a>(PC端)中使用到了video，遇到了好多坑。突发奇想来踩一踩audio的坑😀，果然一入深似海，👇下面将分享我的DIY之路-Vue音乐播放器。<br>注：本项目为开源项目，不能用于商业应用，仅供学习。有问题或建议发我邮箱：hjingren@aliyun.com</p>
-</blockquote>
-<p>[温馨提示：pc浏览f12手机模式最佳,手机建议wifi下访问]</p>
-<h3 id="预览地址：-http-hzzly-net-magic-music"><a href="#预览地址：-http-hzzly-net-magic-music" class="headerlink" title="预览地址： http://hzzly.net/magic-music"></a><strong>预览地址：</strong> <a href="http://hzzly.net/magic-music" target="_blank" rel="external">http://hzzly.net/magic-music</a></h3><h3 id="Github地址：-https-github-com-hzzly-MagicMusic"><a href="#Github地址：-https-github-com-hzzly-MagicMusic" class="headerlink" title="Github地址： https://github.com/hzzly/MagicMusic"></a><strong>Github地址：</strong> <a href="https://github.com/hzzly/MagicMusic" target="_blank" rel="external">https://github.com/hzzly/MagicMusic</a></h3><p>欢迎大家的star啦😄~</p>
-<p>先来个预览：</p>
-<p><img src="http://omt3u4bph.bkt.clouddn.com/magic-music1.gif" alt="magic-music1"></p>
-<p>更多预览：<a href="http://hjingren.cn/magic-music/pic.html" target="_blank" rel="external">更多</a></p>
-<p>👉老铁们，准备发车(技能点)：</p>
-<blockquote>
-<ul>
-<li><a href="https://cn.vuejs.org/" target="_blank" rel="external">vue文档</a></li>
-<li><a href="https://router.vuejs.org/zh-cn/" target="_blank" rel="external">vue-router文档</a></li>
-<li><a href="https://vuex.vuejs.org/zh-cn/" target="_blank" rel="external">vuex文档</a> 不想看文档的可以看看我这篇博客<a href="https://hzzly.github.io/2017/04/04/vuex%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/" target="_blank" rel="external">vuex学习实践笔记</a></li>
-<li><a href="https://www.npmjs.com/package/axios" target="_blank" rel="external">axios文档</a> 或者这篇博客 <a href="https://blog.ygxdxx.com/2017/02/01/Vuex2&amp;Axios-Develop/" target="_blank" rel="external">Vuex2 与 Axios 开发</a>(我也是参考这篇，感谢作者😁)</li>
-<li><a href="http://es6.ruanyifeng.com/" target="_blank" rel="external">es6(阮一峰的es6入门)</a> 可以参考<a href="https://hzzly.github.io/tags/es6/" target="_blank" rel="external">我的es6之路</a>(还在继续,轻喷)</li>
-<li><a href="https://hzzly.github.io/2017/03/03/Web%E7%9A%84Flex%E5%BC%B9%E6%80%A7%E7%9B%92%E6%A8%A1%E5%9E%8B/" target="_blank" rel="external">flex (Web的flex弹性盒模型)</a></li>
-<li><a href="https://hzzly.github.io/2017/03/15/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D%E7%9A%84%E8%A7%A3%E5%86%B3/" target="_blank" rel="external">移动端屏幕适配的解决 (flexible+rem)</a></li>
-<li><a href="https://hzzly.github.io/2017/04/26/%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8sessionStorage%E4%B8%8ElocalStorage/" target="_blank" rel="external">本地存储(sessionStorage、localStorage)</a></li>
-<li><a href="https://github.com/hilongjw/vue-lazyload?from=gold" target="_blank" rel="external">图片懒加载</a></li>
-</ul>
-</blockquote>
-<p>👉坐好，出发</p>
-<h3 id="实现的功能"><a href="#实现的功能" class="headerlink" title="实现的功能"></a>实现的功能</h3><h4 id="1、首页"><a href="#1、首页" class="headerlink" title="1、首页"></a>1、首页</h4><blockquote>
-<ul>
-<li>[x] 轮播</li>
-<li>[x] 个性推荐[流行、古典、轻音乐、流行]</li>
-<li>[x] 歌曲操作<ul>
-<li>[x] 加入播放列表</li>
-<li>[ ] 喜欢</li>
-<li>[ ] 分享</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<h4 id="2、底部播放控件"><a href="#2、底部播放控件" class="headerlink" title="2、底部播放控件"></a>2、底部播放控件</h4><blockquote>
-<ul>
-<li>[x] 播放</li>
-<li>[x] 暂停</li>
-<li>[x] 下一曲</li>
-<li>[x] 播放进度条</li>
-</ul>
-</blockquote>
-<a id="more"></a>
-<h4 id="3、播放页面"><a href="#3、播放页面" class="headerlink" title="3、播放页面"></a>3、播放页面</h4><blockquote>
-<ul>
-<li>[x] 上一曲</li>
-<li>[x] 播放</li>
-<li>[x] 暂停</li>
-<li>[x] 下一曲</li>
-<li>[x] 播放进度条[弧形进度条]</li>
-<li>[x] 歌词滚动</li>
-<li>[x] 播放的歌词高亮</li>
-<li>[ ] 播放模式[单曲循环、列表循环、随机播放]</li>
-</ul>
-</blockquote>
-<h4 id="4、播放列表"><a href="#4、播放列表" class="headerlink" title="4、播放列表"></a>4、播放列表</h4><blockquote>
-<ul>
-<li>[x] 播放歌曲高亮</li>
-<li>[x] 切歌(单击切歌)</li>
-<li>[x] 删歌(点击右侧小X)</li>
-<li>[ ] 清空播放列表</li>
-<li>[ ] 本地缓存播放列表</li>
-</ul>
-</blockquote>
-<h4 id="5、排行榜"><a href="#5、排行榜" class="headerlink" title="5、排行榜"></a>5、排行榜</h4><blockquote>
-<ul>
-<li>[x] 热门排行榜</li>
-<li>[x] 排行榜里的歌曲(单击播放)</li>
-</ul>
-</blockquote>
-<h4 id="6、音乐搜索"><a href="#6、音乐搜索" class="headerlink" title="6、音乐搜索"></a>6、音乐搜索</h4><p>输入搜索关键词，点击<code>放大镜</code>图标</p>
-<blockquote>
-<ul>
-<li>[x] 单曲(单击或点击歌曲操作(…)添加至音乐播放列表，部分音乐会存在版权问题无法播放)</li>
-<li>[x] 歌手</li>
-<li>[x] 专辑</li>
-<li>[x] 歌单</li>
-<li>[x] 用户</li>
-<li>[x] 本地缓存搜索列表</li>
-</ul>
-</blockquote>
-<h4 id="7、侧边栏"><a href="#7、侧边栏" class="headerlink" title="7、侧边栏"></a>7、侧边栏</h4><blockquote>
-<ul>
-<li>[x] 头像</li>
-<li>[x] 菜单<ul>
-<li>[x] 个人中心</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3><p>感谢作者把api整理的这么好(点个赞👍)</p>
-<blockquote>
-<p><a href="https://binaryify.github.io/NeteaseCloudMusicApi/#/?id=%e6%90%9c%e7%b4%a2%e9%9f%b3%e4%b9%90" target="_blank" rel="external">网易云音乐 NodeJS 版 API</a></p>
-</blockquote>
-<h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">|——MagicMusic/</div><div class="line">|   |——build/</div><div class="line">|   |——confg/</div><div class="line">|   |——node_modules/</div><div class="line">|   |——src/</div><div class="line">|   |   |——assets/                 //静态文件</div><div class="line">|   |   |——components/             //公共组件</div><div class="line">|   |   |——api/</div><div class="line">|   |   |   |——index.js            //axios封装与api</div><div class="line">|   |   |——pages/                  //存放项目页面</div><div class="line">|   |   |   |——classical.vue       //古典歌曲页面</div><div class="line">|   |   |   |——collection.vue      //排行榜</div><div class="line">|   |   |   |——home.vue            //首页</div><div class="line">|   |   |   |——light.vue           //轻音乐歌曲页面</div><div class="line">|   |   |   |——login.vue           //登录页面</div><div class="line">|   |   |   |——popular.vue         //流行歌曲页面</div><div class="line">|   |   |   |——radio.vue           //电台歌曲页面</div><div class="line">|   |   |   |——rank.vue            //排行榜列表</div><div class="line">|   |   |   |——search.vue          //搜索页</div><div class="line">|   |   |   |——user.vue            //用户</div><div class="line">|   |   |——router/                 </div><div class="line">|   |   |   |——index.js            //页面路由</div><div class="line">|   |   |——util                    //公用方法</div><div class="line">|   |   |——vuex /                  //存放vuex代码</div><div class="line">|   |   |   |——modules /           //数据模块</div><div class="line">|   |   |   |——store.js            //vuex主入口</div><div class="line">|   |   |   |——types.js            //vuex的types文件</div><div class="line">|   |   |——App.vue                 //父组件</div><div class="line">|   |   |——main.js                 //入口文件</div><div class="line">|   |——static/</div><div class="line">|   |——.babelrc</div><div class="line">|   |——.editorconfig</div><div class="line">|   |——.gitgnore</div><div class="line">|   |——index.html</div><div class="line">|   |——package.json</div><div class="line">|   |——README.md</div></pre></td></tr></table></figure>
-<h3 id="开发心得与总结"><a href="#开发心得与总结" class="headerlink" title="开发心得与总结"></a>开发心得与总结</h3><h4 id="1、轮播图"><a href="#1、轮播图" class="headerlink" title="1、轮播图"></a>1、轮播图</h4><p>首先感谢作者<a href="https://github.com/ShanaMaid/vue-image-scroll" target="_blank" rel="external">ShanaMaid/vue-image-scroll</a>开源的代码，我把代码copy下来自己进行了一点修改(没有手指滑动效果)，因为这是移动端，少不了的手指滑动切换，所以添加了<a href="https://github.com/vuejs/vue-touch#next" target="_blank" rel="external">vue-touch</a>(偷偷告诉你，vue-touch的next分支还是支持vue2.0的😜)。<a href="https://github.com/hzzly/MagicMusic/blob/master/src/components/banner.vue" target="_blank" rel="external">代码传送门</a><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"(item,index) in image"</span> <span class="attr">:class</span>=<span class="string">"[move[index]]"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">v-touch</span> <span class="attr">class</span>=<span class="string">"vuetouch"</span></span></div><div class="line">            <span class="attr">v-on:swipeleft</span>=<span class="string">"nextPic"</span></div><div class="line">            <span class="attr">v-on:swiperight</span>=<span class="string">"prePic"</span>&gt;</div><div class="line">        ...</div><div class="line">    <span class="tag">&lt;/<span class="name">v-touch</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">methods: &#123;</div><div class="line">    nextPic(event) &#123;</div><div class="line">        let temp = this.move.pop()</div><div class="line">        this.move.unshift(temp)</div><div class="line">    &#125;,</div><div class="line">    prePic(event) &#123;</div><div class="line">        let temp = this.move.shift()</div><div class="line">        this.move.push(temp)</div><div class="line">    &#125;,</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="2、歌曲操作-喜欢，分享，加入播放列表-动画、播放列表展开与删除歌曲动画"><a href="#2、歌曲操作-喜欢，分享，加入播放列表-动画、播放列表展开与删除歌曲动画" class="headerlink" title="2、歌曲操作(喜欢，分享，加入播放列表)动画、播放列表展开与删除歌曲动画"></a>2、歌曲操作(喜欢，分享，加入播放列表)动画、播放列表展开与删除歌曲动画</h4><blockquote>
-<p><code>Vue</code>提供了<code>transition</code>的封装组件，在下列情形中，可以给任何元素和组件添加 entering/leaving 过渡</p>
-<ul>
-<li>条件渲染 （使用 v-if）</li>
-<li>条件展示 （使用 v-show）</li>
-<li>动态组件</li>
-<li>组件根节点</li>
-</ul>
-</blockquote>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;transition name="move"&gt;</div><div class="line">    &lt;div class="menu" v-show="item.menuShow"&gt;</div><div class="line">        ...</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/transition&gt;</div><div class="line">&lt;transition-group name="slide" tag="div" class="list-wrapper"&gt;</div><div class="line">    &lt;div class="item" v-for="(item, index) in listenLists" :key="item"&gt;</div><div class="line">        ...</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/transition-group&gt;</div></pre></td></tr></table></figure>
-<blockquote>
-<p><code>transition-group</code>一组过度动画，这里有个小坑的，之前看官网列表过渡的栗子，给每一项设置唯一的key值，一般都会用index。所以在做的时候就把index传给key，结果过渡老是不对，后来换成对应的<code>item</code>就正常了(生无可恋脸)。</p>
-</blockquote>
-<h4 id="3、直线进度条、弧形进度条"><a href="#3、直线进度条、弧形进度条" class="headerlink" title="3、直线进度条、弧形进度条"></a>3、直线进度条、弧形进度条</h4><blockquote>
-<p>西班牙建筑大师曾说过：“直线属于人类，曲线则归于上帝”。在这里我大胆的使用了弧形来作为进度条，(几大热门音乐APP貌似还没有弧形进度条😄)。</p>
-</blockquote>
-<p>这里我用到了Vue的<strong>绑定内联样式</strong><br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">//直线进度条</div><div class="line">&lt;div class="progress-bar"&gt;</div><div class="line">    &lt;div class="play"</div><div class="line">        :style="&#123;width: (now / duration).toFixed(3)*100 + '%'&#125;"&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">//弧形进度条</div><div class="line">//因为用到了弧形，所以我这里用到了`border-radius`来使它变成一个大圆，然后平移`translateX`居中，其它不要的部分`overflow: hidden`。</div><div class="line">//这里用两个div来表示进度条，一条固定的进度条，一条慢慢增加。</div><div class="line">&lt;div class="process" @click="showToast"&gt;</div><div class="line">    &lt;div class="line"&gt;&lt;/div&gt;</div><div class="line">    &lt;div class="pro" :style="&#123;transform: `translateX($&#123;translateX&#125;) rotate($&#123;deg*1 + 56.5*((now / size).toFixed(3))&#125;deg)`&#125;"&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
-<h4 id="4、本地存储"><a href="#4、本地存储" class="headerlink" title="4、本地存储"></a>4、本地存储</h4><blockquote>
-<p>将一些数据缓存到localStorage，可以减少Http请求，从而优化页面加载时间。</p>
-</blockquote>
-<p>在这个项目中首页歌曲列表以及搜索历史用到了本地缓存，拿搜索历史来举栗：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">created() &#123;</div><div class="line">    <span class="keyword">if</span> (!localStorage.searchHistory) &#123;</div><div class="line">        <span class="keyword">let</span> searchHistory = [<span class="string">'前端'</span>, <span class="string">'童话镇'</span>, <span class="string">'刚好遇见你'</span>]</div><div class="line">        localStorage.searchHistory = <span class="built_in">JSON</span>.stringify(searchHistory)</div><div class="line">    &#125; </div><div class="line">&#125;,</div><div class="line"><span class="attr">methods</span>: &#123;</div><div class="line">    _search(keywords) &#123;</div><div class="line">        <span class="comment">//判断搜索列表中是否已存在</span></div><div class="line">        <span class="keyword">let</span> searchHistory = <span class="built_in">JSON</span>.parse(localStorage.searchHistory)</div><div class="line">        <span class="keyword">let</span> find = searchHistory.findIndex(<span class="function">(<span class="params">val</span>) =&gt;</span> &#123;</div><div class="line">            <span class="keyword">return</span> val === keywords</div><div class="line">        &#125;)</div><div class="line">        find === <span class="number">-1</span> ? localStorage.searchHistory = <span class="built_in">JSON</span>.stringify([keywords, ...searchHistory]) : <span class="string">''</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="5、图片懒加载"><a href="#5、图片懒加载" class="headerlink" title="5、图片懒加载"></a>5、图片懒加载</h4><p>使用了<a href="https://github.com/hilongjw/vue-lazyload?from=gold" target="_blank" rel="external">vue-lazyload</a>插件<br>用法👉：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install vue-lazyload</div></pre></td></tr></table></figure></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//main.js</span></div><div class="line"><span class="keyword">import</span> VueLazyLoad <span class="keyword">from</span> <span class="string">'vue-lazyload'</span></div><div class="line"><span class="keyword">import</span> def_lazy_img <span class="keyword">from</span> <span class="string">'../static/img/loading.gif'</span> <span class="comment">//懒加载的默认图片</span></div><div class="line">Vue.use(VueLazyLoad,&#123;</div><div class="line">    <span class="attr">loading</span>: def_lazy_img</div><div class="line">&#125;) <span class="comment">//使用懒加载组件</span></div><div class="line"></div><div class="line"><span class="comment">//在使用img标签的地方使用</span></div><div class="line">&lt;img v-lazy=<span class="string">"item.al.picUrl"</span> alt=<span class="string">""</span>&gt;</div></pre></td></tr></table></figure>
-<h4 id="6、歌词滚动与高亮"><a href="#6、歌词滚动与高亮" class="headerlink" title="6、歌词滚动与高亮"></a>6、歌词滚动与高亮</h4><p>因为api提供的歌词包括时间，如：<code>[03:57.280]原谅我这一生不羁放纵爱自由</code><br>所以首先要进行字符串切割：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">&lt;div class="lyric"&gt;</div><div class="line">    &lt;div class="roll-lyric" v-html="lyrics" ref="lyric"&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">computed: &#123;</div><div class="line">    lyrics() &#123;</div><div class="line">        let lyrics = ''</div><div class="line">        this.lyricArr = []</div><div class="line">        if (this.lyric) &#123;</div><div class="line">            let arr = this.lyric.split('\n')</div><div class="line">            for (let item of arr) &#123;</div><div class="line">                if (item) &#123;</div><div class="line">                    let arr2 = item.split(']')</div><div class="line">                    this.lyricArr.push(arr2[0].substring(1,3)*60+arr2[0].substring(4)*1)</div><div class="line">                    if (arr2) &#123;</div><div class="line">                        lyrics += `&lt;p class='lyrichook' style='margin: 10px 0'&gt;$&#123;arr2[1]&#125;&lt;/p&gt;`</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125; else &#123;</div><div class="line">            lyrics = '暂无歌词~'</div><div class="line">        &#125;</div><div class="line">        return lyrics</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>然后在播放的监听事件中与播放的当前做对比：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.$refs.myAudio.addEventListener(<span class="string">'play'</span>, () =&gt; &#123;</div><div class="line">    <span class="keyword">this</span>.pDOM = [...document.querySelectorAll(<span class="string">'.lyrichook'</span>)]</div><div class="line">    timer = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        <span class="keyword">this</span>.now = audioDOM.currentTime</div><div class="line">        <span class="keyword">this</span>.lyricArr.forEach(<span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</div><div class="line">            <span class="keyword">if</span> (<span class="built_in">parseInt</span>(item) == <span class="built_in">parseInt</span>(<span class="keyword">this</span>.now)) &#123;</div><div class="line">                <span class="keyword">this</span>.pDOM.forEach(<span class="function">(<span class="params">p</span>) =&gt;</span> &#123;</div><div class="line">                    p.style.color = <span class="string">'rgba(255,255,255,.8)'</span> <span class="comment">//其它歌词清除高亮</span></div><div class="line">                &#125;);</div><div class="line">                <span class="keyword">this</span>.pDOM[index].style.color = <span class="string">'#f12c61'</span> <span class="comment">//歌词高亮</span></div><div class="line">                <span class="keyword">this</span>.$refs.lyric.style.transform = <span class="string">`translateY(-<span class="subst">$&#123;(index<span class="number">-2</span>)*<span class="number">25</span>&#125;</span>px)`</span> <span class="comment">//歌词滚动</span></div><div class="line">            &#125; </div><div class="line">        &#125;);</div><div class="line">    &#125;, <span class="number">1000</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
-<p>到这就ok了😜</p>
-<h4 id="7、vuex状态管理"><a href="#7、vuex状态管理" class="headerlink" title="7、vuex状态管理"></a>7、vuex状态管理</h4><p>推荐官方调试工具 <a href="https://github.com/vuejs/vue-devtools" target="_blank" rel="external">devtools extension</a></p>
-<blockquote>
-<p>想进一步理解vuex，可以看这篇博客<a href="https://hzzly.github.io/2017/04/04/vuex%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/" target="_blank" rel="external">vuex学习实践笔记</a></p>
-</blockquote>
-<p>之前看到好多人写的vuex，把整个项目的数据放到了一个state里，导致应用的所有状态集中到一个很大的对象。但是，当应用变得很大时，store 对象会变得臃肿不堪。</p>
-<blockquote>
-<p>所以我建议(个人见解，轻喷)：将 store 分割到模块（module）。每个模块拥有自己的 state、mutation、action、getters。这样方便管理与后期的维护。</p>
-</blockquote>
-<p>车已到站✌️。</p>
-<p>不知不觉写了这么多，老铁们凑合这看吧😁，觉得还行的可以点个star，<strong>你的star是我继续开源创作的动力</strong>，谢谢！！！</p>
-<p><strong>项目地址：</strong> <a href="https://github.com/hzzly/MagicMusic" target="_blank" rel="external">https://github.com/hzzly/MagicMusic</a><br>欢迎大家的star啦~</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;前言：在最近的一个外包项目&lt;a href=&quot;http://www.zblmchina.com/#/post&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;中包联盟&lt;/a&gt;(PC端)中使用到了video，遇到了好多坑。突发奇想来踩一踩audio的坑😀，果然一入深似海，👇下面将分享我的DIY之路-Vue音乐播放器。&lt;br&gt;注：本项目为开源项目，不能用于商业应用，仅供学习。有问题或建议发我邮箱：hjingren@aliyun.com&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;[温馨提示：pc浏览f12手机模式最佳,手机建议wifi下访问]&lt;/p&gt;
-&lt;h3 id=&quot;预览地址：-http-hzzly-net-magic-music&quot;&gt;&lt;a href=&quot;#预览地址：-http-hzzly-net-magic-music&quot; class=&quot;headerlink&quot; title=&quot;预览地址： http://hzzly.net/magic-music&quot;&gt;&lt;/a&gt;&lt;strong&gt;预览地址：&lt;/strong&gt; &lt;a href=&quot;http://hzzly.net/magic-music&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://hzzly.net/magic-music&lt;/a&gt;&lt;/h3&gt;&lt;h3 id=&quot;Github地址：-https-github-com-hzzly-MagicMusic&quot;&gt;&lt;a href=&quot;#Github地址：-https-github-com-hzzly-MagicMusic&quot; class=&quot;headerlink&quot; title=&quot;Github地址： https://github.com/hzzly/MagicMusic&quot;&gt;&lt;/a&gt;&lt;strong&gt;Github地址：&lt;/strong&gt; &lt;a href=&quot;https://github.com/hzzly/MagicMusic&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/hzzly/MagicMusic&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;欢迎大家的star啦😄~&lt;/p&gt;
-&lt;p&gt;先来个预览：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://omt3u4bph.bkt.clouddn.com/magic-music1.gif&quot; alt=&quot;magic-music1&quot;&gt;&lt;/p&gt;
-&lt;p&gt;更多预览：&lt;a href=&quot;http://hjingren.cn/magic-music/pic.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;更多&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;👉老铁们，准备发车(技能点)：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://cn.vuejs.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;vue文档&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://router.vuejs.org/zh-cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;vue-router文档&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://vuex.vuejs.org/zh-cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;vuex文档&lt;/a&gt; 不想看文档的可以看看我这篇博客&lt;a href=&quot;https://hzzly.github.io/2017/04/04/vuex%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;vuex学习实践笔记&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.npmjs.com/package/axios&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;axios文档&lt;/a&gt; 或者这篇博客 &lt;a href=&quot;https://blog.ygxdxx.com/2017/02/01/Vuex2&amp;amp;Axios-Develop/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Vuex2 与 Axios 开发&lt;/a&gt;(我也是参考这篇，感谢作者😁)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://es6.ruanyifeng.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;es6(阮一峰的es6入门)&lt;/a&gt; 可以参考&lt;a href=&quot;https://hzzly.github.io/tags/es6/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;我的es6之路&lt;/a&gt;(还在继续,轻喷)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://hzzly.github.io/2017/03/03/Web%E7%9A%84Flex%E5%BC%B9%E6%80%A7%E7%9B%92%E6%A8%A1%E5%9E%8B/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;flex (Web的flex弹性盒模型)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://hzzly.github.io/2017/03/15/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D%E7%9A%84%E8%A7%A3%E5%86%B3/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;移动端屏幕适配的解决 (flexible+rem)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://hzzly.github.io/2017/04/26/%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8sessionStorage%E4%B8%8ElocalStorage/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;本地存储(sessionStorage、localStorage)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/hilongjw/vue-lazyload?from=gold&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;图片懒加载&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;👉坐好，出发&lt;/p&gt;
-&lt;h3 id=&quot;实现的功能&quot;&gt;&lt;a href=&quot;#实现的功能&quot; class=&quot;headerlink&quot; title=&quot;实现的功能&quot;&gt;&lt;/a&gt;实现的功能&lt;/h3&gt;&lt;h4 id=&quot;1、首页&quot;&gt;&lt;a href=&quot;#1、首页&quot; class=&quot;headerlink&quot; title=&quot;1、首页&quot;&gt;&lt;/a&gt;1、首页&lt;/h4&gt;&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;[x] 轮播&lt;/li&gt;
-&lt;li&gt;[x] 个性推荐[流行、古典、轻音乐、流行]&lt;/li&gt;
-&lt;li&gt;[x] 歌曲操作&lt;ul&gt;
-&lt;li&gt;[x] 加入播放列表&lt;/li&gt;
-&lt;li&gt;[ ] 喜欢&lt;/li&gt;
-&lt;li&gt;[ ] 分享&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&quot;2、底部播放控件&quot;&gt;&lt;a href=&quot;#2、底部播放控件&quot; class=&quot;headerlink&quot; title=&quot;2、底部播放控件&quot;&gt;&lt;/a&gt;2、底部播放控件&lt;/h4&gt;&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;[x] 播放&lt;/li&gt;
-&lt;li&gt;[x] 暂停&lt;/li&gt;
-&lt;li&gt;[x] 下一曲&lt;/li&gt;
-&lt;li&gt;[x] 播放进度条&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-      <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
-    
-      <category term="vue" scheme="http://yoursite.com/tags/vue/"/>
-    
-      <category term="vuex" scheme="http://yoursite.com/tags/vuex/"/>
     
   </entry>
   
