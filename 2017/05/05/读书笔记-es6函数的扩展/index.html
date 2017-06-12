@@ -12,17 +12,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="随笔,es6," />
+    <meta name="keywords" content="随笔,es6,JavaScrip," />
   
 
   <meta name="description" content="函数的扩展一、函数参数的默认值  参数变量是默认声明的，所以不能用let或const再次声明 通常情况下，定义了默认值的参数，应该是函数的尾参数   123456function log(x, y = &apos;World&apos;) &amp;#123;  console.log(x, y);&amp;#125;log(&apos;Hello&apos;) // Hello Worldlog(&apos;Hello&apos;, &apos;China&apos;) // Hello">
-<meta name="keywords" content="随笔,es6">
+<meta name="keywords" content="随笔,es6,JavaScrip">
 <meta property="og:type" content="article">
 <meta property="og:title" content="读书笔记-es6函数的扩展">
 <meta property="og:url" content="http://yoursite.com/2017/05/05/读书笔记-es6函数的扩展/index.html">
 <meta property="og:site_name" content="Hzzly">
 <meta property="og:description" content="函数的扩展一、函数参数的默认值  参数变量是默认声明的，所以不能用let或const再次声明 通常情况下，定义了默认值的参数，应该是函数的尾参数   123456function log(x, y = &apos;World&apos;) &amp;#123;  console.log(x, y);&amp;#125;log(&apos;Hello&apos;) // Hello Worldlog(&apos;Hello&apos;, &apos;China&apos;) // Hello">
-<meta property="og:updated_time" content="2017-05-21T14:05:32.000Z">
+<meta property="og:updated_time" content="2017-06-12T15:00:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记-es6函数的扩展">
 <meta name="twitter:description" content="函数的扩展一、函数参数的默认值  参数变量是默认声明的，所以不能用let或const再次声明 通常情况下，定义了默认值的参数，应该是函数的尾参数   123456function log(x, y = &apos;World&apos;) &amp;#123;  console.log(x, y);&amp;#125;log(&apos;Hello&apos;) // Hello Worldlog(&apos;Hello&apos;, &apos;China&apos;) // Hello">
@@ -291,6 +291,8 @@
 </ul>
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'id:'</span>, <span class="keyword">this</span>.id);</div><div class="line">      &#125;;</div><div class="line">    &#125;;</div><div class="line">  &#125;;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> f = foo.call(&#123;<span class="attr">id</span>: <span class="number">1</span>&#125;);</div><div class="line"><span class="keyword">var</span> t1 = f.call(&#123;<span class="attr">id</span>: <span class="number">2</span>&#125;)()(); <span class="comment">// id: 1</span></div><div class="line"><span class="keyword">var</span> t2 = f().call(&#123;<span class="attr">id</span>: <span class="number">3</span>&#125;)(); <span class="comment">// id: 1</span></div><div class="line"><span class="keyword">var</span> t3 = f()().call(&#123;<span class="attr">id</span>: <span class="number">4</span>&#125;); <span class="comment">// id: 1</span></div></pre></td></tr></table></figure>
+<p><strong>Github地址：</strong> <a href="https://github.com/hzzly/learn-es6" target="_blank" rel="external">https://github.com/hzzly/learn-es6</a></p>
+
     
   </div>
 </article>

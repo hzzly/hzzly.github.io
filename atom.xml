@@ -80,9 +80,9 @@
     </summary>
     
     
-      <category term="nginx" scheme="http://yoursite.com/tags/nginx/"/>
-    
       <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="nginx" scheme="http://yoursite.com/tags/nginx/"/>
     
       <category term="node" scheme="http://yoursite.com/tags/node/"/>
     
@@ -1672,7 +1672,7 @@
     <link href="http://yoursite.com/2017/05/05/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-es6%E5%87%BD%E6%95%B0%E7%9A%84%E6%89%A9%E5%B1%95/"/>
     <id>http://yoursite.com/2017/05/05/读书笔记-es6函数的扩展/</id>
     <published>2017-05-05T08:26:01.000Z</published>
-    <updated>2017-05-21T14:05:32.000Z</updated>
+    <updated>2017-06-12T15:00:50.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="函数的扩展"><a href="#函数的扩展" class="headerlink" title="函数的扩展"></a><strong>函数的扩展</strong></h2><h3 id="一、函数参数的默认值"><a href="#一、函数参数的默认值" class="headerlink" title="一、函数参数的默认值"></a>一、函数参数的默认值</h3><blockquote>
 <ul>
@@ -1737,7 +1737,9 @@
 <li>因为所有的内层函数都是箭头函数，都没有自己的this，它们的this其实都是最外层foo函数的this</li>
 </ul>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'id:'</span>, <span class="keyword">this</span>.id);</div><div class="line">      &#125;;</div><div class="line">    &#125;;</div><div class="line">  &#125;;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> f = foo.call(&#123;<span class="attr">id</span>: <span class="number">1</span>&#125;);</div><div class="line"><span class="keyword">var</span> t1 = f.call(&#123;<span class="attr">id</span>: <span class="number">2</span>&#125;)()(); <span class="comment">// id: 1</span></div><div class="line"><span class="keyword">var</span> t2 = f().call(&#123;<span class="attr">id</span>: <span class="number">3</span>&#125;)(); <span class="comment">// id: 1</span></div><div class="line"><span class="keyword">var</span> t3 = f()().call(&#123;<span class="attr">id</span>: <span class="number">4</span>&#125;); <span class="comment">// id: 1</span></div></pre></td></tr></table></figure>]]></content>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'id:'</span>, <span class="keyword">this</span>.id);</div><div class="line">      &#125;;</div><div class="line">    &#125;;</div><div class="line">  &#125;;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> f = foo.call(&#123;<span class="attr">id</span>: <span class="number">1</span>&#125;);</div><div class="line"><span class="keyword">var</span> t1 = f.call(&#123;<span class="attr">id</span>: <span class="number">2</span>&#125;)()(); <span class="comment">// id: 1</span></div><div class="line"><span class="keyword">var</span> t2 = f().call(&#123;<span class="attr">id</span>: <span class="number">3</span>&#125;)(); <span class="comment">// id: 1</span></div><div class="line"><span class="keyword">var</span> t3 = f()().call(&#123;<span class="attr">id</span>: <span class="number">4</span>&#125;); <span class="comment">// id: 1</span></div></pre></td></tr></table></figure>
+<p><strong>Github地址：</strong> <a href="https://github.com/hzzly/learn-es6" target="_blank" rel="external">https://github.com/hzzly/learn-es6</a></p>
+]]></content>
     
     <summary type="html">
     
@@ -1766,6 +1768,8 @@
       <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
     
       <category term="es6" scheme="http://yoursite.com/tags/es6/"/>
+    
+      <category term="JavaScrip" scheme="http://yoursite.com/tags/JavaScrip/"/>
     
   </entry>
   
