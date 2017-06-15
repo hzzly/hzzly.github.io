@@ -12,17 +12,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="随笔,es6," />
+    <meta name="keywords" content="随笔,es6,JavaScrip," />
   
 
   <meta name="description" content="对象的扩展一、属性和方法的简洁表示法12345678910111213141516171819202122var foo = &apos;bar&apos;;var baz = &amp;#123;foo&amp;#125;;baz // &amp;#123;foo: &quot;bar&quot;&amp;#125;// 等同于var baz = &amp;#123;foo: foo&amp;#125;;var o = &amp;#123;  method() &amp;#123;    retu">
-<meta name="keywords" content="随笔,es6">
+<meta name="keywords" content="随笔,es6,JavaScrip">
 <meta property="og:type" content="article">
 <meta property="og:title" content="读书笔记-es6对象的扩展">
 <meta property="og:url" content="http://yoursite.com/2017/05/06/读书笔记-es6对象的扩展/index.html">
 <meta property="og:site_name" content="Hzzly">
 <meta property="og:description" content="对象的扩展一、属性和方法的简洁表示法12345678910111213141516171819202122var foo = &apos;bar&apos;;var baz = &amp;#123;foo&amp;#125;;baz // &amp;#123;foo: &quot;bar&quot;&amp;#125;// 等同于var baz = &amp;#123;foo: foo&amp;#125;;var o = &amp;#123;  method() &amp;#123;    retu">
-<meta property="og:updated_time" content="2017-05-21T14:04:26.000Z">
+<meta property="og:updated_time" content="2017-06-15T15:34:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记-es6对象的扩展">
 <meta name="twitter:description" content="对象的扩展一、属性和方法的简洁表示法12345678910111213141516171819202122var foo = &apos;bar&apos;;var baz = &amp;#123;foo&amp;#125;;baz // &amp;#123;foo: &quot;bar&quot;&amp;#125;// 等同于var baz = &amp;#123;foo: foo&amp;#125;;var o = &amp;#123;  method() &amp;#123;    retu">
@@ -304,6 +304,8 @@
 <p>扩展运算符（…）用于取出参数对象的所有可遍历属性，拷贝到当前对象之中。</p>
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> z = &#123; <span class="attr">a</span>: <span class="number">3</span>, <span class="attr">b</span>: <span class="number">4</span> &#125;;</div><div class="line"><span class="keyword">let</span> n = &#123; ...z &#125;;</div><div class="line">n <span class="comment">// &#123; a: 3, b: 4 &#125;</span></div><div class="line"><span class="keyword">let</span> aClone = &#123; ...a &#125;;</div><div class="line"><span class="comment">// 等同于</span></div><div class="line"><span class="keyword">let</span> aClone = <span class="built_in">Object</span>.assign(&#123;&#125;, a);</div><div class="line"><span class="comment">//合并两个对象</span></div><div class="line"><span class="keyword">let</span> ab = &#123; ...a, ...b &#125;;</div><div class="line"><span class="comment">// 等同于</span></div><div class="line"><span class="keyword">let</span> ab = <span class="built_in">Object</span>.assign(&#123;&#125;, a, b);</div></pre></td></tr></table></figure>
+<p><strong>Github地址：</strong> <a href="https://github.com/hzzly/learn-es6" target="_blank" rel="external">https://github.com/hzzly/learn-es6</a></p>
+
     
   </div>
 </article>
