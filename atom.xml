@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-25T06:05:54.000Z</updated>
+  <updated>2017-09-12T03:20:20.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在Vue.js中使用Mixins</title>
+    <link href="http://yoursite.com/2017/09/12/%E5%9C%A8Vue-js%E4%B8%AD%E4%BD%BF%E7%94%A8Mixins/"/>
+    <id>http://yoursite.com/2017/09/12/在Vue-js中使用Mixins/</id>
+    <published>2017-09-12T03:15:14.000Z</published>
+    <updated>2017-09-12T03:20:20.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>一个很常见的场景: 有两个非常相似的组件, 它们拥有非常相似的基本功能, 但是它们之间又有足够的不同的地方, 该如何选择呢? 我们是应该将它们分成两个完全不同的组件呢? 还是创建一个基础组件, 然后定义足够多的props以方便区分使用场景?</p>
+</blockquote>
+<p>这两种方式都不是完美的: 如果你将它们分成两个完全不同的组件, 在需求变化(功能变化)时, 可能会增加需要同时修改两个组件的风险, 这违反了”DRY”的前提. 另一方面, 太多的props很快会让人变得凌乱, 并且, 迫使维护人员, 甚至是你自己, 要首先理解这些props的上下文才能使用它, 这会让人非常失望.</p>
+<p>Vue的Mixins是非常实用的编程方式, 因为最终实用的编程是通过不断减少运动部件(moving parts)使代码变得容易理解. (关于这一点, Michael Feathers有一个很好的引用). 一个mixin允许你封装一个功能, 以便你能在整个应用程序中的不同组件中使用它. 如果mixin被正确的创建, 它们是纯粹的–它们不会修改或更改函数的作用范围(scope)之外的内容, 因此, 您可以在多个地方执行它们, 并且只要输入值相同, 总是能非常可靠得得到相同的结果. 这真的非常强大.</p>
+<h1 id="认识Mixins"><a href="#认识Mixins" class="headerlink" title="认识Mixins"></a>认识Mixins</h1><p><a href="https://cn.vuejs.org/v2/guide/mixins.html" target="_blank" rel="external">混合 (mixins)</a> 是一种分发 Vue 组件中可复用功能的非常灵活的方式。混合对象可以包含任意组件选项。以组件使用混合对象时，所有混合对象的选项将被混入该组件本身的选项。</p>
+<h1 id="栗子"><a href="#栗子" class="headerlink" title="栗子"></a>栗子</h1><blockquote>
+<p>假设我们有一些不同的组件, 它们的工作是切换状态boolean, 一个模态(modal)和一个提示(tooltip). 这些tooltips和modals没有很多共同之处, 除了这个功能: 它们看起来不一样, 它们使用起来也不尽相同, 但是它们的逻辑是相似的 .</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//modal</span></div><div class="line"><span class="keyword">const</span> Modal = &#123;</div><div class="line">  <span class="attr">template</span>: <span class="string">'#modal'</span>,</div><div class="line">  data() &#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">      <span class="attr">isShowing</span>: <span class="literal">false</span></div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">methods</span>: &#123;</div><div class="line">    toggleShow() &#123;</div><div class="line">      <span class="keyword">this</span>.isShowing = !<span class="keyword">this</span>.isShowing;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="comment">//tooltip</span></div><div class="line"><span class="keyword">const</span> Tooltip = &#123;</div><div class="line">  <span class="attr">template</span>: <span class="string">'#tooltip'</span>,</div><div class="line">  data() &#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">      <span class="attr">isShowing</span>: <span class="literal">false</span></div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">methods</span>: &#123;</div><div class="line">    toggleShow() &#123;</div><div class="line">      <span class="keyword">this</span>.isShowing = !<span class="keyword">this</span>.isShowing;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们可以从中提取逻辑, 并创建可以复用的部分：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> toggle = &#123;</div><div class="line">  data() &#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">      <span class="attr">isShowing</span>: <span class="literal">false</span></div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">methods</span>: &#123;</div><div class="line">    toggleShow() &#123;</div><div class="line">      <span class="keyword">this</span>.isShowing = !<span class="keyword">this</span>.isShowing;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">const</span> Modal = &#123;</div><div class="line">  <span class="attr">template</span>: <span class="string">'#modal'</span>,</div><div class="line">  <span class="attr">mixins</span>: [toggle]</div><div class="line">&#125;;</div><div class="line"> </div><div class="line"><span class="keyword">const</span> Tooltip = &#123;</div><div class="line">  <span class="attr">template</span>: <span class="string">'#tooltip'</span>,</div><div class="line">  <span class="attr">mixins</span>: [toggle]</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>duang — 一个小而简单的🌰让我们知道了Mixins对于封装一些可复用的功能如此有趣、方便、实用。</p>
+<h1 id="项目实践"><a href="#项目实践" class="headerlink" title="项目实践"></a>项目实践</h1><blockquote>
+<ul>
+<li><a href="https://github.com/hzzly/xyy-vue" target="_blank" rel="external">xyy-vue</a> star(600+)</li>
+</ul>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;一个很常见的场景: 有两个非常相似的组件, 它们拥有非常相似的基本功能, 但是它们之间又有足够的不同的地方, 该如何选择呢? 我们是应该将它们分成两个完全不同的组件呢? 还是创建一个基础组件, 然后定义足够多的props以方便区分使用场景?&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="vue" scheme="http://yoursite.com/tags/vue/"/>
+    
+  </entry>
   
   <entry>
     <title>Vue插件的开发(一)</title>
@@ -1562,115 +1602,6 @@
 &lt;/blockquote&gt;
 &lt;p&gt;遍历器对象的next方法的运行逻辑如下:&lt;br&gt;1）遇到yield表达式，就暂停执行后面的操作，并将紧跟在yield后面的那个表达式的值，作为返回的对象的value属性值。&lt;br&gt;2）下一次调用next方法时，再继续往下执行，直到遇到下一个yield表达式。&lt;br&gt;3）如果没有再遇到新的yield表达式，就一直运行到函数结束，直到return语句为止，并将return语句后面的表达式的值，作为返回的对象的value属性值。&lt;br&gt;4）如果该函数没有return语句，则返回的对象的value属性值为undefined。&lt;/p&gt;
 &lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;* &lt;span class=&quot;title&quot;&gt;gen&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;yield&lt;/span&gt;  &lt;span class=&quot;number&quot;&gt;123&lt;/span&gt; + &lt;span class=&quot;number&quot;&gt;456&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; g = gen()&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;gen.next()&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//&amp;#123; value: 579, done: false &amp;#125;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
-    
-      <category term="es6" scheme="http://yoursite.com/tags/es6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>读书笔记-es6Set和Map数据结构</title>
-    <link href="http://yoursite.com/2017/05/07/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-es6Set%E5%92%8CMap%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    <id>http://yoursite.com/2017/05/07/读书笔记-es6Set和Map数据结构/</id>
-    <published>2017-05-07T11:10:28.000Z</published>
-    <updated>2017-05-21T14:01:27.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Set和Map数据结构"><a href="#Set和Map数据结构" class="headerlink" title="Set和Map数据结构"></a><strong>Set和Map数据结构</strong></h2><h3 id="一、Set"><a href="#一、Set" class="headerlink" title="一、Set"></a>一、Set</h3><blockquote>
-<p>它类似于数组，但是成员的值都是唯一的，没有重复的值。Set 本身是一个构造函数，用来生成 Set 数据结构。</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> s = <span class="keyword">new</span> <span class="built_in">Set</span>();</div><div class="line">[<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">2</span>].forEach(<span class="function"><span class="params">x</span> =&gt;</span> s.add(x));</div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">of</span> s) &#123;</div><div class="line">  <span class="built_in">console</span>.log(i);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 2 3 5 4</span></div></pre></td></tr></table></figure>
-<p>Set 函数可以接受一个数组（或类似数组的对象）作为参数，用来初始化。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 例一</span></div><div class="line"><span class="keyword">const</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>]);</div><div class="line">[...set]</div><div class="line"><span class="comment">// [1, 2, 3, 4]</span></div><div class="line"><span class="comment">// 例二</span></div><div class="line"><span class="keyword">const</span> items = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>]);</div><div class="line">items.size <span class="comment">// 5</span></div><div class="line"><span class="comment">// 例三</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">divs</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> [...document.querySelectorAll(<span class="string">'div'</span>)];</div><div class="line">&#125;</div><div class="line"><span class="keyword">const</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>(divs());</div><div class="line">set.size <span class="comment">// 56</span></div><div class="line"><span class="comment">// 类似于</span></div><div class="line">divs().forEach(<span class="function"><span class="params">div</span> =&gt;</span> set.add(div));</div><div class="line">set.size <span class="comment">// 56</span></div></pre></td></tr></table></figure>
-<p>去除数组重复成员的方法。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 去除数组的重复成员</span></div><div class="line">[...new <span class="built_in">Set</span>(array)]</div></pre></td></tr></table></figure>
-<h3 id="二、Set-实例的属性和方法"><a href="#二、Set-实例的属性和方法" class="headerlink" title="二、Set 实例的属性和方法"></a>二、Set 实例的属性和方法</h3><blockquote>
-<ul>
-<li>属性<ul>
-<li>Set.prototype.constructor：构造函数，默认就是Set函数。</li>
-<li>Set.prototype.size：返回Set实例的成员总数。</li>
-</ul>
-</li>
-<li>方法<ul>
-<li>add(value)：添加某个值，返回Set结构本身。</li>
-<li>delete(value)：删除某个值，返回一个布尔值，表示删除是否成功。</li>
-<li>has(value)：返回一个布尔值，表示该值是否为Set的成员。</li>
-<li>clear()：清除所有成员，没有返回值。</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<h3 id="三、遍历操作"><a href="#三、遍历操作" class="headerlink" title="三、遍历操作"></a>三、遍历操作</h3><blockquote>
-<ul>
-<li>keys()：返回键名的遍历器</li>
-<li>values()：返回键值的遍历器</li>
-<li>entries()：返回键值对的遍历器</li>
-<li>forEach()：使用回调函数遍历每个成员</li>
-</ul>
-</blockquote>
-<a id="more"></a>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="string">'red'</span>, <span class="string">'green'</span>, <span class="string">'blue'</span>]);</div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> set.keys()) &#123;</div><div class="line">  <span class="built_in">console</span>.log(item);</div><div class="line">&#125;</div><div class="line"><span class="comment">// red</span></div><div class="line"><span class="comment">// green</span></div><div class="line"><span class="comment">// blue</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> set.values()) &#123;</div><div class="line">  <span class="built_in">console</span>.log(item);</div><div class="line">&#125;</div><div class="line"><span class="comment">// red</span></div><div class="line"><span class="comment">// green</span></div><div class="line"><span class="comment">// blue</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> set.entries()) &#123;</div><div class="line">  <span class="built_in">console</span>.log(item);</div><div class="line">&#125;</div><div class="line"><span class="comment">// ["red", "red"]</span></div><div class="line"><span class="comment">// ["green", "green"]</span></div><div class="line"><span class="comment">// ["blue", "blue"]</span></div><div class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]);</div><div class="line">set.forEach(<span class="function">(<span class="params">value, key</span>) =&gt;</span> <span class="built_in">console</span>.log(value * <span class="number">2</span>) )</div><div class="line"><span class="comment">// 2</span></div><div class="line"><span class="comment">// 4</span></div><div class="line"><span class="comment">// 6</span></div><div class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]);</div><div class="line">set = <span class="keyword">new</span> <span class="built_in">Set</span>([...set].map(<span class="function"><span class="params">x</span> =&gt;</span> x * <span class="number">2</span>));</div><div class="line"><span class="comment">// 返回Set结构：&#123;2, 4, 6&#125;</span></div><div class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]);</div><div class="line">set = <span class="keyword">new</span> <span class="built_in">Set</span>([...set].filter(<span class="function"><span class="params">x</span> =&gt;</span> (x % <span class="number">2</span>) == <span class="number">0</span>));</div><div class="line"><span class="comment">// 返回Set结构：&#123;2, 4&#125;</span></div><div class="line"><span class="keyword">let</span> arr = [<span class="number">3</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">5</span>];</div><div class="line"><span class="keyword">let</span> unique = [...new <span class="built_in">Set</span>(arr)];</div><div class="line"><span class="comment">// [3, 5, 2]</span></div></pre></td></tr></table></figure>
-<h3 id="四、Map"><a href="#四、Map" class="headerlink" title="四、Map"></a>四、Map</h3><blockquote>
-<p>它类似于对象，也是键值对的集合，但是“键”的范围不限于字符串，各种类型的值（包括对象）都可以当作键。</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>([</div><div class="line">  [<span class="string">'name'</span>, <span class="string">'张三'</span>],</div><div class="line">  [<span class="string">'title'</span>, <span class="string">'Author'</span>]</div><div class="line">]);</div><div class="line">map.size <span class="comment">// 2</span></div><div class="line">map.has(<span class="string">'name'</span>) <span class="comment">// true</span></div><div class="line">map.get(<span class="string">'name'</span>) <span class="comment">// "张三"</span></div><div class="line">map.has(<span class="string">'title'</span>) <span class="comment">// true</span></div><div class="line">map.get(<span class="string">'title'</span>) <span class="comment">// "Author"</span></div></pre></td></tr></table></figure>
-<h3 id="五、Map-实例的属性和方法"><a href="#五、Map-实例的属性和方法" class="headerlink" title="五、Map 实例的属性和方法"></a>五、Map 实例的属性和方法</h3><blockquote>
-<ul>
-<li>属性<ul>
-<li>Map.prototype.constructor：构造函数，默认就是Map函数。</li>
-<li>Map.prototype.size：返回Map实例的成员总数。</li>
-</ul>
-</li>
-<li>方法<ul>
-<li>set(key, value)：set方法设置键名key对应的键值为value，然后返回整个 Map 结构。如果key已经有值，则键值会被更新，否则就新生成该键。可以采用链式写法。</li>
-<li>get(key)：get方法读取key对应的键值，如果找不到key，返回undefined。</li>
-<li>has(key)：has方法返回一个布尔值，表示某个键是否在当前 Map 对象之中。</li>
-<li>delete(key)：delete方法删除某个键，返回true。如果删除失败，返回false。</li>
-<li>clear(): clear方法清除所有成员，没有返回值。</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<h3 id="六、遍历操作"><a href="#六、遍历操作" class="headerlink" title="六、遍历操作"></a>六、遍历操作</h3><p>和 Set 一样</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Set和Map数据结构&quot;&gt;&lt;a href=&quot;#Set和Map数据结构&quot; class=&quot;headerlink&quot; title=&quot;Set和Map数据结构&quot;&gt;&lt;/a&gt;&lt;strong&gt;Set和Map数据结构&lt;/strong&gt;&lt;/h2&gt;&lt;h3 id=&quot;一、Set&quot;&gt;&lt;a href=&quot;#一、Set&quot; class=&quot;headerlink&quot; title=&quot;一、Set&quot;&gt;&lt;/a&gt;一、Set&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;它类似于数组，但是成员的值都是唯一的，没有重复的值。Set 本身是一个构造函数，用来生成 Set 数据结构。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; s = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Set&lt;/span&gt;();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;[&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;].forEach(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;params&quot;&gt;x&lt;/span&gt; =&amp;gt;&lt;/span&gt; s.add(x));&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; i &lt;span class=&quot;keyword&quot;&gt;of&lt;/span&gt; s) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(i);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 2 3 5 4&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;Set 函数可以接受一个数组（或类似数组的对象）作为参数，用来初始化。&lt;/p&gt;
-&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 例一&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; set = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Set&lt;/span&gt;([&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;]);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;[...set]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// [1, 2, 3, 4]&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 例二&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; items = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Set&lt;/span&gt;([&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;]);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;items.size &lt;span class=&quot;comment&quot;&gt;// 5&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 例三&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;divs&lt;/span&gt; (&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; [...document.querySelectorAll(&lt;span class=&quot;string&quot;&gt;&#39;div&#39;&lt;/span&gt;)];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; set = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Set&lt;/span&gt;(divs());&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;set.size &lt;span class=&quot;comment&quot;&gt;// 56&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 类似于&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;divs().forEach(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;params&quot;&gt;div&lt;/span&gt; =&amp;gt;&lt;/span&gt; set.add(div));&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;set.size &lt;span class=&quot;comment&quot;&gt;// 56&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;去除数组重复成员的方法。&lt;/p&gt;
-&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 去除数组的重复成员&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;[...new &lt;span class=&quot;built_in&quot;&gt;Set&lt;/span&gt;(array)]&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;二、Set-实例的属性和方法&quot;&gt;&lt;a href=&quot;#二、Set-实例的属性和方法&quot; class=&quot;headerlink&quot; title=&quot;二、Set 实例的属性和方法&quot;&gt;&lt;/a&gt;二、Set 实例的属性和方法&lt;/h3&gt;&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;属性&lt;ul&gt;
-&lt;li&gt;Set.prototype.constructor：构造函数，默认就是Set函数。&lt;/li&gt;
-&lt;li&gt;Set.prototype.size：返回Set实例的成员总数。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;方法&lt;ul&gt;
-&lt;li&gt;add(value)：添加某个值，返回Set结构本身。&lt;/li&gt;
-&lt;li&gt;delete(value)：删除某个值，返回一个布尔值，表示删除是否成功。&lt;/li&gt;
-&lt;li&gt;has(value)：返回一个布尔值，表示该值是否为Set的成员。&lt;/li&gt;
-&lt;li&gt;clear()：清除所有成员，没有返回值。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;三、遍历操作&quot;&gt;&lt;a href=&quot;#三、遍历操作&quot; class=&quot;headerlink&quot; title=&quot;三、遍历操作&quot;&gt;&lt;/a&gt;三、遍历操作&lt;/h3&gt;&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;keys()：返回键名的遍历器&lt;/li&gt;
-&lt;li&gt;values()：返回键值的遍历器&lt;/li&gt;
-&lt;li&gt;entries()：返回键值对的遍历器&lt;/li&gt;
-&lt;li&gt;forEach()：使用回调函数遍历每个成员&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
     
     </summary>
     
