@@ -4,7 +4,7 @@
   <html class="light page-post">
 
 
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
   <title>读书笔记-es6数值的扩展 | Hzzly</title>
@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="随笔,es6,JavaScrip," />
+    <meta name="keywords" content="随笔,es6,JavaScrip,">
   
 
   <meta name="description" content="数值的扩展一、Number.isFinite(), Number.isNaN()  Number.isFinite()  检查一个数值是否为有限的（finite） Number.isNaN()  检查一个值是否为NaN   1234567891011121314151617//Number.isFinite()Number.isFinite(15); // trueNumber.isFinite(">
@@ -22,6 +22,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/03/读书笔记-es6数值的扩展/index.html">
 <meta property="og:site_name" content="Hzzly">
 <meta property="og:description" content="数值的扩展一、Number.isFinite(), Number.isNaN()  Number.isFinite()  检查一个数值是否为有限的（finite） Number.isNaN()  检查一个值是否为NaN   1234567891011121314151617//Number.isFinite()Number.isFinite(15); // trueNumber.isFinite(">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-06-15T15:34:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记-es6数值的扩展">
@@ -80,7 +81,7 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
   
 </head>
-
+</html>
 <body>
 
 
@@ -99,78 +100,43 @@
     <ul class="list-toolbox">
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/archives/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
             博客
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/project/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
             项目
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/tag/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
             标签
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/link/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
             友链
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/about/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
             关于
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/atom.xml"
-            rel="noopener noreferrer"
-            target="_blank"
-            >
+          <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
             RSS
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/search/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
             搜索
           </a>
         </li>
@@ -233,15 +199,15 @@
 <li>Number.isNaN()  检查一个值是否为NaN</li>
 </ul>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Number.isFinite()</span></div><div class="line"><span class="built_in">Number</span>.isFinite(<span class="number">15</span>); <span class="comment">// true</span></div><div class="line"><span class="built_in">Number</span>.isFinite(<span class="number">0.8</span>); <span class="comment">// true</span></div><div class="line"><span class="built_in">Number</span>.isFinite(<span class="literal">NaN</span>); <span class="comment">// false</span></div><div class="line"><span class="built_in">Number</span>.isFinite(<span class="literal">Infinity</span>); <span class="comment">// false</span></div><div class="line"><span class="built_in">Number</span>.isFinite(-<span class="literal">Infinity</span>); <span class="comment">// false</span></div><div class="line"><span class="built_in">Number</span>.isFinite(<span class="string">'foo'</span>); <span class="comment">// false</span></div><div class="line"><span class="built_in">Number</span>.isFinite(<span class="string">'15'</span>); <span class="comment">// false</span></div><div class="line"><span class="built_in">Number</span>.isFinite(<span class="literal">true</span>); <span class="comment">// false</span></div><div class="line"><span class="comment">//Number.isNaN()</span></div><div class="line"><span class="built_in">Number</span>.isNaN(<span class="literal">NaN</span>) <span class="comment">// true</span></div><div class="line"><span class="built_in">Number</span>.isNaN(<span class="number">15</span>) <span class="comment">// false</span></div><div class="line"><span class="built_in">Number</span>.isNaN(<span class="string">'15'</span>) <span class="comment">// false</span></div><div class="line"><span class="built_in">Number</span>.isNaN(<span class="literal">true</span>) <span class="comment">// false</span></div><div class="line"><span class="built_in">Number</span>.isNaN(<span class="number">9</span>/<span class="literal">NaN</span>) <span class="comment">// true</span></div><div class="line"><span class="built_in">Number</span>.isNaN(<span class="string">'true'</span>/<span class="number">0</span>) <span class="comment">// true</span></div><div class="line"><span class="built_in">Number</span>.isNaN(<span class="string">'true'</span>/<span class="string">'true'</span>) <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Number.isFinite()</span></span><br><span class="line"><span class="built_in">Number</span>.isFinite(<span class="number">15</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">Number</span>.isFinite(<span class="number">0.8</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">Number</span>.isFinite(<span class="literal">NaN</span>); <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Number</span>.isFinite(<span class="literal">Infinity</span>); <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Number</span>.isFinite(-<span class="literal">Infinity</span>); <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Number</span>.isFinite(<span class="string">'foo'</span>); <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Number</span>.isFinite(<span class="string">'15'</span>); <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Number</span>.isFinite(<span class="literal">true</span>); <span class="comment">// false</span></span><br><span class="line"><span class="comment">//Number.isNaN()</span></span><br><span class="line"><span class="built_in">Number</span>.isNaN(<span class="literal">NaN</span>) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">Number</span>.isNaN(<span class="number">15</span>) <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Number</span>.isNaN(<span class="string">'15'</span>) <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Number</span>.isNaN(<span class="literal">true</span>) <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Number</span>.isNaN(<span class="number">9</span>/<span class="literal">NaN</span>) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">Number</span>.isNaN(<span class="string">'true'</span>/<span class="number">0</span>) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">Number</span>.isNaN(<span class="string">'true'</span>/<span class="string">'true'</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 <h3 id="二、Number-parseInt-Number-parseFloat"><a href="#二、Number-parseInt-Number-parseFloat" class="headerlink" title="二、Number.parseInt(), Number.parseFloat()"></a>二、Number.parseInt(), Number.parseFloat()</h3><blockquote>
 <p>全局方法parseInt()和parseFloat()，移植到Number对象上面，行为完全保持不变。</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Number</span>.parseInt === <span class="built_in">parseInt</span> <span class="comment">// true</span></div><div class="line"><span class="built_in">Number</span>.parseFloat === <span class="built_in">parseFloat</span> <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Number</span>.parseInt === <span class="built_in">parseInt</span> <span class="comment">// true</span></span><br><span class="line"><span class="built_in">Number</span>.parseFloat === <span class="built_in">parseFloat</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 <h3 id="三、Number-isInteger"><a href="#三、Number-isInteger" class="headerlink" title="三、Number.isInteger()"></a>三、Number.isInteger()</h3><blockquote>
 <p>判断一个值是否为整数</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Number</span>.isInteger(<span class="number">25</span>) <span class="comment">// true</span></div><div class="line"><span class="built_in">Number</span>.isInteger(<span class="number">25.0</span>) <span class="comment">// true</span></div><div class="line"><span class="built_in">Number</span>.isInteger(<span class="number">25.1</span>) <span class="comment">// false</span></div><div class="line"><span class="built_in">Number</span>.isInteger(<span class="string">"15"</span>) <span class="comment">// false</span></div><div class="line"><span class="built_in">Number</span>.isInteger(<span class="literal">true</span>) <span class="comment">// false</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Number</span>.isInteger(<span class="number">25</span>) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">Number</span>.isInteger(<span class="number">25.0</span>) <span class="comment">// true</span></span><br><span class="line"><span class="built_in">Number</span>.isInteger(<span class="number">25.1</span>) <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Number</span>.isInteger(<span class="string">"15"</span>) <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Number</span>.isInteger(<span class="literal">true</span>) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <h3 id="四、安全整数和Number-isSafeInteger"><a href="#四、安全整数和Number-isSafeInteger" class="headerlink" title="四、安全整数和Number.isSafeInteger()"></a>四、安全整数和Number.isSafeInteger()</h3><blockquote>
 <p>JavaScript能够准确表示的整数范围在-2^53到2^53之间（不含两个端点），超过这个范围，无法精确表示这个值。Number.isSafeInteger() 用来判断一个整数是否落在这个范围之内</p>
@@ -268,9 +234,9 @@
 <li>其他情况返回false</li>
 </ul>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Math</span>.signbit(<span class="number">2</span>) <span class="comment">//false</span></div><div class="line"><span class="built_in">Math</span>.signbit(<span class="number">-2</span>) <span class="comment">//true</span></div><div class="line"><span class="built_in">Math</span>.signbit(<span class="number">0</span>) <span class="comment">//false</span></div><div class="line"><span class="built_in">Math</span>.signbit(<span class="number">-0</span>) <span class="comment">//true</span></div></pre></td></tr></table></figure>
-<h3 id="八、指数运算符"><a href="#八、指数运算符" class="headerlink" title="八、指数运算符( ** )"></a>八、指数运算符( ** )</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="number">2</span> ** <span class="number">2</span> <span class="comment">// 4</span></div><div class="line"><span class="number">2</span> ** <span class="number">3</span> <span class="comment">// 8</span></div></pre></td></tr></table></figure>
-<p><strong>Github地址：</strong> <a href="https://github.com/hzzly/learn-es6" target="_blank" rel="external">https://github.com/hzzly/learn-es6</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Math</span>.signbit(<span class="number">2</span>) <span class="comment">//false</span></span><br><span class="line"><span class="built_in">Math</span>.signbit(<span class="number">-2</span>) <span class="comment">//true</span></span><br><span class="line"><span class="built_in">Math</span>.signbit(<span class="number">0</span>) <span class="comment">//false</span></span><br><span class="line"><span class="built_in">Math</span>.signbit(<span class="number">-0</span>) <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<h3 id="八、指数运算符"><a href="#八、指数运算符" class="headerlink" title="八、指数运算符( ** )"></a>八、指数运算符( ** )</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span> ** <span class="number">2</span> <span class="comment">// 4</span></span><br><span class="line"><span class="number">2</span> ** <span class="number">3</span> <span class="comment">// 8</span></span><br></pre></td></tr></table></figure>
+<p><strong>Github地址：</strong> <a href="https://github.com/hzzly/learn-es6" target="_blank" rel="noopener">https://github.com/hzzly/learn-es6</a></p>
 
     
   </div>
@@ -301,7 +267,7 @@
 
    
   <div class="box-prev-next clearfix">
-    <a class="show pull-left" href="/2017/04/27/’DIY一个自己的音乐播放器/">
+    <a class="show pull-left" href="/2017/04/27/DIY一个自己的音乐播放器/">
         <i class="icon icon-angle-left"></i>
     </a>
     <a class="show pull-right" href="/2017/05/04/读书笔记-es6数组的扩展/">
@@ -333,78 +299,43 @@
       <ul class="list-toolbox">
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/archives/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
               博客
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/project/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
               项目
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/tag/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
               标签
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/link/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
               友链
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/about/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
               关于
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/atom.xml"
-              rel="noopener noreferrer"
-              target="_blank"
-              >
+            <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
               RSS
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/search/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
               搜索
             </a>
           </li>

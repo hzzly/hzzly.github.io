@@ -4,7 +4,7 @@
   <html class="light page-post">
 
 
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
   <title>读书笔记-es6数组的扩展 | Hzzly</title>
@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="随笔,es6," />
+    <meta name="keywords" content="随笔,es6,">
   
 
   <meta name="description" content="数组的扩展一、Array.from() 将两类对象转为真正的数组：类似数组的对象（array-like object）和可遍历（iterable）的对象（包括ES6新增的数据结构Set和Map）  123456789101112131415161718192021//类似数组的对象let arrayLike = &amp;#123;    &apos;0&apos;: &apos;a&apos;,    &apos;1&apos;: &apos;b&apos;,    &apos;2&apos;: &apos;c">
@@ -22,6 +22,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/04/读书笔记-es6数组的扩展/index.html">
 <meta property="og:site_name" content="Hzzly">
 <meta property="og:description" content="数组的扩展一、Array.from() 将两类对象转为真正的数组：类似数组的对象（array-like object）和可遍历（iterable）的对象（包括ES6新增的数据结构Set和Map）  123456789101112131415161718192021//类似数组的对象let arrayLike = &amp;#123;    &apos;0&apos;: &apos;a&apos;,    &apos;1&apos;: &apos;b&apos;,    &apos;2&apos;: &apos;c">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-05-21T14:06:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记-es6数组的扩展">
@@ -80,7 +81,7 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
   
 </head>
-
+</html>
 <body>
 
 
@@ -99,78 +100,43 @@
     <ul class="list-toolbox">
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/archives/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
             博客
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/project/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
             项目
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/tag/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
             标签
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/link/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
             友链
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/about/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
             关于
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/atom.xml"
-            rel="noopener noreferrer"
-            target="_blank"
-            >
+          <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
             RSS
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/search/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
             搜索
           </a>
         </li>
@@ -230,14 +196,14 @@
       <h2 id="数组的扩展"><a href="#数组的扩展" class="headerlink" title="数组的扩展"></a><strong>数组的扩展</strong></h2><h3 id="一、Array-from"><a href="#一、Array-from" class="headerlink" title="一、Array.from()"></a>一、Array.from()</h3><blockquote>
 <p>将两类对象转为真正的数组：类似数组的对象（array-like object）和可遍历（iterable）的对象（包括ES6新增的数据结构Set和Map）</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//类似数组的对象</span></div><div class="line"><span class="keyword">let</span> arrayLike = &#123;</div><div class="line">    <span class="string">'0'</span>: <span class="string">'a'</span>,</div><div class="line">    <span class="string">'1'</span>: <span class="string">'b'</span>,</div><div class="line">    <span class="string">'2'</span>: <span class="string">'c'</span>,</div><div class="line">    <span class="attr">length</span>: <span class="number">3</span></div><div class="line">&#125;;</div><div class="line"><span class="comment">// ES5的写法</span></div><div class="line"><span class="keyword">var</span> arr1 = [].slice.call(arrayLike); <span class="comment">// ['a', 'b', 'c']</span></div><div class="line"><span class="comment">// ES6的写法</span></div><div class="line"><span class="keyword">let</span> arr2 = <span class="built_in">Array</span>.from(arrayLike); <span class="comment">// ['a', 'b', 'c']</span></div><div class="line"><span class="comment">// NodeList对象</span></div><div class="line"><span class="keyword">let</span> ps = <span class="built_in">document</span>.querySelectorAll(<span class="string">'p'</span>);</div><div class="line"><span class="built_in">Array</span>.from(ps).forEach(<span class="function"><span class="keyword">function</span> (<span class="params">p</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(p);</div><div class="line">&#125;);</div><div class="line"><span class="comment">// arguments对象</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> args = <span class="built_in">Array</span>.from(<span class="built_in">arguments</span>);</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//类似数组的对象</span></span><br><span class="line"><span class="keyword">let</span> arrayLike = &#123;</span><br><span class="line">    <span class="string">'0'</span>: <span class="string">'a'</span>,</span><br><span class="line">    <span class="string">'1'</span>: <span class="string">'b'</span>,</span><br><span class="line">    <span class="string">'2'</span>: <span class="string">'c'</span>,</span><br><span class="line">    length: <span class="number">3</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// ES5的写法</span></span><br><span class="line"><span class="keyword">var</span> arr1 = [].slice.call(arrayLike); <span class="comment">// ['a', 'b', 'c']</span></span><br><span class="line"><span class="comment">// ES6的写法</span></span><br><span class="line"><span class="keyword">let</span> arr2 = <span class="built_in">Array</span>.from(arrayLike); <span class="comment">// ['a', 'b', 'c']</span></span><br><span class="line"><span class="comment">// NodeList对象</span></span><br><span class="line"><span class="keyword">let</span> ps = <span class="built_in">document</span>.querySelectorAll(<span class="string">'p'</span>);</span><br><span class="line"><span class="built_in">Array</span>.from(ps).forEach(<span class="function"><span class="keyword">function</span> (<span class="params">p</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(p);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// arguments对象</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> args = <span class="built_in">Array</span>.from(<span class="built_in">arguments</span>);</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>扩展运算符（…）也可以将某些数据结构转为数组</p>
 </blockquote>
 <h3 id="二、Array-of"><a href="#二、Array-of" class="headerlink" title="二、Array.of()"></a>二、Array.of()</h3><blockquote>
 <p>用于将一组值，转换为数组</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Array</span>.of(<span class="number">3</span>, <span class="number">11</span>, <span class="number">8</span>) <span class="comment">// [3,11,8]</span></div><div class="line"><span class="built_in">Array</span>.of(<span class="number">3</span>) <span class="comment">// [3]</span></div><div class="line"><span class="built_in">Array</span>.of(<span class="number">3</span>).length <span class="comment">// 1</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.of(<span class="number">3</span>, <span class="number">11</span>, <span class="number">8</span>) <span class="comment">// [3,11,8]</span></span><br><span class="line"><span class="built_in">Array</span>.of(<span class="number">3</span>) <span class="comment">// [3]</span></span><br><span class="line"><span class="built_in">Array</span>.of(<span class="number">3</span>).length <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
 <h3 id="三、数组实例的copyWithin"><a href="#三、数组实例的copyWithin" class="headerlink" title="三、数组实例的copyWithin()"></a>三、数组实例的copyWithin()</h3><blockquote>
 <p>在当前数组内部，将指定位置的成员复制到其他位置（会覆盖原有成员），然后返回当前数组</p>
 <ul>
@@ -246,27 +212,27 @@
 <li>end（可选）：到该位置前停止读取数据，默认等于数组长度。如果为负值，表示倒数。</li>
 </ul>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>].copyWithin(<span class="number">0</span>, <span class="number">3</span>)</div><div class="line"><span class="comment">// [4, 5, 3, 4, 5]</span></div><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>].copyWithin(<span class="number">0</span>, <span class="number">3</span>, <span class="number">4</span>)</div><div class="line"><span class="comment">// [4, 2, 3, 4, 5]</span></div><div class="line"><span class="comment">// -2相当于3号位，-1相当于4号位</span></div><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>].copyWithin(<span class="number">0</span>, <span class="number">-2</span>, <span class="number">-1</span>)</div><div class="line"><span class="comment">// [4, 2, 3, 4, 5]</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>].copyWithin(<span class="number">0</span>, <span class="number">3</span>)</span><br><span class="line"><span class="comment">// [4, 5, 3, 4, 5]</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>].copyWithin(<span class="number">0</span>, <span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"><span class="comment">// [4, 2, 3, 4, 5]</span></span><br><span class="line"><span class="comment">// -2相当于3号位，-1相当于4号位</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>].copyWithin(<span class="number">0</span>, <span class="number">-2</span>, <span class="number">-1</span>)</span><br><span class="line"><span class="comment">// [4, 2, 3, 4, 5]</span></span><br></pre></td></tr></table></figure>
 <h3 id="四、数组实例的find-和findIndex"><a href="#四、数组实例的find-和findIndex" class="headerlink" title="四、数组实例的find()和findIndex()"></a>四、数组实例的find()和findIndex()</h3><blockquote>
 <ul>
 <li>find方法，用于找出第一个符合条件的<strong>数组成员</strong>。它的参数是一个回调函数，所有数组成员依次执行该回调函数，直到找出第一个返回值为true的成员，然后返回该成员。如果没有符合条件的成员，则返回undefined。</li>
 <li>findIndex返回第一个符合条件的数组成员的<strong>位置</strong>，如果所有成员都不符合条件，则返回-1。</li>
 </ul>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[<span class="number">1</span>, <span class="number">4</span>, <span class="number">-5</span>, <span class="number">10</span>].find(<span class="function">(<span class="params">n</span>) =&gt;</span> n &lt; <span class="number">0</span>)</div><div class="line"><span class="comment">// -5</span></div><div class="line">[<span class="number">1</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">15</span>].find(<span class="function"><span class="keyword">function</span>(<span class="params">value, index, arr</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> value &gt; <span class="number">9</span>;</div><div class="line">&#125;) <span class="comment">// 10</span></div><div class="line">[<span class="number">1</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">15</span>].findIndex(<span class="function"><span class="keyword">function</span>(<span class="params">value, index, arr</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> value &gt; <span class="number">9</span>;</div><div class="line">&#125;) <span class="comment">// 2</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>, <span class="number">4</span>, <span class="number">-5</span>, <span class="number">10</span>].find(<span class="function">(<span class="params">n</span>) =&gt;</span> n &lt; <span class="number">0</span>)</span><br><span class="line"><span class="comment">// -5</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">15</span>].find(<span class="function"><span class="keyword">function</span>(<span class="params">value, index, arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> value &gt; <span class="number">9</span>;</span><br><span class="line">&#125;) <span class="comment">// 10</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">15</span>].findIndex(<span class="function"><span class="keyword">function</span>(<span class="params">value, index, arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> value &gt; <span class="number">9</span>;</span><br><span class="line">&#125;) <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <h3 id="五、数组实例的fill"><a href="#五、数组实例的fill" class="headerlink" title="五、数组实例的fill()"></a>五、数组实例的fill()</h3><blockquote>
 <p>使用给定值，填充一个数组</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>].fill(<span class="number">7</span>)</div><div class="line"><span class="comment">// [7, 7, 7]</span></div><div class="line"><span class="comment">//从1号位开始，向原数组填充7，到2号位之前结束</span></div><div class="line">[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>].fill(<span class="number">7</span>, <span class="number">1</span>, <span class="number">2</span>)</div><div class="line"><span class="comment">// ['a', 7, 'c']</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>].fill(<span class="number">7</span>)</span><br><span class="line"><span class="comment">// [7, 7, 7]</span></span><br><span class="line"><span class="comment">//从1号位开始，向原数组填充7，到2号位之前结束</span></span><br><span class="line">[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>].fill(<span class="number">7</span>, <span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"><span class="comment">// ['a', 7, 'c']</span></span><br></pre></td></tr></table></figure>
 <h3 id="六、数组实例的entries-，keys-和values"><a href="#六、数组实例的entries-，keys-和values" class="headerlink" title="六、数组实例的entries()，keys()和values()"></a>六、数组实例的entries()，keys()和values()</h3><blockquote>
 <p>keys()是对键名的遍历、values()是对键值的遍历，entries()是对键值对的遍历</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> index <span class="keyword">of</span> [<span class="string">'a'</span>, <span class="string">'b'</span>].keys()) &#123;</div><div class="line">  <span class="built_in">console</span>.log(index);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 0</span></div><div class="line"><span class="comment">// 1</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> elem <span class="keyword">of</span> [<span class="string">'a'</span>, <span class="string">'b'</span>].values()) &#123;</div><div class="line">  <span class="built_in">console</span>.log(elem);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 'a'</span></div><div class="line"><span class="comment">// 'b'</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [index, elem] <span class="keyword">of</span> [<span class="string">'a'</span>, <span class="string">'b'</span>].entries()) &#123;</div><div class="line">  <span class="built_in">console</span>.log(index, elem);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 0 "a"</span></div><div class="line"><span class="comment">// 1 "b"</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> index <span class="keyword">of</span> [<span class="string">'a'</span>, <span class="string">'b'</span>].keys()) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(index);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 0</span></span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> elem <span class="keyword">of</span> [<span class="string">'a'</span>, <span class="string">'b'</span>].values()) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(elem);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 'a'</span></span><br><span class="line"><span class="comment">// 'b'</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [index, elem] <span class="keyword">of</span> [<span class="string">'a'</span>, <span class="string">'b'</span>].entries()) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(index, elem);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 0 "a"</span></span><br><span class="line"><span class="comment">// 1 "b"</span></span><br></pre></td></tr></table></figure>
 <h3 id="七、数组实例的includes"><a href="#七、数组实例的includes" class="headerlink" title="七、数组实例的includes()"></a>七、数组实例的includes()</h3><blockquote>
 <p>返回一个布尔值，表示某个数组是否包含给定的值，与字符串的includes方法类似,方法的第二个参数表示搜索的起始位置，默认为0</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].includes(<span class="number">2</span>);     <span class="comment">// true</span></div><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].includes(<span class="number">4</span>);     <span class="comment">// false</span></div><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="literal">NaN</span>].includes(<span class="literal">NaN</span>); <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].includes(<span class="number">2</span>);     <span class="comment">// true</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].includes(<span class="number">4</span>);     <span class="comment">// false</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="literal">NaN</span>].includes(<span class="literal">NaN</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 <h3 id="八、数组的空位"><a href="#八、数组的空位" class="headerlink" title="八、数组的空位"></a>八、数组的空位</h3><blockquote>
 <ul>
 <li>forEach(), filter(), every() 和some()都会跳过空位</li>
@@ -274,7 +240,7 @@
 <li>join()和toString()会将空位视为undefined，而undefined和null会被处理成空字符串</li>
 </ul>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// forEach方法</span></div><div class="line">[,<span class="string">'a'</span>].forEach(<span class="function">(<span class="params">x,i</span>) =&gt;</span> <span class="built_in">console</span>.log(i)); <span class="comment">// 1</span></div><div class="line"><span class="comment">// filter方法</span></div><div class="line">[<span class="string">'a'</span>,,<span class="string">'b'</span>].filter(<span class="function"><span class="params">x</span> =&gt;</span> <span class="literal">true</span>) <span class="comment">// ['a','b']</span></div><div class="line"><span class="comment">// every方法</span></div><div class="line">[,<span class="string">'a'</span>].every(<span class="function"><span class="params">x</span> =&gt;</span> x===<span class="string">'a'</span>) <span class="comment">// true</span></div><div class="line"><span class="comment">// some方法</span></div><div class="line">[,<span class="string">'a'</span>].some(<span class="function"><span class="params">x</span> =&gt;</span> x !== <span class="string">'a'</span>) <span class="comment">// false</span></div><div class="line"><span class="comment">// map方法</span></div><div class="line">[,<span class="string">'a'</span>].map(<span class="function"><span class="params">x</span> =&gt;</span> <span class="number">1</span>) <span class="comment">// [,1]</span></div><div class="line"><span class="comment">// join方法</span></div><div class="line">[,<span class="string">'a'</span>,<span class="literal">undefined</span>,<span class="literal">null</span>].join(<span class="string">'#'</span>) <span class="comment">// "#a##"</span></div><div class="line"><span class="comment">// toString方法</span></div><div class="line">[,<span class="string">'a'</span>,<span class="literal">undefined</span>,<span class="literal">null</span>].toString() <span class="comment">// ",a,,"</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// forEach方法</span></span><br><span class="line">[,<span class="string">'a'</span>].forEach(<span class="function">(<span class="params">x,i</span>) =&gt;</span> <span class="built_in">console</span>.log(i)); <span class="comment">// 1</span></span><br><span class="line"><span class="comment">// filter方法</span></span><br><span class="line">[<span class="string">'a'</span>,,<span class="string">'b'</span>].filter(<span class="function"><span class="params">x</span> =&gt;</span> <span class="literal">true</span>) <span class="comment">// ['a','b']</span></span><br><span class="line"><span class="comment">// every方法</span></span><br><span class="line">[,<span class="string">'a'</span>].every(<span class="function"><span class="params">x</span> =&gt;</span> x===<span class="string">'a'</span>) <span class="comment">// true</span></span><br><span class="line"><span class="comment">// some方法</span></span><br><span class="line">[,<span class="string">'a'</span>].some(<span class="function"><span class="params">x</span> =&gt;</span> x !== <span class="string">'a'</span>) <span class="comment">// false</span></span><br><span class="line"><span class="comment">// map方法</span></span><br><span class="line">[,<span class="string">'a'</span>].map(<span class="function"><span class="params">x</span> =&gt;</span> <span class="number">1</span>) <span class="comment">// [,1]</span></span><br><span class="line"><span class="comment">// join方法</span></span><br><span class="line">[,<span class="string">'a'</span>,<span class="literal">undefined</span>,<span class="literal">null</span>].join(<span class="string">'#'</span>) <span class="comment">// "#a##"</span></span><br><span class="line"><span class="comment">// toString方法</span></span><br><span class="line">[,<span class="string">'a'</span>,<span class="literal">undefined</span>,<span class="literal">null</span>].toString() <span class="comment">// ",a,,"</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>ES6则是明确将空位转为undefined。尽量建议避免出现空位。</p>
 </blockquote>
@@ -340,78 +306,43 @@
       <ul class="list-toolbox">
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/archives/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
               博客
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/project/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
               项目
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/tag/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
               标签
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/link/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
               友链
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/about/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
               关于
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/atom.xml"
-              rel="noopener noreferrer"
-              target="_blank"
-              >
+            <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
               RSS
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/search/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
               搜索
             </a>
           </li>

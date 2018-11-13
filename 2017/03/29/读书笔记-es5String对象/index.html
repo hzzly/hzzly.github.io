@@ -4,7 +4,7 @@
   <html class="light page-post">
 
 
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
   <title>读书笔记-es5String对象 | Hzzly</title>
@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="随笔,JavaScript,es5," />
+    <meta name="keywords" content="随笔,JavaScript,es5,">
   
 
   <meta name="description" content="1.创建 String 对象的语法：12new String(s);String(s); 2.属性   属性 描述     constructor 对创建该对象的函数的引用   length 字符串的长度   prototype 允许向对象添加属性和方法    3.常用方法   方法 描述     charAt() 返回在指定位置的字符   concat() 连接字符串   indexOf() 检">
@@ -22,6 +22,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/03/29/读书笔记-es5String对象/index.html">
 <meta property="og:site_name" content="Hzzly">
 <meta property="og:description" content="1.创建 String 对象的语法：12new String(s);String(s); 2.属性   属性 描述     constructor 对创建该对象的函数的引用   length 字符串的长度   prototype 允许向对象添加属性和方法    3.常用方法   方法 描述     charAt() 返回在指定位置的字符   concat() 连接字符串   indexOf() 检">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-06-10T15:44:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记-es5String对象">
@@ -80,7 +81,7 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
   
 </head>
-
+</html>
 <body>
 
 
@@ -99,78 +100,43 @@
     <ul class="list-toolbox">
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/archives/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
             博客
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/project/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
             项目
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/tag/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
             标签
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/link/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
             友链
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/about/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
             关于
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/atom.xml"
-            rel="noopener noreferrer"
-            target="_blank"
-            >
+          <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
             RSS
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/search/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
             搜索
           </a>
         </li>
@@ -227,7 +193,7 @@
 
   <div class="article-content">
     
-      <h3 id="1-创建-String-对象的语法："><a href="#1-创建-String-对象的语法：" class="headerlink" title="1.创建 String 对象的语法："></a>1.创建 String 对象的语法：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">String</span>(s);</div><div class="line"><span class="built_in">String</span>(s);</div></pre></td></tr></table></figure>
+      <h3 id="1-创建-String-对象的语法："><a href="#1-创建-String-对象的语法：" class="headerlink" title="1.创建 String 对象的语法："></a>1.创建 String 对象的语法：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">String</span>(s);</span><br><span class="line"><span class="built_in">String</span>(s);</span><br></pre></td></tr></table></figure>
 <h3 id="2-属性"><a href="#2-属性" class="headerlink" title="2.属性"></a>2.属性</h3><table>
 <thead>
 <tr>
@@ -304,7 +270,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="4-栗子"><a href="#4-栗子" class="headerlink" title="4.栗子"></a>4.栗子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//charAt()</span></div><div class="line"><span class="keyword">let</span> str=<span class="string">"Hello world!"</span></div><div class="line">str.charAt(<span class="number">1</span>) <span class="comment">//e</span></div><div class="line"> </div><div class="line"><span class="comment">//concat()</span></div><div class="line"><span class="keyword">let</span> str1=<span class="string">"Hello "</span></div><div class="line"><span class="keyword">let</span> str2=<span class="string">"world!"</span></div><div class="line">str1.concat(str2) <span class="comment">//Hello world!</span></div><div class="line"> </div><div class="line"><span class="comment">//indexOf()</span></div><div class="line"><span class="keyword">let</span> str=<span class="string">"Hello world!"</span></div><div class="line">str.indexOf(<span class="string">"Hello"</span>) <span class="comment">//0</span></div><div class="line">str.indexOf(<span class="string">"World"</span>) <span class="comment">//-1 (没有就返回-1)</span></div><div class="line">str.indexOf(<span class="string">"world"</span>) <span class="comment">//6</span></div><div class="line"> </div><div class="line"><span class="comment">//slice()</span></div><div class="line"><span class="keyword">let</span> str=<span class="string">"Hello happy world!"</span></div><div class="line">str.slice(<span class="number">6</span>) <span class="comment">//happy world!</span></div><div class="line"> </div><div class="line"><span class="comment">//split()</span></div><div class="line"><span class="keyword">let</span> str=<span class="string">"How are you doing today?"</span></div><div class="line">str.split(<span class="string">" "</span>) <span class="comment">//["How", "are", "you", "doing", "today?"]</span></div><div class="line">str.split(<span class="string">""</span>) <span class="comment">//["H", "o", "w", " ", "a", "r", "e", " ", "y", "o", "u", " ", "d", "o", "i", "n", "g", " ", "t", "o", "d", "a", "y", "?"]</span></div><div class="line">str.split(<span class="string">" "</span>,<span class="number">3</span>) <span class="comment">//["How", "are", "you"]</span></div></pre></td></tr></table></figure>
+<h3 id="4-栗子"><a href="#4-栗子" class="headerlink" title="4.栗子"></a>4.栗子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//charAt()</span></span><br><span class="line"><span class="keyword">let</span> str=<span class="string">"Hello world!"</span></span><br><span class="line">str.charAt(<span class="number">1</span>) <span class="comment">//e</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">//concat()</span></span><br><span class="line"><span class="keyword">let</span> str1=<span class="string">"Hello "</span></span><br><span class="line"><span class="keyword">let</span> str2=<span class="string">"world!"</span></span><br><span class="line">str1.concat(str2) <span class="comment">//Hello world!</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">//indexOf()</span></span><br><span class="line"><span class="keyword">let</span> str=<span class="string">"Hello world!"</span></span><br><span class="line">str.indexOf(<span class="string">"Hello"</span>) <span class="comment">//0</span></span><br><span class="line">str.indexOf(<span class="string">"World"</span>) <span class="comment">//-1 (没有就返回-1)</span></span><br><span class="line">str.indexOf(<span class="string">"world"</span>) <span class="comment">//6</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">//slice()</span></span><br><span class="line"><span class="keyword">let</span> str=<span class="string">"Hello happy world!"</span></span><br><span class="line">str.slice(<span class="number">6</span>) <span class="comment">//happy world!</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">//split()</span></span><br><span class="line"><span class="keyword">let</span> str=<span class="string">"How are you doing today?"</span></span><br><span class="line">str.split(<span class="string">" "</span>) <span class="comment">//["How", "are", "you", "doing", "today?"]</span></span><br><span class="line">str.split(<span class="string">""</span>) <span class="comment">//["H", "o", "w", " ", "a", "r", "e", " ", "y", "o", "u", " ", "d", "o", "i", "n", "g", " ", "t", "o", "d", "a", "y", "?"]</span></span><br><span class="line">str.split(<span class="string">" "</span>,<span class="number">3</span>) <span class="comment">//["How", "are", "you"]</span></span><br></pre></td></tr></table></figure>
     
   </div>
 </article>
@@ -366,78 +332,43 @@
       <ul class="list-toolbox">
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/archives/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
               博客
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/project/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
               项目
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/tag/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
               标签
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/link/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
               友链
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/about/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
               关于
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/atom.xml"
-              rel="noopener noreferrer"
-              target="_blank"
-              >
+            <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
               RSS
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/search/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
               搜索
             </a>
           </li>

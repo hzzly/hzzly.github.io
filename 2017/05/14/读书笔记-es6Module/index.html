@@ -4,7 +4,7 @@
   <html class="light page-post">
 
 
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
   <title>读书笔记-es6Module | Hzzly</title>
@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="随笔,es6," />
+    <meta name="keywords" content="随笔,es6,">
   
 
   <meta name="description" content="Module概述 在 ES6 之前，社区制定了一些模块加载方案，最主要的有 CommonJS 和 AMD 两种。前者用于服务器，后者用于浏览器。ES6 在语言标准的层面上，实现了模块功能，ES6 模块的设计思想，是尽量的静态化，使得编译时就能确定模块的依赖关系，以及输入和输出的变量。CommonJS 和 AMD 模块，都只能在运行时确定这些东西。比如，CommonJS 模块就是对象，输入时必须查找">
@@ -22,6 +22,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/14/读书笔记-es6Module/index.html">
 <meta property="og:site_name" content="Hzzly">
 <meta property="og:description" content="Module概述 在 ES6 之前，社区制定了一些模块加载方案，最主要的有 CommonJS 和 AMD 两种。前者用于服务器，后者用于浏览器。ES6 在语言标准的层面上，实现了模块功能，ES6 模块的设计思想，是尽量的静态化，使得编译时就能确定模块的依赖关系，以及输入和输出的变量。CommonJS 和 AMD 模块，都只能在运行时确定这些东西。比如，CommonJS 模块就是对象，输入时必须查找">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-05-21T13:51:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记-es6Module">
@@ -80,7 +81,7 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
   
 </head>
-
+</html>
 <body>
 
 
@@ -99,78 +100,43 @@
     <ul class="list-toolbox">
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/archives/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
             博客
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/project/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
             项目
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/tag/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
             标签
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/link/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
             友链
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/about/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
             关于
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/atom.xml"
-            rel="noopener noreferrer"
-            target="_blank"
-            >
+          <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
             RSS
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/search/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
             搜索
           </a>
         </li>
@@ -230,12 +196,12 @@
       <h1 id="Module"><a href="#Module" class="headerlink" title="Module"></a><strong>Module</strong></h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><blockquote>
 <p>在 ES6 之前，社区制定了一些模块加载方案，最主要的有 CommonJS 和 AMD 两种。前者用于服务器，后者用于浏览器。ES6 在语言标准的层面上，实现了模块功能，ES6 模块的设计思想，是尽量的静态化，使得编译时就能确定模块的依赖关系，以及输入和输出的变量。CommonJS 和 AMD 模块，都只能在运行时确定这些东西。比如，CommonJS 模块就是对象，输入时必须查找对象属性。</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// CommonJS模块</span></div><div class="line"><span class="keyword">let</span> &#123; stat, exists, readFile &#125; = <span class="built_in">require</span>(<span class="string">'fs'</span>);</div><div class="line"><span class="comment">// 等同于</span></div><div class="line"><span class="keyword">let</span> _fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</div><div class="line"><span class="keyword">let</span> stat = _fs.stat;</div><div class="line"><span class="keyword">let</span> exists = _fs.exists;</div><div class="line"><span class="keyword">let</span> readfile = _fs.readfile;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// CommonJS模块</span></span><br><span class="line"><span class="keyword">let</span> &#123; stat, exists, readFile &#125; = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line"><span class="keyword">let</span> _fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="keyword">let</span> stat = _fs.stat;</span><br><span class="line"><span class="keyword">let</span> exists = _fs.exists;</span><br><span class="line"><span class="keyword">let</span> readfile = _fs.readfile;</span><br></pre></td></tr></table></figure>
 <p>上面代码的实质是整体加载fs模块（即加载fs的所有方法），生成一个对象（_fs），然后再从这个对象上面读取3个方法。这种加载称为“运行时加载”，因为只有运行时才能得到这个对象，导致完全没办法在编译时做“静态优化”。</p>
 <blockquote>
 <p>ES6 模块不是对象，而是通过export命令显式指定输出的代码，再通过import命令输入。</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ES6模块</span></div><div class="line"><span class="keyword">import</span> &#123; stat, exists, readFile &#125; <span class="keyword">from</span> <span class="string">'fs'</span>;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ES6模块</span></span><br><span class="line"><span class="keyword">import</span> &#123; stat, exists, readFile &#125; <span class="keyword">from</span> <span class="string">'fs'</span>;</span><br></pre></td></tr></table></figure>
 <p>上面代码的实质是从fs模块加载3个方法，其他方法不加载。这种加载称为“编译时加载”或者静态加载，即 ES6 可以在编译时就完成模块加载，效率要比 CommonJS 模块的加载方式高。</p>
 <h2 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h2><blockquote>
 <p>ES6 的模块自动采用严格模式，不管你有没有在模块头部加上”use strict”;。</p>
@@ -263,17 +229,17 @@
 <h2 id="export-命令"><a href="#export-命令" class="headerlink" title="export 命令"></a>export 命令</h2><blockquote>
 <p>export命令用于规定模块的对外接口</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 输出变量</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">let</span> firstName = <span class="string">'Michael'</span>;</div><div class="line"><span class="keyword">export</span> <span class="keyword">let</span> lastName = <span class="string">'Jackson'</span>;</div><div class="line"><span class="keyword">export</span> <span class="keyword">let</span> year = <span class="number">1958</span>;</div><div class="line"><span class="comment">//或者简写</span></div><div class="line"><span class="keyword">let</span> firstName = <span class="string">'Michael'</span>;</div><div class="line"><span class="keyword">let</span> lastName = <span class="string">'Jackson'</span>;</div><div class="line"><span class="keyword">let</span> year = <span class="number">1958</span>;</div><div class="line"><span class="keyword">export</span> &#123;firstName, lastName, year&#125;;</div><div class="line"><span class="comment">//输出函数或类（class）</span></div><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">multiply</span>(<span class="params">x, y</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> x * y;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 输出变量</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> firstName = <span class="string">'Michael'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> lastName = <span class="string">'Jackson'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> year = <span class="number">1958</span>;</span><br><span class="line"><span class="comment">//或者简写</span></span><br><span class="line"><span class="keyword">let</span> firstName = <span class="string">'Michael'</span>;</span><br><span class="line"><span class="keyword">let</span> lastName = <span class="string">'Jackson'</span>;</span><br><span class="line"><span class="keyword">let</span> year = <span class="number">1958</span>;</span><br><span class="line"><span class="keyword">export</span> &#123;firstName, lastName, year&#125;;</span><br><span class="line"><span class="comment">//输出函数或类（class）</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">multiply</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x * y;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h2 id="import-命令"><a href="#import-命令" class="headerlink" title="import 命令"></a>import 命令</h2><blockquote>
 <p>import命令用于输入其他模块提供的功能，import命令具有提升效果，会提升到整个模块的头部，首先执行</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123;firstName, lastName, year&#125; <span class="keyword">from</span> <span class="string">'./index'</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">setName</span>(<span class="params">element</span>) </span>&#123;</div><div class="line">  element.textContent = firstName + <span class="string">' '</span> + lastName;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>as关键字</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//为输入的变量重新取一个名字</span></div><div class="line"><span class="keyword">import</span> &#123; lastName <span class="keyword">as</span> surname &#125; <span class="keyword">from</span> <span class="string">'./index'</span>;</div><div class="line"><span class="comment">//模块整体加载</span></div><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> circle <span class="keyword">from</span> <span class="string">'./circle'</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;firstName, lastName, year&#125; <span class="keyword">from</span> <span class="string">'./index'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setName</span>(<span class="params">element</span>) </span>&#123;</span><br><span class="line">  element.textContent = firstName + <span class="string">' '</span> + lastName;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>as关键字</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//为输入的变量重新取一个名字</span></span><br><span class="line"><span class="keyword">import</span> &#123; lastName <span class="keyword">as</span> surname &#125; <span class="keyword">from</span> <span class="string">'./index'</span>;</span><br><span class="line"><span class="comment">//模块整体加载</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> circle <span class="keyword">from</span> <span class="string">'./circle'</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="export-default-命令"><a href="#export-default-命令" class="headerlink" title="export default 命令"></a>export default 命令</h2><blockquote>
 <p>为模块指定默认输出</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// export-default.js</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'foo'</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">// import-default.js</span></div><div class="line"><span class="keyword">import</span> customName <span class="keyword">from</span> <span class="string">'./export-default'</span>;</div><div class="line">customName(); <span class="comment">// 'foo'</span></div></pre></td></tr></table></figure>
-<h2 id="栗子"><a href="#栗子" class="headerlink" title="栗子"></a>栗子</h2><p>一个 vuex 模块（module）实例<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//com.js</span></div><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> types <span class="keyword">from</span> <span class="string">'../types'</span></div><div class="line"><span class="keyword">const</span> state = &#123;</div><div class="line">    <span class="attr">showLoading</span>: <span class="literal">false</span>,</div><div class="line">&#125;</div><div class="line"><span class="keyword">const</span> actions = &#123;</div><div class="line">    setShowLoading(&#123; commit &#125;, status) &#123;</div><div class="line">        commit(types.COM_SHOW_LOADING, status)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">const</span> getters = &#123;</div><div class="line">    <span class="attr">showLoading</span>: <span class="function"><span class="params">state</span> =&gt;</span> state.showLoading,</div><div class="line">&#125;</div><div class="line"><span class="keyword">const</span> mutations = &#123;</div><div class="line">    [types.COM_SHOW_LOADING](state, status) &#123;</div><div class="line">        state.showLoading = status</div><div class="line">    &#125;,</div><div class="line">&#125;</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">    state,</div><div class="line">    actions,</div><div class="line">    getters,</div><div class="line">    mutations</div><div class="line">&#125;</div><div class="line"><span class="comment">//serach.vue</span></div><div class="line"><span class="keyword">import</span> &#123; mapGetters &#125; <span class="keyword">from</span> <span class="string">'vuex'</span></div><div class="line">computed: &#123;</div><div class="line">	<span class="comment">//mapGetters(map: Array&lt;string&gt; | Object): Object,创建组件的计算属性返回 getter 的返回值</span></div><div class="line">	<span class="comment">//使用对象展开运算符将 getters 混入 computed 对象中</span></div><div class="line">    ...mapGetters([</div><div class="line">        <span class="string">'showLoading'</span></div><div class="line">	])</div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// export-default.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'foo'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// import-default.js</span></span><br><span class="line"><span class="keyword">import</span> customName <span class="keyword">from</span> <span class="string">'./export-default'</span>;</span><br><span class="line">customName(); <span class="comment">// 'foo'</span></span><br></pre></td></tr></table></figure>
+<h2 id="栗子"><a href="#栗子" class="headerlink" title="栗子"></a>栗子</h2><p>一个 vuex 模块（module）实例<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//com.js</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> types <span class="keyword">from</span> <span class="string">'../types'</span></span><br><span class="line"><span class="keyword">const</span> state = &#123;</span><br><span class="line">    showLoading: <span class="literal">false</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> actions = &#123;</span><br><span class="line">    setShowLoading(&#123; commit &#125;, status) &#123;</span><br><span class="line">        commit(types.COM_SHOW_LOADING, status)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> getters = &#123;</span><br><span class="line">    showLoading: <span class="function"><span class="params">state</span> =&gt;</span> state.showLoading,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> mutations = &#123;</span><br><span class="line">    [types.COM_SHOW_LOADING](state, status) &#123;</span><br><span class="line">        state.showLoading = status</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    state,</span><br><span class="line">    actions,</span><br><span class="line">    getters,</span><br><span class="line">    mutations</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//serach.vue</span></span><br><span class="line"><span class="keyword">import</span> &#123; mapGetters &#125; <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line">computed: &#123;</span><br><span class="line">	<span class="comment">//mapGetters(map: Array&lt;string&gt; | Object): Object,创建组件的计算属性返回 getter 的返回值</span></span><br><span class="line">	<span class="comment">//使用对象展开运算符将 getters 混入 computed 对象中</span></span><br><span class="line">    ...mapGetters([</span><br><span class="line">        <span class="string">'showLoading'</span></span><br><span class="line">	])</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
 
     
   </div>
@@ -336,78 +302,43 @@
       <ul class="list-toolbox">
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/archives/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
               博客
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/project/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
               项目
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/tag/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
               标签
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/link/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
               友链
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/about/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
               关于
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/atom.xml"
-              rel="noopener noreferrer"
-              target="_blank"
-              >
+            <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
               RSS
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/search/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
               搜索
             </a>
           </li>

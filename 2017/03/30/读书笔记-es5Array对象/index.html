@@ -4,7 +4,7 @@
   <html class="light page-post">
 
 
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
   <title>读书笔记-es5Array对象 | Hzzly</title>
@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="随笔,JavaScript,es5," />
+    <meta name="keywords" content="随笔,JavaScript,es5,">
   
 
   <meta name="description" content="1.创建 Array 对象的语法：123new Array();new Array(size);new Array(element0, element1, ..., elementn) 2.属性   属性 描述     constructor 返回对创建此对象的数组函数的引用   length 设置或返回数组中元素的数目   prototype 允许向对象添加属性和方法    3.常用方法   方">
@@ -22,6 +22,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/03/30/读书笔记-es5Array对象/index.html">
 <meta property="og:site_name" content="Hzzly">
 <meta property="og:description" content="1.创建 Array 对象的语法：123new Array();new Array(size);new Array(element0, element1, ..., elementn) 2.属性   属性 描述     constructor 返回对创建此对象的数组函数的引用   length 设置或返回数组中元素的数目   prototype 允许向对象添加属性和方法    3.常用方法   方">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-10-24T14:42:55.805Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记-es5Array对象">
@@ -80,7 +81,7 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
   
 </head>
-
+</html>
 <body>
 
 
@@ -99,78 +100,43 @@
     <ul class="list-toolbox">
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/archives/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
             博客
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/project/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
             项目
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/tag/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
             标签
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/link/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
             友链
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/about/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
             关于
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/atom.xml"
-            rel="noopener noreferrer"
-            target="_blank"
-            >
+          <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
             RSS
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/search/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
             搜索
           </a>
         </li>
@@ -227,7 +193,7 @@
 
   <div class="article-content">
     
-      <h3 id="1-创建-Array-对象的语法："><a href="#1-创建-Array-对象的语法：" class="headerlink" title="1.创建 Array 对象的语法："></a>1.创建 Array 对象的语法：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">Array</span>();</div><div class="line"><span class="keyword">new</span> <span class="built_in">Array</span>(size);</div><div class="line"><span class="keyword">new</span> <span class="built_in">Array</span>(element0, element1, ..., elementn)</div></pre></td></tr></table></figure>
+      <h3 id="1-创建-Array-对象的语法："><a href="#1-创建-Array-对象的语法：" class="headerlink" title="1.创建 Array 对象的语法："></a>1.创建 Array 对象的语法：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Array</span>(size);</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Array</span>(element0, element1, ..., elementn)</span><br></pre></td></tr></table></figure>
 <h3 id="2-属性"><a href="#2-属性" class="headerlink" title="2.属性"></a>2.属性</h3><table>
 <thead>
 <tr>
@@ -342,7 +308,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="4-栗子"><a href="#4-栗子" class="headerlink" title="4.栗子"></a>4.栗子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//concat()</span></div><div class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line">a.concat(<span class="number">4</span>,<span class="number">5</span>) <span class="comment">//[1,2,3,4,5]</span></div><div class="line"> </div><div class="line"><span class="comment">//join()</span></div><div class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line">a.join() <span class="comment">//1,2,3</span></div><div class="line"> </div><div class="line"><span class="comment">//shift()</span></div><div class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</div><div class="line">a.shift() <span class="comment">//1</span></div><div class="line">a <span class="comment">//[2,3,4]</span></div><div class="line"> </div><div class="line"><span class="comment">//unshift()</span></div><div class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</div><div class="line">a.unshift(<span class="number">6</span>) <span class="comment">//5</span></div><div class="line">a <span class="comment">//[6,1,2,3,4]</span></div><div class="line"> </div><div class="line"><span class="comment">//slice()</span></div><div class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line">a.slice(<span class="number">1</span>) <span class="comment">//[2,3]</span></div><div class="line"> </div><div class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line">a.slice(<span class="number">1</span>,<span class="number">2</span>) <span class="comment">//[2]</span></div><div class="line"> </div><div class="line"><span class="comment">//splice()</span></div><div class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</div><div class="line">a.splice(<span class="number">1</span>,<span class="number">1</span>) <span class="comment">//[2]</span></div><div class="line"> </div><div class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</div><div class="line">a.splice(<span class="number">1</span>,<span class="number">1</span>,<span class="string">'hzzly'</span>) <span class="comment">//[2]</span></div><div class="line">a <span class="comment">//[1, "hzzly", 3, 4, 5]</span></div><div class="line"> </div><div class="line"><span class="comment">//entries()</span></div><div class="line"><span class="keyword">const</span> fruits = [<span class="string">"Banana"</span>, <span class="string">"Orange"</span>, <span class="string">"Apple"</span>, <span class="string">"Mango"</span>]</div><div class="line">fruits.entries()</div><div class="line"><span class="comment">//[0, "Banana"]</span></div><div class="line"><span class="comment">//[1, "Orange"]</span></div><div class="line"><span class="comment">//[2, "Apple"]</span></div><div class="line"><span class="comment">//[3, "Mango"]</span></div><div class="line"> </div><div class="line"><span class="comment">//every()</span></div><div class="line"><span class="keyword">const</span> ages = [<span class="number">32</span>, <span class="number">33</span>, <span class="number">16</span>, <span class="number">40</span>]</div><div class="line">ages.every(<span class="function">(<span class="params">val, index</span>) =&gt;</span> val &gt;= <span class="number">18</span>)  <span class="comment">//false</span></div><div class="line"> </div><div class="line"><span class="comment">//filter</span></div><div class="line"><span class="keyword">const</span> ages = [<span class="number">32</span>, <span class="number">33</span>, <span class="number">16</span>, <span class="number">40</span>]</div><div class="line">ages.filter(<span class="function">(<span class="params">val, index</span>) =&gt;</span> val &gt;= <span class="number">18</span>) <span class="comment">//[32, 33, 40]</span></div><div class="line">ages.filter(<span class="function">(<span class="params">val, index</span>) =&gt;</span> val &gt;= <span class="number">18</span>).length  <span class="comment">//3</span></div><div class="line"> </div><div class="line"><span class="comment">//find()</span></div><div class="line"><span class="keyword">const</span> ages = [<span class="number">32</span>, <span class="number">33</span>, <span class="number">16</span>, <span class="number">40</span>]</div><div class="line">ages.find(<span class="function">(<span class="params">val, index</span>) =&gt;</span> val &gt;= <span class="number">18</span>)  <span class="comment">//32</span></div><div class="line"> </div><div class="line"><span class="comment">//findIndex()</span></div><div class="line"><span class="keyword">const</span> ages = [<span class="number">32</span>, <span class="number">33</span>, <span class="number">16</span>, <span class="number">40</span>]</div><div class="line">ages.findIndex(<span class="function">(<span class="params">val, index</span>) =&gt;</span> val &gt;= <span class="number">18</span>) <span class="comment">//0</span></div><div class="line">ages.findIndex(<span class="function">(<span class="params">val, index</span>) =&gt;</span> val === <span class="number">16</span>) <span class="comment">//2</span></div><div class="line">ages.findIndex(<span class="function">(<span class="params">val, index</span>) =&gt;</span> val &gt; <span class="number">40</span>) <span class="comment">//-1</span></div><div class="line"> </div><div class="line"><span class="comment">//forEach()</span></div><div class="line"><span class="keyword">const</span> ages = [<span class="number">32</span>, <span class="number">33</span>, <span class="number">16</span>, <span class="number">40</span>]</div><div class="line"><span class="keyword">const</span> arr = ages.forEach(<span class="function">(<span class="params">val, index</span>) =&gt;</span> &#123;</div><div class="line">	<span class="built_in">console</span>.log(val)  <span class="comment">//可遍历到所有数组元素</span></div><div class="line">	<span class="keyword">return</span> val + <span class="number">10</span></div><div class="line">&#125;)</div><div class="line"><span class="comment">//arr: 总是返回undefined</span></div><div class="line"> </div><div class="line"><span class="comment">//map</span></div><div class="line"><span class="keyword">const</span> ages = [<span class="number">32</span>, <span class="number">33</span>, <span class="number">16</span>, <span class="number">40</span>]</div><div class="line"><span class="keyword">const</span> arr = ages.map(<span class="function">(<span class="params">val, index</span>) =&gt;</span> &#123;</div><div class="line">	<span class="built_in">console</span>.log(val)  <span class="comment">//可遍历到所有数组元素</span></div><div class="line">	<span class="keyword">return</span> val + <span class="number">10</span></div><div class="line">&#125;)</div><div class="line"><span class="comment">// arr: [42, 43, 26, 50]</span></div></pre></td></tr></table></figure>
+<h3 id="4-栗子"><a href="#4-栗子" class="headerlink" title="4.栗子"></a>4.栗子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//concat()</span></span><br><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">a.concat(<span class="number">4</span>,<span class="number">5</span>) <span class="comment">//[1,2,3,4,5]</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">//join()</span></span><br><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">a.join() <span class="comment">//1,2,3</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">//shift()</span></span><br><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">a.shift() <span class="comment">//1</span></span><br><span class="line">a <span class="comment">//[2,3,4]</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">//unshift()</span></span><br><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">a.unshift(<span class="number">6</span>) <span class="comment">//5</span></span><br><span class="line">a <span class="comment">//[6,1,2,3,4]</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">//slice()</span></span><br><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">a.slice(<span class="number">1</span>) <span class="comment">//[2,3]</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">a.slice(<span class="number">1</span>,<span class="number">2</span>) <span class="comment">//[2]</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">//splice()</span></span><br><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">a.splice(<span class="number">1</span>,<span class="number">1</span>) <span class="comment">//[2]</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">a.splice(<span class="number">1</span>,<span class="number">1</span>,<span class="string">'hzzly'</span>) <span class="comment">//[2]</span></span><br><span class="line">a <span class="comment">//[1, "hzzly", 3, 4, 5]</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">//entries()</span></span><br><span class="line"><span class="keyword">const</span> fruits = [<span class="string">"Banana"</span>, <span class="string">"Orange"</span>, <span class="string">"Apple"</span>, <span class="string">"Mango"</span>]</span><br><span class="line">fruits.entries()</span><br><span class="line"><span class="comment">//[0, "Banana"]</span></span><br><span class="line"><span class="comment">//[1, "Orange"]</span></span><br><span class="line"><span class="comment">//[2, "Apple"]</span></span><br><span class="line"><span class="comment">//[3, "Mango"]</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">//every()</span></span><br><span class="line"><span class="keyword">const</span> ages = [<span class="number">32</span>, <span class="number">33</span>, <span class="number">16</span>, <span class="number">40</span>]</span><br><span class="line">ages.every(<span class="function">(<span class="params">val, index</span>) =&gt;</span> val &gt;= <span class="number">18</span>)  <span class="comment">//false</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">//filter</span></span><br><span class="line"><span class="keyword">const</span> ages = [<span class="number">32</span>, <span class="number">33</span>, <span class="number">16</span>, <span class="number">40</span>]</span><br><span class="line">ages.filter(<span class="function">(<span class="params">val, index</span>) =&gt;</span> val &gt;= <span class="number">18</span>) <span class="comment">//[32, 33, 40]</span></span><br><span class="line">ages.filter(<span class="function">(<span class="params">val, index</span>) =&gt;</span> val &gt;= <span class="number">18</span>).length  <span class="comment">//3</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">//find()</span></span><br><span class="line"><span class="keyword">const</span> ages = [<span class="number">32</span>, <span class="number">33</span>, <span class="number">16</span>, <span class="number">40</span>]</span><br><span class="line">ages.find(<span class="function">(<span class="params">val, index</span>) =&gt;</span> val &gt;= <span class="number">18</span>)  <span class="comment">//32</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">//findIndex()</span></span><br><span class="line"><span class="keyword">const</span> ages = [<span class="number">32</span>, <span class="number">33</span>, <span class="number">16</span>, <span class="number">40</span>]</span><br><span class="line">ages.findIndex(<span class="function">(<span class="params">val, index</span>) =&gt;</span> val &gt;= <span class="number">18</span>) <span class="comment">//0</span></span><br><span class="line">ages.findIndex(<span class="function">(<span class="params">val, index</span>) =&gt;</span> val === <span class="number">16</span>) <span class="comment">//2</span></span><br><span class="line">ages.findIndex(<span class="function">(<span class="params">val, index</span>) =&gt;</span> val &gt; <span class="number">40</span>) <span class="comment">//-1</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">//forEach()</span></span><br><span class="line"><span class="keyword">const</span> ages = [<span class="number">32</span>, <span class="number">33</span>, <span class="number">16</span>, <span class="number">40</span>]</span><br><span class="line"><span class="keyword">const</span> arr = ages.forEach(<span class="function">(<span class="params">val, index</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="built_in">console</span>.log(val)  <span class="comment">//可遍历到所有数组元素</span></span><br><span class="line">	<span class="keyword">return</span> val + <span class="number">10</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//arr: 总是返回undefined</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">//map</span></span><br><span class="line"><span class="keyword">const</span> ages = [<span class="number">32</span>, <span class="number">33</span>, <span class="number">16</span>, <span class="number">40</span>]</span><br><span class="line"><span class="keyword">const</span> arr = ages.map(<span class="function">(<span class="params">val, index</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="built_in">console</span>.log(val)  <span class="comment">//可遍历到所有数组元素</span></span><br><span class="line">	<span class="keyword">return</span> val + <span class="number">10</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// arr: [42, 43, 26, 50]</span></span><br></pre></td></tr></table></figure>
     
   </div>
 </article>
@@ -404,78 +370,43 @@
       <ul class="list-toolbox">
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/archives/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
               博客
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/project/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
               项目
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/tag/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
               标签
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/link/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
               友链
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/about/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
               关于
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/atom.xml"
-              rel="noopener noreferrer"
-              target="_blank"
-              >
+            <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
               RSS
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/search/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
               搜索
             </a>
           </li>

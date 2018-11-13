@@ -4,7 +4,7 @@
   <html class="light page-post">
 
 
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
   <title>基于vue-cli配置proxyTable开发环境的跨域 | Hzzly</title>
@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="随笔,vue," />
+    <meta name="keywords" content="随笔,vue,">
   
 
   <meta name="description" content="前言：目前前端项目普遍采用前后端分离的思想来开发，这样在和后端进行数据联调时势必会面临恼人的跨域问题，最近几个基于Vue开发项目时也遇到了这个问题，网上关于跨域的解决方案很多，这里就简单的介绍基于vue-cli配置proxyTable的开发环境来解决跨域。  还不懂前后端分离的可以移步👉：前后端分离的尝试 配置 proxyTable在 config/index.js 中，把 dev 下的 pr">
@@ -22,6 +22,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/06/21/基于vue-cli配置proxyTable开发环境的跨域/index.html">
 <meta property="og:site_name" content="Hzzly">
 <meta property="og:description" content="前言：目前前端项目普遍采用前后端分离的思想来开发，这样在和后端进行数据联调时势必会面临恼人的跨域问题，最近几个基于Vue开发项目时也遇到了这个问题，网上关于跨域的解决方案很多，这里就简单的介绍基于vue-cli配置proxyTable的开发环境来解决跨域。  还不懂前后端分离的可以移步👉：前后端分离的尝试 配置 proxyTable在 config/index.js 中，把 dev 下的 pr">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-06-21T02:52:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于vue-cli配置proxyTable开发环境的跨域">
@@ -80,7 +81,7 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
   
 </head>
-
+</html>
 <body>
 
 
@@ -99,78 +100,43 @@
     <ul class="list-toolbox">
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/archives/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
             博客
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/project/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
             项目
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/tag/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
             标签
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/link/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
             友链
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/about/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
             关于
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/atom.xml"
-            rel="noopener noreferrer"
-            target="_blank"
-            >
+          <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
             RSS
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/search/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
             搜索
           </a>
         </li>
@@ -230,10 +196,10 @@
       <blockquote>
 <p>前言：目前前端项目普遍采用前后端分离的思想来开发，这样在和后端进行数据联调时势必会面临恼人的跨域问题，最近几个基于Vue开发项目时也遇到了这个问题，网上关于跨域的解决方案很多，这里就简单的介绍基于vue-cli配置proxyTable的开发环境来解决跨域。</p>
 </blockquote>
-<p>还不懂前后端分离的可以移步👉：<a href="http://hjingren.cn/2017/03/06/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E7%9A%84%E5%B0%9D%E8%AF%95/" target="_blank" rel="external">前后端分离的尝试</a></p>
-<h1 id="配置-proxyTable"><a href="#配置-proxyTable" class="headerlink" title="配置 proxyTable"></a>配置 proxyTable</h1><p>在 config/index.js 中，把 dev 下的 proxytable 里面配置如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">proxyTable: &#123;</div><div class="line">  <span class="string">'/api'</span>: &#123;</div><div class="line">    <span class="attr">target</span>: <span class="string">'http://api.hjingren.cn'</span>,</div><div class="line">    <span class="attr">changeOrigin</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">pathRewrite</span>: &#123;</div><div class="line">      <span class="string">'^/api'</span>: <span class="string">''</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h1 id="使用（请求）"><a href="#使用（请求）" class="headerlink" title="使用（请求）"></a>使用（请求）</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fetch(<span class="string">'/api/playlist/detail?id=12345'</span>)</div></pre></td></tr></table></figure>
-<p>最后：vue-cli的这个配置来自于其使用的插件<a href="https://github.com/chimurai/http-proxy-middleware" target="_blank" rel="external">http-proxy-middleware</a>，想进一步了解的可以深入研究。</p>
+<p>还不懂前后端分离的可以移步👉：<a href="http://hjingren.cn/2017/03/06/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E7%9A%84%E5%B0%9D%E8%AF%95/" target="_blank" rel="noopener">前后端分离的尝试</a></p>
+<h1 id="配置-proxyTable"><a href="#配置-proxyTable" class="headerlink" title="配置 proxyTable"></a>配置 proxyTable</h1><p>在 config/index.js 中，把 dev 下的 proxytable 里面配置如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">proxyTable: &#123;</span><br><span class="line">  <span class="string">'/api'</span>: &#123;</span><br><span class="line">    target: <span class="string">'http://api.hjingren.cn'</span>,</span><br><span class="line">    changeOrigin: <span class="literal">true</span>,</span><br><span class="line">    pathRewrite: &#123;</span><br><span class="line">      <span class="string">'^/api'</span>: <span class="string">''</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="使用（请求）"><a href="#使用（请求）" class="headerlink" title="使用（请求）"></a>使用（请求）</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fetch(<span class="string">'/api/playlist/detail?id=12345'</span>)</span><br></pre></td></tr></table></figure>
+<p>最后：vue-cli的这个配置来自于其使用的插件<a href="https://github.com/chimurai/http-proxy-middleware" target="_blank" rel="noopener">http-proxy-middleware</a>，想进一步了解的可以深入研究。</p>
 
     
   </div>
@@ -296,78 +262,43 @@
       <ul class="list-toolbox">
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/archives/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
               博客
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/project/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
               项目
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/tag/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
               标签
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/link/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
               友链
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/about/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
               关于
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/atom.xml"
-              rel="noopener noreferrer"
-              target="_blank"
-              >
+            <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
               RSS
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/search/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
               搜索
             </a>
           </li>

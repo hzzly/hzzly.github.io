@@ -4,7 +4,7 @@
   <html class="light page-post">
 
 
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
   <title>在Vue.js中使用Mixins | Hzzly</title>
@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="随笔,vue," />
+    <meta name="keywords" content="随笔,vue,">
   
 
   <meta name="description" content="一个很常见的场景: 有两个非常相似的组件, 它们拥有非常相似的基本功能, 但是它们之间又有足够的不同的地方, 该如何选择呢? 我们是应该将它们分成两个完全不同的组件呢? 还是创建一个基础组件, 然后定义足够多的props以方便区分使用场景?  这两种方式都不是完美的: 如果你将它们分成两个完全不同的组件, 在需求变化(功能变化)时, 可能会增加需要同时修改两个组件的风险, 这违反了”DRY”的前">
@@ -22,6 +22,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/09/12/在Vue-js中使用Mixins/index.html">
 <meta property="og:site_name" content="Hzzly">
 <meta property="og:description" content="一个很常见的场景: 有两个非常相似的组件, 它们拥有非常相似的基本功能, 但是它们之间又有足够的不同的地方, 该如何选择呢? 我们是应该将它们分成两个完全不同的组件呢? 还是创建一个基础组件, 然后定义足够多的props以方便区分使用场景?  这两种方式都不是完美的: 如果你将它们分成两个完全不同的组件, 在需求变化(功能变化)时, 可能会增加需要同时修改两个组件的风险, 这违反了”DRY”的前">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-09-12T03:20:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在Vue.js中使用Mixins">
@@ -80,7 +81,7 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
   
 </head>
-
+</html>
 <body>
 
 
@@ -99,78 +100,43 @@
     <ul class="list-toolbox">
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/archives/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
             博客
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/project/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
             项目
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/tag/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
             标签
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/link/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
             友链
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/about/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
             关于
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/atom.xml"
-            rel="noopener noreferrer"
-            target="_blank"
-            >
+          <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
             RSS
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/search/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
             搜索
           </a>
         </li>
@@ -232,16 +198,16 @@
 </blockquote>
 <p>这两种方式都不是完美的: 如果你将它们分成两个完全不同的组件, 在需求变化(功能变化)时, 可能会增加需要同时修改两个组件的风险, 这违反了”DRY”的前提. 另一方面, 太多的props很快会让人变得凌乱, 并且, 迫使维护人员, 甚至是你自己, 要首先理解这些props的上下文才能使用它, 这会让人非常失望.</p>
 <p>Vue的Mixins是非常实用的编程方式, 因为最终实用的编程是通过不断减少运动部件(moving parts)使代码变得容易理解. (关于这一点, Michael Feathers有一个很好的引用). 一个mixin允许你封装一个功能, 以便你能在整个应用程序中的不同组件中使用它. 如果mixin被正确的创建, 它们是纯粹的–它们不会修改或更改函数的作用范围(scope)之外的内容, 因此, 您可以在多个地方执行它们, 并且只要输入值相同, 总是能非常可靠得得到相同的结果. 这真的非常强大.</p>
-<h1 id="认识Mixins"><a href="#认识Mixins" class="headerlink" title="认识Mixins"></a>认识Mixins</h1><p><a href="https://cn.vuejs.org/v2/guide/mixins.html" target="_blank" rel="external">混合 (mixins)</a> 是一种分发 Vue 组件中可复用功能的非常灵活的方式。混合对象可以包含任意组件选项。以组件使用混合对象时，所有混合对象的选项将被混入该组件本身的选项。</p>
+<h1 id="认识Mixins"><a href="#认识Mixins" class="headerlink" title="认识Mixins"></a>认识Mixins</h1><p><a href="https://cn.vuejs.org/v2/guide/mixins.html" target="_blank" rel="noopener">混合 (mixins)</a> 是一种分发 Vue 组件中可复用功能的非常灵活的方式。混合对象可以包含任意组件选项。以组件使用混合对象时，所有混合对象的选项将被混入该组件本身的选项。</p>
 <h1 id="栗子"><a href="#栗子" class="headerlink" title="栗子"></a>栗子</h1><blockquote>
 <p>假设我们有一些不同的组件, 它们的工作是切换状态boolean, 一个模态(modal)和一个提示(tooltip). 这些tooltips和modals没有很多共同之处, 除了这个功能: 它们看起来不一样, 它们使用起来也不尽相同, 但是它们的逻辑是相似的 .</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//modal</span></div><div class="line"><span class="keyword">const</span> Modal = &#123;</div><div class="line">  <span class="attr">template</span>: <span class="string">'#modal'</span>,</div><div class="line">  data() &#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">      <span class="attr">isShowing</span>: <span class="literal">false</span></div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">methods</span>: &#123;</div><div class="line">    toggleShow() &#123;</div><div class="line">      <span class="keyword">this</span>.isShowing = !<span class="keyword">this</span>.isShowing;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="comment">//tooltip</span></div><div class="line"><span class="keyword">const</span> Tooltip = &#123;</div><div class="line">  <span class="attr">template</span>: <span class="string">'#tooltip'</span>,</div><div class="line">  data() &#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">      <span class="attr">isShowing</span>: <span class="literal">false</span></div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">methods</span>: &#123;</div><div class="line">    toggleShow() &#123;</div><div class="line">      <span class="keyword">this</span>.isShowing = !<span class="keyword">this</span>.isShowing;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>我们可以从中提取逻辑, 并创建可以复用的部分：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> toggle = &#123;</div><div class="line">  data() &#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">      <span class="attr">isShowing</span>: <span class="literal">false</span></div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">methods</span>: &#123;</div><div class="line">    toggleShow() &#123;</div><div class="line">      <span class="keyword">this</span>.isShowing = !<span class="keyword">this</span>.isShowing;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">const</span> Modal = &#123;</div><div class="line">  <span class="attr">template</span>: <span class="string">'#modal'</span>,</div><div class="line">  <span class="attr">mixins</span>: [toggle]</div><div class="line">&#125;;</div><div class="line"> </div><div class="line"><span class="keyword">const</span> Tooltip = &#123;</div><div class="line">  <span class="attr">template</span>: <span class="string">'#tooltip'</span>,</div><div class="line">  <span class="attr">mixins</span>: [toggle]</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//modal</span></span><br><span class="line"><span class="keyword">const</span> Modal = &#123;</span><br><span class="line">  template: <span class="string">'#modal'</span>,</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      isShowing: <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    toggleShow() &#123;</span><br><span class="line">      <span class="keyword">this</span>.isShowing = !<span class="keyword">this</span>.isShowing;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//tooltip</span></span><br><span class="line"><span class="keyword">const</span> Tooltip = &#123;</span><br><span class="line">  template: <span class="string">'#tooltip'</span>,</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      isShowing: <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    toggleShow() &#123;</span><br><span class="line">      <span class="keyword">this</span>.isShowing = !<span class="keyword">this</span>.isShowing;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们可以从中提取逻辑, 并创建可以复用的部分：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> toggle = &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      isShowing: <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    toggleShow() &#123;</span><br><span class="line">      <span class="keyword">this</span>.isShowing = !<span class="keyword">this</span>.isShowing;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">const</span> Modal = &#123;</span><br><span class="line">  template: <span class="string">'#modal'</span>,</span><br><span class="line">  mixins: [toggle]</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">const</span> Tooltip = &#123;</span><br><span class="line">  template: <span class="string">'#tooltip'</span>,</span><br><span class="line">  mixins: [toggle]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 <p>duang — 一个小而简单的🌰让我们知道了Mixins对于封装一些可复用的功能如此有趣、方便、实用。</p>
 <h1 id="项目实践"><a href="#项目实践" class="headerlink" title="项目实践"></a>项目实践</h1><blockquote>
 <ul>
-<li><a href="https://github.com/hzzly/xyy-vue" target="_blank" rel="external">xyy-vue</a> star(600+)</li>
+<li><a href="https://github.com/hzzly/xyy-vue" target="_blank" rel="noopener">xyy-vue</a> star(600+)</li>
 </ul>
 </blockquote>
 
@@ -306,78 +272,43 @@
       <ul class="list-toolbox">
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/archives/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
               博客
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/project/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
               项目
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/tag/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
               标签
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/link/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
               友链
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/about/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
               关于
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/atom.xml"
-              rel="noopener noreferrer"
-              target="_blank"
-              >
+            <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
               RSS
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/search/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
               搜索
             </a>
           </li>

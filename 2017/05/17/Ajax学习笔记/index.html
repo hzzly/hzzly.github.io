@@ -4,7 +4,7 @@
   <html class="light page-post">
 
 
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
   <title>Ajax学习笔记 | Hzzly</title>
@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="随笔,JavaScript," />
+    <meta name="keywords" content="随笔,JavaScript,">
   
 
   <meta name="description" content="在上一个外包项目中，因为用到了前后端分离的思路，所以都要通过Ajax来请求数据然后把数据渲染到页面上，一开始想过直接引用Jquery，但感觉就使用Jquery的Ajax函数，有点太浪费，所以就自己撸了一个Ajax函数。本文由浅入深，一步一步带你封装属于自己的Ajax库。  Ajax简介  Asynchronous Javascript And XML （异步的JavaScript和XML） 它并">
@@ -22,6 +22,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/17/Ajax学习笔记/index.html">
 <meta property="og:site_name" content="Hzzly">
 <meta property="og:description" content="在上一个外包项目中，因为用到了前后端分离的思路，所以都要通过Ajax来请求数据然后把数据渲染到页面上，一开始想过直接引用Jquery，但感觉就使用Jquery的Ajax函数，有点太浪费，所以就自己撸了一个Ajax函数。本文由浅入深，一步一步带你封装属于自己的Ajax库。  Ajax简介  Asynchronous Javascript And XML （异步的JavaScript和XML） 它并">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-05-17T14:56:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ajax学习笔记">
@@ -80,7 +81,7 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
   
 </head>
-
+</html>
 <body>
 
 
@@ -99,78 +100,43 @@
     <ul class="list-toolbox">
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/archives/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
             博客
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/project/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
             项目
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/tag/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
             标签
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/link/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
             友链
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/about/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
             关于
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/atom.xml"
-            rel="noopener noreferrer"
-            target="_blank"
-            >
+          <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
             RSS
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/search/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
             搜索
           </a>
         </li>
@@ -257,28 +223,28 @@
 <h2 id="创建ajax的步骤"><a href="#创建ajax的步骤" class="headerlink" title="创建ajax的步骤"></a>创建ajax的步骤</h2><blockquote>
 <p>Ajax的原理简单来说通过<code>XMLHttpRequest</code>对象来向服务器发异步请求，从服务器获得数据，然后用javascript来操作DOM而更新页面。这其中最关键的一步就是从服务器获得请求数据。原生创建ajax可分为以下四步</p>
 </blockquote>
-<h3 id="1、创建XMLHttpRequest对象"><a href="#1、创建XMLHttpRequest对象" class="headerlink" title="1、创建XMLHttpRequest对象"></a>1、创建XMLHttpRequest对象</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createRequest</span> (<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;</div><div class="line">        <span class="comment">//IE6以上</span></div><div class="line">        xhr = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        xhr = <span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> xhr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="2、准备请求"><a href="#2、准备请求" class="headerlink" title="2、准备请求"></a>2、准备请求</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xhr.open(method,url,<span class="keyword">async</span>);</div></pre></td></tr></table></figure>
+<h3 id="1、创建XMLHttpRequest对象"><a href="#1、创建XMLHttpRequest对象" class="headerlink" title="1、创建XMLHttpRequest对象"></a>1、创建XMLHttpRequest对象</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createRequest</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;</span><br><span class="line">        <span class="comment">//IE6以上</span></span><br><span class="line">        xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        xhr = <span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> xhr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2、准备请求"><a href="#2、准备请求" class="headerlink" title="2、准备请求"></a>2、准备请求</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(method,url,<span class="keyword">async</span>);</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>第一个参数表示请求类型的字符串，其值可以是<code>GET</code>或者<code>POST</code><br><code>GET</code>请求：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xhr.open(<span class="string">"GET"</span>,demo.php?name=hzzly&amp;age=<span class="number">21</span>,<span class="literal">true</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(<span class="string">"GET"</span>,demo.php?name=hzzly&amp;age=<span class="number">21</span>,<span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
 <p><code>POST</code>请求：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xhr.open(<span class="string">"POST"</span>,demo.php,<span class="literal">true</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(<span class="string">"POST"</span>,demo.php,<span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>第二个参数是要作为请求发送目标的URL。</p>
 </li>
 <li>第三个参数是true或false，表示请求是以异步还是同步的模式发出。（默认为true，一般不建议为false）</li>
 </ul>
-<h3 id="3、发送请求"><a href="#3、发送请求" class="headerlink" title="3、发送请求"></a>3、发送请求</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xhr.send();</div></pre></td></tr></table></figure>
+<h3 id="3、发送请求"><a href="#3、发送请求" class="headerlink" title="3、发送请求"></a>3、发送请求</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.send();</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p><code>GET</code>请求：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">xhr.open(<span class="string">"GET"</span>,demo.php?name=hzzly&amp;age=<span class="number">21</span>,<span class="literal">true</span>);</div><div class="line">xhr.send();</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(<span class="string">"GET"</span>,demo.php?name=hzzly&amp;age=<span class="number">21</span>,<span class="literal">true</span>);</span><br><span class="line">xhr.send();</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>POST</code>请求</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">xhr.open(<span class="string">"POST"</span>,demo.php,<span class="literal">true</span>);</div><div class="line">xhr.setRequestHeder(<span class="string">"Content-Type"</span>,<span class="string">"application/x-www-form-urlencoded;charset=UTF-8"</span>);</div><div class="line">xhr.send(param)</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(<span class="string">"POST"</span>,demo.php,<span class="literal">true</span>);</span><br><span class="line">xhr.setRequestHeder(<span class="string">"Content-Type"</span>,<span class="string">"application/x-www-form-urlencoded;charset=UTF-8"</span>);</span><br><span class="line">xhr.send(param)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="4、处理响应"><a href="#4、处理响应" class="headerlink" title="4、处理响应"></a>4、处理响应</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(xhr.readyState == <span class="number">4</span> &amp;&amp; xhr.status == <span class="number">200</span>)&#123;</div><div class="line">        <span class="built_in">console</span>.log(xhr.responseText);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="4、处理响应"><a href="#4、处理响应" class="headerlink" title="4、处理响应"></a>4、处理响应</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(xhr.readyState == <span class="number">4</span> &amp;&amp; xhr.status == <span class="number">200</span>)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(xhr.responseText);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <ul>
 <li><code>onreadystatechange</code>：当处理过程发生变化的时候执行下面的函数</li>
@@ -301,11 +267,11 @@
 <h2 id="封装例子"><a href="#封装例子" class="headerlink" title="封装例子"></a>封装例子</h2><blockquote>
 <p>1.get请求函数</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 一个简单的get请求</div><div class="line"> * @param &#123;String&#125;   url     请求地址,文件名</div><div class="line"> * @param &#123;Function&#125; fnSucc  请求成功时执行的函数</div><div class="line"> * @param &#123;Function&#125; fnFaild 请求失败执行的函数</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Get</span>(<span class="params">url, fnSucc, fnFaild</span>) </span>&#123;</div><div class="line">    <span class="comment">//1.创建ajax对象</span></div><div class="line">    <span class="keyword">var</span> xhr = <span class="literal">null</span>;</div><div class="line">        <span class="comment">/**</span></div><div class="line">         * 此处必须需要使用window.的方式,表示为window对象的一个属性.不存在时值为undefined.</div><div class="line">         * 进入else若直接使用XMLHttpRequest在不支持的情况下会报错</div><div class="line">         **/</div><div class="line">    <span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;</div><div class="line">        <span class="comment">//IE6以上</span></div><div class="line">        xhr = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        xhr = <span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//2.连接服务器</span></div><div class="line">    <span class="comment">//open(方法,url,是否异步)</span></div><div class="line">    xhr.open(<span class="string">"GET"</span>, url, <span class="literal">true</span>);</div><div class="line">    <span class="comment">//3.发送请求</span></div><div class="line">    xhr.send();</div><div class="line">    <span class="comment">//4.接收返回</span></div><div class="line">    <span class="comment">//OnRedayStateChange事件</span></div><div class="line">    xhr.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (xhr.readyState === <span class="number">4</span>) &#123;</div><div class="line">            <span class="keyword">if</span> (xhr.status === <span class="number">200</span>) &#123;</div><div class="line">                <span class="comment">//alert("成功" + xhr.responseText);</span></div><div class="line">                fnSucc(xhr.responseText);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="comment">//alert("服务器响应失败!");</span></div><div class="line">                <span class="keyword">if</span> (fnFaild) &#123;</div><div class="line">                    fnFaild();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 一个简单的get请求</span></span><br><span class="line"><span class="comment"> * @param &#123;String&#125;   url     请求地址,文件名</span></span><br><span class="line"><span class="comment"> * @param &#123;Function&#125; fnSucc  请求成功时执行的函数</span></span><br><span class="line"><span class="comment"> * @param &#123;Function&#125; fnFaild 请求失败执行的函数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Get</span>(<span class="params">url, fnSucc, fnFaild</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//1.创建ajax对象</span></span><br><span class="line">    <span class="keyword">var</span> xhr = <span class="literal">null</span>;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 此处必须需要使用window.的方式,表示为window对象的一个属性.不存在时值为undefined.</span></span><br><span class="line"><span class="comment">         * 进入else若直接使用XMLHttpRequest在不支持的情况下会报错</span></span><br><span class="line"><span class="comment">         **/</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;</span><br><span class="line">        <span class="comment">//IE6以上</span></span><br><span class="line">        xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        xhr = <span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//2.连接服务器</span></span><br><span class="line">    <span class="comment">//open(方法,url,是否异步)</span></span><br><span class="line">    xhr.open(<span class="string">"GET"</span>, url, <span class="literal">true</span>);</span><br><span class="line">    <span class="comment">//3.发送请求</span></span><br><span class="line">    xhr.send();</span><br><span class="line">    <span class="comment">//4.接收返回</span></span><br><span class="line">    <span class="comment">//OnRedayStateChange事件</span></span><br><span class="line">    xhr.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (xhr.readyState === <span class="number">4</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (xhr.status === <span class="number">200</span>) &#123;</span><br><span class="line">                <span class="comment">//alert("成功" + xhr.responseText);</span></span><br><span class="line">                fnSucc(xhr.responseText);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">//alert("服务器响应失败!");</span></span><br><span class="line">                <span class="keyword">if</span> (fnFaild) &#123;</span><br><span class="line">                    fnFaild();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>2.get与post结合的请求函数</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * AJAX函数封装</div><div class="line"> * @param &#123;string&#125; url     请求地址（必须）</div><div class="line"> * @param &#123;object&#125; options 发送请求的选项参数</div><div class="line"> *   @config &#123;string&#125; [options.type] 请求发送的类型。默认为GET。</div><div class="line"> *   @config &#123;Object&#125; [options.data] 需要发送的数据。</div><div class="line"> *   @config &#123;Function&#125; [options.onsuccess] 请求成功时触发。（必须）</div><div class="line"> *   @config &#123;Function&#125; [options.onfail] 请求失败时触发。</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">AJAX</span>(<span class="params">url, options</span>) </span>&#123;</div><div class="line">    <span class="comment">//1.创建ajax对象</span></div><div class="line">    <span class="keyword">var</span> xhr = <span class="literal">null</span>;</div><div class="line">        <span class="comment">/**</span></div><div class="line">         * 此处必须需要使用window.的方式,表示为window对象的一个属性.不存在时值为undefined,进入else</div><div class="line">         * 若直接使用XMLHttpRequest,在不支持的情况下会报错</div><div class="line">         **/</div><div class="line">    <span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;</div><div class="line">        <span class="comment">//IE6以上</span></div><div class="line">        xhr = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        xhr = <span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//2.连接服务器</span></div><div class="line">    <span class="comment">//open(方法,url,是否异步)</span></div><div class="line">    <span class="keyword">var</span> param = <span class="string">""</span>; <span class="comment">//请求参数。</span></div><div class="line">    <span class="comment">//只有data存在，且为对象使才执行</span></div><div class="line">    <span class="keyword">var</span> data = options.data ? options.data : <span class="number">-1</span>; <span class="comment">//缓存data</span></div><div class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> (data) === <span class="string">"object"</span>) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> data) &#123; <span class="comment">//请求参数拼接</span></div><div class="line">            <span class="keyword">if</span> (data.hasOwnProperty(key)) &#123;</div><div class="line">                param += <span class="string">`<span class="subst">$&#123;key&#125;</span>=<span class="subst">$&#123;data[key]&#125;</span>&amp;`</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        param.replace(<span class="regexp">/&amp;$/</span>, <span class="string">""</span>);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        param = <span class="string">"timestamp="</span> + <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//3.发送请求</span></div><div class="line">    <span class="keyword">var</span> type = options.type ? options.type.toUpperCase() : <span class="string">"GET"</span>;</div><div class="line">    <span class="keyword">if</span> (type === <span class="string">"GET"</span>) &#123;</div><div class="line">        xhr.open(<span class="string">"GET"</span>, <span class="string">`<span class="subst">$&#123;url&#125;</span>?<span class="subst">$&#123;param&#125;</span>`</span>, <span class="literal">true</span>);</div><div class="line">        xhr.send();</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        xhr.open(<span class="string">"POST"</span>, url, <span class="literal">true</span>);</div><div class="line">        xhr.setRequestHeder(<span class="string">"Content-Type"</span>,<span class="string">"application/x-www-form-urlencoded;charset=UTF-8"</span>);</div><div class="line">        xhr.send(param);</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//4.接收返回</span></div><div class="line">    <span class="comment">//OnRedayStateChange事件</span></div><div class="line">    xhr.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (xhr.readyState === <span class="number">4</span>) &#123;</div><div class="line">            <span class="keyword">if</span> (xhr.status === <span class="number">200</span>) &#123;</div><div class="line">                <span class="comment">//请求成功。形参为获取到的字符串形式的响应数据</span></div><div class="line">                options.onsuccess(xhr.responseText);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="comment">//先判断是否存在请求失败函数</span></div><div class="line">                <span class="comment">//存在时，形参为XMLHttpRequest对象，便于进行错误进行处理</span></div><div class="line">                <span class="keyword">if</span> (options.onfail) &#123;</div><div class="line">                    options.onfail(xhr);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * AJAX函数封装</span></span><br><span class="line"><span class="comment"> * @param &#123;string&#125; url     请求地址（必须）</span></span><br><span class="line"><span class="comment"> * @param &#123;object&#125; options 发送请求的选项参数</span></span><br><span class="line"><span class="comment"> *   @config &#123;string&#125; [options.type] 请求发送的类型。默认为GET。</span></span><br><span class="line"><span class="comment"> *   @config &#123;Object&#125; [options.data] 需要发送的数据。</span></span><br><span class="line"><span class="comment"> *   @config &#123;Function&#125; [options.onsuccess] 请求成功时触发。（必须）</span></span><br><span class="line"><span class="comment"> *   @config &#123;Function&#125; [options.onfail] 请求失败时触发。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">AJAX</span>(<span class="params">url, options</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//1.创建ajax对象</span></span><br><span class="line">    <span class="keyword">var</span> xhr = <span class="literal">null</span>;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 此处必须需要使用window.的方式,表示为window对象的一个属性.不存在时值为undefined,进入else</span></span><br><span class="line"><span class="comment">         * 若直接使用XMLHttpRequest,在不支持的情况下会报错</span></span><br><span class="line"><span class="comment">         **/</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;</span><br><span class="line">        <span class="comment">//IE6以上</span></span><br><span class="line">        xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        xhr = <span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//2.连接服务器</span></span><br><span class="line">    <span class="comment">//open(方法,url,是否异步)</span></span><br><span class="line">    <span class="keyword">var</span> param = <span class="string">""</span>; <span class="comment">//请求参数。</span></span><br><span class="line">    <span class="comment">//只有data存在，且为对象使才执行</span></span><br><span class="line">    <span class="keyword">var</span> data = options.data ? options.data : <span class="number">-1</span>; <span class="comment">//缓存data</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> (data) === <span class="string">"object"</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> data) &#123; <span class="comment">//请求参数拼接</span></span><br><span class="line">            <span class="keyword">if</span> (data.hasOwnProperty(key)) &#123;</span><br><span class="line">                param += <span class="string">`<span class="subst">$&#123;key&#125;</span>=<span class="subst">$&#123;data[key]&#125;</span>&amp;`</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        param.replace(<span class="regexp">/&amp;$/</span>, <span class="string">""</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        param = <span class="string">"timestamp="</span> + <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//3.发送请求</span></span><br><span class="line">    <span class="keyword">var</span> type = options.type ? options.type.toUpperCase() : <span class="string">"GET"</span>;</span><br><span class="line">    <span class="keyword">if</span> (type === <span class="string">"GET"</span>) &#123;</span><br><span class="line">        xhr.open(<span class="string">"GET"</span>, <span class="string">`<span class="subst">$&#123;url&#125;</span>?<span class="subst">$&#123;param&#125;</span>`</span>, <span class="literal">true</span>);</span><br><span class="line">        xhr.send();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        xhr.open(<span class="string">"POST"</span>, url, <span class="literal">true</span>);</span><br><span class="line">        xhr.setRequestHeder(<span class="string">"Content-Type"</span>,<span class="string">"application/x-www-form-urlencoded;charset=UTF-8"</span>);</span><br><span class="line">        xhr.send(param);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//4.接收返回</span></span><br><span class="line">    <span class="comment">//OnRedayStateChange事件</span></span><br><span class="line">    xhr.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (xhr.readyState === <span class="number">4</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (xhr.status === <span class="number">200</span>) &#123;</span><br><span class="line">                <span class="comment">//请求成功。形参为获取到的字符串形式的响应数据</span></span><br><span class="line">                options.onsuccess(xhr.responseText);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">//先判断是否存在请求失败函数</span></span><br><span class="line">                <span class="comment">//存在时，形参为XMLHttpRequest对象，便于进行错误进行处理</span></span><br><span class="line">                <span class="keyword">if</span> (options.onfail) &#123;</span><br><span class="line">                    options.onfail(xhr);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     
   </div>
 </article>
@@ -367,78 +333,43 @@
       <ul class="list-toolbox">
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/archives/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
               博客
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/project/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
               项目
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/tag/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
               标签
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/link/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
               友链
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/about/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
               关于
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/atom.xml"
-              rel="noopener noreferrer"
-              target="_blank"
-              >
+            <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
               RSS
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/search/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
               搜索
             </a>
           </li>

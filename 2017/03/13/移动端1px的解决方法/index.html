@@ -4,7 +4,7 @@
   <html class="light page-post">
 
 
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
   <title>移动端1px的解决方法 | Hzzly</title>
@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="随笔," />
+    <meta name="keywords" content="随笔,">
   
 
   <meta name="description" content="在上个项目中，移动端1px问题被困扰了好久，设置1px边框，实际显示2px。以下是我在项目中的解决方法，才疏学浅，轻喷。  关于什么是移动端1像素边框问题，先上两张图，大家就明白了。 假的1px: 真的1px: 原来Retine屏的分辨率始终是普通屏幕的2倍，1px的边框在devicePixelRatio=2的retina屏下会显示成2px。 解决方案  transform: scaleY()">
@@ -22,6 +22,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/03/13/移动端1px的解决方法/index.html">
 <meta property="og:site_name" content="Hzzly">
 <meta property="og:description" content="在上个项目中，移动端1px问题被困扰了好久，设置1px边框，实际显示2px。以下是我在项目中的解决方法，才疏学浅，轻喷。  关于什么是移动端1像素边框问题，先上两张图，大家就明白了。 假的1px: 真的1px: 原来Retine屏的分辨率始终是普通屏幕的2倍，1px的边框在devicePixelRatio=2的retina屏下会显示成2px。 解决方案  transform: scaleY()">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://hzzly.github.io/img/onepx2.png">
 <meta property="og:image" content="https://hzzly.github.io/img/onepx1.png">
 <meta property="og:updated_time" content="2017-05-21T14:25:39.000Z">
@@ -83,7 +84,7 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
   
 </head>
-
+</html>
 <body>
 
 
@@ -102,78 +103,43 @@
     <ul class="list-toolbox">
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/archives/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
             博客
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/project/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
             项目
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/tag/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
             标签
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/link/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
             友链
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/about/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
             关于
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/atom.xml"
-            rel="noopener noreferrer"
-            target="_blank"
-            >
+          <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
             RSS
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/search/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
             搜索
           </a>
         </li>
@@ -237,7 +203,7 @@
 <p>transform: scaleY()</p>
 </blockquote>
 <a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;border-1px&quot;&gt;&lt;/div&gt;</div><div class="line"> </div><div class="line">&lt;style type=&quot;text/scss&quot;&gt;</div><div class="line">.border-1px &#123;</div><div class="line">	position: relative;</div><div class="line">	&amp;:after&#123;</div><div class="line">		display: block;</div><div class="line">		position: absolute;</div><div class="line">		left: 0;</div><div class="line">		bottom: 0;</div><div class="line">		width: 100%;</div><div class="line">		border-top: 1px solid #000;</div><div class="line">		content: &apos;&apos;;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line">@media (-webkit-min-device-pixel-ratio: 1.5),(min-device-pixel-ratio: 1.5) &#123;</div><div class="line">	.border-1px&#123;</div><div class="line">		&amp;::after&#123;</div><div class="line">			-webkit-transform: scaleY(0.7);</div><div class="line">			transform: scaleY(0.7);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line">@media (-webkit-min-device-pixel-ratio: 2),(min-device-pixel-ratio: 2) &#123;</div><div class="line">	.border-1px&#123;</div><div class="line">		&amp;::after&#123;</div><div class="line">			-webkit-transform: scaleY(0.5);</div><div class="line">			transform: scaleY(0.5);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;border-1px&quot;&gt;&lt;/div&gt;</span><br><span class="line"> </span><br><span class="line">&lt;style type=&quot;text/scss&quot;&gt;</span><br><span class="line">.border-1px &#123;</span><br><span class="line">	position: relative;</span><br><span class="line">	&amp;:after&#123;</span><br><span class="line">		display: block;</span><br><span class="line">		position: absolute;</span><br><span class="line">		left: 0;</span><br><span class="line">		bottom: 0;</span><br><span class="line">		width: 100%;</span><br><span class="line">		border-top: 1px solid #000;</span><br><span class="line">		content: &apos;&apos;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">@media (-webkit-min-device-pixel-ratio: 1.5),(min-device-pixel-ratio: 1.5) &#123;</span><br><span class="line">	.border-1px&#123;</span><br><span class="line">		&amp;::after&#123;</span><br><span class="line">			-webkit-transform: scaleY(0.7);</span><br><span class="line">			transform: scaleY(0.7);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">@media (-webkit-min-device-pixel-ratio: 2),(min-device-pixel-ratio: 2) &#123;</span><br><span class="line">	.border-1px&#123;</span><br><span class="line">		&amp;::after&#123;</span><br><span class="line">			-webkit-transform: scaleY(0.5);</span><br><span class="line">			transform: scaleY(0.5);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
 <p>到这已经成功解决了1px问题。</p>
 <p>好了，吃饭去喽，溜了溜了。。。</p>
 
@@ -302,78 +268,43 @@
       <ul class="list-toolbox">
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/archives/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
               博客
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/project/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
               项目
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/tag/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
               标签
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/link/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
               友链
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/about/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
               关于
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/atom.xml"
-              rel="noopener noreferrer"
-              target="_blank"
-              >
+            <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
               RSS
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/search/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
               搜索
             </a>
           </li>

@@ -4,7 +4,7 @@
   <html class="light page-post">
 
 
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
   <title>征服前端面试 | Hzzly</title>
@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="随笔,面试," />
+    <meta name="keywords" content="随笔,面试,">
   
 
   <meta name="description" content="前言：以下是整理一些面试中经常会遇到的经典面试题以及自己面试过程中有一些未解决的问题，通过对知识的整理以及经验的总结，重新巩固自身的前端基础知识，如有错误或更好的答案，欢迎指正，水平有限，望各位不吝指教。:）  JavaScript原型 我们创建的每一个函数，都可以有一个prototype属性，该属性指向一个对象。这个对象，就是原型。  当我们在创建对象时，可以根据自己的需求，选择性的将一些属性">
@@ -22,6 +22,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/31/前端面试整理/index.html">
 <meta property="og:site_name" content="Hzzly">
 <meta property="og:description" content="前言：以下是整理一些面试中经常会遇到的经典面试题以及自己面试过程中有一些未解决的问题，通过对知识的整理以及经验的总结，重新巩固自身的前端基础知识，如有错误或更好的答案，欢迎指正，水平有限，望各位不吝指教。:）  JavaScript原型 我们创建的每一个函数，都可以有一个prototype属性，该属性指向一个对象。这个对象，就是原型。  当我们在创建对象时，可以根据自己的需求，选择性的将一些属性">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://omt3u4bph.bkt.clouddn.com/599584-2fc7dad23d112791.png">
 <meta property="og:image" content="http://omt3u4bph.bkt.clouddn.com/599584-da97dde356289ade.png">
 <meta property="og:updated_time" content="2017-06-11T08:36:25.000Z">
@@ -83,7 +84,7 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
   
 </head>
-
+</html>
 <body>
 
 
@@ -102,78 +103,43 @@
     <ul class="list-toolbox">
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/archives/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
             博客
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/project/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
             项目
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/tag/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
             标签
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/link/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
             友链
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/about/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
             关于
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/atom.xml"
-            rel="noopener noreferrer"
-            target="_blank"
-            >
+          <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
             RSS
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/search/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
             搜索
           </a>
         </li>
@@ -237,13 +203,13 @@
 <p>我们创建的每一个函数，都可以有一个prototype属性，该属性指向一个对象。这个对象，就是原型。</p>
 </blockquote>
 <p>当我们在创建对象时，可以根据自己的需求，选择性的将一些属性和方法通过prototype属性，挂载在原型对象上。而每一个new出来的实例，都有一个<strong>proto</strong>属性，该属性指向构造函数的原型对象，通过这个属性，让实例对象也能够访问原型对象上的方法。因此，当所有的实例都能够通过<strong>proto</strong>访问到原型对象时，原型对象的方法与属性就变成了共有方法与属性。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 声明构造函数</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>) </span>&#123;</div><div class="line">	<span class="keyword">this</span>.name = name;</div><div class="line">	<span class="keyword">this</span>.age = age;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="comment">// 通过prototye属性，将方法挂载到原型对象上</span></div><div class="line">Person.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="keyword">return</span> <span class="keyword">this</span>.name;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person(<span class="string">'tim'</span>, <span class="number">10</span>);</div><div class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> Person(<span class="string">'jak'</span>, <span class="number">22</span>);</div><div class="line"><span class="built_in">console</span>.log(p1.getName === p2.getName); <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 声明构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.name = name;</span><br><span class="line">	<span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 通过prototye属性，将方法挂载到原型对象上</span></span><br><span class="line">Person.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person(<span class="string">'tim'</span>, <span class="number">10</span>);</span><br><span class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> Person(<span class="string">'jak'</span>, <span class="number">22</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1.getName === p2.getName); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 <p><img src="http://omt3u4bph.bkt.clouddn.com/599584-2fc7dad23d112791.png" alt="http://omt3u4bph.bkt.clouddn.com/599584-2fc7dad23d112791.png"><br>通过图示我们可以看出，构造函数的prototype与所有实例对象的<strong>proto</strong>都指向原型对象。而原型对象的constructor指向构造函数。</p>
 <h2 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h2><blockquote>
 <p>我们知道所有的函数都有一个叫做toString的方法。那么这个方法到底是在哪里的呢？</p>
 </blockquote>
 <p>先随意声明一个函数：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="http://omt3u4bph.bkt.clouddn.com/599584-da97dde356289ade.png" alt="http://omt3u4bph.bkt.clouddn.com/599584-da97dde356289ade.png"><br>其中foo是Function对象的实例。而Function的原型对象同时又是Object的实例。这样就构成了一条原型链。原型链的访问，其实跟作用域链有很大的相似之处，他们都是一次单向的查找过程。因此实例对象能够通过原型链，访问到处于原型链上对象的所有属性与方法。这也是foo最终能够访问到处于Object原型对象上的toString方法的原因。</p>
 <h2 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h2><p>作用域链的作用是保证执行环境里有权访问的变量和函数是有序的，作用域链的变量只能向上访问，变量访问到window对象即被终止，作用域链向下访问变量是不被允许的。</p>
 <h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><blockquote>
@@ -269,14 +235,14 @@
 <p>1、作为普通函数调用（this指向全局对象window对象）<br>2、作为对象的方法调用（this指向该对象）<br>3、构造器调用（this指向用new返回的这个对象）<br>4、call、apply、bind的调用（this指向第一个参数对象）</p>
 <h2 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h2><p>1、函数作为参数传递<br>2、函数作为返回值输出</p>
 <h2 id="new操作符具体干了什么呢"><a href="#new操作符具体干了什么呢" class="headerlink" title="new操作符具体干了什么呢?"></a>new操作符具体干了什么呢?</h2><p>1、创建一个新对象<br>2、将构造函数的作用域赋给新对象（因此this就指向了这个新对象）<br>3、执行构造函数中的代码（为这个新对象添加属性）<br>4、返回新对象</p>
-<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>1、简单原型链继承<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Super</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.name = <span class="string">'hzzly'</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Sub</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="comment">// ...</span></div><div class="line">&#125;</div><div class="line">Sub.prototype = <span class="keyword">new</span> Super();    <span class="comment">// 核心</span></div></pre></td></tr></table></figure></p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>1、简单原型链继承<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Super</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.name = <span class="string">'hzzly'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Sub</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line">Sub.prototype = <span class="keyword">new</span> Super();    <span class="comment">// 核心</span></span><br></pre></td></tr></table></figure></p>
 <p>缺点：<br>修改sub1.name后sub2.name也变了，因为来自原型对象的引用属性是所有实例共享的。</p>
-<p>2、构造函数式继承<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Super</span>(<span class="params">val</span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.val = val;</div><div class="line">	<span class="keyword">this</span>.fun = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  <span class="comment">// 实例函数</span></div><div class="line">		<span class="comment">// ...</span></div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Sub</span>(<span class="params">val</span>)</span>&#123;</div><div class="line">	Super.call(<span class="keyword">this</span>, val);   <span class="comment">// 核心</span></div><div class="line">	<span class="comment">// ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>2、构造函数式继承<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Super</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.val = val;</span><br><span class="line">	<span class="keyword">this</span>.fun = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  <span class="comment">// 实例函数</span></span><br><span class="line">		<span class="comment">// ...</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Sub</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">	Super.call(<span class="keyword">this</span>, val);   <span class="comment">// 核心</span></span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>缺点：<br>无法实现函数复用，每个子类实例都持有一个新的fun函数，太多了就会影响性能，内存爆炸。。</p>
-<p>3、组合式继承<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Super</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.name = <span class="string">'hzzly'</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 原型函数</span></div><div class="line">Super.prototype.fun1 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</div><div class="line">Super.prototype.fun2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</div><div class="line"><span class="comment">//Super.prototype.fun3...</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Sub</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	Super.call(<span class="keyword">this</span>);   <span class="comment">// 核心</span></div><div class="line">	<span class="comment">// ...</span></div><div class="line">&#125;</div><div class="line">Sub.prototype = <span class="keyword">new</span> Super();    <span class="comment">// 核心</span></div></pre></td></tr></table></figure></p>
+<p>3、组合式继承<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Super</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.name = <span class="string">'hzzly'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 原型函数</span></span><br><span class="line">Super.prototype.fun1 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">Super.prototype.fun2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="comment">//Super.prototype.fun3...</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Sub</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	Super.call(<span class="keyword">this</span>);   <span class="comment">// 核心</span></span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line">Sub.prototype = <span class="keyword">new</span> Super();    <span class="comment">// 核心</span></span><br></pre></td></tr></table></figure></p>
 <p>缺点：<br>子类原型上有一份多余的父类实例属性，因为父类构造函数被调用了两次，生成了两份，而子类实例上的那一份屏蔽了子类原型上父类的。。。又是内存浪费。</p>
-<p>4、寄生组合式继承<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Super</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.name = <span class="string">'hzzly'</span>;</div><div class="line">&#125;</div><div class="line">Super.prototype.fun1 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</div><div class="line">Super.prototype.fun2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</div><div class="line"><span class="comment">//Super.prototype.fun3...</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Sub</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	Super.call(<span class="keyword">this</span>);   <span class="comment">// 核心</span></div><div class="line">	<span class="comment">// ...</span></div><div class="line">&#125;</div><div class="line">Sub.prototype=<span class="built_in">Object</span>.create(Super.prototype)   <span class="comment">// 核心</span></div><div class="line">Sub.prototype.constructor=Sub   <span class="comment">// 核心</span></div></pre></td></tr></table></figure></p>
-<p>5、es6的class继承方式<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span> </span>&#123;</div><div class="line">&#125;</div><div class="line">B.__proto__ === A   <span class="comment">// true</span></div><div class="line">B.prototype.__proto__ === A.prototype   <span class="comment">// true</span></div></pre></td></tr></table></figure></p>
+<p>4、寄生组合式继承<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Super</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.name = <span class="string">'hzzly'</span>;</span><br><span class="line">&#125;</span><br><span class="line">Super.prototype.fun1 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">Super.prototype.fun2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="comment">//Super.prototype.fun3...</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Sub</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	Super.call(<span class="keyword">this</span>);   <span class="comment">// 核心</span></span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line">Sub.prototype=<span class="built_in">Object</span>.create(Super.prototype)   <span class="comment">// 核心</span></span><br><span class="line">Sub.prototype.constructor=Sub   <span class="comment">// 核心</span></span><br></pre></td></tr></table></figure></p>
+<p>5、es6的class继承方式<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line">B.__proto__ === A   <span class="comment">// true</span></span><br><span class="line">B.prototype.__proto__ === A.prototype   <span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
 <p>es6引入了class、extends、super、static(部分为ES2016标准)</p>
 <h2 id="null和undefined的区别？"><a href="#null和undefined的区别？" class="headerlink" title="null和undefined的区别？"></a>null和undefined的区别？</h2><p>1、null是一个表示”无”的对象，转为数值时为0；undefined是一个表示”无”的原始值，转为数值时为NaN。<br>2、undefined表示”缺少值”，就是此处应该有一个值，但是还没有定义。<br>3、null表示”没有对象”，即该处不应该有值。</p>
 <h2 id="call、apply、bind的区别"><a href="#call、apply、bind的区别" class="headerlink" title="call、apply、bind的区别"></a>call、apply、bind的区别</h2><ul>
@@ -292,7 +258,7 @@
 <li>localStorage用于持久化的本地存储，除非主动删除数据，否则数据是永远不会过期的。</li>
 </ul>
 </blockquote>
-<p>具体参见：<a href="http://hjingren.cn/2017/04/26/%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8sessionStorage%E4%B8%8ElocalStorage/" target="_blank" rel="external">本地存储sessionStorage与localStorage</a></p>
+<p>具体参见：<a href="http://hjingren.cn/2017/04/26/%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8sessionStorage%E4%B8%8ElocalStorage/" target="_blank" rel="noopener">本地存储sessionStorage与localStorage</a></p>
 <h2 id="cookie-和session"><a href="#cookie-和session" class="headerlink" title="cookie 和session"></a>cookie 和session</h2><p>1、cookie数据存放在客户的浏览器上，session数据放在服务器上。<br>2、cookie不是很安全，别人可以分析存放在本地的COOKIE并进行COOKIE欺骗，考虑到安全应当使用session。<br>3、session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能，考虑到减轻服务器性能方面，应当使用COOKIE。<br>4、单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。每次请求一个新的页面的时候Cookie都会被发送过去，与服务器进行交互。</p>
 <h2 id="XML和JSON的区别？"><a href="#XML和JSON的区别？" class="headerlink" title="XML和JSON的区别？"></a>XML和JSON的区别？</h2><p>1、数据体积方面。<br>JSON相对于XML来讲，数据的体积小，传递的速度更快些。<br>2、数据交互方面。<br>JSON与JavaScript的交互更加方便，更容易解析处理，更好的数据交互。<br>3、数据描述方面。<br>JSON对数据的描述性比XML较差。<br>4、传输速度方面。<br>JSON的速度要远远快于XML。</p>
 <h2 id="如何实现浏览器内多个标签页之间的通信"><a href="#如何实现浏览器内多个标签页之间的通信" class="headerlink" title="如何实现浏览器内多个标签页之间的通信?"></a>如何实现浏览器内多个标签页之间的通信?</h2><p>调用localstorge、cookies等本地存储方式</p>
@@ -444,7 +410,7 @@
 <li>CSS Sprites 其实就是把网页中一些背景图片整合到一张图片文件中，再利用CSS的“background-image”，“background- repeat”，“background-position”的组合进行背景定位，background-position可以用数字能精确的定位出背景图片的位置。这样可以减少很多图片请求的开销，因为请求耗时比较长；请求虽然可以并发，但是也有限制，一般浏览器都是6个。对于未来而言，就不需要这样做了，因为有了<code>http2</code>。</li>
 </ul>
 <h2 id="解释下浮动和它的工作原理？清除浮动的技巧"><a href="#解释下浮动和它的工作原理？清除浮动的技巧" class="headerlink" title="解释下浮动和它的工作原理？清除浮动的技巧"></a>解释下浮动和它的工作原理？清除浮动的技巧</h2><p>浮动元素脱离文档流，不占据空间。浮动元素碰到包含它的边框或者浮动元素的边框停留。<br>1.使用空标签清除浮动。<br>   这种方法是在所有浮动标签后面添加一个空标签 定义css clear:both. 弊端就是增加了无意义标签。<br>2.使用overflow。<br>   设置overflow为hidden或者auto，给包含浮动元素的父标签添加css属性 overflow:auto; zoom:1; zoom:1用于兼容IE6。<br>3.使用after伪对象清除浮动。<br>   该方法只适用于非IE浏览器。该方法中必须为需要清除浮动元素的伪对象中设置 height:0，否则该元素会比实际高出若干像素；</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#box</span><span class="selector-pseudo">:after</span>&#123;</div><div class="line">	<span class="attribute">content</span>:<span class="string">"."</span>;</div><div class="line">	<span class="attribute">height</span>:<span class="number">0</span>;</div><div class="line">	<span class="attribute">visibility</span>:hidden;</div><div class="line">	<span class="attribute">display</span>:block;</div><div class="line">	<span class="attribute">clear</span>:both;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#box</span><span class="selector-pseudo">:after</span>&#123;</span><br><span class="line">	<span class="attribute">content</span>:<span class="string">"."</span>;</span><br><span class="line">	<span class="attribute">height</span>:<span class="number">0</span>;</span><br><span class="line">	<span class="attribute">visibility</span>:hidden;</span><br><span class="line">	<span class="attribute">display</span>:block;</span><br><span class="line">	<span class="attribute">clear</span>:both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="浮动元素引起的问题"><a href="#浮动元素引起的问题" class="headerlink" title="浮动元素引起的问题"></a>浮动元素引起的问题</h2><p>1、父元素的高度无法被撑开，影响与父元素同级的元素<br>2、与浮动元素同级的非浮动元素（内联元素）会跟随其后<br>3、若非第一个元素浮动，则该元素之前的元素也需要浮动，否则会影响页面显示的结构</p>
 <h1 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h1><h2 id="说说你对语义化的理解"><a href="#说说你对语义化的理解" class="headerlink" title="说说你对语义化的理解"></a>说说你对语义化的理解</h2><p>1、去掉或者丢失样式的时候能够让页面呈现出清晰的结构<br>2、有利于SEO：和搜索引擎建立良好沟通，有助于爬虫抓取更多的有效信息：爬虫依赖于标签来确定上下文和各个关键字的权重；<br>3、方便其他设备解析（如屏幕阅读器、盲人阅读器、移动设备）以意义的方式来渲染网页；<br>4、便于团队开发和维护，语义化更具可读性，是下一步吧网页的重要动向，遵循W3C标准的团队都遵循这个标准，可以减少差异化。</p>
 <h2 id="Doctype作用-严格模式与混杂模式如何区分？它们有何意义"><a href="#Doctype作用-严格模式与混杂模式如何区分？它们有何意义" class="headerlink" title="Doctype作用? 严格模式与混杂模式如何区分？它们有何意义?"></a>Doctype作用? 严格模式与混杂模式如何区分？它们有何意义?</h2><p>1、<code>&lt;!DOCTYPE&gt;</code> 告知浏览器的解析器用什么文档标准解析这个文档。<br>2、严格模式的排版和 JS 运作模式是以该浏览器支持的最高标准运行。<br>3、在混杂模式中，页面以宽松的向后兼容的方式显示。模拟老式浏览器的行为以防止站点无法工作。<br>4、<code>&lt;!DOCTYPE&gt;</code> 不存在或格式不正确会导致文档以混杂模式呈现。 </p>
@@ -495,7 +461,7 @@
 <p>display:none 的节点不会被加入 Render Tree，而 visibility: hidden 则会，所以，如果某个节点最开始是不显示的，设为 display:none 是更优的。</p>
 </blockquote>
 <h2 id="一个完整的URL包括以下几部分"><a href="#一个完整的URL包括以下几部分" class="headerlink" title="一个完整的URL包括以下几部分"></a>一个完整的URL包括以下几部分</h2><blockquote>
-<p><a href="http://www.hzzly.net:8080/news/index.php?boardID=5&amp;ID=24618&amp;page=1#name" target="_blank" rel="external">http://www.hzzly.net:8080/news/index.php?boardID=5&amp;ID=24618&amp;page=1#name</a></p>
+<p><a href="http://www.hzzly.net:8080/news/index.php?boardID=5&amp;ID=24618&amp;page=1#name" target="_blank" rel="noopener">http://www.hzzly.net:8080/news/index.php?boardID=5&amp;ID=24618&amp;page=1#name</a></p>
 </blockquote>
 <p>1、协议部分<br>2、域名部分<br>3、端口部分<br>4、虚拟目录部分：从域名后的第一个“/”开始到最后一个“/”为止<br>5、文件名部分：从域名后的最后一个“/”开始到“？”为止<br>6、参数部分：从“？”开始到“#”为止之间的部分<br>7、锚部分：从“#”开始到最后</p>
 <h2 id="GET和POST的区别"><a href="#GET和POST的区别" class="headerlink" title="GET和POST的区别"></a>GET和POST的区别</h2><p>GET：一般用于信息获取，使用URL传递参数，对所发送信息的数量也有限制，一般在1024字节，Get是通过地址栏来传值。</p>
@@ -516,19 +482,19 @@
 <h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><h2 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h2><blockquote>
 <p>建一个空对象和空数组，循环遍历需要去重的数组，判断对象有没有此属性，没有的话就给对象添加此属性，并向空数组中push这个值。</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//es5</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique</span>(<span class="params">arr</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> obj = &#123;&#125;</div><div class="line">	<span class="keyword">var</span> result = []</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> arr)&#123;</div><div class="line">		<span class="keyword">if</span>(!obj[arr[i]])&#123;</div><div class="line">			obj[arr[i]] = <span class="literal">true</span>;</div><div class="line">			result.push(arr[i]);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> result;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//es6</span></div><div class="line">[...new <span class="built_in">Set</span>(arr)]</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//es5</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> obj = &#123;&#125;</span><br><span class="line">	<span class="keyword">var</span> result = []</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> arr)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!obj[arr[i]])&#123;</span><br><span class="line">			obj[arr[i]] = <span class="literal">true</span>;</span><br><span class="line">			result.push(arr[i]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//es6</span></span><br><span class="line">[...new <span class="built_in">Set</span>(arr)]</span><br></pre></td></tr></table></figure>
 <h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><blockquote>
 <p>相邻两个对比，最后把最大的排到了最后，重复此过程。</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubbleSort</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">	<span class="keyword">var</span> len = arr.length;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; len - <span class="number">1</span> - i; j++) &#123;</div><div class="line">			<span class="keyword">if</span> (arr[j] &gt; arr[j+<span class="number">1</span>]) &#123;        <span class="comment">//相邻元素两两对比</span></div><div class="line">				<span class="keyword">var</span> temp = arr[j+<span class="number">1</span>];        <span class="comment">//元素交换</span></div><div class="line">				arr[j+<span class="number">1</span>] = arr[j];</div><div class="line">				arr[j] = temp;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> arr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubbleSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> len = arr.length;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; len - <span class="number">1</span> - i; j++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (arr[j] &gt; arr[j+<span class="number">1</span>]) &#123;        <span class="comment">//相邻元素两两对比</span></span><br><span class="line">				<span class="keyword">var</span> temp = arr[j+<span class="number">1</span>];        <span class="comment">//元素交换</span></span><br><span class="line">				arr[j+<span class="number">1</span>] = arr[j];</span><br><span class="line">				arr[j] = temp;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><blockquote>
 <p>寻找最小的数，保存索引，然后与第一层循环其下标对于的值进行交换</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">selectionSort</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">	<span class="keyword">var</span> len = arr.length;</div><div class="line">	<span class="keyword">var</span> minIndex, temp;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; len - <span class="number">1</span>; i++) &#123;</div><div class="line">		minIndex = i;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">var</span> j = i + <span class="number">1</span>; j &lt; len; j++) &#123;</div><div class="line">			<span class="keyword">if</span> (arr[j] &lt; arr[minIndex]) &#123;     <span class="comment">//寻找最小的数</span></div><div class="line">				minIndex = j;                 <span class="comment">//将最小数的索引保存</span></div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		temp = arr[i];</div><div class="line">		arr[i] = arr[minIndex];</div><div class="line">		arr[minIndex] = temp;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> arr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">selectionSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> len = arr.length;</span><br><span class="line">	<span class="keyword">var</span> minIndex, temp;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; len - <span class="number">1</span>; i++) &#123;</span><br><span class="line">		minIndex = i;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">var</span> j = i + <span class="number">1</span>; j &lt; len; j++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (arr[j] &lt; arr[minIndex]) &#123;     <span class="comment">//寻找最小的数</span></span><br><span class="line">				minIndex = j;                 <span class="comment">//将最小数的索引保存</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		temp = arr[i];</span><br><span class="line">		arr[i] = arr[minIndex];</span><br><span class="line">		arr[minIndex] = temp;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><blockquote>
 <p>选取一个记录作为中间轴，然后将比‘这个记录值’小的移到‘记录值’之前，大的移到之后，然后递归</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">quickSort</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">	<span class="keyword">if</span>(arr.length == <span class="number">0</span>) &#123;</div><div class="line">		<span class="keyword">return</span> [];    <span class="comment">// 返回空数组</span></div><div class="line">	&#125;</div><div class="line">	<span class="keyword">var</span> cIndex = <span class="built_in">Math</span>.floor(arr.length / <span class="number">2</span>);</div><div class="line">	<span class="keyword">var</span> c = arr.splice(cIndex, <span class="number">1</span>);</div><div class="line">	<span class="keyword">var</span> l = [];</div><div class="line">	<span class="keyword">var</span> r = [];</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</div><div class="line">		<span class="keyword">if</span>(arr[i] &lt; c) &#123;</div><div class="line">			l.push(arr[i]);</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			r.push(arr[i]);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> quickSort(l).concat(c, quickSort(r));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">quickSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(arr.length == <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> [];    <span class="comment">// 返回空数组</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">var</span> cIndex = <span class="built_in">Math</span>.floor(arr.length / <span class="number">2</span>);</span><br><span class="line">	<span class="keyword">var</span> c = arr.splice(cIndex, <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">var</span> l = [];</span><br><span class="line">	<span class="keyword">var</span> r = [];</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span>(arr[i] &lt; c) &#123;</span><br><span class="line">			l.push(arr[i]);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			r.push(arr[i]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> quickSort(l).concat(c, quickSort(r));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h1><h2 id="对前端界面工程师这个职位是怎么样理解的"><a href="#对前端界面工程师这个职位是怎么样理解的" class="headerlink" title="对前端界面工程师这个职位是怎么样理解的"></a>对前端界面工程师这个职位是怎么样理解的</h2><p>前端是最贴近用户的程序员，前端的能力就是能让产品从 90分进化到 100 分，甚至更好<br>1、实现界面交互<br>2、提升用户体验</p>
 <h2 id="谈谈你对重构的理解"><a href="#谈谈你对重构的理解" class="headerlink" title="谈谈你对重构的理解"></a>谈谈你对重构的理解</h2><p>在不改变外部行为的前提下，简化结构、添加可读性，而在网站前端保持一致的行为。也就是说是在不改变UI的情况下，对网站进行优化，在扩展的同时保持一致的UI。</p>
 <p>减少代码间的耦合<br>让代码保持弹性<br>严格按规范编写代码<br>设计可扩展的API<br>代替旧有的框架、语言(如VB)<br>增强用户体验<br>通常来说对于速度的优化也包含在重构中</p>
@@ -602,78 +568,43 @@
       <ul class="list-toolbox">
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/archives/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
               博客
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/project/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
               项目
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/tag/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
               标签
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/link/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
               友链
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/about/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
               关于
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/atom.xml"
-              rel="noopener noreferrer"
-              target="_blank"
-              >
+            <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
               RSS
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/search/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
               搜索
             </a>
           </li>

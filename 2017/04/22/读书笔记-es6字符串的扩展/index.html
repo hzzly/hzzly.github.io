@@ -4,7 +4,7 @@
   <html class="light page-post">
 
 
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
   <title>读书笔记-es6字符串的扩展 | Hzzly</title>
@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="随笔,es6,JavaScrip," />
+    <meta name="keywords" content="随笔,es6,JavaScrip,">
   
 
   <meta name="description" content="字符串的扩展一、字符串的遍历器接口123456for (let codePoint of &apos;foo&apos;) &amp;#123;  console.log(codePoint)&amp;#125;// &quot;f&quot;// &quot;o&quot;// &quot;o&quot; 二、at返回字符串给定位置的字符1234//es5&apos;abc&apos;.charAt(0) // &quot;a&quot;//es6&apos;abc&apos;.at(0) // &quot;a&quot; 三、indexOf(), includes(">
@@ -22,6 +22,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/04/22/读书笔记-es6字符串的扩展/index.html">
 <meta property="og:site_name" content="Hzzly">
 <meta property="og:description" content="字符串的扩展一、字符串的遍历器接口123456for (let codePoint of &apos;foo&apos;) &amp;#123;  console.log(codePoint)&amp;#125;// &quot;f&quot;// &quot;o&quot;// &quot;o&quot; 二、at返回字符串给定位置的字符1234//es5&apos;abc&apos;.charAt(0) // &quot;a&quot;//es6&apos;abc&apos;.at(0) // &quot;a&quot; 三、indexOf(), includes(">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-06-12T15:01:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记-es6字符串的扩展">
@@ -80,7 +81,7 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
   
 </head>
-
+</html>
 <body>
 
 
@@ -99,78 +100,43 @@
     <ul class="list-toolbox">
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/archives/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
             博客
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/project/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
             项目
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/tag/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
             标签
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/link/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
             友链
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/about/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
             关于
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/atom.xml"
-            rel="noopener noreferrer"
-            target="_blank"
-            >
+          <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
             RSS
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/search/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
             搜索
           </a>
         </li>
@@ -227,8 +193,8 @@
 
   <div class="article-content">
     
-      <h2 id="字符串的扩展"><a href="#字符串的扩展" class="headerlink" title="字符串的扩展"></a><strong>字符串的扩展</strong></h2><h3 id="一、字符串的遍历器接口"><a href="#一、字符串的遍历器接口" class="headerlink" title="一、字符串的遍历器接口"></a>一、字符串的遍历器接口</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> codePoint <span class="keyword">of</span> <span class="string">'foo'</span>) &#123;</div><div class="line">  <span class="built_in">console</span>.log(codePoint)</div><div class="line">&#125;</div><div class="line"><span class="comment">// "f"</span></div><div class="line"><span class="comment">// "o"</span></div><div class="line"><span class="comment">// "o"</span></div></pre></td></tr></table></figure>
-<h3 id="二、at"><a href="#二、at" class="headerlink" title="二、at"></a>二、at</h3><p>返回字符串给定位置的字符<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//es5</span></div><div class="line"><span class="string">'abc'</span>.charAt(<span class="number">0</span>) <span class="comment">// "a"</span></div><div class="line"><span class="comment">//es6</span></div><div class="line"><span class="string">'abc'</span>.at(<span class="number">0</span>) <span class="comment">// "a"</span></div></pre></td></tr></table></figure></p>
+      <h2 id="字符串的扩展"><a href="#字符串的扩展" class="headerlink" title="字符串的扩展"></a><strong>字符串的扩展</strong></h2><h3 id="一、字符串的遍历器接口"><a href="#一、字符串的遍历器接口" class="headerlink" title="一、字符串的遍历器接口"></a>一、字符串的遍历器接口</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> codePoint <span class="keyword">of</span> <span class="string">'foo'</span>) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(codePoint)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// "f"</span></span><br><span class="line"><span class="comment">// "o"</span></span><br><span class="line"><span class="comment">// "o"</span></span><br></pre></td></tr></table></figure>
+<h3 id="二、at"><a href="#二、at" class="headerlink" title="二、at"></a>二、at</h3><p>返回字符串给定位置的字符<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//es5</span></span><br><span class="line"><span class="string">'abc'</span>.charAt(<span class="number">0</span>) <span class="comment">// "a"</span></span><br><span class="line"><span class="comment">//es6</span></span><br><span class="line"><span class="string">'abc'</span>.at(<span class="number">0</span>) <span class="comment">// "a"</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="三、indexOf-includes-startsWith-endsWith"><a href="#三、indexOf-includes-startsWith-endsWith" class="headerlink" title="三、indexOf(), includes(), startsWith(), endsWith()"></a>三、indexOf(), includes(), startsWith(), endsWith()</h3><blockquote>
 <ul>
 <li>indexOf() 确定一个字符串是否包含在另一个字符串中(es5)</li>
@@ -237,16 +203,16 @@
 <li>endsWith()返回布尔值，表示参数字符串是否在源字符串的尾部。</li>
 </ul>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = <span class="string">'Hello world!'</span>;</div><div class="line">s.startsWith(<span class="string">'Hello'</span>) <span class="comment">// true</span></div><div class="line">s.endsWith(<span class="string">'!'</span>) <span class="comment">// true</span></div><div class="line">s.includes(<span class="string">'o'</span>) <span class="comment">// true</span></div></pre></td></tr></table></figure>
-<p>支持第二个参数，表示开始搜索的位置<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = <span class="string">'Hello world!'</span>;</div><div class="line">s.startsWith(<span class="string">'Hello'</span>) <span class="comment">// true</span></div><div class="line">s.endsWith(<span class="string">'!'</span>) <span class="comment">// true</span></div><div class="line">s.includes(<span class="string">'o'</span>) <span class="comment">// true</span></div></pre></td></tr></table></figure></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = <span class="string">'Hello world!'</span>;</div><div class="line">s.startsWith(<span class="string">'world'</span>, <span class="number">6</span>) <span class="comment">// true</span></div><div class="line">s.endsWith(<span class="string">'Hello'</span>, <span class="number">5</span>) <span class="comment">// true</span></div><div class="line">s.includes(<span class="string">'Hello'</span>, <span class="number">6</span>) <span class="comment">// false</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'Hello world!'</span>;</span><br><span class="line">s.startsWith(<span class="string">'Hello'</span>) <span class="comment">// true</span></span><br><span class="line">s.endsWith(<span class="string">'!'</span>) <span class="comment">// true</span></span><br><span class="line">s.includes(<span class="string">'o'</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>支持第二个参数，表示开始搜索的位置<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'Hello world!'</span>;</span><br><span class="line">s.startsWith(<span class="string">'Hello'</span>) <span class="comment">// true</span></span><br><span class="line">s.endsWith(<span class="string">'!'</span>) <span class="comment">// true</span></span><br><span class="line">s.includes(<span class="string">'o'</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'Hello world!'</span>;</span><br><span class="line">s.startsWith(<span class="string">'world'</span>, <span class="number">6</span>) <span class="comment">// true</span></span><br><span class="line">s.endsWith(<span class="string">'Hello'</span>, <span class="number">5</span>) <span class="comment">// true</span></span><br><span class="line">s.includes(<span class="string">'Hello'</span>, <span class="number">6</span>) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>endsWith的行为与其他两个方法有所不同。它针对前n个字符，而其他两个方法针对从第n个位置直到字符串结束。</p>
 </blockquote>
 <h3 id="四、repeat"><a href="#四、repeat" class="headerlink" title="四、repeat()"></a>四、repeat()</h3><blockquote>
 <p>返回一个新字符串，表示将原字符串重复n次。</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">'x'</span>.repeat(<span class="number">3</span>) <span class="comment">// "xxx"</span></div><div class="line"><span class="string">'hello'</span>.repeat(<span class="number">2</span>) <span class="comment">// "hellohello"</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'x'</span>.repeat(<span class="number">3</span>) <span class="comment">// "xxx"</span></span><br><span class="line"><span class="string">'hello'</span>.repeat(<span class="number">2</span>) <span class="comment">// "hellohello"</span></span><br></pre></td></tr></table></figure>
 <h3 id="五、padStart-，padEnd"><a href="#五、padStart-，padEnd" class="headerlink" title="五、padStart()，padEnd()"></a>五、padStart()，padEnd()</h3><blockquote>
 <p>字符串补全长度</p>
 <ul>
@@ -254,9 +220,9 @@
 <li>padEnd() 尾部补全<br>第一个参数用来指定字符串的最小长度，第二个参数是用来补全的字符串。如果省略第二个参数，默认使用空格补全长度</li>
 </ul>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="string">'x'</span>.padStart(<span class="number">5</span>, <span class="string">'ab'</span>) <span class="comment">// 'ababx'</span></div><div class="line"><span class="string">'x'</span>.padStart(<span class="number">4</span>, <span class="string">'ab'</span>) <span class="comment">// 'abax'</span></div><div class="line"><span class="string">'x'</span>.padEnd(<span class="number">5</span>, <span class="string">'ab'</span>) <span class="comment">// 'xabab'</span></div><div class="line"><span class="string">'x'</span>.padEnd(<span class="number">4</span>, <span class="string">'ab'</span>) <span class="comment">// 'xaba'</span></div></pre></td></tr></table></figure>
-<h3 id="六、模板字符串"><a href="#六、模板字符串" class="headerlink" title="六、模板字符串"></a>六、模板字符串</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 字符串中嵌入变量</span></div><div class="line"><span class="keyword">let</span> name = <span class="string">"hzzly"</span>, time = <span class="string">"today"</span>;</div><div class="line"><span class="string">`Hello <span class="subst">$&#123;name&#125;</span>, how are you <span class="subst">$&#123;time&#125;</span>?`</span></div></pre></td></tr></table></figure>
-<p><strong>Github地址：</strong> <a href="https://github.com/hzzly/learn-es6" target="_blank" rel="external">https://github.com/hzzly/learn-es6</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'x'</span>.padStart(<span class="number">5</span>, <span class="string">'ab'</span>) <span class="comment">// 'ababx'</span></span><br><span class="line"><span class="string">'x'</span>.padStart(<span class="number">4</span>, <span class="string">'ab'</span>) <span class="comment">// 'abax'</span></span><br><span class="line"><span class="string">'x'</span>.padEnd(<span class="number">5</span>, <span class="string">'ab'</span>) <span class="comment">// 'xabab'</span></span><br><span class="line"><span class="string">'x'</span>.padEnd(<span class="number">4</span>, <span class="string">'ab'</span>) <span class="comment">// 'xaba'</span></span><br></pre></td></tr></table></figure>
+<h3 id="六、模板字符串"><a href="#六、模板字符串" class="headerlink" title="六、模板字符串"></a>六、模板字符串</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 字符串中嵌入变量</span></span><br><span class="line"><span class="keyword">let</span> name = <span class="string">"hzzly"</span>, time = <span class="string">"today"</span>;</span><br><span class="line"><span class="string">`Hello <span class="subst">$&#123;name&#125;</span>, how are you <span class="subst">$&#123;time&#125;</span>?`</span></span><br></pre></td></tr></table></figure>
+<p><strong>Github地址：</strong> <a href="https://github.com/hzzly/learn-es6" target="_blank" rel="noopener">https://github.com/hzzly/learn-es6</a></p>
 
     
   </div>
@@ -319,78 +285,43 @@
       <ul class="list-toolbox">
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/archives/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
               博客
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/project/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
               项目
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/tag/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
               标签
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/link/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
               友链
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/about/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
               关于
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/atom.xml"
-              rel="noopener noreferrer"
-              target="_blank"
-              >
+            <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
               RSS
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/search/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
               搜索
             </a>
           </li>

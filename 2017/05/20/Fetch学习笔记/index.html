@@ -4,7 +4,7 @@
   <html class="light page-post">
 
 
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
   <title>Fetch学习笔记 | Hzzly</title>
@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="随笔,JavaScript,Fetch," />
+    <meta name="keywords" content="随笔,JavaScript,Fetch,">
   
 
   <meta name="description" content="前言: 前几天面试问到 Ajax和Fetch的区别，因为以前也用过这两个东西，所以也没难倒我，现在回头整理一遍。  fetch 与XMLHttpRequest(XHR)类似，fetch()方法允许你发出AJAX请求。区别在于Fetch API使用Promise，因此是一种简洁明了的API，比XMLHttpRequest更加简单易用。  如果还不了解Promise，可以移步👉浅谈Promise这">
@@ -22,6 +22,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/20/Fetch学习笔记/index.html">
 <meta property="og:site_name" content="Hzzly">
 <meta property="og:description" content="前言: 前几天面试问到 Ajax和Fetch的区别，因为以前也用过这两个东西，所以也没难倒我，现在回头整理一遍。  fetch 与XMLHttpRequest(XHR)类似，fetch()方法允许你发出AJAX请求。区别在于Fetch API使用Promise，因此是一种简洁明了的API，比XMLHttpRequest更加简单易用。  如果还不了解Promise，可以移步👉浅谈Promise这">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-05-21T11:53:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Fetch学习笔记">
@@ -80,7 +81,7 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
   
 </head>
-
+</html>
 <body>
 
 
@@ -99,78 +100,43 @@
     <ul class="list-toolbox">
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/archives/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
             博客
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/project/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
             项目
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/tag/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
             标签
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/link/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
             友链
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/about/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
             关于
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/atom.xml"
-            rel="noopener noreferrer"
-            target="_blank"
-            >
+          <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
             RSS
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/search/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
             搜索
           </a>
         </li>
@@ -233,7 +199,7 @@
 <h1 id="fetch"><a href="#fetch" class="headerlink" title="fetch"></a>fetch</h1><blockquote>
 <p>与XMLHttpRequest(XHR)类似，fetch()方法允许你发出AJAX请求。区别在于Fetch API使用Promise，因此是一种简洁明了的API，比XMLHttpRequest更加简单易用。</p>
 </blockquote>
-<p>如果还不了解<code>Promise</code>，可以移步👉<a href="https://hzzly.github.io/2017/03/25/%E6%B5%85%E8%B0%88Promise/" target="_blank" rel="external">浅谈Promise</a>这篇博客</p>
+<p>如果还不了解<code>Promise</code>，可以移步👉<a href="https://hzzly.github.io/2017/03/25/%E6%B5%85%E8%B0%88Promise/" target="_blank" rel="noopener">浅谈Promise</a>这篇博客</p>
 <h2 id="比较XMLHttpRequest（传统Ajax）"><a href="#比较XMLHttpRequest（传统Ajax）" class="headerlink" title="比较XMLHttpRequest（传统Ajax）"></a>比较XMLHttpRequest（传统Ajax）</h2><p>创建步骤：</p>
 <blockquote>
 <ul>
@@ -244,20 +210,20 @@
 </ul>
 </blockquote>
 <p>可以发现，主要的不同点在于：传统Ajax使用事件处理器，而不是Promise对象，并且请求的发起完全依赖于xhr对象所提供的方法。</p>
-<p>想详细了解 Ajax的封装可以查看我上一篇博客，一步步教你 Ajax的封装👉<a href="https://hzzly.github.io/2017/05/17/Ajax%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_blank" rel="external">Ajax学习笔记</a></p>
-<h2 id="fetch语法"><a href="#fetch语法" class="headerlink" title="fetch语法"></a>fetch语法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">fetch(url)</div><div class="line">	.then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</div><div class="line">		<span class="keyword">return</span> response.json();</div><div class="line">	&#125;)</div><div class="line">	.then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(data);</div><div class="line">	&#125;)</div><div class="line">	.catch(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="string">"Oops, error"</span>);</div><div class="line">	&#125;);</div></pre></td></tr></table></figure>
-<p>使用 ES6 的 <code>箭头函数</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">fetch(url)</div><div class="line">	.then(<span class="function"><span class="params">response</span> =&gt;</span> response.json())</div><div class="line">	.then(<span class="function"><span class="params">data</span> =&gt;</span> <span class="built_in">console</span>.log(data))</div><div class="line">	.catch(<span class="function"><span class="params">e</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">"Oops, error"</span>, e))</div></pre></td></tr></table></figure></p>
+<p>想详细了解 Ajax的封装可以查看我上一篇博客，一步步教你 Ajax的封装👉<a href="https://hzzly.github.io/2017/05/17/Ajax%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_blank" rel="noopener">Ajax学习笔记</a></p>
+<h2 id="fetch语法"><a href="#fetch语法" class="headerlink" title="fetch语法"></a>fetch语法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">fetch(url)</span><br><span class="line">	.then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> response.json();</span><br><span class="line">	&#125;)</span><br><span class="line">	.then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(data);</span><br><span class="line">	&#125;)</span><br><span class="line">	.catch(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">"Oops, error"</span>);</span><br><span class="line">	&#125;);</span><br></pre></td></tr></table></figure>
+<p>使用 ES6 的 <code>箭头函数</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fetch(url)</span><br><span class="line">	.then(<span class="function"><span class="params">response</span> =&gt;</span> response.json())</span><br><span class="line">	.then(<span class="function"><span class="params">data</span> =&gt;</span> <span class="built_in">console</span>.log(data))</span><br><span class="line">	.catch(<span class="function"><span class="params">e</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">"Oops, error"</span>, e))</span><br></pre></td></tr></table></figure></p>
 <p>使用 <code>async/await</code> 来做最终优化：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">(<span class="keyword">async</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="keyword">try</span> &#123;</div><div class="line">		<span class="keyword">let</span> response = <span class="keyword">await</span> fetch(url);</div><div class="line">		<span class="keyword">let</span> data = response.json();</div><div class="line">		<span class="built_in">console</span>.log(data);</div><div class="line">	&#125; <span class="keyword">catch</span>(e) &#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="string">"Oops, error"</span>, e);</div><div class="line">	&#125;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">async</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="keyword">let</span> response = <span class="keyword">await</span> fetch(url);</span><br><span class="line">		<span class="keyword">let</span> data = response.json();</span><br><span class="line">		<span class="built_in">console</span>.log(data);</span><br><span class="line">	&#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">"Oops, error"</span>, e);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
 <p>使用 await 后，<strong>写异步代码就像写同步代码一样爽</strong>。await 后面可以跟 Promise 对象，表示等待 Promise resolve() 才会继续向下执行，如果 Promise 被 reject() 或抛出异常则会被外面的 try…catch 捕获。</p>
-<p>如果还不了解<code>async/await</code>，可以移步👉<a href="https://hzzly.github.io/2017/05/09/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-es6Async%E5%87%BD%E6%95%B0/" target="_blank" rel="external">es6Async</a>这篇博客</p>
-<h2 id="GET请求"><a href="#GET请求" class="headerlink" title="GET请求"></a>GET请求</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">fetch(url, &#123;</div><div class="line">    <span class="attr">method</span>: <span class="string">"GET"</span>, <span class="comment">//默认</span></div><div class="line">    headers:&#123;</div><div class="line">    	<span class="string">"Accept"</span>: <span class="string">"application/json, text/plain, */*"</span></div><div class="line">    &#125;</div><div class="line">&#125;)</div><div class="line">.then(<span class="function"><span class="params">response</span> =&gt;</span> response.json())</div><div class="line">.then(<span class="function"><span class="params">data</span> =&gt;</span> <span class="built_in">console</span>.log(data))</div><div class="line">.catch(<span class="function"><span class="params">e</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">"Oops, error"</span>, e))</div></pre></td></tr></table></figure>
-<h2 id="POST请求"><a href="#POST请求" class="headerlink" title="POST请求"></a>POST请求</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">fetch(url, &#123;</div><div class="line">    <span class="attr">method</span>: <span class="string">"POST"</span>,</div><div class="line">    <span class="attr">headers</span>: &#123;</div><div class="line">    	<span class="string">"Accept"</span>: <span class="string">"application/json, text/plain, */*"</span>,</div><div class="line">        <span class="string">"Content-type"</span>:<span class="string">"application:/x-www-form-urlencoded; charset=UTF-8"</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">body</span>: <span class="string">"name=hzzly&amp;age=22"</span></div><div class="line">&#125;)</div><div class="line">.then(<span class="function"><span class="params">response</span> =&gt;</span> response.json())</div><div class="line">.then(<span class="function"><span class="params">data</span> =&gt;</span> <span class="built_in">console</span>.log(data))</div><div class="line">.catch(<span class="function"><span class="params">e</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">"Oops, error"</span>, e))</div></pre></td></tr></table></figure>
+<p>如果还不了解<code>async/await</code>，可以移步👉<a href="https://hzzly.github.io/2017/05/09/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-es6Async%E5%87%BD%E6%95%B0/" target="_blank" rel="noopener">es6Async</a>这篇博客</p>
+<h2 id="GET请求"><a href="#GET请求" class="headerlink" title="GET请求"></a>GET请求</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">fetch(url, &#123;</span><br><span class="line">    method: <span class="string">"GET"</span>, <span class="comment">//默认</span></span><br><span class="line">    headers:&#123;</span><br><span class="line">    	<span class="string">"Accept"</span>: <span class="string">"application/json, text/plain, */*"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">.then(<span class="function"><span class="params">response</span> =&gt;</span> response.json())</span><br><span class="line">.then(<span class="function"><span class="params">data</span> =&gt;</span> <span class="built_in">console</span>.log(data))</span><br><span class="line">.catch(<span class="function"><span class="params">e</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">"Oops, error"</span>, e))</span><br></pre></td></tr></table></figure>
+<h2 id="POST请求"><a href="#POST请求" class="headerlink" title="POST请求"></a>POST请求</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">fetch(url, &#123;</span><br><span class="line">    method: <span class="string">"POST"</span>,</span><br><span class="line">    headers: &#123;</span><br><span class="line">    	<span class="string">"Accept"</span>: <span class="string">"application/json, text/plain, */*"</span>,</span><br><span class="line">        <span class="string">"Content-type"</span>:<span class="string">"application:/x-www-form-urlencoded; charset=UTF-8"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    body: <span class="string">"name=hzzly&amp;age=22"</span></span><br><span class="line">&#125;)</span><br><span class="line">.then(<span class="function"><span class="params">response</span> =&gt;</span> response.json())</span><br><span class="line">.then(<span class="function"><span class="params">data</span> =&gt;</span> <span class="built_in">console</span>.log(data))</span><br><span class="line">.catch(<span class="function"><span class="params">e</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">"Oops, error"</span>, e))</span><br></pre></td></tr></table></figure>
 <h2 id="使用Fetch请求发送凭证"><a href="#使用Fetch请求发送凭证" class="headerlink" title="使用Fetch请求发送凭证"></a>使用Fetch请求发送凭证</h2><blockquote>
 <p>要使用Fetch发送带有诸如cookie之类的凭证的请求。你可以在选项对象中将credentials属性值设置为“include”：</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">fetch(url,&#123;</div><div class="line">	<span class="attr">credentials</span>: <span class="string">"include"</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<h1 id="封装POST请求"><a href="#封装POST请求" class="headerlink" title="封装POST请求"></a>封装POST请求</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//将对象拼接成 name=hzzly&amp;age=22 的字符串形式</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">params</span>(<span class="params">obj</span>) </span>&#123;</div><div class="line">	<span class="keyword">let</span> result = <span class="string">''</span></div><div class="line">	<span class="keyword">for</span>(<span class="keyword">let</span> item <span class="keyword">in</span> obj) &#123;</div><div class="line">		result += <span class="string">`&amp;<span class="subst">$&#123;item&#125;</span>=<span class="subst">$&#123;obj[item]&#125;</span>`</span></div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>(result) &#123;</div><div class="line">		result = result.slice(<span class="number">1</span>)</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> result</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">post</span>(<span class="params">url, paramsObj</span>) </span>&#123;</div><div class="line">	<span class="keyword">let</span> result = fetch(url, &#123;</div><div class="line">		<span class="attr">methods</span>: <span class="string">'POST'</span>,</div><div class="line">		<span class="attr">credentials</span>: <span class="string">"include"</span></div><div class="line">		headers: &#123;</div><div class="line">	    	<span class="string">"Accept"</span>: <span class="string">"application/json, text/plain, */*"</span>,</div><div class="line">	        <span class="string">"Content-type"</span>:<span class="string">"application:/x-www-form-urlencoded; charset=UTF-8"</span></div><div class="line">	    &#125;,</div><div class="line">	    <span class="attr">body</span>: params(paramsObj)</div><div class="line">	&#125;)</div><div class="line">	<span class="keyword">return</span> result</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> obj = &#123;</div><div class="line">	<span class="attr">name</span>: <span class="string">'hzzly'</span>,</div><div class="line">	<span class="attr">age</span>: <span class="number">22</span></div><div class="line">&#125;</div><div class="line">post(url, obj)</div><div class="line">	.then(<span class="function"><span class="params">response</span> =&gt;</span> response.json())</div><div class="line">	.then(<span class="function"><span class="params">data</span> =&gt;</span> <span class="built_in">console</span>.log(data))</div><div class="line">	.catch(<span class="function"><span class="params">e</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">"Oops, error"</span>, e))</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fetch(url,&#123;</span><br><span class="line">	credentials: <span class="string">"include"</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h1 id="封装POST请求"><a href="#封装POST请求" class="headerlink" title="封装POST请求"></a>封装POST请求</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将对象拼接成 name=hzzly&amp;age=22 的字符串形式</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">params</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> result = <span class="string">''</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">let</span> item <span class="keyword">in</span> obj) &#123;</span><br><span class="line">		result += <span class="string">`&amp;<span class="subst">$&#123;item&#125;</span>=<span class="subst">$&#123;obj[item]&#125;</span>`</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(result) &#123;</span><br><span class="line">		result = result.slice(<span class="number">1</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">post</span>(<span class="params">url, paramsObj</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> result = fetch(url, &#123;</span><br><span class="line">		methods: <span class="string">'POST'</span>,</span><br><span class="line">		credentials: <span class="string">"include"</span></span><br><span class="line">		headers: &#123;</span><br><span class="line">	    	<span class="string">"Accept"</span>: <span class="string">"application/json, text/plain, */*"</span>,</span><br><span class="line">	        <span class="string">"Content-type"</span>:<span class="string">"application:/x-www-form-urlencoded; charset=UTF-8"</span></span><br><span class="line">	    &#125;,</span><br><span class="line">	    body: params(paramsObj)</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">	name: <span class="string">'hzzly'</span>,</span><br><span class="line">	age: <span class="number">22</span></span><br><span class="line">&#125;</span><br><span class="line">post(url, obj)</span><br><span class="line">	.then(<span class="function"><span class="params">response</span> =&gt;</span> response.json())</span><br><span class="line">	.then(<span class="function"><span class="params">data</span> =&gt;</span> <span class="built_in">console</span>.log(data))</span><br><span class="line">	.catch(<span class="function"><span class="params">e</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">"Oops, error"</span>, e))</span><br></pre></td></tr></table></figure>
     
   </div>
 </article>
@@ -319,78 +285,43 @@
       <ul class="list-toolbox">
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/archives/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
               博客
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/project/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
               项目
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/tag/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
               标签
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/link/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
               友链
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/about/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
               关于
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/atom.xml"
-              rel="noopener noreferrer"
-              target="_blank"
-              >
+            <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
               RSS
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/search/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
               搜索
             </a>
           </li>

@@ -4,7 +4,7 @@
   <html class="light page-post">
 
 
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
   <title>本地存储sessionStorage与localStorage | Hzzly</title>
@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="随笔," />
+    <meta name="keywords" content="随笔,">
   
 
   <meta name="description" content="sessionStorage 数据的存储仅特定于某个会话中，也就是说数据只保持到浏览器关闭，当浏览器关闭后重新打开这个页面时， 之前的存储已经被清除。 localStorage 是一个持久化的存储，它并不局限于会话。除非主动删除数据，否则数据是永远不会过期的。   一、localStorage和sessionStorage操作 localStorage和sessionStorage都具有相同的">
@@ -22,6 +22,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/04/26/本地存储sessionStorage与localStorage/index.html">
 <meta property="og:site_name" content="Hzzly">
 <meta property="og:description" content="sessionStorage 数据的存储仅特定于某个会话中，也就是说数据只保持到浏览器关闭，当浏览器关闭后重新打开这个页面时， 之前的存储已经被清除。 localStorage 是一个持久化的存储，它并不局限于会话。除非主动删除数据，否则数据是永远不会过期的。   一、localStorage和sessionStorage操作 localStorage和sessionStorage都具有相同的">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-05-21T14:11:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="本地存储sessionStorage与localStorage">
@@ -80,7 +81,7 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
   
 </head>
-
+</html>
 <body>
 
 
@@ -99,78 +100,43 @@
     <ul class="list-toolbox">
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/archives/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
             博客
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/project/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
             项目
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/tag/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
             标签
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/link/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
             友链
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/about/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
             关于
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/atom.xml"
-            rel="noopener noreferrer"
-            target="_blank"
-            >
+          <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
             RSS
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/search/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
             搜索
           </a>
         </li>
@@ -236,18 +202,18 @@
 <h3 id="一、localStorage和sessionStorage操作"><a href="#一、localStorage和sessionStorage操作" class="headerlink" title="一、localStorage和sessionStorage操作"></a>一、localStorage和sessionStorage操作</h3><blockquote>
 <p>localStorage和sessionStorage都具有相同的操作方法，例如setItem、getItem和removeItem等</p>
 </blockquote>
-<h3 id="1-setItem存储value"><a href="#1-setItem存储value" class="headerlink" title="1.setItem存储value"></a>1.setItem存储value</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sessionStorage.setItem(<span class="string">"name"</span>, <span class="string">"hzzly"</span>);</div><div class="line">localStorage.setItem(<span class="string">"blog"</span>, <span class="string">"hzzly.github.io"</span>);</div></pre></td></tr></table></figure>
-<h3 id="2-getItem获取value"><a href="#2-getItem获取value" class="headerlink" title="2.getItem获取value"></a>2.getItem获取value</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> name = sessionStorage.getItem(<span class="string">"name"</span>);</div><div class="line"><span class="keyword">let</span> blog = localStorage.getItem(<span class="string">"blog"</span>);</div></pre></td></tr></table></figure>
-<h3 id="3-removeItem删除key"><a href="#3-removeItem删除key" class="headerlink" title="3.removeItem删除key"></a>3.removeItem删除key</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sessionStorage.removeItem(<span class="string">"name"</span>);</div><div class="line">localStorage.removeItem(<span class="string">"blog"</span>);</div></pre></td></tr></table></figure>
-<h3 id="4-clear清除所有的key-value"><a href="#4-clear清除所有的key-value" class="headerlink" title="4.clear清除所有的key/value"></a>4.clear清除所有的key/value</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sessionStorage.clear();</div><div class="line">localStorage.clear();</div></pre></td></tr></table></figure>
+<h3 id="1-setItem存储value"><a href="#1-setItem存储value" class="headerlink" title="1.setItem存储value"></a>1.setItem存储value</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sessionStorage.setItem(<span class="string">"name"</span>, <span class="string">"hzzly"</span>);</span><br><span class="line">localStorage.setItem(<span class="string">"blog"</span>, <span class="string">"hzzly.github.io"</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="2-getItem获取value"><a href="#2-getItem获取value" class="headerlink" title="2.getItem获取value"></a>2.getItem获取value</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name = sessionStorage.getItem(<span class="string">"name"</span>);</span><br><span class="line"><span class="keyword">let</span> blog = localStorage.getItem(<span class="string">"blog"</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="3-removeItem删除key"><a href="#3-removeItem删除key" class="headerlink" title="3.removeItem删除key"></a>3.removeItem删除key</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sessionStorage.removeItem(<span class="string">"name"</span>);</span><br><span class="line">localStorage.removeItem(<span class="string">"blog"</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="4-clear清除所有的key-value"><a href="#4-clear清除所有的key-value" class="headerlink" title="4.clear清除所有的key/value"></a>4.clear清除所有的key/value</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sessionStorage.clear();</span><br><span class="line">localStorage.clear();</span><br></pre></td></tr></table></figure>
 <h3 id="5-其他操作方法：点操作和"><a href="#5-其他操作方法：点操作和" class="headerlink" title="5.其他操作方法：点操作和[]"></a>5.其他操作方法：点操作和[]</h3><blockquote>
 <p>web Storage不但可以用自身的setItem,getItem等方便存取，也可以像普通对象一样用点(.)操作符，及[]的方式进行数据存储及读取，像如下的代码：</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//存</span></div><div class="line">localStorage.name = <span class="string">"hzzly"</span>; </div><div class="line">localStorage[<span class="string">"age"</span>] = <span class="string">"21"</span>; </div><div class="line">sessionStorage.name = <span class="string">"hzzly"</span>; </div><div class="line">sessionStorage[<span class="string">"age"</span>] = <span class="string">"21"</span>;</div><div class="line"><span class="comment">//取</span></div><div class="line"><span class="keyword">let</span> name1 = localStorage.name</div><div class="line"><span class="keyword">let</span> age1 = localStorage[<span class="string">"age"</span>]</div><div class="line"><span class="keyword">let</span> name2 = sessionStorage.name</div><div class="line"><span class="keyword">let</span> age2 = sessionStorage[<span class="string">"age"</span>]</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//存</span></span><br><span class="line">localStorage.name = <span class="string">"hzzly"</span>; </span><br><span class="line">localStorage[<span class="string">"age"</span>] = <span class="string">"21"</span>; </span><br><span class="line">sessionStorage.name = <span class="string">"hzzly"</span>; </span><br><span class="line">sessionStorage[<span class="string">"age"</span>] = <span class="string">"21"</span>;</span><br><span class="line"><span class="comment">//取</span></span><br><span class="line"><span class="keyword">let</span> name1 = localStorage.name</span><br><span class="line"><span class="keyword">let</span> age1 = localStorage[<span class="string">"age"</span>]</span><br><span class="line"><span class="keyword">let</span> name2 = sessionStorage.name</span><br><span class="line"><span class="keyword">let</span> age2 = sessionStorage[<span class="string">"age"</span>]</span><br></pre></td></tr></table></figure>
 <h3 id="6-localStorage和sessionStorage的key和length属性实现遍历"><a href="#6-localStorage和sessionStorage的key和length属性实现遍历" class="headerlink" title="6.localStorage和sessionStorage的key和length属性实现遍历"></a>6.localStorage和sessionStorage的key和length属性实现遍历</h3><blockquote>
 <p>sessionStorage和localStorage提供的key()和length可以方便的实现存储的数据遍历，例如下面的代码：</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> storage = <span class="built_in">window</span>.localStorage; </div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>, len = storage.length; i  &lt;  len; i++)&#123;     </div><div class="line">	<span class="keyword">let</span> key = storage.key(i);     </div><div class="line">	<span class="keyword">let</span> value = storage.getItem(key);     </div><div class="line">	<span class="built_in">console</span>.log(key + <span class="string">"="</span> + value); </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> storage = <span class="built_in">window</span>.localStorage; </span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>, len = storage.length; i  &lt;  len; i++)&#123;     </span><br><span class="line">	<span class="keyword">let</span> key = storage.key(i);     </span><br><span class="line">	<span class="keyword">let</span> value = storage.getItem(key);     </span><br><span class="line">	<span class="built_in">console</span>.log(key + <span class="string">"="</span> + value); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="二、实例"><a href="#二、实例" class="headerlink" title="二、实例"></a>二、实例</h3><blockquote>
 <p>storage只能存储字符串的数据，对于JS中常用的数组或对象却不能直接存储，可以用下面两个方法进行转换：</p>
 <ul>
@@ -255,8 +221,8 @@
 <li>JSON.parse() 用于从一个字符串中解析出json对象</li>
 </ul>
 </blockquote>
-<h3 id="1-localStorage-sessionStorage存取数组"><a href="#1-localStorage-sessionStorage存取数组" class="headerlink" title="1.localStorage/sessionStorage存取数组"></a>1.localStorage/sessionStorage存取数组</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//存</span></div><div class="line"><span class="keyword">let</span> language = [<span class="string">'HTML/HTML5'</span>, <span class="string">'CSS/CSS3'</span>, <span class="string">'JavaScript'</span>, <span class="string">'Vue'</span>, <span class="string">'React'</span>]</div><div class="line">localStorage.language = <span class="built_in">JSON</span>.stringify(language)</div><div class="line">sessionStorag.language = <span class="built_in">JSON</span>.stringify(language)</div><div class="line"><span class="comment">//取</span></div><div class="line"><span class="keyword">let</span> storageLanguage = <span class="built_in">JSON</span>.parse(localStorage.language)</div></pre></td></tr></table></figure>
-<h3 id="2-localStorage存取对象"><a href="#2-localStorage存取对象" class="headerlink" title="2.localStorage存取对象"></a>2.localStorage存取对象</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//存</span></div><div class="line"><span class="keyword">let</span> myInfo = &#123;</div><div class="line">	<span class="string">'name'</span>: <span class="string">'hzzly'</span>,</div><div class="line">	<span class="string">'age'</span>: <span class="number">21</span>,</div><div class="line">	<span class="string">'school'</span>: <span class="string">'ECUT'</span>,</div><div class="line">	<span class="string">'city'</span>: <span class="string">'NanChang'</span></div><div class="line">&#125;</div><div class="line">localStorage.myInfo = <span class="built_in">JSON</span>.stringify(myInfo)</div><div class="line">sessionStorag.myInfo = <span class="built_in">JSON</span>.stringify(myInfo)</div><div class="line"><span class="comment">//取</span></div><div class="line"><span class="keyword">let</span> storageLanguage = <span class="built_in">JSON</span>.parse(localStorage.myInfo)</div></pre></td></tr></table></figure>
+<h3 id="1-localStorage-sessionStorage存取数组"><a href="#1-localStorage-sessionStorage存取数组" class="headerlink" title="1.localStorage/sessionStorage存取数组"></a>1.localStorage/sessionStorage存取数组</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//存</span></span><br><span class="line"><span class="keyword">let</span> language = [<span class="string">'HTML/HTML5'</span>, <span class="string">'CSS/CSS3'</span>, <span class="string">'JavaScript'</span>, <span class="string">'Vue'</span>, <span class="string">'React'</span>]</span><br><span class="line">localStorage.language = <span class="built_in">JSON</span>.stringify(language)</span><br><span class="line">sessionStorag.language = <span class="built_in">JSON</span>.stringify(language)</span><br><span class="line"><span class="comment">//取</span></span><br><span class="line"><span class="keyword">let</span> storageLanguage = <span class="built_in">JSON</span>.parse(localStorage.language)</span><br></pre></td></tr></table></figure>
+<h3 id="2-localStorage存取对象"><a href="#2-localStorage存取对象" class="headerlink" title="2.localStorage存取对象"></a>2.localStorage存取对象</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//存</span></span><br><span class="line"><span class="keyword">let</span> myInfo = &#123;</span><br><span class="line">	<span class="string">'name'</span>: <span class="string">'hzzly'</span>,</span><br><span class="line">	<span class="string">'age'</span>: <span class="number">21</span>,</span><br><span class="line">	<span class="string">'school'</span>: <span class="string">'ECUT'</span>,</span><br><span class="line">	<span class="string">'city'</span>: <span class="string">'NanChang'</span></span><br><span class="line">&#125;</span><br><span class="line">localStorage.myInfo = <span class="built_in">JSON</span>.stringify(myInfo)</span><br><span class="line">sessionStorag.myInfo = <span class="built_in">JSON</span>.stringify(myInfo)</span><br><span class="line"><span class="comment">//取</span></span><br><span class="line"><span class="keyword">let</span> storageLanguage = <span class="built_in">JSON</span>.parse(localStorage.myInfo)</span><br></pre></td></tr></table></figure>
     
   </div>
 </article>
@@ -289,7 +255,7 @@
     <a class="show pull-left" href="/2017/04/22/读书笔记-es6字符串的扩展/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="show pull-right" href="/2017/04/27/’DIY一个自己的音乐播放器/">
+    <a class="show pull-right" href="/2017/04/27/DIY一个自己的音乐播放器/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>
@@ -318,78 +284,43 @@
       <ul class="list-toolbox">
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/archives/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
               博客
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/project/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
               项目
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/tag/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
               标签
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/link/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
               友链
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/about/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
               关于
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/atom.xml"
-              rel="noopener noreferrer"
-              target="_blank"
-              >
+            <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
               RSS
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/search/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
               搜索
             </a>
           </li>

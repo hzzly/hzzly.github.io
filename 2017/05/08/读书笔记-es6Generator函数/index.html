@@ -4,7 +4,7 @@
   <html class="light page-post">
 
 
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
   <title>读书笔记-es6Generator函数 | Hzzly</title>
@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="随笔,es6," />
+    <meta name="keywords" content="随笔,es6,">
   
 
   <meta name="description" content="Generator函数 从语法上，可以把它理解成，Generator 函数是一个状态机，封装了多个内部状态。调用 Generator 函数后，该函数并不执行，返回的也不是函数运行结果，而是一个指向内部状态的指针对象(遍历器对象)。Generator 函数是分段执行的，yield表达式是暂停执行的标记，而next方法可以恢复执行。Generator 函数也不能跟new命令一起用，会报错。  1234">
@@ -22,6 +22,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/08/读书笔记-es6Generator函数/index.html">
 <meta property="og:site_name" content="Hzzly">
 <meta property="og:description" content="Generator函数 从语法上，可以把它理解成，Generator 函数是一个状态机，封装了多个内部状态。调用 Generator 函数后，该函数并不执行，返回的也不是函数运行结果，而是一个指向内部状态的指针对象(遍历器对象)。Generator 函数是分段执行的，yield表达式是暂停执行的标记，而next方法可以恢复执行。Generator 函数也不能跟new命令一起用，会报错。  1234">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-05-21T14:00:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记-es6Generator函数">
@@ -80,7 +81,7 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
   
 </head>
-
+</html>
 <body>
 
 
@@ -99,78 +100,43 @@
     <ul class="list-toolbox">
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/archives/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
             博客
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/project/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
             项目
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/tag/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
             标签
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/link/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
             友链
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/about/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
             关于
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/atom.xml"
-            rel="noopener noreferrer"
-            target="_blank"
-            >
+          <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
             RSS
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/search/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
             搜索
           </a>
         </li>
@@ -230,38 +196,38 @@
       <h2 id="Generator函数"><a href="#Generator函数" class="headerlink" title="Generator函数"></a><strong>Generator函数</strong></h2><blockquote>
 <p>从语法上，可以把它理解成，Generator 函数是一个状态机，封装了多个内部状态。<br>调用 Generator 函数后，该函数并不执行，返回的也不是函数运行结果，而是一个指向内部状态的指针对象(遍历器对象)。<br>Generator 函数是分段执行的，yield表达式是暂停执行的标记，而next方法可以恢复执行。<br>Generator 函数也不能跟new命令一起用，会报错。</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>* <span class="title">helloWorldGenerator</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">yield</span> <span class="string">'hello'</span>;</div><div class="line">  <span class="keyword">yield</span> <span class="string">'world'</span>;</div><div class="line">  <span class="keyword">return</span> <span class="string">'ending'</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> hw = helloWorldGenerator();</div><div class="line">hw.next()</div><div class="line"><span class="comment">// &#123; value: 'hello', done: false &#125;</span></div><div class="line">hw.next()</div><div class="line"><span class="comment">// &#123; value: 'world', done: false &#125;</span></div><div class="line">hw.next()</div><div class="line"><span class="comment">// &#123; value: 'ending', done: true &#125;</span></div><div class="line">hw.next()</div><div class="line"><span class="comment">// &#123; value: undefined, done: true &#125;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">helloWorldGenerator</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="string">'hello'</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="string">'world'</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'ending'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> hw = helloWorldGenerator();</span><br><span class="line">hw.next()</span><br><span class="line"><span class="comment">// &#123; value: 'hello', done: false &#125;</span></span><br><span class="line">hw.next()</span><br><span class="line"><span class="comment">// &#123; value: 'world', done: false &#125;</span></span><br><span class="line">hw.next()</span><br><span class="line"><span class="comment">// &#123; value: 'ending', done: true &#125;</span></span><br><span class="line">hw.next()</span><br><span class="line"><span class="comment">// &#123; value: undefined, done: true &#125;</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>总结一下，调用 Generator 函数，返回一个遍历器对象，代表 Generator 函数的内部指针。以后，每次调用遍历器对象的next方法，就会返回一个有着value和done两个属性的对象。value属性表示当前的内部状态的值，是yield表达式后面那个表达式的值；done属性是一个布尔值，表示是否遍历结束。</p>
 </blockquote>
-<p><strong>写法</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> * <span class="title">foo</span>(<span class="params">x, y</span>) </span>&#123; ··· &#125;</div><div class="line"><span class="function"><span class="keyword">function</span> *<span class="title">foo</span>(<span class="params">x, y</span>) </span>&#123; ··· &#125;</div><div class="line"><span class="function"><span class="keyword">function</span>* <span class="title">foo</span>(<span class="params">x, y</span>) </span>&#123; ··· &#125;</div><div class="line"><span class="function"><span class="keyword">function</span>*<span class="title">foo</span>(<span class="params">x, y</span>) </span>&#123; ··· &#125;</div></pre></td></tr></table></figure></p>
+<p><strong>写法</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> * <span class="title">foo</span>(<span class="params">x, y</span>) </span>&#123; ··· &#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> *<span class="title">foo</span>(<span class="params">x, y</span>) </span>&#123; ··· &#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">foo</span>(<span class="params">x, y</span>) </span>&#123; ··· &#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span>*<span class="title">foo</span>(<span class="params">x, y</span>) </span>&#123; ··· &#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="一、yield-表达式"><a href="#一、yield-表达式" class="headerlink" title="一、yield 表达式"></a>一、yield 表达式</h3><blockquote>
 <p>由于 Generator 函数返回的遍历器对象，只有调用next方法才会遍历下一个内部状态，所以其实提供了一种可以暂停执行的函数。yield表达式就是暂停标志。</p>
 </blockquote>
 <p>遍历器对象的next方法的运行逻辑如下:<br>1）遇到yield表达式，就暂停执行后面的操作，并将紧跟在yield后面的那个表达式的值，作为返回的对象的value属性值。<br>2）下一次调用next方法时，再继续往下执行，直到遇到下一个yield表达式。<br>3）如果没有再遇到新的yield表达式，就一直运行到函数结束，直到return语句为止，并将return语句后面的表达式的值，作为返回的对象的value属性值。<br>4）如果该函数没有return语句，则返回的对象的value属性值为undefined。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>* <span class="title">gen</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">yield</span>  <span class="number">123</span> + <span class="number">456</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> g = gen()</div><div class="line">gen.next()</div><div class="line"><span class="comment">//&#123; value: 579, done: false &#125;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">gen</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span>  <span class="number">123</span> + <span class="number">456</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> g = gen()</span><br><span class="line">gen.next()</span><br><span class="line"><span class="comment">//&#123; value: 579, done: false &#125;</span></span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <h3 id="二、for…of-循环"><a href="#二、for…of-循环" class="headerlink" title="二、for…of 循环"></a>二、for…of 循环</h3><blockquote>
 <p>for…of循环可以自动遍历 Generator 函数时生成的Iterator对象，且此时不再需要调用next方法。</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> *<span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">yield</span> <span class="number">1</span>;</div><div class="line">  <span class="keyword">yield</span> <span class="number">2</span>;</div><div class="line">  <span class="keyword">yield</span> <span class="number">3</span>;</div><div class="line">  <span class="keyword">yield</span> <span class="number">4</span>;</div><div class="line">  <span class="keyword">yield</span> <span class="number">5</span>;</div><div class="line">  <span class="keyword">return</span> <span class="number">6</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> v <span class="keyword">of</span> foo()) &#123;</div><div class="line">  <span class="built_in">console</span>.log(v);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 1 2 3 4 5</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> *<span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">3</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">4</span>;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">5</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">6</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> v <span class="keyword">of</span> foo()) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(v);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 1 2 3 4 5</span></span><br></pre></td></tr></table></figure>
 <p>这里需要注意，一旦next方法的返回对象的done属性为true，for…of循环就会中止，且不包含该返回对象，所以上面代码的return语句返回的6，不包括在for…of循环之中。</p>
 <blockquote>
 <p>除了for…of循环以外，扩展运算符（…）、解构赋值和Array.from方法内部调用的，都是遍历器接口。这意味着，它们都可以将 Generator 函数返回的 Iterator 对象，作为参数。</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>* <span class="title">numbers</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">yield</span> <span class="number">1</span></div><div class="line">  <span class="keyword">yield</span> <span class="number">2</span></div><div class="line">  <span class="keyword">return</span> <span class="number">3</span></div><div class="line">  <span class="keyword">yield</span> <span class="number">4</span></div><div class="line">&#125;</div><div class="line"><span class="comment">// 扩展运算符</span></div><div class="line">[...numbers()] <span class="comment">// [1, 2]</span></div><div class="line"><span class="comment">// Array.from 方法</span></div><div class="line"><span class="built_in">Array</span>.from(numbers()) <span class="comment">// [1, 2]</span></div><div class="line"><span class="comment">// 解构赋值</span></div><div class="line"><span class="keyword">let</span> [x, y] = numbers();</div><div class="line">x <span class="comment">// 1</span></div><div class="line">y <span class="comment">// 2</span></div><div class="line"><span class="comment">// for...of 循环</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> n <span class="keyword">of</span> numbers()) &#123;</div><div class="line">  <span class="built_in">console</span>.log(n)</div><div class="line">&#125;</div><div class="line"><span class="comment">// 1</span></div><div class="line"><span class="comment">// 2</span></div></pre></td></tr></table></figure>
-<h3 id="三、作为对象属性的Generator函数"><a href="#三、作为对象属性的Generator函数" class="headerlink" title="三、作为对象属性的Generator函数"></a>三、作为对象属性的Generator函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> obj = &#123;</div><div class="line">  * myGeneratorMethod() &#123;</div><div class="line">    ···</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"><span class="comment">//等同于</span></div><div class="line"><span class="keyword">let</span> obj = &#123;</div><div class="line">  <span class="attr">myGeneratorMethod</span>: <span class="function"><span class="keyword">function</span>* (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// ···</span></div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">numbers</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">yield</span> <span class="number">1</span></span><br><span class="line">  <span class="keyword">yield</span> <span class="number">2</span></span><br><span class="line">  <span class="keyword">return</span> <span class="number">3</span></span><br><span class="line">  <span class="keyword">yield</span> <span class="number">4</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 扩展运算符</span></span><br><span class="line">[...numbers()] <span class="comment">// [1, 2]</span></span><br><span class="line"><span class="comment">// Array.from 方法</span></span><br><span class="line"><span class="built_in">Array</span>.from(numbers()) <span class="comment">// [1, 2]</span></span><br><span class="line"><span class="comment">// 解构赋值</span></span><br><span class="line"><span class="keyword">let</span> [x, y] = numbers();</span><br><span class="line">x <span class="comment">// 1</span></span><br><span class="line">y <span class="comment">// 2</span></span><br><span class="line"><span class="comment">// for...of 循环</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> n <span class="keyword">of</span> numbers()) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(n)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+<h3 id="三、作为对象属性的Generator函数"><a href="#三、作为对象属性的Generator函数" class="headerlink" title="三、作为对象属性的Generator函数"></a>三、作为对象属性的Generator函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  * myGeneratorMethod() &#123;</span><br><span class="line">    ···</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//等同于</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  myGeneratorMethod: <span class="function"><span class="keyword">function</span>* (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ···</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h3 id="四、应用"><a href="#四、应用" class="headerlink" title="四、应用"></a>四、应用</h3><blockquote>
 <p>1）异步操作的同步化表达</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>* <span class="title">loadUI</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  showLoadingScreen();</div><div class="line">  <span class="keyword">yield</span> loadUIDataAsynchronously();</div><div class="line">  hideLoadingScreen();</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> loader = loadUI();</div><div class="line"><span class="comment">// 加载UI</span></div><div class="line">loader.next()</div><div class="line"><span class="comment">// 卸载UI</span></div><div class="line">loader.next()</div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>* <span class="title">main</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> result = <span class="keyword">yield</span> request(<span class="string">"http://some.url"</span>);</div><div class="line">  <span class="keyword">var</span> resp = <span class="built_in">JSON</span>.parse(result);</div><div class="line">    <span class="built_in">console</span>.log(resp.value);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">request</span>(<span class="params">url</span>) </span>&#123;</div><div class="line">  makeAjaxCall(url, <span class="function"><span class="keyword">function</span>(<span class="params">response</span>)</span>&#123;</div><div class="line">    it.next(response);</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> it = main();</div><div class="line">it.next();</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">loadUI</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  showLoadingScreen();</span><br><span class="line">  <span class="keyword">yield</span> loadUIDataAsynchronously();</span><br><span class="line">  hideLoadingScreen();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> loader = loadUI();</span><br><span class="line"><span class="comment">// 加载UI</span></span><br><span class="line">loader.next()</span><br><span class="line"><span class="comment">// 卸载UI</span></span><br><span class="line">loader.next()</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">main</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> result = <span class="keyword">yield</span> request(<span class="string">"http://some.url"</span>);</span><br><span class="line">  <span class="keyword">var</span> resp = <span class="built_in">JSON</span>.parse(result);</span><br><span class="line">    <span class="built_in">console</span>.log(resp.value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">request</span>(<span class="params">url</span>) </span>&#123;</span><br><span class="line">  makeAjaxCall(url, <span class="function"><span class="keyword">function</span>(<span class="params">response</span>)</span>&#123;</span><br><span class="line">    it.next(response);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> it = main();</span><br><span class="line">it.next();</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>2）控制流管理</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">step1(<span class="function"><span class="keyword">function</span> (<span class="params">value1</span>) </span>&#123;</div><div class="line">  step2(value1, <span class="function"><span class="keyword">function</span>(<span class="params">value2</span>) </span>&#123;</div><div class="line">    step3(value2, <span class="function"><span class="keyword">function</span>(<span class="params">value3</span>) </span>&#123;</div><div class="line">      step4(value3, <span class="function"><span class="keyword">function</span>(<span class="params">value4</span>) </span>&#123;</div><div class="line">        <span class="comment">// Do something with value4</span></div><div class="line">      &#125;);</div><div class="line">    &#125;);</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>采用 Promise 改写上面的代码。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Promise</span>.resolve(step1)</div><div class="line">  .then(step2)</div><div class="line">  .then(step3)</div><div class="line">  .then(step4)</div><div class="line">  .then(<span class="function"><span class="keyword">function</span> (<span class="params">value4</span>) </span>&#123;</div><div class="line">    <span class="comment">// Do something with value4</span></div><div class="line">  &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</div><div class="line">    <span class="comment">// Handle any error from step1 through step4</span></div><div class="line">  &#125;)</div><div class="line">  .done();</div></pre></td></tr></table></figure></p>
-<p>Generator 函数可以进一步改善代码运行流程。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>* <span class="title">longRunningTask</span>(<span class="params">value1</span>) </span>&#123;</div><div class="line">  <span class="keyword">try</span> &#123;</div><div class="line">    <span class="keyword">var</span> value2 = <span class="keyword">yield</span> step1(value1);</div><div class="line">    <span class="keyword">var</span> value3 = <span class="keyword">yield</span> step2(value2);</div><div class="line">    <span class="keyword">var</span> value4 = <span class="keyword">yield</span> step3(value3);</div><div class="line">    <span class="keyword">var</span> value5 = <span class="keyword">yield</span> step4(value4);</div><div class="line">    <span class="comment">// Do something with value4</span></div><div class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</div><div class="line">    <span class="comment">// Handle any error from step1 through step4</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">scheduler(longRunningTask(initialValue));</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">scheduler</span>(<span class="params">task</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> taskObj = task.next(task.value);</div><div class="line">  <span class="comment">// 如果Generator函数未结束，就继续调用</span></div><div class="line">  <span class="keyword">if</span> (!taskObj.done) &#123;</div><div class="line">    task.value = taskObj.value</div><div class="line">    scheduler(task);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">step1(<span class="function"><span class="keyword">function</span> (<span class="params">value1</span>) </span>&#123;</span><br><span class="line">  step2(value1, <span class="function"><span class="keyword">function</span>(<span class="params">value2</span>) </span>&#123;</span><br><span class="line">    step3(value2, <span class="function"><span class="keyword">function</span>(<span class="params">value3</span>) </span>&#123;</span><br><span class="line">      step4(value3, <span class="function"><span class="keyword">function</span>(<span class="params">value4</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// Do something with value4</span></span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>采用 Promise 改写上面的代码。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Promise</span>.resolve(step1)</span><br><span class="line">  .then(step2)</span><br><span class="line">  .then(step3)</span><br><span class="line">  .then(step4)</span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span> (<span class="params">value4</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Do something with value4</span></span><br><span class="line">  &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Handle any error from step1 through step4</span></span><br><span class="line">  &#125;)</span><br><span class="line">  .done();</span><br></pre></td></tr></table></figure></p>
+<p>Generator 函数可以进一步改善代码运行流程。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">longRunningTask</span>(<span class="params">value1</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> value2 = <span class="keyword">yield</span> step1(value1);</span><br><span class="line">    <span class="keyword">var</span> value3 = <span class="keyword">yield</span> step2(value2);</span><br><span class="line">    <span class="keyword">var</span> value4 = <span class="keyword">yield</span> step3(value3);</span><br><span class="line">    <span class="keyword">var</span> value5 = <span class="keyword">yield</span> step4(value4);</span><br><span class="line">    <span class="comment">// Do something with value4</span></span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="comment">// Handle any error from step1 through step4</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">scheduler(longRunningTask(initialValue));</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">scheduler</span>(<span class="params">task</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> taskObj = task.next(task.value);</span><br><span class="line">  <span class="comment">// 如果Generator函数未结束，就继续调用</span></span><br><span class="line">  <span class="keyword">if</span> (!taskObj.done) &#123;</span><br><span class="line">    task.value = taskObj.value</span><br><span class="line">    scheduler(task);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
     
   </div>
@@ -324,78 +290,43 @@
       <ul class="list-toolbox">
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/archives/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
               博客
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/project/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
               项目
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/tag/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
               标签
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/link/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
               友链
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/about/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
               关于
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/atom.xml"
-              rel="noopener noreferrer"
-              target="_blank"
-              >
+            <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
               RSS
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/search/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
               搜索
             </a>
           </li>

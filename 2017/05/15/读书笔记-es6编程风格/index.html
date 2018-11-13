@@ -4,7 +4,7 @@
   <html class="light page-post">
 
 
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
   <title>读书笔记-es6编程风格 | Hzzly</title>
@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="随笔,es6," />
+    <meta name="keywords" content="随笔,es6,">
   
 
   <meta name="description" content="编程风格块级作用域  let 取代 var   ES6提出了两个新的声明变量的命令：let和const。其中，let完全可以取代var，因为两者语义相同，而且let没有副作用。   全局常量和线程安全   在let和const之间，建议优先使用const，尤其是在全局环境，不应该设置变量，只应设置常量。12345678// badvar a = 1, b = 2, c = 3;// goodcon">
@@ -22,6 +22,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/15/读书笔记-es6编程风格/index.html">
 <meta property="og:site_name" content="Hzzly">
 <meta property="og:description" content="编程风格块级作用域  let 取代 var   ES6提出了两个新的声明变量的命令：let和const。其中，let完全可以取代var，因为两者语义相同，而且let没有副作用。   全局常量和线程安全   在let和const之间，建议优先使用const，尤其是在全局环境，不应该设置变量，只应设置常量。12345678// badvar a = 1, b = 2, c = 3;// goodcon">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-05-21T13:51:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记-es6编程风格">
@@ -80,7 +81,7 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
   
 </head>
-
+</html>
 <body>
 
 
@@ -99,78 +100,43 @@
     <ul class="list-toolbox">
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/archives/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
             博客
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/project/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
             项目
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/tag/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
             标签
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/link/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
             友链
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/about/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
             关于
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/atom.xml"
-            rel="noopener noreferrer"
-            target="_blank"
-            >
+          <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
             RSS
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/search/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
             搜索
           </a>
         </li>
@@ -238,15 +204,15 @@
 <li>全局常量和线程安全</li>
 </ul>
 </blockquote>
-<p>在let和const之间，建议优先使用const，尤其是在全局环境，不应该设置变量，只应设置常量。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>, b = <span class="number">2</span>, c = <span class="number">3</span>;</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="keyword">const</span> a = <span class="number">1</span>;</div><div class="line"><span class="keyword">const</span> b = <span class="number">2</span>;</div><div class="line"><span class="keyword">const</span> c = <span class="number">3</span>;</div><div class="line"><span class="comment">// best</span></div><div class="line"><span class="keyword">const</span> [a, b, c] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div></pre></td></tr></table></figure></p>
-<p>了解更多👉：<a href="https://hzzly.github.io/2017/04/09/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-es6let%E4%B8%8Econst/" target="_blank" rel="external">let与const</a></p>
+<p>在let和const之间，建议优先使用const，尤其是在全局环境，不应该设置变量，只应设置常量。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>, b = <span class="number">2</span>, c = <span class="number">3</span>;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">const</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> b = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">const</span> c = <span class="number">3</span>;</span><br><span class="line"><span class="comment">// best</span></span><br><span class="line"><span class="keyword">const</span> [a, b, c] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br></pre></td></tr></table></figure></p>
+<p>了解更多👉：<a href="https://hzzly.github.io/2017/04/09/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-es6let%E4%B8%8Econst/" target="_blank" rel="noopener">let与const</a></p>
 <h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><blockquote>
 <ul>
 <li>静态字符串一律使用单引号或反引号，不使用双引号。动态字符串使用反引号。</li>
 </ul>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="keyword">const</span> a = <span class="string">"foobar"</span>;</div><div class="line"><span class="keyword">const</span> b = <span class="string">'foo'</span> + a + <span class="string">'bar'</span>;</div><div class="line"><span class="comment">// acceptable</span></div><div class="line"><span class="keyword">const</span> c = <span class="string">`foobar`</span>;</div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="keyword">const</span> a = <span class="string">'foobar'</span>;</div><div class="line"><span class="keyword">const</span> b = <span class="string">`foo<span class="subst">$&#123;a&#125;</span>bar`</span>;</div><div class="line"><span class="keyword">const</span> c = <span class="string">'foobar'</span>;</div></pre></td></tr></table></figure>
-<p>了解更多👉：<a href="https://hzzly.github.io/2017/04/22/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-es6%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%89%A9%E5%B1%95/" target="_blank" rel="external">字符串的扩展</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bad</span></span><br><span class="line"><span class="keyword">const</span> a = <span class="string">"foobar"</span>;</span><br><span class="line"><span class="keyword">const</span> b = <span class="string">'foo'</span> + a + <span class="string">'bar'</span>;</span><br><span class="line"><span class="comment">// acceptable</span></span><br><span class="line"><span class="keyword">const</span> c = <span class="string">`foobar`</span>;</span><br><span class="line"><span class="comment">// good</span></span><br><span class="line"><span class="keyword">const</span> a = <span class="string">'foobar'</span>;</span><br><span class="line"><span class="keyword">const</span> b = <span class="string">`foo<span class="subst">$&#123;a&#125;</span>bar`</span>;</span><br><span class="line"><span class="keyword">const</span> c = <span class="string">'foobar'</span>;</span><br></pre></td></tr></table></figure>
+<p>了解更多👉：<a href="https://hzzly.github.io/2017/04/22/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-es6%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%89%A9%E5%B1%95/" target="_blank" rel="noopener">字符串的扩展</a></p>
 <h2 id="解构赋值"><a href="#解构赋值" class="headerlink" title="解构赋值"></a>解构赋值</h2><blockquote>
 <ul>
 <li>使用数组成员对变量赋值时，优先使用解构赋值。</li>
@@ -254,35 +220,35 @@
 <li>如果函数返回多个值，优先使用对象的解构赋值，而不是数组的解构赋值。这样便于以后添加返回值，以及更改返回值的顺序。</li>
 </ul>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> [first, second] = arr;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getFullName</span>(<span class="params">&#123; firstName, lastName &#125;</span>) </span>&#123; &#125;</div><div class="line"><span class="keyword">const</span> &#123; left, right &#125; = processInput(input);</div></pre></td></tr></table></figure>
-<p>了解更多👉：<a href="https://hzzly.github.io/2017/04/21/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-es6%E5%8F%98%E9%87%8F%E7%9A%84%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/" target="_blank" rel="external">解构赋值</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [first, second] = arr;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getFullName</span>(<span class="params">&#123; firstName, lastName &#125;</span>) </span>&#123; &#125;</span><br><span class="line"><span class="keyword">const</span> &#123; left, right &#125; = processInput(input);</span><br></pre></td></tr></table></figure>
+<p>了解更多👉：<a href="https://hzzly.github.io/2017/04/21/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-es6%E5%8F%98%E9%87%8F%E7%9A%84%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/" target="_blank" rel="noopener">解构赋值</a></p>
 <h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><blockquote>
 <ul>
 <li>单行定义的对象，最后一个成员不以逗号结尾。多行定义的对象，最后一个成员以逗号结尾。</li>
 </ul>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> a = &#123; <span class="attr">k1</span>: v1, <span class="attr">k2</span>: v2 &#125;;</div><div class="line"><span class="keyword">const</span> b = &#123;</div><div class="line">  <span class="attr">k1</span>: v1,</div><div class="line">  <span class="attr">k2</span>: v2,</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = &#123; <span class="attr">k1</span>: v1, <span class="attr">k2</span>: v2 &#125;;</span><br><span class="line"><span class="keyword">const</span> b = &#123;</span><br><span class="line">  k1: v1,</span><br><span class="line">  k2: v2,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <ul>
 <li>对象的属性和方法，尽量采用简洁表达法，这样易于描述和书写</li>
 </ul>
 </blockquote>
 <a id="more"></a>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ref = <span class="string">'some value'</span>;</div><div class="line"><span class="keyword">const</span> atom = &#123;</div><div class="line">  ref,</div><div class="line">  <span class="attr">value</span>: <span class="number">1</span>,</div><div class="line">  addValue(value) &#123;</div><div class="line">    <span class="keyword">return</span> atom.value + value;</div><div class="line">  &#125;,</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>了解更多👉：<a href="https://hzzly.github.io/2017/05/06/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-es6%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%89%A9%E5%B1%95/" target="_blank" rel="external">对象的扩展</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ref = <span class="string">'some value'</span>;</span><br><span class="line"><span class="keyword">const</span> atom = &#123;</span><br><span class="line">  ref,</span><br><span class="line">  value: <span class="number">1</span>,</span><br><span class="line">  addValue(value) &#123;</span><br><span class="line">    <span class="keyword">return</span> atom.value + value;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>了解更多👉：<a href="https://hzzly.github.io/2017/05/06/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-es6%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%89%A9%E5%B1%95/" target="_blank" rel="noopener">对象的扩展</a></p>
 <h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><blockquote>
 <ul>
 <li>使用扩展运算符（…）拷贝数组。</li>
 </ul>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> itemsCopy = [...items];</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> itemsCopy = [...items];</span><br></pre></td></tr></table></figure>
 <blockquote>
 <ul>
 <li>使用Array.from方法，将类似数组的对象转为数组。</li>
 </ul>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> foo = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.foo'</span>);</div><div class="line"><span class="keyword">const</span> nodes = <span class="built_in">Array</span>.from(foo);</div><div class="line"><span class="comment">//或者扩展运算符(...)</span></div><div class="line"><span class="keyword">const</span> nodes = [...foo];</div></pre></td></tr></table></figure>
-<p>了解更多👉：<a href="https://hzzly.github.io/2017/05/04/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-es6%E6%95%B0%E7%BB%84%E7%9A%84%E6%89%A9%E5%B1%95/" target="_blank" rel="external">数组的扩展</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> foo = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.foo'</span>);</span><br><span class="line"><span class="keyword">const</span> nodes = <span class="built_in">Array</span>.from(foo);</span><br><span class="line"><span class="comment">//或者扩展运算符(...)</span></span><br><span class="line"><span class="keyword">const</span> nodes = [...foo];</span><br></pre></td></tr></table></figure>
+<p>了解更多👉：<a href="https://hzzly.github.io/2017/05/04/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-es6%E6%95%B0%E7%BB%84%E7%9A%84%E6%89%A9%E5%B1%95/" target="_blank" rel="noopener">数组的扩展</a></p>
 <h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><blockquote>
 <ul>
 <li>那些需要使用函数表达式的场合，尽量用箭头函数代替。因为这样更简洁，而且绑定了this。</li>
@@ -290,24 +256,24 @@
 <li>使用默认值语法设置函数参数的默认值。</li>
 </ul>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].map(<span class="function"><span class="params">x</span> =&gt;</span> x * x);</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">concatenateAll</span>(<span class="params">...args</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> args.join(<span class="string">''</span>);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleThings</span>(<span class="params">opts = &#123;&#125;</span>) </span>&#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>了解更多👉：<a href="https://hzzly.github.io/2017/05/05/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-es6%E5%87%BD%E6%95%B0%E7%9A%84%E6%89%A9%E5%B1%95/" target="_blank" rel="external">函数的扩展</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].map(<span class="function"><span class="params">x</span> =&gt;</span> x * x);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">concatenateAll</span>(<span class="params">...args</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> args.join(<span class="string">''</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleThings</span>(<span class="params">opts = &#123;&#125;</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>了解更多👉：<a href="https://hzzly.github.io/2017/05/05/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-es6%E5%87%BD%E6%95%B0%E7%9A%84%E6%89%A9%E5%B1%95/" target="_blank" rel="noopener">函数的扩展</a></p>
 <h2 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h2><blockquote>
 <ul>
 <li>总是用Class，取代需要prototype的操作。因为Class的写法更简洁，更易于理解。</li>
 <li>使用extends实现继承，因为这样更简单，不会有破坏instanceof运算的危险。</li>
 </ul>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(contents = []) &#123;</div><div class="line">    ...</div><div class="line">  &#125;</div><div class="line">  getA() &#123;</div><div class="line">    ...</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>() &#123;</div><div class="line">    <span class="keyword">super</span>()</div><div class="line">    ...</div><div class="line">  &#125;</div><div class="line">  getB() &#123;</div><div class="line">    ...</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>了解更多👉：<a href="https://hzzly.github.io/2017/05/11/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-es6Class/" target="_blank" rel="external">Class</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(contents = []) &#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">  getA() &#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="keyword">super</span>()</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">  getB() &#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>了解更多👉：<a href="https://hzzly.github.io/2017/05/11/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-es6Class/" target="_blank" rel="noopener">Class</a></p>
 <h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><blockquote>
 <ul>
 <li>使用import取代require。</li>
 <li>使用export取代module.exports。</li>
 </ul>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; func1, func2 &#125; <span class="keyword">from</span> <span class="string">'moduleA'</span>;</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'foo'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>了解更多👉：<a href="https://hzzly.github.io/2017/05/14/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-es6Module/" target="_blank" rel="external">Module</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; func1, func2 &#125; <span class="keyword">from</span> <span class="string">'moduleA'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'foo'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>了解更多👉：<a href="https://hzzly.github.io/2017/05/14/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-es6Module/" target="_blank" rel="noopener">Module</a></p>
 
     
   </div>
@@ -370,78 +336,43 @@
       <ul class="list-toolbox">
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/archives/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
               博客
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/project/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
               项目
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/tag/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
               标签
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/link/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
               友链
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/about/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
               关于
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/atom.xml"
-              rel="noopener noreferrer"
-              target="_blank"
-              >
+            <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
               RSS
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/search/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
               搜索
             </a>
           </li>

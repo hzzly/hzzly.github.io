@@ -4,7 +4,7 @@
   <html class="light page-post">
 
 
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
   <title>基于vue-cli配置移动端自适应 | Hzzly</title>
@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="随笔,vue," />
+    <meta name="keywords" content="随笔,vue,">
   
 
   <meta name="description" content="之前写过一篇关于移动端屏幕适配：移动端屏幕适配的解决，今天来聊一聊基于vue-cli配置的移动端屏幕适配问题。  配方还是一样：手淘的 lib-flexible + rem 配置 flexible安装 lib-flexible在命令行中运行如下安装： 1npm i lib-flexible --save 引入 lib-flexible在项目入口文件 main.js 里 引入 lib-flexib">
@@ -22,6 +22,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/06/16/基于vue-cli配置移动端自适应/index.html">
 <meta property="og:site_name" content="Hzzly">
 <meta property="og:description" content="之前写过一篇关于移动端屏幕适配：移动端屏幕适配的解决，今天来聊一聊基于vue-cli配置的移动端屏幕适配问题。  配方还是一样：手淘的 lib-flexible + rem 配置 flexible安装 lib-flexible在命令行中运行如下安装： 1npm i lib-flexible --save 引入 lib-flexible在项目入口文件 main.js 里 引入 lib-flexib">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-06-16T10:44:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于vue-cli配置移动端自适应">
@@ -80,7 +81,7 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
   
 </head>
-
+</html>
 <body>
 
 
@@ -99,78 +100,43 @@
     <ul class="list-toolbox">
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/archives/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
             博客
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/project/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
             项目
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/tag/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
             标签
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/link/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
             友链
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/about/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
             关于
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/atom.xml"
-            rel="noopener noreferrer"
-            target="_blank"
-            >
+          <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
             RSS
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/search/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
             搜索
           </a>
         </li>
@@ -228,23 +194,23 @@
   <div class="article-content">
     
       <blockquote>
-<p>之前写过一篇关于移动端屏幕适配：<a href="http://hjingren.cn/2017/03/15/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D%E7%9A%84%E8%A7%A3%E5%86%B3/" target="_blank" rel="external">移动端屏幕适配的解决</a>，今天来聊一聊基于vue-cli配置的移动端屏幕适配问题。</p>
+<p>之前写过一篇关于移动端屏幕适配：<a href="http://hjingren.cn/2017/03/15/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B1%8F%E5%B9%95%E9%80%82%E9%85%8D%E7%9A%84%E8%A7%A3%E5%86%B3/" target="_blank" rel="noopener">移动端屏幕适配的解决</a>，今天来聊一聊基于vue-cli配置的移动端屏幕适配问题。</p>
 </blockquote>
-<p>配方还是一样：手淘的 <a href="https://github.com/amfe/lib-flexible" target="_blank" rel="external">lib-flexible</a> + rem</p>
+<p>配方还是一样：手淘的 <a href="https://github.com/amfe/lib-flexible" target="_blank" rel="noopener">lib-flexible</a> + rem</p>
 <h1 id="配置-flexible"><a href="#配置-flexible" class="headerlink" title="配置 flexible"></a>配置 flexible</h1><h2 id="安装-lib-flexible"><a href="#安装-lib-flexible" class="headerlink" title="安装 lib-flexible"></a>安装 lib-flexible</h2><p>在命令行中运行如下安装：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i lib-flexible --save</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i lib-flexible --save</span><br></pre></td></tr></table></figure>
 <h2 id="引入-lib-flexible"><a href="#引入-lib-flexible" class="headerlink" title="引入 lib-flexible"></a>引入 lib-flexible</h2><p>在项目入口文件 main.js 里 引入 lib-flexible</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// main.js</span></div><div class="line"><span class="keyword">import</span> <span class="string">'lib-flexible'</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'lib-flexible'</span></span><br></pre></td></tr></table></figure>
 <h2 id="添加-meta-标签"><a href="#添加-meta-标签" class="headerlink" title="添加 meta 标签"></a>添加 meta 标签</h2><p>在项目根目录的 index.html 中添加如下 meta</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></div></pre></td></tr></table></figure>
-<h1 id="px-转-rem"><a href="#px-转-rem" class="headerlink" title="px 转 rem"></a>px 转 rem</h1><p>实际开发中，我们通过设计稿得到的值单位是 px，所以要将 px 转换成 rem 再写进样式中。<br>将 px 转换成 rem 我们将使用 px2rem 这个工具，它有 webpack 的 loader：<a href="https://github.com/Jinjiang/px2rem-loader" target="_blank" rel="external">px2rem-loader</a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="px-转-rem"><a href="#px-转-rem" class="headerlink" title="px 转 rem"></a>px 转 rem</h1><p>实际开发中，我们通过设计稿得到的值单位是 px，所以要将 px 转换成 rem 再写进样式中。<br>将 px 转换成 rem 我们将使用 px2rem 这个工具，它有 webpack 的 loader：<a href="https://github.com/Jinjiang/px2rem-loader" target="_blank" rel="noopener">px2rem-loader</a></p>
 <h2 id="安装-px2rem-loader"><a href="#安装-px2rem-loader" class="headerlink" title="安装 px2rem-loader"></a>安装 px2rem-loader</h2><p>在命令行中运行如下安装：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i px2rem-loade --save-dev</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i px2rem-loade --save-dev</span><br></pre></td></tr></table></figure>
 <h2 id="配置-px2rem-loade"><a href="#配置-px2rem-loade" class="headerlink" title="配置 px2rem-loade"></a>配置 px2rem-loade</h2><p>在 vue-cli 生成的 webpack 配置中，vue-loader 的 options 和其他样式文件 loader 最终是都是由 build/utils.js 里的一个方法生成的。</p>
 <p>我们只需在 cssLoader 后再加上一个 px2remLoader 即可，px2rem-loader 的 remUnit 选项意思是 1rem=多少像素，结合 lib-flexible 的方案，我们将 px2remLoader 的 options.remUnit 设置成设计稿宽度的 1/10，这里我们假设设计稿宽为 750px。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// utils.js</span></div><div class="line"><span class="keyword">var</span> cssLoader = &#123;</div><div class="line">  <span class="attr">loader</span>: <span class="string">'css-loader'</span>,</div><div class="line">  <span class="attr">options</span>: &#123;</div><div class="line">    <span class="attr">minimize</span>: process.env.NODE_ENV === <span class="string">'production'</span>,</div><div class="line">    <span class="attr">sourceMap</span>: options.sourceMap</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> px2remLoader = &#123;</div><div class="line">  <span class="attr">loader</span>: <span class="string">'px2rem-loader'</span>,</div><div class="line">  <span class="attr">options</span>: &#123;</div><div class="line">    <span class="attr">remUnit</span>: <span class="number">75</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// ...</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// utils.js</span></span><br><span class="line"><span class="keyword">var</span> cssLoader = &#123;</span><br><span class="line">  loader: <span class="string">'css-loader'</span>,</span><br><span class="line">  options: &#123;</span><br><span class="line">    minimize: process.env.NODE_ENV === <span class="string">'production'</span>,</span><br><span class="line">    sourceMap: options.sourceMap</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> px2remLoader = &#123;</span><br><span class="line">  loader: <span class="string">'px2rem-loader'</span>,</span><br><span class="line">  options: &#123;</span><br><span class="line">    remUnit: <span class="number">75</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
 <p>并放进 loaders 数组中</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// utils.js</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">generateLoaders</span>(<span class="params">loader, loaderOptions</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> loaders = [cssLoader, px2remLoader]</div><div class="line">  <span class="comment">// ...</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// utils.js</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">generateLoaders</span>(<span class="params">loader, loaderOptions</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> loaders = [cssLoader, px2remLoader]</span><br><span class="line">  <span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
 <p>修改配置后需要重启，然后我们在组件中写单位直接写 px，设计稿量多少就可以写多少了，舒服多了。</p>
 
     
@@ -308,78 +274,43 @@
       <ul class="list-toolbox">
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/archives/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
               博客
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/project/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
               项目
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/tag/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
               标签
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/link/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
               友链
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/about/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
               关于
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/atom.xml"
-              rel="noopener noreferrer"
-              target="_blank"
-              >
+            <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
               RSS
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/search/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
               搜索
             </a>
           </li>

@@ -4,7 +4,7 @@
   <html class="light page-post">
 
 
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
   <title>移动端touch事件 | Hzzly</title>
@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="随笔," />
+    <meta name="keywords" content="随笔,">
   
 
   <meta name="description" content="4个touch事件touchstart 事件：当手指触摸屏幕时候触发，即使已经有一个手指放在屏幕上也会触发。touchmove 事件：当手指在屏幕上滑动的时候连续地触发。调用preventDefault()事件可以阻止滚动。touchend 事件：当手指从屏幕上离开的时候触发。touchcancel 事件：触摸结束的时候触发 触摸事件：touches：当前位于屏幕上的所有手指的列表。targetT">
@@ -22,6 +22,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/03/22/移动端touch事件/index.html">
 <meta property="og:site_name" content="Hzzly">
 <meta property="og:description" content="4个touch事件touchstart 事件：当手指触摸屏幕时候触发，即使已经有一个手指放在屏幕上也会触发。touchmove 事件：当手指在屏幕上滑动的时候连续地触发。调用preventDefault()事件可以阻止滚动。touchend 事件：当手指从屏幕上离开的时候触发。touchcancel 事件：触摸结束的时候触发 触摸事件：touches：当前位于屏幕上的所有手指的列表。targetT">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-05-21T14:21:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="移动端touch事件">
@@ -80,7 +81,7 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
   
 </head>
-
+</html>
 <body>
 
 
@@ -99,78 +100,43 @@
     <ul class="list-toolbox">
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/archives/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
             博客
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/project/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
             项目
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/tag/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
             标签
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/link/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
             友链
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/about/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
             关于
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/atom.xml"
-            rel="noopener noreferrer"
-            target="_blank"
-            >
+          <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
             RSS
           </a>
         </li>
       
         <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/search/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
             搜索
           </a>
         </li>
@@ -233,7 +199,7 @@
 <blockquote>
 <p>clientX：触摸目标在视口中的x坐标。<br>clientY：触摸目标在视口中的y坐标。<br>identifier：标识触摸的唯一ID。<br>pageX：触摸目标在页面中的x坐标。<br>pageY：触摸目标在页面中的y坐标。<br>screenX：触摸目标在屏幕中的x坐标。<br>screenY：触摸目标在屏幕中的y坐标。<br>target：触摸的DOM节点目标。</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'touchstart'</span>,touch,<span class="literal">false</span>);</div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'touchmove'</span>,touch,<span class="literal">false</span>);</div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'touchend'</span>,touch,<span class="literal">false</span>);     </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">touch</span> (<span class="params">event</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> event = event || <span class="built_in">window</span>.event;</div><div class="line">    <span class="keyword">var</span> oInp = <span class="built_in">document</span>.getElementById(<span class="string">"inp"</span>);</div><div class="line">    <span class="keyword">switch</span>(event.type)&#123;</div><div class="line">        <span class="keyword">case</span> <span class="string">"touchstart"</span>:</div><div class="line">            oInp.innerHTML =<span class="string">`Touch started ( <span class="subst">$&#123;event.touches[<span class="number">0</span>].clientX&#125;</span> , <span class="subst">$&#123;event.touches[<span class="number">0</span>].clientY&#125;</span> )`</span>;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="string">"touchend"</span>:</div><div class="line">            oInp.innerHTML =<span class="string">`&lt;br&gt;Touch end ( <span class="subst">$&#123;event.changedTouches[<span class="number">0</span>].clientX&#125;</span> , <span class="subst">$&#123;event.changedTouches[<span class="number">0</span>].clientY&#125;</span> )`</span>;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="string">"touchmove"</span>:</div><div class="line">            event.preventDefault();</div><div class="line">            oInp.innerHTML =<span class="string">`&lt;br&gt;Touch moved ( <span class="subst">$&#123;event.touches[<span class="number">0</span>].clientX&#125;</span> , <span class="subst">$&#123;event.touches[<span class="number">0</span>].clientY&#125;</span> )`</span>;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'touchstart'</span>,touch,<span class="literal">false</span>);</span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'touchmove'</span>,touch,<span class="literal">false</span>);</span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'touchend'</span>,touch,<span class="literal">false</span>);     </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">touch</span> (<span class="params">event</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> event = event || <span class="built_in">window</span>.event;</span><br><span class="line">    <span class="keyword">var</span> oInp = <span class="built_in">document</span>.getElementById(<span class="string">"inp"</span>);</span><br><span class="line">    <span class="keyword">switch</span>(event.type)&#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"touchstart"</span>:</span><br><span class="line">            oInp.innerHTML =<span class="string">`Touch started ( <span class="subst">$&#123;event.touches[<span class="number">0</span>].clientX&#125;</span> , <span class="subst">$&#123;event.touches[<span class="number">0</span>].clientY&#125;</span> )`</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"touchend"</span>:</span><br><span class="line">            oInp.innerHTML =<span class="string">`&lt;br&gt;Touch end ( <span class="subst">$&#123;event.changedTouches[<span class="number">0</span>].clientX&#125;</span> , <span class="subst">$&#123;event.changedTouches[<span class="number">0</span>].clientY&#125;</span> )`</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"touchmove"</span>:</span><br><span class="line">            event.preventDefault();</span><br><span class="line">            oInp.innerHTML =<span class="string">`&lt;br&gt;Touch moved ( <span class="subst">$&#123;event.touches[<span class="number">0</span>].clientX&#125;</span> , <span class="subst">$&#123;event.touches[<span class="number">0</span>].clientY&#125;</span> )`</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="事件-包括鼠标事件-发生的顺序如下："><a href="#事件-包括鼠标事件-发生的顺序如下：" class="headerlink" title="事件(包括鼠标事件)发生的顺序如下："></a><strong>事件(包括鼠标事件)发生的顺序如下：</strong></h3><p>(1) touchstart<br>(2) mouseover<br>(3) mousemove(一次)<br>(4) mousedown<br>(5) mouseup<br>(6) click<br>(7) touchend</p>
 
     
@@ -297,78 +263,43 @@
       <ul class="list-toolbox">
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/archives/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
               博客
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/project/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
               项目
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/tag/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
               标签
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/link/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
               友链
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/about/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
               关于
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/atom.xml"
-              rel="noopener noreferrer"
-              target="_blank"
-              >
+            <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
               RSS
             </a>
           </li>
         
           <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/search/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
               搜索
             </a>
           </li>
