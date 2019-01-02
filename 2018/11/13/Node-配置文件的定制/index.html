@@ -15,18 +15,18 @@
     <meta name="keywords" content="随笔,node,">
   
 
-  <meta name="description" content="在任何一个项目中都缺少不了配置文件\具有下面的特点: 数据量不大,信息需要长期保存,容易维护  现在是大前端的时代，Node 的重要性不言而喻。在使用 Node 作为后端或者中间层的技术架构时，往往需要用到一些可配置的变量，比如数据库，在开发时我们会连开发的数据库，生成环境我们需要连生产的数据库，这样我们就需要根据不同的环境加载不一样的配置文件，从而提高我们的开发效率，接下来我们就一起来定制我们">
+  <meta name="description" content="在任何一个项目中都缺少不了配置文件具有下面的特点: 数据量不大,信息需要长期保存,容易维护  现在是大前端的时代，Node 的重要性不言而喻。在使用 Node 作为后端或者中间层的技术架构时，往往需要用到一些可配置的变量，比如数据库，在开发时我们会连开发的数据库，生成环境我们需要连生产的数据库，这样我们就需要根据不同的环境加载不一样的配置文件，从而提高我们的开发效率，接下来我们就一起来定制我们的">
 <meta name="keywords" content="随笔,node">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Node 配置文件的定制">
 <meta property="og:url" content="http://yoursite.com/2018/11/13/Node-配置文件的定制/index.html">
 <meta property="og:site_name" content="Hzzly">
-<meta property="og:description" content="在任何一个项目中都缺少不了配置文件\具有下面的特点: 数据量不大,信息需要长期保存,容易维护  现在是大前端的时代，Node 的重要性不言而喻。在使用 Node 作为后端或者中间层的技术架构时，往往需要用到一些可配置的变量，比如数据库，在开发时我们会连开发的数据库，生成环境我们需要连生产的数据库，这样我们就需要根据不同的环境加载不一样的配置文件，从而提高我们的开发效率，接下来我们就一起来定制我们">
+<meta property="og:description" content="在任何一个项目中都缺少不了配置文件具有下面的特点: 数据量不大,信息需要长期保存,容易维护  现在是大前端的时代，Node 的重要性不言而喻。在使用 Node 作为后端或者中间层的技术架构时，往往需要用到一些可配置的变量，比如数据库，在开发时我们会连开发的数据库，生成环境我们需要连生产的数据库，这样我们就需要根据不同的环境加载不一样的配置文件，从而提高我们的开发效率，接下来我们就一起来定制我们的">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-13T15:41:41.869Z">
+<meta property="og:updated_time" content="2019-01-02T07:58:14.547Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Node 配置文件的定制">
-<meta name="twitter:description" content="在任何一个项目中都缺少不了配置文件\具有下面的特点: 数据量不大,信息需要长期保存,容易维护  现在是大前端的时代，Node 的重要性不言而喻。在使用 Node 作为后端或者中间层的技术架构时，往往需要用到一些可配置的变量，比如数据库，在开发时我们会连开发的数据库，生成环境我们需要连生产的数据库，这样我们就需要根据不同的环境加载不一样的配置文件，从而提高我们的开发效率，接下来我们就一起来定制我们">
+<meta name="twitter:description" content="在任何一个项目中都缺少不了配置文件具有下面的特点: 数据量不大,信息需要长期保存,容易维护  现在是大前端的时代，Node 的重要性不言而喻。在使用 Node 作为后端或者中间层的技术架构时，往往需要用到一些可配置的变量，比如数据库，在开发时我们会连开发的数据库，生成环境我们需要连生产的数据库，这样我们就需要根据不同的环境加载不一样的配置文件，从而提高我们的开发效率，接下来我们就一起来定制我们的">
 
   
 
@@ -194,7 +194,7 @@
   <div class="article-content">
     
       <blockquote>
-<p>在任何一个项目中都缺少不了配置文件\<br>具有下面的特点: 数据量不大,信息需要长期保存,容易维护</p>
+<p>在任何一个项目中都缺少不了配置文件<br>具有下面的特点: 数据量不大,信息需要长期保存,容易维护</p>
 </blockquote>
 <p>现在是大前端的时代，Node 的重要性不言而喻。在使用 Node 作为后端或者中间层的技术架构时，往往需要用到一些可配置的变量，比如数据库，在开发时我们会连开发的数据库，生成环境我们需要连生产的数据库，这样我们就需要根据不同的环境加载不一样的配置文件，从而提高我们的开发效率，接下来我们就一起来定制我们的配置文件。</p>
 <h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><p>在 Node 中可以通过 <code>process.env</code> 来访问当前的环境变量信息。<br>比如我们在 <code>package.json</code> 中通过 <code>scripts</code> 定义的shell脚本执行对应的命令。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// package.json</span><br><span class="line">&#123;</span><br><span class="line">  ...</span><br><span class="line">  "scripts": &#123;</span><br><span class="line">    "start": "node ./bin/www",</span><br><span class="line">    "dev": "NODE_ENV=dev node ./bin/www",</span><br><span class="line">    "pro": "NODE_ENV=pro node ./bin/www"</span><br><span class="line">  &#125;,</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -234,26 +234,6 @@
 
 
    
-  <div class="text-center donation">
-    <div class="inner-donation">
-      <span class="btn-donation">支持一下</span>
-      <div class="donation-body">
-        <div class="tip text-center">谢谢你请我吃糖果</div>
-        <ul class="theme.donation.items.length">
-        
-          <li class="item">
-            <img src="http://hjingren.cn/publicImages/wxpay.jpg" alt="">
-          </li>
-        
-          <li class="item">
-            <img src="http://hjingren.cn/publicImages/alipay.jpg" alt="">
-          </li>
-        
-        </ul>
-      </div>
-    </div>
-  </div>
-
 
    
   <div class="box-prev-next clearfix">
