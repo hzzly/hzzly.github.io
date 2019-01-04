@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>折腾一个chrome插件 | Hzzly</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="随笔,vue,chrome,">
+  
+
+  <meta name="description" content="前言：作为一个开发者，是否有时一个单词不认识或者业务命名而烦恼呢，以至于需要打开浏览器，然后打开google翻译，如此繁琐的打开页面可能一天重复好几遍，而我们开发者对于浏览器标签打开的又多，所以如何简化我们重新打开标签来翻译呢？所以浏览器插件就非常强大了。  chrome浏览器是一个工作、学习和生活的必备工具。除了chrome本身的基本能力（控制台等）外，能大幅提高这个神器的使用体验的是它可扩展">
+<meta name="keywords" content="随笔,vue,chrome">
+<meta property="og:type" content="article">
+<meta property="og:title" content="折腾一个chrome插件">
+<meta property="og:url" content="http://yoursite.com/2019/01/04/折腾一个chrome插件/index.html">
+<meta property="og:site_name" content="Hzzly">
+<meta property="og:description" content="前言：作为一个开发者，是否有时一个单词不认识或者业务命名而烦恼呢，以至于需要打开浏览器，然后打开google翻译，如此繁琐的打开页面可能一天重复好几遍，而我们开发者对于浏览器标签打开的又多，所以如何简化我们重新打开标签来翻译呢？所以浏览器插件就非常强大了。  chrome浏览器是一个工作、学习和生活的必备工具。除了chrome本身的基本能力（控制台等）外，能大幅提高这个神器的使用体验的是它可扩展">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/hzzly/online-translate/master/online-translate.png">
+<meta property="og:updated_time" content="2019-01-04T09:49:11.302Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="折腾一个chrome插件">
+<meta name="twitter:description" content="前言：作为一个开发者，是否有时一个单词不认识或者业务命名而烦恼呢，以至于需要打开浏览器，然后打开google翻译，如此繁琐的打开页面可能一天重复好几遍，而我们开发者对于浏览器标签打开的又多，所以如何简化我们重新打开标签来翻译呢？所以浏览器插件就非常强大了。  chrome浏览器是一个工作、学习和生活的必备工具。除了chrome本身的基本能力（控制台等）外，能大幅提高这个神器的使用体验的是它可扩展">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/hzzly/online-translate/master/online-translate.png">
+
+  
+
+  
+    <link rel="icon" href="http://omt3u4bph.bkt.clouddn.com/avatar.jpg">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+
+  
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
+            项目
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#要点："><span class="toc-text">要点：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是Chrome插件"><span class="toc-text">什么是Chrome插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#核心介绍（manifest-json）"><span class="toc-text">核心介绍（manifest.json）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开发-基于Vue"><span class="toc-text">开发(基于Vue)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化项目"><span class="toc-text">初始化项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装依赖"><span class="toc-text">安装依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#webpack配置"><span class="toc-text">webpack配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#接下来就是-Vue-的开发了！"><span class="toc-text">接下来就是 Vue 的开发了！</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#webpack打包"><span class="toc-text">webpack打包</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-折腾一个chrome插件" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">折腾一个chrome插件</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.01.04</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>hzzly</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <blockquote>
+<p>前言：作为一个开发者，是否有时一个单词不认识或者业务命名而烦恼呢，以至于需要打开浏览器，然后打开google翻译，如此繁琐的打开页面可能一天重复好几遍，而我们开发者对于浏览器标签打开的又多，所以如何简化我们重新打开标签来翻译呢？所以浏览器插件就非常强大了。</p>
+</blockquote>
+<p>chrome浏览器是一个工作、学习和生活的必备工具。除了chrome本身的基本能力（控制台等）外，能大幅提高这个神器的使用体验的是它可扩展能力（插件）以及丰富的插件生态。接下来我们就来折腾一个在线翻译的chrome插件。</p>
+<p><img src="https://raw.githubusercontent.com/hzzly/online-translate/master/online-translate.png" alt="online-translate"></p>
+<p>好了，有了需求我们就得开发了(囧)！</p>
+<h2 id="要点："><a href="#要点：" class="headerlink" title="要点："></a>要点：</h2><ul>
+<li>manifest.json  // chrome配置文件</li>
+<li>webpack配置(打包，热编译)</li>
+<li>jsonp</li>
+<li>ajax封装</li>
+</ul>
+<p>开发之前了解一下什么是Chrome插件=&gt;</p>
+<h2 id="什么是Chrome插件"><a href="#什么是Chrome插件" class="headerlink" title="什么是Chrome插件"></a>什么是Chrome插件</h2><p>Chrome插件是一个用Web技术开发、用来增强浏览器功能的软件，它其实就是一个由HTML、CSS、JS、图片等资源组成的一个.crx后缀的压缩包。</p>
+<h2 id="核心介绍（manifest-json）"><a href="#核心介绍（manifest-json）" class="headerlink" title="核心介绍（manifest.json）"></a>核心介绍（manifest.json）</h2><p>这是一个Chrome插件最重要也是必不可少的文件，用来配置所有和插件相关的配置，必须放在需要浏览器打包的根目录。其中，manifest_version、name、version3个是必不可少的，description和icons是推荐的。</p>
+<p>栗子(比较全)：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="comment">// 清单文件的版本，这个必须写，而且必须是2</span></span><br><span class="line">  <span class="string">"manifest_version"</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="comment">// 插件的名称</span></span><br><span class="line">  <span class="string">"name"</span>: <span class="string">"demo"</span>,</span><br><span class="line">  <span class="comment">// 插件的版本</span></span><br><span class="line">  <span class="string">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">  <span class="comment">// 插件描述</span></span><br><span class="line">  <span class="string">"description"</span>: <span class="string">"简单的Chrome扩展demo"</span>,</span><br><span class="line">  <span class="comment">// 图标，一般偷懒全部用一个尺寸的也没问题</span></span><br><span class="line">  <span class="string">"icons"</span>: &#123;</span><br><span class="line">    <span class="string">"16"</span>: <span class="string">"img/icon.png"</span>,</span><br><span class="line">    <span class="string">"48"</span>: <span class="string">"img/icon.png"</span>,</span><br><span class="line">    <span class="string">"128"</span>: <span class="string">"img/icon.png"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 会一直常驻的后台JS或后台页面</span></span><br><span class="line">  <span class="string">"background"</span>: &#123;</span><br><span class="line">    <span class="comment">// 2种指定方式，如果指定JS，那么会自动生成一个背景页</span></span><br><span class="line">    <span class="string">"page"</span>: <span class="string">"background.html"</span></span><br><span class="line">    <span class="comment">//"scripts": ["js/background.js"]</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 浏览器右上角图标设置，browser_action、page_action、app必须三选一</span></span><br><span class="line">  <span class="string">"browser_action"</span>: &#123;</span><br><span class="line">    <span class="string">"default_icon"</span>: <span class="string">"img/icon.png"</span>,</span><br><span class="line">    <span class="comment">// 图标悬停时的标题，可选</span></span><br><span class="line">    <span class="string">"default_title"</span>: <span class="string">"这是一个示例Chrome插件"</span>,</span><br><span class="line">    <span class="string">"default_popup"</span>: <span class="string">"popup.html"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 当某些特定页面打开才显示的图标</span></span><br><span class="line">  <span class="comment">/*"page_action": &#123;</span></span><br><span class="line"><span class="comment">    "default_icon": "img/icon.png",</span></span><br><span class="line"><span class="comment">    "default_title": "我是pageAction",</span></span><br><span class="line"><span class="comment">    "default_popup": "popup.html"</span></span><br><span class="line"><span class="comment">  &#125;,*/</span></span><br><span class="line">  <span class="comment">// 需要直接注入页面的JS</span></span><br><span class="line">  <span class="string">"content_scripts"</span>: [&#123;</span><br><span class="line">    <span class="comment">//"matches": ["http://*/*", "https://*/*"],</span></span><br><span class="line">    <span class="comment">// "&lt;all_urls&gt;" 表示匹配所有地址</span></span><br><span class="line">    <span class="string">"matches"</span>: [<span class="string">"&lt;all_urls&gt;"</span>],</span><br><span class="line">    <span class="comment">// 多个JS按顺序注入</span></span><br><span class="line">    <span class="string">"js"</span>: [<span class="string">"js/jquery-1.8.3.js"</span>, <span class="string">"js/content-script.js"</span>],</span><br><span class="line">    <span class="comment">// JS的注入可以随便一点，但是CSS的注意就要千万小心了，因为一不小心就可能影响全局样式</span></span><br><span class="line">    <span class="string">"css"</span>: [<span class="string">"css/custom.css"</span>],</span><br><span class="line">    <span class="comment">// 代码注入的时间，可选值： "document_start", "document_end", or "document_idle"，最后一个表示页面空闲时，默认document_idle</span></span><br><span class="line">    <span class="string">"run_at"</span>: <span class="string">"document_start"</span></span><br><span class="line">  &#125;, &#123; <span class="comment">// 这里仅仅是为了演示content-script可以配置多个规则</span></span><br><span class="line">    <span class="string">"matches"</span>: [<span class="string">"*://*/*.png"</span>, <span class="string">"*://*/*.jpg"</span>, <span class="string">"*://*/*.gif"</span>, <span class="string">"*://*/*.bmp"</span>],</span><br><span class="line">    <span class="string">"js"</span>: [<span class="string">"js/show-image-content-size.js"</span>]</span><br><span class="line">  &#125;],</span><br><span class="line">  <span class="comment">// 权限申请</span></span><br><span class="line">  <span class="string">"permissions"</span>: [</span><br><span class="line">    <span class="string">"contextMenus"</span>, <span class="comment">// 右键菜单</span></span><br><span class="line">    <span class="string">"tabs"</span>, <span class="comment">// 标签</span></span><br><span class="line">    <span class="string">"notifications"</span>, <span class="comment">// 通知</span></span><br><span class="line">    <span class="string">"webRequest"</span>, <span class="comment">// web请求</span></span><br><span class="line">    <span class="string">"webRequestBlocking"</span>,</span><br><span class="line">    <span class="string">"storage"</span>, <span class="comment">// 插件本地存储</span></span><br><span class="line">    <span class="string">"http://*/*"</span>, <span class="comment">// 需要请求的地址</span></span><br><span class="line">    <span class="string">"https://*/*"</span> <span class="comment">// 需要请求的地址</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>介绍完后我们就来开发了(码代码中…)</p>
+<h2 id="开发-基于Vue"><a href="#开发-基于Vue" class="headerlink" title="开发(基于Vue)"></a>开发(基于Vue)</h2><h3 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mkdir online-translate</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> online-translate</span><br><span class="line"></span><br><span class="line">npm init</span><br><span class="line"></span><br><span class="line">// 文件层级</span><br><span class="line">├── chrome  // 浏览器打包的文件夹</span><br><span class="line">├── index.html</span><br><span class="line">├── package.json</span><br><span class="line">├── src  // 源码</span><br><span class="line">└── webpack.config.js  // wepack</span><br></pre></td></tr></table></figure>
+<h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 安装项目依赖</span><br><span class="line">npm install vue element-ui --save</span><br><span class="line"></span><br><span class="line">// 安装开发依赖</span><br><span class="line">npm install babel-core babel-loader babel-plugin-component babel-preset-env cross-env css-loader file-loader html-webpack-plugin style-loader vue-loader vue-template-compiler webpack webpack-dev-server --save-dev</span><br></pre></td></tr></table></figure>
+<h3 id="webpack配置"><a href="#webpack配置" class="headerlink" title="webpack配置"></a>webpack配置</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack.config.js</span></span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>)</span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: &#123;</span><br><span class="line">    popup: <span class="string">'./src/popup.js'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, <span class="string">'./chrome'</span>),</span><br><span class="line">    publicPath: <span class="string">'/'</span>,</span><br><span class="line">    filename: <span class="string">'[name].[hash].js'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.vue$/</span>,</span><br><span class="line">        loader: <span class="string">'vue-loader'</span>,</span><br><span class="line">        options: &#123;</span><br><span class="line">          loaders: &#123;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="comment">// other vue-loader options go here</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.js$/</span>,</span><br><span class="line">        loader: <span class="string">'babel-loader'</span>,</span><br><span class="line">        exclude: <span class="regexp">/node_modules/</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        loader: <span class="string">'style-loader!css-loader'</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/</span>,</span><br><span class="line">        loader: <span class="string">'file-loader'</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.(png|jpg|gif|svg)$/</span>,</span><br><span class="line">        loader: <span class="string">'file-loader'</span>,</span><br><span class="line">        options: &#123;</span><br><span class="line">          name: <span class="string">'[name].[ext]?[hash]'</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="comment">// new webpack.HotModuleReplacementPlugin(),</span></span><br><span class="line">    <span class="comment">// new webpack.NamedModulesPlugin(),</span></span><br><span class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">      template: path.join(__dirname, <span class="string">'./index.html'</span>),</span><br><span class="line">      inject: <span class="literal">true</span></span><br><span class="line">    &#125;)</span><br><span class="line">  ],</span><br><span class="line">  devServer: &#123;</span><br><span class="line">    historyApiFallback: <span class="literal">true</span>,</span><br><span class="line">    noInfo: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  performance: &#123;</span><br><span class="line">    hints: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line">  devtool: <span class="string">'#eval-source-map'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (process.env.NODE_ENV === <span class="string">'production'</span>) &#123;</span><br><span class="line">  <span class="built_in">module</span>.exports.devtool = <span class="string">'#source-map'</span></span><br><span class="line">  <span class="comment">// http://vue-loader.vuejs.org/en/workflow/production.html</span></span><br><span class="line">  <span class="built_in">module</span>.exports.plugins = (<span class="built_in">module</span>.exports.plugins || []).concat([</span><br><span class="line">    <span class="keyword">new</span> webpack.DefinePlugin(&#123;</span><br><span class="line">      <span class="string">'process.env'</span>: &#123;</span><br><span class="line">        NODE_ENV: <span class="string">'"production"'</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;),</span><br><span class="line">    <span class="keyword">new</span> webpack.optimize.UglifyJsPlugin(&#123;</span><br><span class="line">      sourceMap: <span class="literal">false</span>,</span><br><span class="line">      compress: &#123;</span><br><span class="line">        warnings: <span class="literal">false</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;),</span><br><span class="line">    <span class="keyword">new</span> webpack.LoaderOptionsPlugin(&#123;</span><br><span class="line">      minimize: <span class="literal">true</span></span><br><span class="line">    &#125;)</span><br><span class="line">  ])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>配置好了，我们就能愉快的开发了</p>
+<h3 id="接下来就是-Vue-的开发了！"><a href="#接下来就是-Vue-的开发了！" class="headerlink" title="接下来就是 Vue 的开发了！"></a>接下来就是 <code>Vue</code> 的开发了！</h3><p>正常的项目开发…</p>
+<p>详细源码可以看<a href="https://github.com/hzzly/online-translate" target="_blank" rel="noopener">github</a></p>
+<h3 id="webpack打包"><a href="#webpack打包" class="headerlink" title="webpack打包"></a>webpack打包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build</span><br></pre></td></tr></table></figure>
+<p>把代码打包到了chrome文件夹内，然后就可以使用chrome扩展进行打包扩展程序，会生成.crx和.pem文件，然后直接发布或者把.crx文件拖进扩展程序内进行内测。</p>
+
+    
+  </div>
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2018/11/13/Node-配置文件的定制/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
+              项目
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
