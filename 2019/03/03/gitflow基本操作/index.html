@@ -26,10 +26,10 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/git/git-workflow-1.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/git/git-workflow-2.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/git/git-commit-log.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/git/git-commit-log.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/git/git-commit-reset.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/git/git-push-log.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/git/git-push-log.png">
-<meta property="og:updated_time" content="2019-03-03T15:36:35.169Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/git/git-push-reset.png">
+<meta property="og:updated_time" content="2019-03-13T12:54:21.708Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gitflow基本操作">
 <meta name="twitter:description" content="前言：在多组员，多项目等环境进行协同工作时，如果没有统一规范、统一流程，则会导致额外的工作量，甚至会做无用功。所以要减少版本冲突，减轻不必要的工作，就需要规范化的工作流程，本文就gitflow作简要的命令操作。  主分支 master 只负责管理发布的状态。在提交时使用标签记录发布版本号。develop 针对发布的日常开发分支。刚才我们已经讲解过有合并分支的功用。   开发分支Git创建Deve">
@@ -225,7 +225,7 @@
 <blockquote>
 <p>commit reset</p>
 </blockquote>
-<p><img src="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/git/git-commit-log.png" alt="git-commit-reset"></p>
+<p><img src="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/git/git-commit-reset.png" alt="git-commit-reset"></p>
 <h3 id="push-回退"><a href="#push-回退" class="headerlink" title="push 回退"></a>push 回退</h3><blockquote>
 <p>push log</p>
 </blockquote>
@@ -233,7 +233,7 @@
 <blockquote>
 <p>push reset</p>
 </blockquote>
-<p><img src="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/git/git-push-log.png" alt="git-push-reset"></p>
+<p><img src="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/git/git-push-reset.png" alt="git-push-reset"></p>
 <h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><h3 id="添加轻标签"><a href="#添加轻标签" class="headerlink" title="添加轻标签"></a>添加轻标签</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git tag v2.0</span><br><span class="line"><span class="comment"># 显示标签列表</span></span><br><span class="line">git tag</span><br><span class="line"><span class="comment"># 显示标签列表包含标签资料的历史记录</span></span><br><span class="line">git <span class="built_in">log</span> --decorate</span><br></pre></td></tr></table></figure>
 <h2 id="添加注解标签"><a href="#添加注解标签" class="headerlink" title="添加注解标签"></a>添加注解标签</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git tag -a v3.0</span><br><span class="line">// 或</span><br><span class="line">git tag -am <span class="string">"注解"</span> v3.0</span><br><span class="line"><span class="comment"># 显示标签的列表和注解</span></span><br><span class="line">git tag -n</span><br></pre></td></tr></table></figure>
 <h2 id="删除标签"><a href="#删除标签" class="headerlink" title="删除标签"></a>删除标签</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git tag -d v2.0</span><br><span class="line">git tag -d v3.0</span><br></pre></td></tr></table></figure>
