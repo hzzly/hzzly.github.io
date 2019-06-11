@@ -31,10 +31,10 @@
   
 
   
-    <link rel="icon" href="http://omt3u4bph.bkt.clouddn.com/avatar.jpg">
+    <link rel="icon" href="/images/favicon.ico">
   
 
-  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
 
 
   
@@ -42,6 +42,19 @@
   
 
   
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
 
   
   <script type="text/javascript">
@@ -75,7 +88,6 @@
 
   
 
-  
 </head>
 </html>
 <body>
@@ -98,12 +110,6 @@
         <li class="item-toolbox">
           <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
             博客
-          </a>
-        </li>
-      
-        <li class="item-toolbox">
-          <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
-            项目
           </a>
         </li>
       
@@ -175,8 +181,6 @@
       
 
       
-
-      
       
     </div>
   </header>
@@ -216,10 +220,37 @@
 <h1 id="封装POST请求"><a href="#封装POST请求" class="headerlink" title="封装POST请求"></a>封装POST请求</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将对象拼接成 name=hzzly&amp;age=22 的字符串形式</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">params</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> result = <span class="string">''</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">let</span> item <span class="keyword">in</span> obj) &#123;</span><br><span class="line">		result += <span class="string">`&amp;<span class="subst">$&#123;item&#125;</span>=<span class="subst">$&#123;obj[item]&#125;</span>`</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(result) &#123;</span><br><span class="line">		result = result.slice(<span class="number">1</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">post</span>(<span class="params">url, paramsObj</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> result = fetch(url, &#123;</span><br><span class="line">		methods: <span class="string">'POST'</span>,</span><br><span class="line">		credentials: <span class="string">"include"</span></span><br><span class="line">		headers: &#123;</span><br><span class="line">	    	<span class="string">"Accept"</span>: <span class="string">"application/json, text/plain, */*"</span>,</span><br><span class="line">	        <span class="string">"Content-type"</span>:<span class="string">"application:/x-www-form-urlencoded; charset=UTF-8"</span></span><br><span class="line">	    &#125;,</span><br><span class="line">	    body: params(paramsObj)</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">	name: <span class="string">'hzzly'</span>,</span><br><span class="line">	age: <span class="number">22</span></span><br><span class="line">&#125;</span><br><span class="line">post(url, obj)</span><br><span class="line">	.then(<span class="function"><span class="params">response</span> =&gt;</span> response.json())</span><br><span class="line">	.then(<span class="function"><span class="params">data</span> =&gt;</span> <span class="built_in">console</span>.log(data))</span><br><span class="line">	.catch(<span class="function"><span class="params">e</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">"Oops, error"</span>, e))</span><br></pre></td></tr></table></figure>
     
   </div>
+
 </article>
 
 
    
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持hzzly</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
 
    
   <div class="box-prev-next clearfix">
@@ -257,12 +288,6 @@
           <li class="item-toolbox">
             <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
               博客
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a class="CIRCLE" href="/project/" rel="noopener noreferrer" target="_self">
-              项目
             </a>
           </li>
         
@@ -310,13 +335,16 @@
 
     
 
-
-
-
+    
     
 
     
-	
+
+    
+    
+
+    
+
   </div>
 
   
