@@ -15,18 +15,18 @@
     <meta name="keywords" content="随笔,webpack,react,">
   
 
-  <meta name="description" content="版本 webpack 4 Babel 7   本篇主要使用webpack搭建基础的React环境  webpack核心概念 entry: 入口起点 output: 输出 module: 模块，webpack中一切皆是模块 loader: 转换工具，webpack 只能理解 JavaScript 和 JSON 文件。loader 让 webpack 能够去处理其他类型的文件，并将它们转换为有效模块，">
+  <meta name="description" content="前言：接触webpack从在学校的那会起，也一直在使用它，用的都是别人封装好的，偶尔去修改一点点配置，也没有真正自己从零开始配置一个脚手架，接下来几篇将记录我对webpack以及开发中提升效率的配置，其中遇到的一些坑也会提示出来。 版本 webpack 4 Babel 7   本篇主要使用webpack搭建基础的React环境  快速浏览： webpack优化篇  webpack核心概念 entr">
 <meta name="keywords" content="随笔,webpack,react">
 <meta property="og:type" content="article">
 <meta property="og:title" content="动手搭建react开发环境一">
 <meta property="og:url" content="http://yoursite.com/2019/07/11/动手搭建react开发环境一/index.html">
 <meta property="og:site_name" content="Hzzly">
-<meta property="og:description" content="版本 webpack 4 Babel 7   本篇主要使用webpack搭建基础的React环境  webpack核心概念 entry: 入口起点 output: 输出 module: 模块，webpack中一切皆是模块 loader: 转换工具，webpack 只能理解 JavaScript 和 JSON 文件。loader 让 webpack 能够去处理其他类型的文件，并将它们转换为有效模块，">
+<meta property="og:description" content="前言：接触webpack从在学校的那会起，也一直在使用它，用的都是别人封装好的，偶尔去修改一点点配置，也没有真正自己从零开始配置一个脚手架，接下来几篇将记录我对webpack以及开发中提升效率的配置，其中遇到的一些坑也会提示出来。 版本 webpack 4 Babel 7   本篇主要使用webpack搭建基础的React环境  快速浏览： webpack优化篇  webpack核心概念 entr">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-11T09:49:09.583Z">
+<meta property="og:updated_time" content="2019-07-12T02:39:27.544Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="动手搭建react开发环境一">
-<meta name="twitter:description" content="版本 webpack 4 Babel 7   本篇主要使用webpack搭建基础的React环境  webpack核心概念 entry: 入口起点 output: 输出 module: 模块，webpack中一切皆是模块 loader: 转换工具，webpack 只能理解 JavaScript 和 JSON 文件。loader 让 webpack 能够去处理其他类型的文件，并将它们转换为有效模块，">
+<meta name="twitter:description" content="前言：接触webpack从在学校的那会起，也一直在使用它，用的都是别人封装好的，偶尔去修改一点点配置，也没有真正自己从零开始配置一个脚手架，接下来几篇将记录我对webpack以及开发中提升效率的配置，其中遇到的一些坑也会提示出来。 版本 webpack 4 Babel 7   本篇主要使用webpack搭建基础的React环境  快速浏览： webpack优化篇  webpack核心概念 entr">
 
   
 
@@ -152,7 +152,7 @@ ga('send', 'pageview');
 
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#版本"><span class="toc-text">版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#webpack核心概念"><span class="toc-text">webpack核心概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基础配置"><span class="toc-text">基础配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、初始化项目"><span class="toc-text">1、初始化项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、安装webpack"><span class="toc-text">2、安装webpack</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、HtmlWebpackPlugin"><span class="toc-text">3、HtmlWebpackPlugin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、配置转义ES6-ES7-JSX"><span class="toc-text">4、配置转义ES6/ES7/JSX</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、配置转义Typescript"><span class="toc-text">5、配置转义Typescript</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6、CleanWebpackPlugin"><span class="toc-text">6、CleanWebpackPlugin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7、source-map"><span class="toc-text">7、source-map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8、WebpackDevServer"><span class="toc-text">8、WebpackDevServer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9、编译css和scss并使用css-modules"><span class="toc-text">9、编译css和scss并使用css-modules</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10、集成postcss"><span class="toc-text">10、集成postcss</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11、图片处理"><span class="toc-text">11、图片处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12、字体文件处理"><span class="toc-text">12、字体文件处理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试React环境"><span class="toc-text">测试React环境</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#版本"><span class="toc-text">版本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#快速浏览："><span class="toc-text">快速浏览：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#webpack核心概念"><span class="toc-text">webpack核心概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基础配置"><span class="toc-text">基础配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、初始化项目"><span class="toc-text">1、初始化项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、安装webpack"><span class="toc-text">2、安装webpack</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、HtmlWebpackPlugin"><span class="toc-text">3、HtmlWebpackPlugin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、配置转义ES6-ES7-JSX"><span class="toc-text">4、配置转义ES6/ES7/JSX</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、配置转义Typescript"><span class="toc-text">5、配置转义Typescript</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6、CleanWebpackPlugin"><span class="toc-text">6、CleanWebpackPlugin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7、source-map"><span class="toc-text">7、source-map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8、WebpackDevServer"><span class="toc-text">8、WebpackDevServer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9、编译css和scss并使用css-modules"><span class="toc-text">9、编译css和scss并使用css-modules</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10、集成postcss"><span class="toc-text">10、集成postcss</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11、图片处理"><span class="toc-text">11、图片处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12、字体文件处理"><span class="toc-text">12、字体文件处理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试React环境"><span class="toc-text">测试React环境</span></a></li></ol>
   </div>
 
 
@@ -187,13 +187,17 @@ ga('send', 'pageview');
 
   <div class="article-content">
     
-      <h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><ul>
+      <p>前言：接触webpack从在学校的那会起，也一直在使用它，用的都是别人封装好的，偶尔去修改一点点配置，也没有真正自己从零开始配置一个脚手架，接下来几篇将记录我对webpack以及开发中提升效率的配置，其中遇到的一些坑也会提示出来。</p>
+<h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><ul>
 <li>webpack 4</li>
 <li>Babel 7</li>
 </ul>
 <blockquote>
 <p>本篇主要使用webpack搭建基础的React环境</p>
 </blockquote>
+<h3 id="快速浏览："><a href="#快速浏览：" class="headerlink" title="快速浏览："></a>快速浏览：</h3><ul>
+<li><a href="http://hjingren.cn/2019/07/12/%E5%8A%A8%E6%89%8B%E6%90%AD%E5%BB%BAreact%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E4%BA%8C/" target="_blank" rel="noopener">webpack优化篇</a></li>
+</ul>
 <h2 id="webpack核心概念"><a href="#webpack核心概念" class="headerlink" title="webpack核心概念"></a>webpack核心概念</h2><ul>
 <li>entry: 入口起点</li>
 <li>output: 输出</li>
