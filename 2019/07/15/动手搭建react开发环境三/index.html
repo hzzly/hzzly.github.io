@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>动手搭建react开发环境三 | Hzzly</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="随笔,webpack,react,">
+  
+
+  <meta name="description" content="版本 webpack 4 Babel 7   本篇主要使用针对代码或者开发效率进行优化  1、ESLint规范 规范代码有利于团队协作  安装1yarn add eslint babel-eslint eslint-config-airbnb eslint-config-standard eslint-loader eslint-plugin-import eslint-plugin-jsx-a1">
+<meta name="keywords" content="随笔,webpack,react">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动手搭建react开发环境三">
+<meta property="og:url" content="http://yoursite.com/2019/07/15/动手搭建react开发环境三/index.html">
+<meta property="og:site_name" content="Hzzly">
+<meta property="og:description" content="版本 webpack 4 Babel 7   本篇主要使用针对代码或者开发效率进行优化  1、ESLint规范 规范代码有利于团队协作  安装1yarn add eslint babel-eslint eslint-config-airbnb eslint-config-standard eslint-loader eslint-plugin-import eslint-plugin-jsx-a1">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-18T01:32:35.696Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="动手搭建react开发环境三">
+<meta name="twitter:description" content="版本 webpack 4 Babel 7   本篇主要使用针对代码或者开发效率进行优化  1、ESLint规范 规范代码有利于团队协作  安装1yarn add eslint babel-eslint eslint-config-airbnb eslint-config-standard eslint-loader eslint-plugin-import eslint-plugin-jsx-a1">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#版本"><span class="toc-text">版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1、ESLint规范"><span class="toc-text">1、ESLint规范</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#eslintrc"><span class="toc-text">.eslintrc</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#eslintignore"><span class="toc-text">.eslintignore</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编译前置检验"><span class="toc-text">编译前置检验</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、编辑器配置"><span class="toc-text">2、编辑器配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#editorconfig"><span class="toc-text">.editorconfig</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、cross-env"><span class="toc-text">3、cross-env</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-1"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用"><span class="toc-text">使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、代码自动格式化"><span class="toc-text">4、代码自动格式化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-2"><span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装eslint"><span class="toc-text">安装eslint</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装prettier"><span class="toc-text">安装prettier</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装husky，lint-staged"><span class="toc-text">安装husky，lint-staged</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#prettier配置"><span class="toc-text">prettier配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#husky钩子配置"><span class="toc-text">husky钩子配置</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-动手搭建react开发环境三" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">动手搭建react开发环境三</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.07.15</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>hzzly</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><ul>
+<li>webpack 4</li>
+<li>Babel 7</li>
+</ul>
+<blockquote>
+<p>本篇主要使用针对代码或者开发效率进行优化</p>
+</blockquote>
+<h2 id="1、ESLint规范"><a href="#1、ESLint规范" class="headerlink" title="1、ESLint规范"></a>1、ESLint规范</h2><blockquote>
+<p>规范代码有利于团队协作</p>
+</blockquote>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add eslint babel-eslint eslint-config-airbnb eslint-config-standard eslint-loader eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-node eslint-plugin-promise eslint-plugin-react eslint-plugin-standard -D</span><br></pre></td></tr></table></figure>
+<h3 id="eslintrc"><a href="#eslintrc" class="headerlink" title=".eslintrc"></a>.eslintrc</h3><p>新建.eslintrc文件（配置ESLint）</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"parser"</span>: <span class="string">"babel-eslint"</span>,</span><br><span class="line">  <span class="attr">"env"</span>: &#123;</span><br><span class="line">    <span class="attr">"browser"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"es6"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"node"</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"parserOptions"</span>: &#123;</span><br><span class="line">    <span class="attr">"ecmaVersion"</span>: <span class="number">6</span>,</span><br><span class="line">    <span class="attr">"sourceType"</span>: <span class="string">"module"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"extends"</span>: [<span class="string">"airbnb"</span>, <span class="string">"prettier"</span>],</span><br><span class="line">  <span class="attr">"rules"</span>: &#123;</span><br><span class="line">    <span class="attr">"generator-star-spacing"</span>: [<span class="number">0</span>],</span><br><span class="line">    <span class="attr">"consistent-return"</span>: [<span class="number">0</span>],</span><br><span class="line">    <span class="attr">"react/forbid-prop-types"</span>: [<span class="number">0</span>],</span><br><span class="line">    <span class="attr">"react/jsx-filename-extension"</span>: [<span class="number">1</span>, &#123; <span class="attr">"extensions"</span>: [<span class="string">".js"</span>] &#125;],</span><br><span class="line">    <span class="attr">"global-require"</span>: [<span class="number">1</span>],</span><br><span class="line">    <span class="attr">"import/prefer-default-export"</span>: [<span class="number">0</span>],</span><br><span class="line">    <span class="attr">"react/jsx-no-bind"</span>: [<span class="number">0</span>],</span><br><span class="line">    <span class="attr">"react/prop-types"</span>: [<span class="number">0</span>],</span><br><span class="line">    <span class="attr">"react/prefer-stateless-function"</span>: [<span class="number">0</span>],</span><br><span class="line">    <span class="attr">"react/jsx-wrap-multilines"</span>: [</span><br><span class="line">      <span class="string">"error"</span>,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">"declaration"</span>: <span class="string">"parens-new-line"</span>,</span><br><span class="line">        <span class="attr">"assignment"</span>: <span class="string">"parens-new-line"</span>,</span><br><span class="line">        <span class="attr">"return"</span>: <span class="string">"parens-new-line"</span>,</span><br><span class="line">        <span class="attr">"arrow"</span>: <span class="string">"parens-new-line"</span>,</span><br><span class="line">        <span class="attr">"condition"</span>: <span class="string">"parens-new-line"</span>,</span><br><span class="line">        <span class="attr">"logical"</span>: <span class="string">"parens-new-line"</span>,</span><br><span class="line">        <span class="attr">"prop"</span>: <span class="string">"ignore"</span></span><br><span class="line">      &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"no-else-return"</span>: [<span class="number">0</span>],</span><br><span class="line">    <span class="attr">"no-restricted-syntax"</span>: [<span class="number">0</span>],</span><br><span class="line">    <span class="attr">"import/no-extraneous-dependencies"</span>: [<span class="number">0</span>],</span><br><span class="line">    <span class="attr">"no-use-before-define"</span>: [<span class="number">0</span>],</span><br><span class="line">    <span class="attr">"jsx-a11y/no-static-element-interactions"</span>: [<span class="number">0</span>],</span><br><span class="line">    <span class="attr">"jsx-a11y/no-noninteractive-element-interactions"</span>: [<span class="number">0</span>],</span><br><span class="line">    <span class="attr">"jsx-a11y/click-events-have-key-events"</span>: [<span class="number">0</span>],</span><br><span class="line">    <span class="attr">"jsx-a11y/anchor-is-valid"</span>: [<span class="number">0</span>],</span><br><span class="line">    <span class="attr">"no-nested-ternary"</span>: [<span class="number">0</span>],</span><br><span class="line">    <span class="attr">"arrow-body-style"</span>: [<span class="number">0</span>],</span><br><span class="line">    <span class="attr">"linebreak-style"</span>: [<span class="string">"error"</span>, <span class="string">"unix"</span>],</span><br><span class="line">    <span class="attr">"import/extensions"</span>: [<span class="number">0</span>],</span><br><span class="line">    <span class="attr">"no-bitwise"</span>: [<span class="number">0</span>],</span><br><span class="line">    <span class="attr">"no-cond-assign"</span>: [<span class="number">0</span>],</span><br><span class="line">    <span class="attr">"import/no-unresolved"</span>: [<span class="number">0</span>],</span><br><span class="line">    <span class="attr">"comma-dangle"</span>: [</span><br><span class="line">      <span class="string">"error"</span>,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">"arrays"</span>: <span class="string">"always-multiline"</span>,</span><br><span class="line">        <span class="attr">"objects"</span>: <span class="string">"always-multiline"</span>,</span><br><span class="line">        <span class="attr">"imports"</span>: <span class="string">"always-multiline"</span>,</span><br><span class="line">        <span class="attr">"exports"</span>: <span class="string">"always-multiline"</span>,</span><br><span class="line">        <span class="attr">"functions"</span>: <span class="string">"ignore"</span></span><br><span class="line">      &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"object-curly-newline"</span>: [<span class="number">0</span>],</span><br><span class="line">    <span class="attr">"function-paren-newline"</span>: [<span class="number">0</span>],</span><br><span class="line">    <span class="attr">"no-restricted-globals"</span>: [<span class="number">0</span>],</span><br><span class="line">    <span class="attr">"require-yield"</span>: [<span class="number">1</span>]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="eslintignore"><a href="#eslintignore" class="headerlink" title=".eslintignore"></a>.eslintignore</h3><p>新建.eslintignore文件（ESLint忽略特定的文件或目录）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">build<span class="comment">/*.js</span></span><br></pre></td></tr></table></figure>
+<h3 id="编译前置检验"><a href="#编译前置检验" class="headerlink" title="编译前置检验"></a>编译前置检验</h3><p>在执行编译之前去执行eslint-loader检查代码规范，有报错就不执行编译</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="comment">//...同上</span></span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        enforce: <span class="string">'pre'</span>,</span><br><span class="line">        test: <span class="regexp">/\.(js|jsx)$/</span>,</span><br><span class="line">        exclude: <span class="regexp">/node_modules/</span>,</span><br><span class="line">        use: <span class="string">'eslint-loader'</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2、编辑器配置"><a href="#2、编辑器配置" class="headerlink" title="2、编辑器配置"></a>2、编辑器配置</h2><p>EditorConfig包含一个用于定义代码格式的文件和一批编辑器插件，这些插件是让编辑器读取配置文件并以此来格式化代码。</p>
+<h3 id="editorconfig"><a href="#editorconfig" class="headerlink" title=".editorconfig"></a>.editorconfig</h3><p>新建.editorconfig文件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># http://editorconfig.org</span><br><span class="line">root = <span class="literal">true</span></span><br><span class="line"> </span><br><span class="line">[*]</span><br><span class="line">indent_style = space</span><br><span class="line">indent_size = <span class="number">2</span></span><br><span class="line">end_of_line = lf</span><br><span class="line">charset = utf<span class="number">-8</span></span><br><span class="line">trim_trailing_whitespace = <span class="literal">true</span></span><br><span class="line">insert_final_newline = <span class="literal">true</span></span><br><span class="line"> </span><br><span class="line">[*.md]</span><br><span class="line">trim_trailing_whitespace = <span class="literal">false</span></span><br><span class="line"> </span><br><span class="line">[Makefile]</span><br><span class="line">indent_style = tab</span><br></pre></td></tr></table></figure>
+<h2 id="3、cross-env"><a href="#3、cross-env" class="headerlink" title="3、cross-env"></a>3、cross-env</h2><p>因为windows不支持NODE_ENV=development的设置环境变量的方式，所以使用我们可以cross-env设置跨平台的环境变量的脚本。</p>
+<h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add cross-env -D</span><br></pre></td></tr></table></figure>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// package.json</span><br><span class="line">"scripts": &#123;</span><br><span class="line">  "build": "cross-env NODE_ENV=production webpack --config ./build/webpack.config.js"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样就可以使用 <code>process.env.NODE_ENV</code> 来获取环境变量继续操作了。</p>
+<h2 id="4、代码自动格式化"><a href="#4、代码自动格式化" class="headerlink" title="4、代码自动格式化"></a>4、代码自动格式化</h2><p>使用husky, prettier, eslint在代码提交时自动格式化，并检查代码。</p>
+<ul>
+<li>husky。一个git钩子工具，这里主要用pre-commit钩子。通俗点讲就是husky可以在你commit之前帮你做一些事情。</li>
+<li>prettier。 一个很流行的代码格式化工具，你很容易在编辑器找到实现它的各种插件，像vscode,atom,webstom都可以找到。这里用它在代码提交前做代码格式化。</li>
+<li>eslint。 代码检查工具。eslint也可以负责一部分代码格式检查的工作，让其负责代码错误检查。</li>
+<li>lint-staged。在你提交的文件中，执行自定义的指令。</li>
+</ul>
+<h3 id="安装-2"><a href="#安装-2" class="headerlink" title="安装"></a>安装</h3><h4 id="安装eslint"><a href="#安装eslint" class="headerlink" title="安装eslint"></a>安装eslint</h4><p>如果上面已经安装过了就不用再次安装了，没有安装就按照上面 <code>ESLint规范</code> 步骤安装好。</p>
+<h4 id="安装prettier"><a href="#安装prettier" class="headerlink" title="安装prettier"></a>安装prettier</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add prettier eslint-plugin-prettier eslint-config-prettier -D</span><br></pre></td></tr></table></figure>
+<h4 id="安装husky，lint-staged"><a href="#安装husky，lint-staged" class="headerlink" title="安装husky，lint-staged"></a>安装husky，lint-staged</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add husky lint-staged pretty-quick -D</span><br></pre></td></tr></table></figure>
+<h3 id="prettier配置"><a href="#prettier配置" class="headerlink" title="prettier配置"></a>prettier配置</h3><p>在eslintrc.json修改如下配置：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"extends"</span>: [<span class="string">"airbnb"</span>, <span class="string">"prettier"</span>],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>新建.prettierrc文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;singleQuote&quot;: true,</span><br><span class="line">  &quot;trailingComma&quot;: &quot;es5&quot;,</span><br><span class="line">  &quot;printWidth&quot;: 100,</span><br><span class="line">  &quot;overrides&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;files&quot;: &quot;.prettierrc&quot;,</span><br><span class="line">      &quot;options&quot;: &#123; &quot;parser&quot;: &quot;json&quot; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>配置.eslintignore文件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">build<span class="comment">/*.js</span></span><br></pre></td></tr></table></figure>
+<h3 id="husky钩子配置"><a href="#husky钩子配置" class="headerlink" title="husky钩子配置"></a>husky钩子配置</h3><p>husky会在你提交前，调用pre-commit钩子，执行lint-staged，如果代码不符合prettier配置的规则，会进行格式化；然后再用eslint的规则进行检查，如果有不符合规则且无法自动修复的，就会停止此次提交。如果都通过了就会讲代码添加到stage，然后commit。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">// package.json</span><br><span class="line">&#123;</span><br><span class="line">  // ...</span><br><span class="line">  "scripts": &#123;</span><br><span class="line">    // ...</span><br><span class="line">    "lint-staged": "lint-staged",</span><br><span class="line">    "lint-staged:js": "eslint --ext .js --fix",</span><br><span class="line">    "prettier": "prettier --write ./src/**/**/**/*"</span><br><span class="line">  &#125;,</span><br><span class="line">  "husky": &#123;</span><br><span class="line">    "hooks": &#123;</span><br><span class="line">      "pre-commit": "lint-staged"</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  "lint-staged": &#123;</span><br><span class="line">    "linters": &#123;</span><br><span class="line">      "**/*.&#123;js,jsx,scss&#125;": [</span><br><span class="line">        "prettier --write",</span><br><span class="line">        <span class="string">"git add"</span></span><br><span class="line">      ],</span><br><span class="line">      "**/*.&#123;js,jsx&#125;": "npm run lint-staged:js",</span><br><span class="line">      "**/*.scss": "stylelint --syntax=scss"</span><br><span class="line">    &#125;,</span><br><span class="line">    "ignore": [</span><br><span class="line">      <span class="string">"**/dist/public/*"</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>到此，我们的react开发环境对于打包、代码规范以及提升开发效率的一些配置我们都具备了，可以开心的写我们的react了。接下来我们就可以把这些配置单独完善成一个库，通过我们的 cli 脚手架拉取直接基于它来开发，Let’s go脚手架开发…</p>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持hzzly</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/07/12/动手搭建react开发环境二/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2019/07/19/动手开发一个自己的项目脚手架/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

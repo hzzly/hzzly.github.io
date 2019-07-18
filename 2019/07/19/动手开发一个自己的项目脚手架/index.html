@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>动手开发一个自己的项目脚手架 | Hzzly</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="随笔,脚手架,">
+  
+
+  <meta name="description" content="前言：随着前端工程化的不断深入，同时 Node 给前端开发带来了很大的改变，促进了前端开发的自动化，越来越多的人选择使用脚手架来从零到一搭建自己的项目。其中最熟悉的就是vue-cli和create-react-app，它们可以帮助我们初始化配置、生成项目结构、自动安装依赖等等，最后我们一行指令即可运行项目开始开发，或者进行项目构建（build）。在实际的开发过程中，我们可能会有自己的特定需求，那">
+<meta name="keywords" content="随笔,脚手架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动手开发一个自己的项目脚手架">
+<meta property="og:url" content="http://yoursite.com/2019/07/19/动手开发一个自己的项目脚手架/index.html">
+<meta property="og:site_name" content="Hzzly">
+<meta property="og:description" content="前言：随着前端工程化的不断深入，同时 Node 给前端开发带来了很大的改变，促进了前端开发的自动化，越来越多的人选择使用脚手架来从零到一搭建自己的项目。其中最熟悉的就是vue-cli和create-react-app，它们可以帮助我们初始化配置、生成项目结构、自动安装依赖等等，最后我们一行指令即可运行项目开始开发，或者进行项目构建（build）。在实际的开发过程中，我们可能会有自己的特定需求，那">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/cli/hzzly-cli2.png">
+<meta property="og:image" content="https://img.shields.io/npm/v/hzzly-cli.svg">
+<meta property="og:image" content="https://img.shields.io/npm/l/hzzly-cli.svg">
+<meta property="og:image" content="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/cli/hzzly-cli.png">
+<meta property="og:updated_time" content="2019-07-18T01:26:45.210Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="动手开发一个自己的项目脚手架">
+<meta name="twitter:description" content="前言：随着前端工程化的不断深入，同时 Node 给前端开发带来了很大的改变，促进了前端开发的自动化，越来越多的人选择使用脚手架来从零到一搭建自己的项目。其中最熟悉的就是vue-cli和create-react-app，它们可以帮助我们初始化配置、生成项目结构、自动安装依赖等等，最后我们一行指令即可运行项目开始开发，或者进行项目构建（build）。在实际的开发过程中，我们可能会有自己的特定需求，那">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/cli/hzzly-cli2.png">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#开始"><span class="toc-text">开始</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化项目"><span class="toc-text">初始化项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#依赖"><span class="toc-text">依赖</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#初探"><span class="toc-text">初探</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、创建一个用于运行命令的脚本"><span class="toc-text">1、创建一个用于运行命令的脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、添加命令"><span class="toc-text">2、添加命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、全局运行命令调试"><span class="toc-text">3、全局运行命令调试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#脚手架开发"><span class="toc-text">脚手架开发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、效果"><span class="toc-text">1、效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、准备项目模版"><span class="toc-text">2、准备项目模版</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、初始Command"><span class="toc-text">3、初始Command</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、定义Command命令"><span class="toc-text">4、定义Command命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、处理生成项目结构逻辑"><span class="toc-text">5、处理生成项目结构逻辑</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1、思路"><span class="toc-text">5.1、思路</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2、checkAppName"><span class="toc-text">5.2、checkAppName</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-3、checkEmpty"><span class="toc-text">5.3、checkEmpty</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-4、checkExist"><span class="toc-text">5.4、checkExist</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-5、downloadAndGenerate"><span class="toc-text">5.5、downloadAndGenerate</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#发布到npm"><span class="toc-text">发布到npm</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#更新包"><span class="toc-text">更新包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优化"><span class="toc-text">优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、添加小面板"><span class="toc-text">1、添加小面板</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、检查包的线上版本与本地版本"><span class="toc-text">2、检查包的线上版本与本地版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、README-md添加徽标"><span class="toc-text">3、README.md添加徽标</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#深入inquirer-js"><span class="toc-text">深入inquirer.js</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、基本用法"><span class="toc-text">1、基本用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、参数详解"><span class="toc-text">2、参数详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、实例"><span class="toc-text">3、实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#感谢"><span class="toc-text">感谢</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-动手开发一个自己的项目脚手架" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">动手开发一个自己的项目脚手架</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.07.19</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>hzzly</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <blockquote>
+<p>前言：随着前端工程化的不断深入，同时 Node 给前端开发带来了很大的改变，促进了前端开发的自动化，越来越多的人选择使用脚手架来从零到一搭建自己的项目。其中最熟悉的就是vue-cli和create-react-app，它们可以帮助我们初始化配置、生成项目结构、自动安装依赖等等，最后我们一行指令即可运行项目开始开发，或者进行项目构建（build）。在实际的开发过程中，我们可能会有自己的特定需求，那么我们就得学会如何开发一个Node命令行工具。</p>
+</blockquote>
+<p>在前面的文章 动手搭建react开发环境系列 中，结尾处我们说到，既然我们的项目结构搭建好了，但不能每次开发都来手动复制项目结构，所以我们就要通过执行命令就生成我们需要的项目结构。</p>
+<p>我们的初步设想是，在指定目录下执行一个命令（假设为create）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hzzly create demo</span><br></pre></td></tr></table></figure></p>
+<p>就会生成一个目录名为 demo 的项目，里面包含有我们所需的基础项目结构。</p>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><h3 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir hzzly-cli</span><br><span class="line">cd hzzly-cli</span><br><span class="line">mkdir bin lib</span><br><span class="line">npm init -y</span><br></pre></td></tr></table></figure>
+<h3 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add commander chalk boxen fs-extra inquirer ora update-notifier download-git-repo rimraf</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://github.com/tj/commander.js" target="_blank" rel="noopener">commander</a> 一款重量轻，表现力和强大的命令行框架</li>
+<li><a href="https://github.com/chalk/chalk" target="_blank" rel="noopener">chalk</a> 用于打印彩色的信息</li>
+<li><a href="https://github.com/sindresorhus/boxen" target="_blank" rel="noopener">boxen</a> 创建小“面板”</li>
+<li><a href="https://github.com/SBoudrias/Inquirer.js" target="_blank" rel="noopener">inquirer</a> 交互式命令行用户界面的集合</li>
+<li><a href="https://github.com/sindresorhus/ora" target="_blank" rel="noopener">ora</a> 用于创建 spinner，添加下载模板 loading 效果</li>
+<li><a href="https://github.com/yeoman/update-notifier" target="_blank" rel="noopener">update-notifier</a> 用于检查包的线上版本与本地版本</li>
+<li><a href="https://github.com/flipxfx/download-git-repo" target="_blank" rel="noopener">download-git-repo</a> 从节点下载并提取git存储库</li>
+</ul>
+<h2 id="初探"><a href="#初探" class="headerlink" title="初探"></a>初探</h2><h3 id="1、创建一个用于运行命令的脚本"><a href="#1、创建一个用于运行命令的脚本" class="headerlink" title="1、创建一个用于运行命令的脚本"></a>1、创建一个用于运行命令的脚本</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bin/hzzly.js</span></span><br><span class="line"><span class="meta">#! /usr/bin/env node</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"hello world ~"</span>);</span><br></pre></td></tr></table></figure>
+<p>执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node bin/hzzly.js</span><br></pre></td></tr></table></figure></p>
+<p>不出意外的话能够看到输出了 hello world ~，当然这不是我们想要的结果，我们是要直接运行 hzzly 命令就能输出 hello world ~</p>
+<blockquote>
+<p>🔥Tip: 主入口文件的最上方添加代码 #! /usr/bin/env node, 表明这是一个可执行的应用</p>
+</blockquote>
+<h3 id="2、添加命令"><a href="#2、添加命令" class="headerlink" title="2、添加命令"></a>2、添加命令</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// package.json</span><br><span class="line">&#123;</span><br><span class="line">  // ...</span><br><span class="line">  "bin": &#123;</span><br><span class="line">    "hzzly": "bin/hzzly.js"</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里我们指定 hzzly 命令的执行文件为 bin/hzzly.js。</p>
+<h3 id="3、全局运行命令调试"><a href="#3、全局运行命令调试" class="headerlink" title="3、全局运行命令调试"></a>3、全局运行命令调试</h3><p>在项目目录下运行：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install . -g</span><br><span class="line">// 或</span><br><span class="line">npm link</span><br></pre></td></tr></table></figure></p>
+<p>这样就可以使用 hzzly 命令了。</p>
+<p>到此，一个本地的 npm 命令行工具就已经成功完成了，接下来我们就来完善具体的功能。</p>
+<h2 id="脚手架开发"><a href="#脚手架开发" class="headerlink" title="脚手架开发"></a>脚手架开发</h2><h3 id="1、效果"><a href="#1、效果" class="headerlink" title="1、效果"></a>1、效果</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Usage: hzzly &lt;<span class="built_in">command</span>&gt; [options] &lt;app-name&gt; [folder-name]</span><br><span class="line"> </span><br><span class="line">Options:</span><br><span class="line">  -v, --version  output the version number</span><br><span class="line">  -c, --<span class="built_in">clone</span>    use git <span class="built_in">clone</span></span><br><span class="line">  -h, --<span class="built_in">help</span>     output usage information</span><br><span class="line"> </span><br><span class="line">Commands:</span><br><span class="line">  setup          run remote setup commands</span><br><span class="line">  create         generate a new project from a react template</span><br><span class="line">  check          check <span class="built_in">test</span></span><br><span class="line"> </span><br><span class="line">Examples:</span><br><span class="line"></span><br><span class="line">  <span class="comment"># create a new react project</span></span><br><span class="line">  $ hzzly create demo</span><br></pre></td></tr></table></figure>
+<h3 id="2、准备项目模版"><a href="#2、准备项目模版" class="headerlink" title="2、准备项目模版"></a>2、准备项目模版</h3><p>脚手架是帮助我们快速生成一套既定的项目架构、文件、配置，而最常见的做法的就是先写好一套项目框架模版，等到脚手架要生成项目时，则将这套模版拷贝到目标目录下。</p>
+<ul>
+<li>一种是直接放在本地</li>
+<li>另一种是托管在 github 上</li>
+</ul>
+<p>这里我们选择托管在 github，然后通过<code>download-git-repo</code>下载到指定目录。我准备了一个<a href="https://github.com/hzzly/webpack-template" target="_blank" rel="noopener">项目模版</a>，之后就会用它来作为脚手架生成的项目结构。</p>
+<h3 id="3、初始Command"><a href="#3、初始Command" class="headerlink" title="3、初始Command"></a>3、初始Command</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bin/hzzly.js</span></span><br><span class="line"><span class="keyword">const</span> program = <span class="built_in">require</span>(<span class="string">'commander'</span>);</span><br><span class="line"><span class="keyword">const</span> chalk = <span class="built_in">require</span>(<span class="string">"chalk"</span>);</span><br><span class="line"><span class="keyword">const</span> pkg = <span class="built_in">require</span>(<span class="string">'../package.json'</span>);</span><br><span class="line"> </span><br><span class="line">program</span><br><span class="line">  .version(pkg.version)</span><br><span class="line">  .usage(<span class="string">'&lt;command&gt; [options] &lt;app-name&gt; [folder-name]'</span>)</span><br><span class="line">  .option(<span class="string">"-c, --clone"</span>, <span class="string">"use git clone"</span>)</span><br><span class="line">  .on(<span class="string">"--help"</span>, () =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log();</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Examples:"</span>);</span><br><span class="line">    <span class="built_in">console</span>.log();</span><br><span class="line">    <span class="built_in">console</span>.log(</span><br><span class="line">      chalk.gray(<span class="string">"  # create a new react project"</span>)</span><br><span class="line">    );</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"  $ hzzly create demo"</span>);</span><br><span class="line">    <span class="built_in">console</span>.log();</span><br><span class="line">  &#125;);</span><br><span class="line">program.parse(process.argv)</span><br></pre></td></tr></table></figure>
+<p>这样，当我们执行 <code>hzzly</code> 命令时就会有如下效果：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Usage: hzzly &lt;<span class="built_in">command</span>&gt; [options] &lt;app-name&gt;</span><br><span class="line"> </span><br><span class="line">Options:</span><br><span class="line">  -V, --version  output the version number</span><br><span class="line">  -c, --<span class="built_in">clone</span>    use git <span class="built_in">clone</span></span><br><span class="line">  -h, --<span class="built_in">help</span>     output usage information</span><br><span class="line"> </span><br><span class="line">Examples:</span><br><span class="line"> </span><br><span class="line">  <span class="comment"># create a new react project</span></span><br><span class="line">  $ hzzly create demo</span><br></pre></td></tr></table></figure></p>
+<p>接下来就可以去定义我们的 Commands 了。</p>
+<h3 id="4、定义Command命令"><a href="#4、定义Command命令" class="headerlink" title="4、定义Command命令"></a>4、定义Command命令</h3><p>在 <code>program.parse(process.argv)</code> 前面去定义我们的command命令</p>
+<p>为什么要在它前面去定义命令呢？</p>
+<blockquote>
+<p>parse 用于解析process.argv，设置options以及触发commands</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bin/hzzly.js</span></span><br><span class="line"><span class="comment">// 同上...</span></span><br><span class="line">program</span><br><span class="line">  .command(<span class="string">'create'</span>)</span><br><span class="line">  .description(<span class="string">'generate a new project from a template'</span>)</span><br><span class="line">  .option(<span class="string">"-c, --clone"</span>, <span class="string">"use git clone"</span>)</span><br><span class="line">  .action(<span class="function">(<span class="params">appName, option</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 获得了参数，可以在这里做响应的业务处理</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`指令 create 后面跟的参数值: <span class="subst">$&#123;appName&#125;</span>`</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(option);</span><br><span class="line">  &#125;);</span><br><span class="line"><span class="comment">// 同上</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>command 定义命令行指令</li>
+<li>description 命令描述，它会在help里面展示</li>
+<li>option 定义参数。它接受四个参数，在第一个参数中，它可输入短名字 -a和长名字–name ,使用 | 或者 , 分隔，在命令行里使用时，这两个是等价的，区别是后者可以在程序里通过回调获取到；第二个为描述, 会在 help 信息里展示出来；第三个参数为回调函数，他接收的参数为一个string，有时候我们需要一个命令行创建多个模块，就需要一个回调来处理；第四个参数为默认值</li>
+<li>action 注册一个 callback 函数</li>
+</ul>
+<p>接下来就是处理生成项目模板的逻辑了，继续。</p>
+<h3 id="5、处理生成项目结构逻辑"><a href="#5、处理生成项目结构逻辑" class="headerlink" title="5、处理生成项目结构逻辑"></a>5、处理生成项目结构逻辑</h3><h4 id="5-1、思路"><a href="#5-1、思路" class="headerlink" title="5.1、思路"></a>5.1、思路</h4><ul>
+<li>1、输入 <code>vue create</code> 提示输入项目文件夹名称</li>
+<li>2、输入 <code>vue create .</code> 表示在当前目录构建项目，但要给个提示（是否确定要在所在目录生成项目，其它文件将被删除）</li>
+<li>3、输入 <code>vue create app</code> 表示在当前目录生成一个 <code>app</code> 的目录并在此目录构建项目，当有相同的目录时也要提示（当前目录已存在，是否继续构建）</li>
+</ul>
+<p>好了，思路有了就 so easy 了</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bin/hzzly.js</span></span><br><span class="line"><span class="comment">// 同上...</span></span><br><span class="line">program</span><br><span class="line">  .command(<span class="string">'create'</span>)</span><br><span class="line">  .description(<span class="string">'generate a new project from a template'</span>)</span><br><span class="line">  .option(<span class="string">"-c, --clone"</span>, <span class="string">"use git clone"</span>)</span><br><span class="line">  .action(<span class="function">(<span class="params">appName</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// // 获得了参数，可以在这里做响应的业务处理</span></span><br><span class="line">    <span class="comment">// console.log(`指令 create 后面跟的参数值: $&#123;appName&#125;`);</span></span><br><span class="line">    <span class="comment">// 判断是否有传appName</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> appName === <span class="string">'string'</span>) &#123;</span><br><span class="line">      <span class="comment">// 判断是否有相同 appName 目录</span></span><br><span class="line">      checkAppName(appName);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 没有传appName的话提示用户输入</span></span><br><span class="line">      <span class="keyword">const</span> opts = [&#123;</span><br><span class="line">        type: <span class="string">'input'</span>,</span><br><span class="line">        name: <span class="string">'appName'</span>,</span><br><span class="line">        message: <span class="string">'Please enter the app name for your project：'</span>,</span><br><span class="line">        validate: <span class="function"><span class="params">appName</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (!appName) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">'⚠️  app name must not be null！'</span>;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;];</span><br><span class="line">      <span class="comment">// inquirer命令行交互工具</span></span><br><span class="line">      inquirer.prompt(opts).then(<span class="function">(<span class="params">&#123; appName &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (appName) &#123;</span><br><span class="line">          <span class="comment">// 输入完之后判断是否有相同 appName 目录</span></span><br><span class="line">          checkAppName(appName);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line"><span class="comment">// 同上</span></span><br></pre></td></tr></table></figure>
+<h4 id="5-2、checkAppName"><a href="#5-2、checkAppName" class="headerlink" title="5.2、checkAppName"></a>5.2、checkAppName</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 处理项目名称</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkAppName</span>(<span class="params">appName</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 获取绝对路径</span></span><br><span class="line">  <span class="keyword">const</span> to = path.resolve(appName);</span><br><span class="line">  <span class="comment">// 判断是否在当前目录构建</span></span><br><span class="line">  <span class="keyword">if</span> (appName === <span class="string">'.'</span>) &#123;</span><br><span class="line">    <span class="comment">// 判断当前目录是否为空</span></span><br><span class="line">    checkEmpty(to)</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (checkExist(to)) &#123;</span><br><span class="line">    <span class="comment">// 如果传入的 appName 在当前目录已存在</span></span><br><span class="line">    inquirer.prompt([&#123;</span><br><span class="line">      type: <span class="string">'confirm'</span>,</span><br><span class="line">      message: <span class="string">'Target directory exists. Continue?'</span>,</span><br><span class="line">      name: <span class="string">'ok'</span>,</span><br><span class="line">    &#125;]).then(<span class="function"><span class="params">answers</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (answers.ok) &#123;</span><br><span class="line">        <span class="comment">// 回答是的话删除已存在的目录并下载模板构建项目</span></span><br><span class="line">        rm(appName)</span><br><span class="line">        downloadAndGenerate(REACT_TPL, to, appName)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 如果以上情况都不是就直接下载模板构建项目</span></span><br><span class="line">    downloadAndGenerate(REACT_TPL, to, appName)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="5-3、checkEmpty"><a href="#5-3、checkEmpty" class="headerlink" title="5.3、checkEmpty"></a>5.3、checkEmpty</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断目录是否为空</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkEmpty</span>(<span class="params">path, appName</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> dirFiles = fs.readdirSync(path);</span><br><span class="line">  <span class="keyword">if</span> (dirFiles.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    inquirer.prompt([&#123;</span><br><span class="line">      type: <span class="string">'confirm'</span>,</span><br><span class="line">      name: <span class="string">'ok'</span>,</span><br><span class="line">      message: <span class="string">'Target directory is not empty and will overwritten. Continue?'</span>,</span><br><span class="line">    &#125;]).then(<span class="function"><span class="params">answers</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (answers.ok) &#123;</span><br><span class="line">        fs.emptyDirSync(path)</span><br><span class="line">        downloadAndGenerate(REACT_TPL, path, appName)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    downloadAndGenerate(REACT_TPL, path, appName)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="5-4、checkExist"><a href="#5-4、checkExist" class="headerlink" title="5.4、checkExist"></a>5.4、checkExist</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断目录是否已存在</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkExist</span>(<span class="params">path</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> fs.pathExistsSync(path);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="5-5、downloadAndGenerate"><a href="#5-5、downloadAndGenerate" class="headerlink" title="5.5、downloadAndGenerate"></a>5.5、downloadAndGenerate</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 下载模板构建项目</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">downloadAndGenerate</span>(<span class="params">template, tmp</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 生成下载loading</span></span><br><span class="line">  <span class="keyword">const</span> spinner = ora(<span class="string">"downloading template"</span>);</span><br><span class="line">  <span class="keyword">const</span> clone = program.clone || <span class="literal">false</span>;</span><br><span class="line">  spinner.start();</span><br><span class="line">  download(template, tmp, &#123; clone &#125;, err =&gt; &#123;</span><br><span class="line">    spinner.stop();</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">      <span class="built_in">console</span>.error(</span><br><span class="line">        chalk.red(</span><br><span class="line">        <span class="string">"Failed to download repo "</span> + template + <span class="string">": "</span> + err.message.trim()</span><br><span class="line">        )</span><br><span class="line">      );</span><br><span class="line">      process.exit(<span class="number">1</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 下载完成后提示用户操作</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`To get started:\n\n  cd <span class="subst">$&#123;tmp&#125;</span>\n  npm install\n  npm run dev\n\nDocumentation can be found at https://github.com/hzzly`</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看到这，开发阶段就可告一段落了，我们已经可以通过 <code>hzzly create &lt;app-name&gt;</code> 命令行构建项目目录的步骤，接下来就是发布到npm给其他人使用。</p>
+<h2 id="发布到npm"><a href="#发布到npm" class="headerlink" title="发布到npm"></a>发布到npm</h2><p>到目前为止，我们开发的 hzzly 还是在本地的，现在就该将其发布到 <a href="https://www.npmjs.com/" target="_blank" rel="noopener">npm</a> 上了。</p>
+<p>1、首先 <a href="https://www.npmjs.com/signup" target="_blank" rel="noopener">注册一个账号</a>。</p>
+<p>2、在终端执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm login</span><br></pre></td></tr></table></figure>
+<p>输入用户名、密码和邮箱便可将本地机器与 npm 连接起来了。</p>
+<p>3、修改package.json<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  // ...</span><br><span class="line">  "files": [</span><br><span class="line">    <span class="string">"bin/"</span></span><br><span class="line">  ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>添加 files 属性指定哪些文件提交到 npm，这样可以减少包的大小。</p>
+<p>4、发布<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm publish</span><br></pre></td></tr></table></figure></p>
+<h3 id="更新包"><a href="#更新包" class="headerlink" title="更新包"></a>更新包</h3><p>首先修改 package.json 配置文件中的 version 字段，比如这里我从 1.0.0 改成 1.0.1（只能大于当前版本），然后修改脚手架，最后再次<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm publish</span><br></pre></td></tr></table></figure></p>
+<h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><h3 id="1、添加小面板"><a href="#1、添加小面板" class="headerlink" title="1、添加小面板"></a>1、添加小面板</h3><p><img src="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/cli/hzzly-cli2.png" alt="boxen"><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> boxen = <span class="built_in">require</span>(<span class="string">'boxen'</span>);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">const</span> BOXEN_OPTS = &#123;</span><br><span class="line">  padding: <span class="number">1</span>,</span><br><span class="line">  margin: <span class="number">1</span>,</span><br><span class="line">  align: <span class="string">'center'</span>,</span><br><span class="line">  borderColor: <span class="string">'#678491'</span>,</span><br><span class="line">  borderStyle: <span class="string">'round'</span></span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">initializing</span>(<span class="params">pkg</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> messages = [];</span><br><span class="line">  messages.push(</span><br><span class="line">    <span class="string">`🔥  Welcome to use hzzly-cli <span class="subst">$&#123;chalk.grey(<span class="string">`v<span class="subst">$&#123;pkg.version&#125;</span>`</span>)&#125;</span>`</span></span><br><span class="line">  );</span><br><span class="line">  messages.push(</span><br><span class="line">    chalk.grey(<span class="string">'https://github.com/hzzly/hzzly-cli'</span>)</span><br><span class="line">  );</span><br><span class="line">  messages.push(</span><br><span class="line">    chalk.grey(<span class="string">'https://www.npmjs.com/package/hzzly-cli'</span>)</span><br><span class="line">  )</span><br><span class="line">  <span class="built_in">console</span>.log(boxen(messages.join(<span class="string">'\n'</span>), BOXEN_OPTS));</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">program</span><br><span class="line">  .command(<span class="string">'create'</span>)</span><br><span class="line">  .description(<span class="string">'generate a new project from a template'</span>)</span><br><span class="line">  .option(<span class="string">"-c, --clone"</span>, <span class="string">"use git clone"</span>)</span><br><span class="line">  .action(<span class="function">(<span class="params">appName</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 调用小面板</span></span><br><span class="line">    initializing(pkg)</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure></p>
+<h3 id="2、检查包的线上版本与本地版本"><a href="#2、检查包的线上版本与本地版本" class="headerlink" title="2、检查包的线上版本与本地版本"></a>2、检查包的线上版本与本地版本</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> updateNotifier = <span class="built_in">require</span>(<span class="string">'update-notifier'</span>);</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkVersion</span>(<span class="params">pkg</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log();</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'🛠️  Checking your hzzly-cli version...'</span>);</span><br><span class="line"> </span><br><span class="line">  <span class="keyword">const</span> notifier = updateNotifier(&#123;</span><br><span class="line">    pkg,</span><br><span class="line">    updateCheckInterval: <span class="number">0</span></span><br><span class="line">  &#125;);</span><br><span class="line"> </span><br><span class="line">  <span class="keyword">const</span> update = notifier.update;</span><br><span class="line">  <span class="keyword">if</span> (update) &#123;</span><br><span class="line">    <span class="keyword">const</span> messages = [];</span><br><span class="line">    messages.push(<span class="string">`Update available <span class="subst">$&#123;chalk.grey(update.current)&#125;</span> → <span class="subst">$&#123;chalk.green(update.latest)&#125;</span>`</span>)</span><br><span class="line">    messages.push(<span class="string">`Run <span class="subst">$&#123;chalk.cyan(<span class="string">`npm i -g <span class="subst">$&#123;pkg.name&#125;</span>`</span>)&#125;</span> to update`</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(boxen(messages.join(<span class="string">'\n'</span>), &#123; ...BOXEN_OPTS, <span class="attr">borderColor</span>: <span class="string">'#fae191'</span> &#125;));</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'🛠️  Finish checking your hzzly-cli. CAUTION ↑↑'</span>, <span class="string">'⚠️'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'🛠️  Finish checking your hzzly-cli. OK'</span>, chalk.green(<span class="string">'✔'</span>));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">initializing</span>(<span class="params">pkg</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  checkVersion(pkg)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3、README-md添加徽标"><a href="#3、README-md添加徽标" class="headerlink" title="3、README.md添加徽标"></a>3、README.md添加徽标</h3><p>推荐自动生成徽标网站 <a href="https://shields.io/" target="_blank" rel="noopener">shields.io</a></p>
+<p><img src="https://img.shields.io/npm/v/hzzly-cli.svg" alt="NPM version"></p>
+<p><img src="https://img.shields.io/npm/l/hzzly-cli.svg" alt="MIT Licence"></p>
+<h2 id="深入inquirer-js"><a href="#深入inquirer-js" class="headerlink" title="深入inquirer.js"></a>深入inquirer.js</h2><p>创建脚手架的时候我们会发现很多脚手架都需要我们和命令行频繁交互，就像我们使用npm init的时候一样，那么是如何实现和命令行交互的呢？此时inquirer.js闪亮登场。</p>
+<h3 id="1、基本用法"><a href="#1、基本用法" class="headerlink" title="1、基本用法"></a>1、基本用法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> inquirer = <span class="built_in">require</span>(<span class="string">'inquirer'</span>);</span><br><span class="line">inquirer.prompt([<span class="comment">/* opts */</span>])</span><br><span class="line">  .then(<span class="function">(<span class="params">answers</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// Use answers for... whatever!! </span></span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="2、参数详解"><a href="#2、参数详解" class="headerlink" title="2、参数详解"></a>2、参数详解</h3><ul>
+<li>type：表示提问的类型，包括：input, confirm, list, rawlist, expand, checkbox, password, editor；</li>
+<li>name: 存储当前问题回答的变量；</li>
+<li>message：问题的描述；</li>
+<li>default：默认值；</li>
+<li>choices：列表选项，在某些type下可用，并且包含一个分隔符(separator)；</li>
+<li>validate：对用户的回答进行校验；</li>
+<li>filter：对用户的回答进行过滤处理，返回处理后的值；</li>
+<li>transformer：对用户回答的显示效果进行处理(如：修改回答的字体或背景颜色)，但不会影响最终的答案的内容；</li>
+<li>when：根据前面问题的回答，判断当前问题是否需要被回答；</li>
+<li>pageSize：修改某些type类型下的渲染行数；</li>
+<li>prefix：修改message默认前缀；</li>
+<li>suffix：修改message默认后缀。</li>
+</ul>
+<h3 id="3、实例"><a href="#3、实例" class="headerlink" title="3、实例"></a>3、实例</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> opts = [</span><br><span class="line">  &#123;</span><br><span class="line">    type: <span class="string">'input'</span>,</span><br><span class="line">    message: <span class="string">'姓名'</span>,</span><br><span class="line">    name: <span class="string">'name'</span></span><br><span class="line">  &#125;, &#123;</span><br><span class="line">    type: <span class="string">'input'</span>,</span><br><span class="line">    message: <span class="string">'手机号'</span>,</span><br><span class="line">    name: <span class="string">'phone'</span>,</span><br><span class="line">    validate: <span class="function"><span class="params">val</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (val.match(<span class="regexp">/\d&#123;11&#125;/g</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">'请输入11位数字'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, &#123;</span><br><span class="line">    type: <span class="string">'confirm'</span>,</span><br><span class="line">    message: <span class="string">'是否参加本次考核？'</span>,</span><br><span class="line">    name: <span class="string">'assess'</span></span><br><span class="line">  &#125;, &#123;</span><br><span class="line">    type: <span class="string">'confirm'</span>,</span><br><span class="line">    message: <span class="string">'是否同意本次考核须知？'</span>,</span><br><span class="line">    name: <span class="string">'notice'</span>,</span><br><span class="line">    when: <span class="function"><span class="params">answers</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> answers.assess</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, &#123;</span><br><span class="line">    type: <span class="string">'list'</span>,</span><br><span class="line">    message: <span class="string">'欢迎来到本次考核，请选择语言：'</span>,</span><br><span class="line">    name: <span class="string">'eductionBg'</span>,</span><br><span class="line">    choices: [</span><br><span class="line">      <span class="string">"js"</span>,</span><br><span class="line">      <span class="string">"java"</span>,</span><br><span class="line">      <span class="string">"php"</span></span><br><span class="line">    ],</span><br><span class="line">    filter: <span class="function"><span class="params">val</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 将选择的内容后面加语言</span></span><br><span class="line">      <span class="keyword">return</span> val + <span class="string">'语言'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, &#123;</span><br><span class="line">    type: <span class="string">'rawlist'</span>,</span><br><span class="line">    message: <span class="string">'请选择你喜欢逛的社区：'</span>,</span><br><span class="line">    name: <span class="string">'game'</span>,</span><br><span class="line">    choices: [</span><br><span class="line">      <span class="string">"掘金"</span>,</span><br><span class="line">      <span class="string">"github"</span>,</span><br><span class="line">    ]</span><br><span class="line">  &#125;, &#123;</span><br><span class="line">    type: <span class="string">'expand'</span>,</span><br><span class="line">    message: <span class="string">'请选择你喜欢的水果：'</span>,</span><br><span class="line">    name: <span class="string">'fruit'</span>,</span><br><span class="line">    choices: [</span><br><span class="line">      &#123;</span><br><span class="line">        key: <span class="string">"a"</span>,</span><br><span class="line">        name: <span class="string">"Apple"</span>,</span><br><span class="line">        value: <span class="string">"apple"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        key: <span class="string">"O"</span>,</span><br><span class="line">        name: <span class="string">"Orange"</span>,</span><br><span class="line">        value: <span class="string">"orange"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        key: <span class="string">"p"</span>,</span><br><span class="line">        name: <span class="string">"Pear"</span>,</span><br><span class="line">        value: <span class="string">"pear"</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;, &#123;</span><br><span class="line">    type: <span class="string">'checkbox'</span>,</span><br><span class="line">    message: <span class="string">'请选择你喜欢的颜色：'</span>,</span><br><span class="line">    name: <span class="string">'color'</span>,</span><br><span class="line">    choices: [</span><br><span class="line">      &#123;</span><br><span class="line">        name: <span class="string">"red"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="keyword">new</span> inquirer.Separator(), <span class="comment">// 添加分隔符</span></span><br><span class="line">      &#123;</span><br><span class="line">        name: <span class="string">"blur"</span>,</span><br><span class="line">        checked: <span class="literal">true</span> <span class="comment">// 默认选中</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        name: <span class="string">"green"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="keyword">new</span> inquirer.Separator(<span class="string">"--- 分隔符 ---"</span>), <span class="comment">// 自定义分隔符</span></span><br><span class="line">      &#123;</span><br><span class="line">        name: <span class="string">"yellow"</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;, &#123;</span><br><span class="line">    type: <span class="string">'password'</span>,</span><br><span class="line">    message: <span class="string">'请输入你的密码：'</span>,</span><br><span class="line">    name: <span class="string">'pwd'</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br><span class="line"> </span><br><span class="line">inquirer.prompt(opts).then(<span class="function"><span class="params">answers</span>=&gt;</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(answers);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/cli/hzzly-cli.png" alt="inquirer"></p>
+<p>代码已上传至我的<a href="https://github.com/hzzly/hzzly-cli" target="_blank" rel="noopener">GitHub</a>，欢迎 Star、Fork</p>
+<h2 id="感谢"><a href="#感谢" class="headerlink" title="感谢"></a>感谢</h2><p><a href="https://segmentfault.com/a/1190000002918295" target="_blank" rel="noopener">Nodejs 制作命令行工具</a></p>
+<p><a href="https://juejin.im/post/5cc160b2f265da03452bdf5b" target="_blank" rel="noopener">用一次就会爱上的cli工具开发</a></p>
+<p><a href="https://github.com/tj/commander.js" target="_blank" rel="noopener">commander.js</a></p>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持hzzly</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/07/15/动手搭建react开发环境三/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
