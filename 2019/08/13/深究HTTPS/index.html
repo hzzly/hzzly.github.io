@@ -15,22 +15,22 @@
     <meta name="keywords" content="随笔,https,">
   
 
-  <meta name="description" content="HTTP和HTTPS基本概念HTTP：超文本传输协议（英文：HyperText Transfer Protocol，缩写：HTTP）是一种用于分布式、协作式和超媒体信息系统的应用层协议。HTTP是万维网的数据通信的基础。HTTPS：超文本传输安全协议（英语：Hypertext Transfer Protocol Secure，缩写：HTTPS，常称为HTTP over TLS，HTTP over">
+  <meta name="description" content="前言：还没有用上https的可以看一下我之前写的Nginx下升级https，把你的http升级到https。 HTTP和HTTPS基本概念HTTP：超文本传输协议（英文：HyperText Transfer Protocol，缩写：HTTP）是一种用于分布式、协作式和超媒体信息系统的应用层协议。HTTP是万维网的数据通信的基础。HTTPS：超文本传输安全协议（英语：Hypertext Transf">
 <meta name="keywords" content="随笔,https">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深究HTTPS">
 <meta property="og:url" content="http://yoursite.com/2019/08/13/深究HTTPS/index.html">
 <meta property="og:site_name" content="Hzzly">
-<meta property="og:description" content="HTTP和HTTPS基本概念HTTP：超文本传输协议（英文：HyperText Transfer Protocol，缩写：HTTP）是一种用于分布式、协作式和超媒体信息系统的应用层协议。HTTP是万维网的数据通信的基础。HTTPS：超文本传输安全协议（英语：Hypertext Transfer Protocol Secure，缩写：HTTPS，常称为HTTP over TLS，HTTP over">
+<meta property="og:description" content="前言：还没有用上https的可以看一下我之前写的Nginx下升级https，把你的http升级到https。 HTTP和HTTPS基本概念HTTP：超文本传输协议（英文：HyperText Transfer Protocol，缩写：HTTP）是一种用于分布式、协作式和超媒体信息系统的应用层协议。HTTP是万维网的数据通信的基础。HTTPS：超文本传输安全协议（英语：Hypertext Transf">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/https/https2.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/https/https3.jpeg">
 <meta property="og:image" content="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/https/https1.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/https/http4.png">
-<meta property="og:updated_time" content="2019-08-13T07:55:31.438Z">
+<meta property="og:updated_time" content="2019-08-13T08:08:17.012Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深究HTTPS">
-<meta name="twitter:description" content="HTTP和HTTPS基本概念HTTP：超文本传输协议（英文：HyperText Transfer Protocol，缩写：HTTP）是一种用于分布式、协作式和超媒体信息系统的应用层协议。HTTP是万维网的数据通信的基础。HTTPS：超文本传输安全协议（英语：Hypertext Transfer Protocol Secure，缩写：HTTPS，常称为HTTP over TLS，HTTP over">
+<meta name="twitter:description" content="前言：还没有用上https的可以看一下我之前写的Nginx下升级https，把你的http升级到https。 HTTP和HTTPS基本概念HTTP：超文本传输协议（英文：HyperText Transfer Protocol，缩写：HTTP）是一种用于分布式、协作式和超媒体信息系统的应用层协议。HTTP是万维网的数据通信的基础。HTTPS：超文本传输安全协议（英语：Hypertext Transf">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/https/https2.png">
 
   
@@ -192,7 +192,8 @@ ga('send', 'pageview');
 
   <div class="article-content">
     
-      <h2 id="HTTP和HTTPS基本概念"><a href="#HTTP和HTTPS基本概念" class="headerlink" title="HTTP和HTTPS基本概念"></a>HTTP和HTTPS基本概念</h2><p><code>HTTP</code>：超文本传输协议（英文：HyperText Transfer Protocol，缩写：HTTP）是一种用于分布式、协作式和超媒体信息系统的应用层协议。HTTP是万维网的数据通信的基础。<br><code>HTTPS</code>：超文本传输安全协议（英语：Hypertext Transfer Protocol Secure，缩写：HTTPS，常称为HTTP over TLS，HTTP over SSL或HTTP Secure）是一种通过计算机网络进行安全通信的传输协议。HTTPS经由HTTP进行通信，但利用SSL/TLS来加密数据包。HTTPS开发的主要目的，是提供对网站服务器的身份认证，保护交换数据的隐私与完整性。</p>
+      <p>前言：还没有用上https的可以看一下我之前写的<a href="http://hjingren.cn/2019/06/11/Nginx%E4%B8%8B%E5%8D%87%E7%BA%A7https/" target="_blank" rel="noopener">Nginx下升级https</a>，把你的http升级到https。</p>
+<h2 id="HTTP和HTTPS基本概念"><a href="#HTTP和HTTPS基本概念" class="headerlink" title="HTTP和HTTPS基本概念"></a>HTTP和HTTPS基本概念</h2><p><code>HTTP</code>：超文本传输协议（英文：HyperText Transfer Protocol，缩写：HTTP）是一种用于分布式、协作式和超媒体信息系统的应用层协议。HTTP是万维网的数据通信的基础。<br><code>HTTPS</code>：超文本传输安全协议（英语：Hypertext Transfer Protocol Secure，缩写：HTTPS，常称为HTTP over TLS，HTTP over SSL或HTTP Secure）是一种通过计算机网络进行安全通信的传输协议。HTTPS经由HTTP进行通信，但利用SSL/TLS来加密数据包。HTTPS开发的主要目的，是提供对网站服务器的身份认证，保护交换数据的隐私与完整性。</p>
 <h2 id="HTTP和HTTPS的差异"><a href="#HTTP和HTTPS的差异" class="headerlink" title="HTTP和HTTPS的差异"></a>HTTP和HTTPS的差异</h2><ol>
 <li><p>从上面概念也可以看出来HTTP是不安全的，且攻击者通过监听和中间人攻击等手段，可以获取网站帐户和敏感信息等。HTTPS被设计为可防止前述攻击，并在正确配置时被认为是安全的。</p>
 </li>
@@ -276,6 +277,7 @@ ga('send', 'pageview');
 <p>简单说明一下连接的建立过程：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 表示建立了和 hzzly.cn 服务器 443 端口的连接。</span></span><br><span class="line">Connected to hzzly.cn (39.108.182.125) port 443 (<span class="comment">#0) </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 客户端发出 client_hello 消息。</span></span><br><span class="line">TLSv1.2 (OUT), TLS handshake, Client hello (1): </span><br><span class="line"></span><br><span class="line"><span class="comment"># 服务器发出 server_hello 消息。</span></span><br><span class="line">TLSv1.2 (IN), TLS handshake, Server hello (2): </span><br><span class="line"></span><br><span class="line"><span class="comment"># 服务器发出 certificate 消息。</span></span><br><span class="line">TLSv1.2 (IN), TLS handshake, Certificate (11): </span><br><span class="line"></span><br><span class="line"><span class="comment"># 服务器发出 server_key_exchange 消息。</span></span><br><span class="line">TLSv1.2 (IN), TLS handshake, Server key exchange (12): </span><br><span class="line"></span><br><span class="line"><span class="comment"># 服务器发出 server_done 消息。</span></span><br><span class="line">TLSv1.2 (IN), TLS handshake, Server finished (14): </span><br><span class="line"></span><br><span class="line"><span class="comment"># 客户端发出 client_key_exchange 消息。</span></span><br><span class="line">TLSv1.2 (OUT), TLS handshake, Client key exchange (16): </span><br><span class="line"></span><br><span class="line"><span class="comment"># 客户端发出加密后的 client_hello 消息。</span></span><br><span class="line">TLSv1.2 (OUT), TLS change cipher, Client hello (1): </span><br><span class="line"></span><br><span class="line"><span class="comment"># 客户端发出 hello_done 消息。</span></span><br><span class="line">TLSv1.2 (OUT), TLS handshake, Finished (20): </span><br><span class="line"></span><br><span class="line"><span class="comment"># 服务器将加密后的 client_hello 消息发回。</span></span><br><span class="line">TLSv1.2 (IN), TLS change cipher, Client hello (1): </span><br><span class="line"></span><br><span class="line"><span class="comment"># 握手结束。</span></span><br><span class="line">TLSv1.2 (IN), TLS handshake, Finished (20): </span><br><span class="line"></span><br><span class="line"><span class="comment"># SSL 连接采用 ECDHE-RSA-AES256-GCM-SHA384 密码套件。</span></span><br><span class="line"><span class="comment"># ECDHE 表示密钥交换方法采用椭圆曲线迪菲-赫尔曼交换方法</span></span><br><span class="line"><span class="comment"># RSA 表示密钥交换中使用的签名方式</span></span><br><span class="line"><span class="comment"># AES-256-GCM 表示的是对称加密算法</span></span><br><span class="line"><span class="comment"># SHA-384 表示的是内容完整性校验使用的哈希算法</span></span><br><span class="line">SSL connection using TLSv1.2 / ECDHE-RSA-AES256-GCM-SHA384 </span><br><span class="line"></span><br><span class="line"><span class="comment"># 之后的几行包含了证书的内容，包括有效时间、常用名、证书签发机构等。</span></span><br><span class="line">Server certificate: </span><br><span class="line">      <span class="comment"># Common Name 为 hzzly.cn</span></span><br><span class="line">    subject: CN=hzzly.cn</span><br><span class="line">      <span class="comment"># 在此时间之前无效</span></span><br><span class="line">    start date: Aug  2 00:00:00 2019 GMT</span><br><span class="line">      <span class="comment"># 在此时间之后无效</span></span><br><span class="line">    expire date: Aug  1 12:00:00 2020 GMT</span><br><span class="line">      <span class="comment"># 域名和证书的域名匹配</span></span><br><span class="line">    subjectAltName: host <span class="string">"hzzly.cn"</span> matched certs <span class="string">"hzzly.cn"</span></span><br><span class="line">      <span class="comment"># 签发者是 Encryption</span></span><br><span class="line">    issuer: C=US; O=DigiCert Inc; OU=www.digicert.com; CN=Encryption Everywhere DV TLS CA - G1</span><br></pre></td></tr></table></figure></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li>《图解http》</li>
+<li><a href="https://juejin.im/post/5a9400fcf265da4e976eb4b9" target="_blank" rel="noopener">从Chrome源码看HTTPS</a></li>
 </ul>
 
     
@@ -317,7 +319,7 @@ ga('send', 'pageview');
     <a class="show pull-left" href="/2019/07/19/动手开发一个自己的项目脚手架/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="hide pull-right" href="/">
+    <a class="show pull-right" href="/2019/09/01/一本正经的来了解一下HTTP2/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>

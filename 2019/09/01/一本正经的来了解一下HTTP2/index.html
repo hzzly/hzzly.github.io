@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>一本正经的来了解一下HTTP2 | Hzzly</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="随笔,http,">
+  
+
+  <meta name="description" content="HTTP/2介绍维基百科：HTTP/2（超文本传输协议第2版，最初命名为HTTP 2.0），简称为h2（基于TLS/1.2或以上版本的加密连接）或h2c（非加密连接），是HTTP协议的的第二个主要版本，使用于万维网。 HTTP/2是HTTP协议自1999年HTTP 1.1发布后的首个更新，主要基于SPDY协议。它由互联网工程任务组（IETF）的Hypertext Transfer Protocol">
+<meta name="keywords" content="随笔,http">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一本正经的来了解一下HTTP2">
+<meta property="og:url" content="http://yoursite.com/2019/09/01/一本正经的来了解一下HTTP2/index.html">
+<meta property="og:site_name" content="Hzzly">
+<meta property="og:description" content="HTTP/2介绍维基百科：HTTP/2（超文本传输协议第2版，最初命名为HTTP 2.0），简称为h2（基于TLS/1.2或以上版本的加密连接）或h2c（非加密连接），是HTTP协议的的第二个主要版本，使用于万维网。 HTTP/2是HTTP协议自1999年HTTP 1.1发布后的首个更新，主要基于SPDY协议。它由互联网工程任务组（IETF）的Hypertext Transfer Protocol">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-01T15:45:18.365Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一本正经的来了解一下HTTP2">
+<meta name="twitter:description" content="HTTP/2介绍维基百科：HTTP/2（超文本传输协议第2版，最初命名为HTTP 2.0），简称为h2（基于TLS/1.2或以上版本的加密连接）或h2c（非加密连接），是HTTP协议的的第二个主要版本，使用于万维网。 HTTP/2是HTTP协议自1999年HTTP 1.1发布后的首个更新，主要基于SPDY协议。它由互联网工程任务组（IETF）的Hypertext Transfer Protocol">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP-2介绍"><span class="toc-text">HTTP/2介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP-1-x存在的问题"><span class="toc-text">HTTP/1.x存在的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP-2的具体变化"><span class="toc-text">HTTP/2的具体变化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#二进制分帧层"><span class="toc-text">二进制分帧层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多路复用"><span class="toc-text">多路复用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#头部压缩"><span class="toc-text">头部压缩</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#服务器推送"><span class="toc-text">服务器推送</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重置"><span class="toc-text">重置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#扩展"><span class="toc-text">扩展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-一本正经的来了解一下HTTP2" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">一本正经的来了解一下HTTP2</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.09.01</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>hzzly</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="HTTP-2介绍"><a href="#HTTP-2介绍" class="headerlink" title="HTTP/2介绍"></a>HTTP/2介绍</h2><p>维基百科：HTTP/2（超文本传输协议第2版，最初命名为HTTP 2.0），简称为h2（基于TLS/1.2或以上版本的加密连接）或h2c（非加密连接），是HTTP协议的的第二个主要版本，使用于万维网。</p>
+<p>HTTP/2是HTTP协议自1999年HTTP 1.1发布后的首个更新，主要基于SPDY协议。它由互联网工程任务组（IETF）的Hypertext Transfer Protocol Bis（httpbis）工作小组进行开发。该组织于2014年12月将HTTP/2标准提议递交至IESG进行讨论，于2015年2月17日被批准。HTTP/2标准于2015年5月以RFC 7540正式发表。</p>
+<h2 id="HTTP-1-x存在的问题"><a href="#HTTP-1-x存在的问题" class="headerlink" title="HTTP/1.x存在的问题"></a>HTTP/1.x存在的问题</h2><p>在看为什么要使用HTTP/2之前，我们先来了解之前的HTTP/1.x存在的问题。</p>
+<ol>
+<li><code>线头阻塞</code>：TCP连接上只能发送一个请求，前面的请求未完成前，后续的请求都在排队等待。</li>
+<li><code>多个TCP连接</code>：虽然HTTP/1.1管线化可以支持请求并发，但是浏览器很难实现，chrome、firefox等都禁用了管线化。所以1.1版本请求并发依赖于多个TCP连接，建立TCP连接成本很高，还会存在慢启动的问题。</li>
+<li><code>头部冗余，采用文本格式</code>：HTTP/1.X版本是采用文本格式，首部未压缩，而且每一个请求都会带上cookie、user-agent等完全相同的首部。</li>
+<li><code>客户端需要主动请求</code></li>
+</ol>
+<h2 id="HTTP-2的具体变化"><a href="#HTTP-2的具体变化" class="headerlink" title="HTTP/2的具体变化"></a>HTTP/2的具体变化</h2><h3 id="二进制分帧层"><a href="#二进制分帧层" class="headerlink" title="二进制分帧层"></a>二进制分帧层</h3><p>先来理解几个概念：</p>
+<p><code>帧（Frame）</code>：HTTP/2数据通信的最小单位消息：指 HTTP/2 中逻辑上的 HTTP 消息。例如请求和响应等，消息由一个或多个帧组成。</p>
+<p><code>流（Stream）</code>：存在于连接中的一个虚拟通道。流可以承载双向消息，每个流都有一个唯一的整数ID。</p>
+<p><code>消息（Message）</code>：一个完整的HTTP请求或响应，由一个或多个帧组成。特定消息的帧在同一个流上发送，这意味着一个HTTP请求或响应只能在一个流上发送。</p>
+<p>HTTP/2 性能提升的核心就在于二进制分帧层。HTTP2是二进制协议，他采用二进制格式传输数据而不是1.x的文本格式，二进制协议解析起来更高效。 HTTP / 1 的请求和响应报文，都是由起始行，首部和实体正文（可选）组成，各部分之间以文本换行符分隔。HTTP/2 将请求和响应数据分割为更小的帧，并且它们采用二进制编码。</p>
+<p>HTTP/2 中，同域名下所有通信都在单个连接上完成，该连接可以承载任意数量的双向数据流。每个数据流都以消息的形式发送，而消息又由一个或多个帧组成。多个帧之间可以乱序发送，根据帧首部的流标识可以重新组装。</p>
+<h3 id="多路复用"><a href="#多路复用" class="headerlink" title="多路复用"></a>多路复用</h3><p>上面提到HTTP/1.x的线头阻塞和多个TCP连接的问题，HTTP2的多路复用完美解决。HTTP/2让所有的通信都在一个TCP连接上完成，真正实现了请求的并发。</p>
+<p>在一个 TCP 连接上，HTTP/2可以向服务器不断发送帧，每帧的 stream identifier 的标明这一帧属于哪个流，然后在接收时，根据 stream identifier 拼接每个流的所有帧组成一整块数据。把 HTTP/1.x 每个请求都当作一个流，那么多个请求变成多个流，请求响应数据分成多个帧，不同流中的帧交错地发送给对方，这就是 HTTP/2 中的多路复用。</p>
+<p>流的概念实现了单连接上多请求 - 响应并行，解决了线头阻塞的问题，减少了 TCP 连接数量和 TCP 连接慢启动造成的问题</p>
+<p>所以 HTTP/2 对于同一域名只需要创建一个连接，而不是像 HTTP/1.x 那样创建 6~8 个连接。</p>
+<h3 id="头部压缩"><a href="#头部压缩" class="headerlink" title="头部压缩"></a>头部压缩</h3><p>在HTTP/1.x版本中，首部用文本格式传输，通常会给每个传输增加500-800字节的开销。当一个网站请求非常多时，而每个请求带的一些首部字段都是相同的，例如cookie、user-agent等，浪费了很多带宽资源。HTTP/2为此对消息头采用HPACK（专为HTTP/2头部设计的压缩格式）进行压缩传输，能够节省消息头占用的网络的流量。头部压缩需要在浏览器和服务器端之间：</p>
+<ul>
+<li>维护一份相同的静态字典，包含常见的头部名称，以及常见的头部名称和值的组合</li>
+<li>维护一份相同的动态字典，可以动态的添加内容</li>
+<li>通过静态Huffman编码对传输的首部字段进行编码</li>
+</ul>
+<p>HTTP/2的静态字典可以查看<a href="https://httpwg.org/specs/rfc7541.html#static.table.definition" target="_blank" rel="noopener">这里</a></p>
+<p>所以我们在传输首部字段的时候，例如要传输method:GET,那我们只需要传输静态字典里面method:GET对应的索引值就可以了，一个字节搞定。像user-agent、cookie这种静态字典里面只有首部名称而没有值的首部，第一次传输需要user-agent在静态字典中的索引以及他的值，值会采用静态Huffman编码来减小体积。</p>
+<p>第一次传输过user-agent 之后呢，浏览器和服务器端就会把它添加到自己的动态字典中。后续传输就可以传输索引了，一个字节搞定。</p>
+<h3 id="服务器推送"><a href="#服务器推送" class="headerlink" title="服务器推送"></a>服务器推送</h3><p>浏览器发送一个请求，服务器主动向浏览器推送与这个请求相关的资源，这样浏览器就不用发起后续请求。<br>Server-Push 主要是针对资源内联做出的优化，相较于 HTTP/1.x 资源内联的优势:</p>
+<ul>
+<li>客户端可以缓存推送的资源</li>
+<li>客户端可以拒收推送过来的资源</li>
+<li>推送资源可以由不同页面共享</li>
+<li>服务器可以按照优先级推送资源</li>
+</ul>
+<h3 id="重置"><a href="#重置" class="headerlink" title="重置"></a>重置</h3><p>HTTP/1.1的有一个缺点是：当一个含有确切值的Content-Length的HTTP消息被送出之后，你就很难中断它了。当然，通常你可以断开整个TCP链接（但也不总是可以这样），但这样导致的代价就是需要通过三次握手来重新建立一个新的TCP连接。</p>
+<p>一个更好的方案是只终止当前传输的消息并重新发送一个新的。在HTTP/2里面，我们可以通过发送RST_STREAM帧来实现这种需求，从而避免浪费带宽和中断已有的连接。</p>
+<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><p>HTTP/2升级并不完全是没有副作用的，先说结论，HTTP/1.x全升HTTP/2性能不一定能提升，还是需要做一些特殊的优化。</p>
+<ol>
+<li>需要把针对HTTP/1.x的优化点摘出来改成对h2友好的，不然会影响性能，比如雪碧图，css，js行内引入，域名打散这些都是针对h1的优化，如果不针对h2做修改，收益可能是负的。</li>
+<li>保证你的页面没有那种古老的合并资源请求的优化，比如通过xhr请求多个图片js，html片段再在客户端解析的骚操作。</li>
+<li>h2特性在h1上不支持，所以你需要在不支持的h1浏览器里访问站点，来做性能测试，需要成本。</li>
+<li>h2对单请求的优化有限，如果做流服务器，可能收益也不大，视频，大图片下载，多路复用也体现不出什么优势。</li>
+<li>开启h2之后对ssl的配置可能会更复杂一些，如果不是nginx层代理开启，而是在前端机上比如nodejs服务上开启h2，服务端的改造也比较麻烦，不像静态资源那么开关方便。</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://zh.wikipedia.org/wiki/HTTP/2" target="_blank" rel="noopener">维基百科：HTTP/2</a></li>
+<li><a href="https://ye11ow.gitbooks.io/http2-explained/content/" target="_blank" rel="noopener">《http2讲解》</a></li>
+<li><a href="https://www.zhihu.com/question/310263956/answer/582342502" target="_blank" rel="noopener">把所有 HTTPS 项目无脑升级成 HTTP/2 会有什么坑吗?[知乎]</a></li>
+</ul>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持hzzly</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/08/13/深究HTTPS/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
