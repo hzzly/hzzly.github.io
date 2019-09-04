@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="Hzzly">
 <meta property="og:description" content="HTTP/2介绍维基百科：HTTP/2（超文本传输协议第2版，最初命名为HTTP 2.0），简称为h2（基于TLS/1.2或以上版本的加密连接）或h2c（非加密连接），是HTTP协议的的第二个主要版本，使用于万维网。 HTTP/2是HTTP协议自1999年HTTP 1.1发布后的首个更新，主要基于SPDY协议。它由互联网工程任务组（IETF）的Hypertext Transfer Protocol">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-01T15:45:18.365Z">
+<meta property="og:updated_time" content="2019-09-04T07:40:13.570Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一本正经的来了解一下HTTP2">
 <meta name="twitter:description" content="HTTP/2介绍维基百科：HTTP/2（超文本传输协议第2版，最初命名为HTTP 2.0），简称为h2（基于TLS/1.2或以上版本的加密连接）或h2c（非加密连接），是HTTP协议的的第二个主要版本，使用于万维网。 HTTP/2是HTTP协议自1999年HTTP 1.1发布后的首个更新，主要基于SPDY协议。它由互联网工程任务组（IETF）的Hypertext Transfer Protocol">
@@ -226,11 +226,16 @@ ga('send', 'pageview');
 <p>一个更好的方案是只终止当前传输的消息并重新发送一个新的。在HTTP/2里面，我们可以通过发送RST_STREAM帧来实现这种需求，从而避免浪费带宽和中断已有的连接。</p>
 <h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><p>HTTP/2升级并不完全是没有副作用的，先说结论，HTTP/1.x全升HTTP/2性能不一定能提升，还是需要做一些特殊的优化。</p>
 <ol>
-<li>需要把针对HTTP/1.x的优化点摘出来改成对h2友好的，不然会影响性能，比如雪碧图，css，js行内引入，域名打散这些都是针对h1的优化，如果不针对h2做修改，收益可能是负的。</li>
-<li>保证你的页面没有那种古老的合并资源请求的优化，比如通过xhr请求多个图片js，html片段再在客户端解析的骚操作。</li>
-<li>h2特性在h1上不支持，所以你需要在不支持的h1浏览器里访问站点，来做性能测试，需要成本。</li>
-<li>h2对单请求的优化有限，如果做流服务器，可能收益也不大，视频，大图片下载，多路复用也体现不出什么优势。</li>
-<li>开启h2之后对ssl的配置可能会更复杂一些，如果不是nginx层代理开启，而是在前端机上比如nodejs服务上开启h2，服务端的改造也比较麻烦，不像静态资源那么开关方便。</li>
+<li><p>需要把针对HTTP/1.x的优化点摘出来改成对h2友好的，不然会影响性能，比如雪碧图，css，js行内引入，域名打散这些都是针对h1的优化，如果不针对h2做修改，收益可能是负的。</p>
+</li>
+<li><p>保证你的页面没有那种古老的合并资源请求的优化，比如通过xhr请求多个图片js，html片段再在客户端解析的骚操作。</p>
+</li>
+<li><p>h2特性在h1上不支持，所以你需要在不支持的h1浏览器里访问站点，来做性能测试，需要成本。</p>
+</li>
+<li><p>h2对单请求的优化有限，如果做流服务器，可能收益也不大，视频，大图片下载，多路复用也体现不出什么优势。</p>
+</li>
+<li><p>开启h2之后对ssl的配置可能会更复杂一些，如果不是nginx层代理开启，而是在前端机上比如nodejs服务上开启h2，服务端的改造也比较麻烦，不像静态资源那么开关方便。</p>
+</li>
 </ol>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><a href="https://zh.wikipedia.org/wiki/HTTP/2" target="_blank" rel="noopener">维基百科：HTTP/2</a></li>
@@ -277,7 +282,7 @@ ga('send', 'pageview');
     <a class="show pull-left" href="/2019/08/13/深究HTTPS/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="hide pull-right" href="/">
+    <a class="show pull-right" href="/2019/09/04/JWT--JSON WEB TOKEN/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>
