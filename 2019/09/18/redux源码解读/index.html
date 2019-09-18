@@ -15,13 +15,13 @@
     <meta name="keywords" content="随笔,redux,">
   
 
-  <meta name="description" content="简介Redux 是一种架构模式（Flux 架构的一种变种），它不关注你到底用什么库，你可以把它应用到 React 和 Vue，甚至跟 jQuery 结合都没有问题。而 React-redux 就是把 Redux 这种架构模式和 React.js 结合起来的一个库，就是 Redux 架构在 React.js 中的体现。本文就针对 Redux 库进行源码的解读。 版本 v4.0.4  源码结构1234">
+  <meta name="description" content="简介Redux 是一种架构模式（Flux 架构的一种变种），它不关注你到底用什么库，你可以把它应用到 React 和 Vue，甚至跟 jQuery 结合都没有问题。而 React-redux 就是把 Redux 这种架构模式和 React.js 结合起来的一个库，就是 Redux 架构在 React.js 中的体现。本文就针对 Redux 库进行源码的解读。(部分注释写在代码中) 版本 v4.0.">
 <meta name="keywords" content="随笔,redux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="redux源码解读">
 <meta property="og:url" content="http://yoursite.com/2019/09/18/redux源码解读/index.html">
 <meta property="og:site_name" content="Hzzly">
-<meta property="og:description" content="简介Redux 是一种架构模式（Flux 架构的一种变种），它不关注你到底用什么库，你可以把它应用到 React 和 Vue，甚至跟 jQuery 结合都没有问题。而 React-redux 就是把 Redux 这种架构模式和 React.js 结合起来的一个库，就是 Redux 架构在 React.js 中的体现。本文就针对 Redux 库进行源码的解读。 版本 v4.0.4  源码结构1234">
+<meta property="og:description" content="简介Redux 是一种架构模式（Flux 架构的一种变种），它不关注你到底用什么库，你可以把它应用到 React 和 Vue，甚至跟 jQuery 结合都没有问题。而 React-redux 就是把 Redux 这种架构模式和 React.js 结合起来的一个库，就是 Redux 架构在 React.js 中的体现。本文就针对 Redux 库进行源码的解读。(部分注释写在代码中) 版本 v4.0.">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/redux/actionTypes.js.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/redux/isPlainObject.js.png">
@@ -36,10 +36,10 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/redux/compose.js.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/redux/applyMiddleware.js.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/redux/bindActionCreators.js.png">
-<meta property="og:updated_time" content="2019-09-18T02:03:09.222Z">
+<meta property="og:updated_time" content="2019-09-18T02:08:36.514Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redux源码解读">
-<meta name="twitter:description" content="简介Redux 是一种架构模式（Flux 架构的一种变种），它不关注你到底用什么库，你可以把它应用到 React 和 Vue，甚至跟 jQuery 结合都没有问题。而 React-redux 就是把 Redux 这种架构模式和 React.js 结合起来的一个库，就是 Redux 架构在 React.js 中的体现。本文就针对 Redux 库进行源码的解读。 版本 v4.0.4  源码结构1234">
+<meta name="twitter:description" content="简介Redux 是一种架构模式（Flux 架构的一种变种），它不关注你到底用什么库，你可以把它应用到 React 和 Vue，甚至跟 jQuery 结合都没有问题。而 React-redux 就是把 Redux 这种架构模式和 React.js 结合起来的一个库，就是 Redux 架构在 React.js 中的体现。本文就针对 Redux 库进行源码的解读。(部分注释写在代码中) 版本 v4.0.">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/redux/actionTypes.js.png">
 
   
@@ -201,7 +201,7 @@ ga('send', 'pageview');
 
   <div class="article-content">
     
-      <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Redux 是一种架构模式（Flux 架构的一种变种），它不关注你到底用什么库，你可以把它应用到 React 和 Vue，甚至跟 jQuery 结合都没有问题。而 React-redux 就是把 Redux 这种架构模式和 React.js 结合起来的一个库，就是 Redux 架构在 React.js 中的体现。本文就针对 Redux 库进行源码的解读。</p>
+      <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Redux 是一种架构模式（Flux 架构的一种变种），它不关注你到底用什么库，你可以把它应用到 React 和 Vue，甚至跟 jQuery 结合都没有问题。而 React-redux 就是把 Redux 这种架构模式和 React.js 结合起来的一个库，就是 Redux 架构在 React.js 中的体现。本文就针对 Redux 库进行源码的解读。(部分注释写在代码中)</p>
 <h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><blockquote>
 <p>v4.0.4</p>
 </blockquote>
@@ -252,11 +252,11 @@ ga('send', 'pageview');
 <p>总结，bindActionCreator 的作用就是返回包裹dispatch的函数可以直接使用。<br>一般我们会用来mapDispatchToProps里。示例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// actions.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">addTodo</span>(<span class="params">text</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    type: <span class="string">'ADD_TODO'</span>,</span><br><span class="line">    text</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">removeTodo</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    type: <span class="string">'REMOVE_TODO'</span>,</span><br><span class="line">    id</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>使用bindActionCreators转化<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; bindActionCreators &#125; <span class="keyword">from</span> <span class="string">'redux'</span></span><br><span class="line"><span class="keyword">const</span> mapDispatchToProps = <span class="function">(<span class="params">dispatch, ownProps</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> bindActionCreators(&#123;</span><br><span class="line">    addTodo: action.addTodo,</span><br><span class="line">    removeTodo: action.removeTodo</span><br><span class="line">  &#125;, dispatch);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 转化后</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">  addTodo: (...args) =&gt; dispatch(action.addTodo(...args)),</span></span><br><span class="line"><span class="comment">  removeTodo: (...args) =&gt; dispatch(action.removeTodo(...args)),</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">* /</span></span><br></pre></td></tr></table></figure></p>
 <ul>
-<li>果mapDispatchToProps是一个函数, 并且传入ownProps, 当组件获取新的props的时候，mapDispatchToProps也会被调用</li>
+<li>如果mapDispatchToProps是一个函数, 并且传入ownProps, 当组件获取新的props的时候，mapDispatchToProps也会被调用</li>
 <li>传入一个object，其中这个object所对应的value必须是actionCreator，这样redux里面会自动帮我们调用bindActionCreator，所以上面又可以变成<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mapDispatchToProps = &#123;</span><br><span class="line">  ...action</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="小节"><a href="#小节" class="headerlink" title="小节"></a>小节</h2><p>看到这redux的源码之旅就告一段落了，整个redux的代码量不是很多，但里面我们可以学习的东西还挺多的，比如 compose<br>、<strong>proto</strong>、console的兼容性、Number.prototype.toString等等。正所谓“近朱者赤，近墨者黑”，多看看大神的代码，对自己的代码书写、代码逻辑、知识点查缺补漏等等方面都是很大帮助的。加油！！</p>
+<h2 id="小节"><a href="#小节" class="headerlink" title="小节"></a>小节</h2><p>看到这redux的源码之旅就告一段落了，整个redux的代码量不是很多，但里面我们可以学习的东西还挺多的，比如 compose、<strong>proto</strong>、console的兼容性、Number.prototype.toString等等。正所谓“近朱者赤，近墨者黑”，多看看大神的代码，对自己的代码书写、代码逻辑、知识点查缺补漏等等方面都是很大帮助的。加油！！</p>
 
     
   </div>
