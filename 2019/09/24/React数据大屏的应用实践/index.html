@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/bi/img2.gif">
 <meta property="og:image" content="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/bi/img2.png">
-<meta property="og:updated_time" content="2019-09-23T17:32:23.809Z">
+<meta property="og:updated_time" content="2019-09-23T18:20:34.107Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React数据大屏的应用实践">
 <meta name="twitter:description" content="数据大屏与数据可视化现如今大数据已无所不在，并且正被越来越广泛的被应用到历史、政治、科学、经济、商业甚至渗透到我们生活的方方面面中，获取的渠道也越来越便利。 今天我们就来聊一聊“大屏应用”，说到大屏就一定要聊到数据可视化，现如今，数据可视化由于数据分析的火热也变得火热起来，不过数据可视化并不是一个新技术，可视化数据就是用可视化的方式展现的数据。而数据大屏作为大数据展示媒介的一种，广泛运用于各种展示">
@@ -155,7 +155,7 @@ ga('send', 'pageview');
 
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据大屏与数据可视化"><span class="toc-text">数据大屏与数据可视化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#技术选型"><span class="toc-text">技术选型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#系统搭建"><span class="toc-text">系统搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#图表选择"><span class="toc-text">图表选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据请求推送"><span class="toc-text">数据请求推送</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#布局"><span class="toc-text">布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项目结构"><span class="toc-text">项目结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点"><span class="toc-text">知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Chart基础组件封装"><span class="toc-text">Chart基础组件封装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Socket封装SDK"><span class="toc-text">Socket封装SDK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#动态数字展示"><span class="toc-text">动态数字展示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#背景线性粒子"><span class="toc-text">背景线性粒子</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#说明"><span class="toc-text">说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据大屏与数据可视化"><span class="toc-text">数据大屏与数据可视化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#技术选型"><span class="toc-text">技术选型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#系统搭建"><span class="toc-text">系统搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#图表选择"><span class="toc-text">图表选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据请求推送"><span class="toc-text">数据请求推送</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#布局"><span class="toc-text">布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项目结构"><span class="toc-text">项目结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点"><span class="toc-text">知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Chart基础组件封装"><span class="toc-text">Chart基础组件封装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Socket封装SDK"><span class="toc-text">Socket封装SDK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#动态数字展示"><span class="toc-text">动态数字展示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#背景线性粒子"><span class="toc-text">背景线性粒子</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#说明"><span class="toc-text">说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#源码"><span class="toc-text">源码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
   </div>
 
 
@@ -251,10 +251,11 @@ ga('send', 'pageview');
 <p>2、关于适配和兼容性暂时还未完善，如果后期有时间会慢慢去完善</p>
 <p>3、此项目为笔者调研时的实践，因为时间有限，一些功能还不善，设计和布局都是自己的一些想象与参考</p>
 <p>4、此项目作为开源学习使用，谢绝用于商业应用</p>
+<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><p>代码已上传至我的<a href="https://github.com/hzzly/credit-bi-react" target="_blank" rel="noopener">GitHub</a>，欢迎 Star、Fork</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><a href="http://www.woshipm.com/pd/1782868.html" target="_blank" rel="noopener">超全面设计指南：如何做大屏数据可视化设计？</a></li>
 <li><a href="http://www.woshipm.com/data-analysis/2279512.html" target="_blank" rel="noopener">五个方面，聊聊大数据可视化的初体验</a></li>
-<li>[一个炫酷大屏展示页的打造过程](</li>
+<li><a href="https://juejin.im/post/5a20fe96f265da431120025b" target="_blank" rel="noopener">一个炫酷大屏展示页的打造过程</a></li>
 </ul>
 
     
