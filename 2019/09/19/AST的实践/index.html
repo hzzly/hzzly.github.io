@@ -23,12 +23,12 @@
 <meta property="og:site_name" content="Hzzly">
 <meta property="og:description" content="什么是AST（抽象语法树）? It is a hierarchical program representation that presents source code structure according to the grammar of a programming language, each AST node corresponds to an item of a source code">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/ast/ast1.png">
-<meta property="og:updated_time" content="2019-09-19T02:05:41.660Z">
+<meta property="og:image" content="https://hzzlyxx.oss-cn-beijing.aliyuncs.com/blog/ast/ast1.png">
+<meta property="og:updated_time" content="2019-11-06T06:12:34.457Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AST的实践">
 <meta name="twitter:description" content="什么是AST（抽象语法树）? It is a hierarchical program representation that presents source code structure according to the grammar of a programming language, each AST node corresponds to an item of a source code">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/ast/ast1.png">
+<meta name="twitter:image" content="https://hzzlyxx.oss-cn-beijing.aliyuncs.com/blog/ast/ast1.png">
 
   
 
@@ -202,7 +202,7 @@ ga('send', 'pageview');
 <li>转换（transform）</li>
 <li>生成（generate）</li>
 </ul>
-<p><img src="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/ast/ast1.png" alt="Babel处理步骤"></p>
+<p><img src="https://hzzlyxx.oss-cn-beijing.aliyuncs.com/blog/ast/ast1.png" alt="Babel处理步骤"></p>
 <p>整个过程中，parsing和generation是固定不变的，最关键的是transforming步骤，通过babel插件来支持，这是其扩展性的关键。</p>
 <p>这三个阶段分别由 @babel/parser、@babel/core、@babel/generator 执行。Babel 本质上只是一个代码的搬运工，如果不给 Babel 装上插件，它将会把输入的代码原封不动地输出。正是因为有插件的存在， Babel 才能将输入的代码进行转变，从而生成新的代码。</p>
 <h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><p>输入JS源码，输出AST</p>

@@ -23,15 +23,15 @@
 <meta property="og:site_name" content="Hzzly">
 <meta property="og:description" content="前言：还没有用上https的可以看一下我之前写的Nginx下升级https，把你的http升级到https。 HTTP和HTTPS基本概念HTTP：超文本传输协议（英文：HyperText Transfer Protocol，缩写：HTTP）是一种用于分布式、协作式和超媒体信息系统的应用层协议。HTTP是万维网的数据通信的基础。HTTPS：超文本传输安全协议（英语：Hypertext Transf">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/https/https2.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/https/https3.jpeg">
-<meta property="og:image" content="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/https/https1.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/https/http4.png">
-<meta property="og:updated_time" content="2019-08-13T08:08:17.012Z">
+<meta property="og:image" content="https://hzzlyxx.oss-cn-beijing.aliyuncs.com/blog/https/https2.png">
+<meta property="og:image" content="https://hzzlyxx.oss-cn-beijing.aliyuncs.com/blog/https/https3.jpeg">
+<meta property="og:image" content="https://hzzlyxx.oss-cn-beijing.aliyuncs.com/blog/https/https1.png">
+<meta property="og:image" content="https://hzzlyxx.oss-cn-beijing.aliyuncs.com/blog/https/http4.png">
+<meta property="og:updated_time" content="2019-11-06T06:11:27.306Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深究HTTPS">
 <meta name="twitter:description" content="前言：还没有用上https的可以看一下我之前写的Nginx下升级https，把你的http升级到https。 HTTP和HTTPS基本概念HTTP：超文本传输协议（英文：HyperText Transfer Protocol，缩写：HTTP）是一种用于分布式、协作式和超媒体信息系统的应用层协议。HTTP是万维网的数据通信的基础。HTTPS：超文本传输安全协议（英语：Hypertext Transf">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/https/https2.png">
+<meta name="twitter:image" content="https://hzzlyxx.oss-cn-beijing.aliyuncs.com/blog/https/https2.png">
 
   
 
@@ -224,7 +224,7 @@ ga('send', 'pageview');
 <h3 id="对称加密算法"><a href="#对称加密算法" class="headerlink" title="对称加密算法"></a>对称加密算法</h3><p>采用单钥密码系统的加密方式，同一个密钥可以同时做信息的加密和解密，这种加密的方法称为对称加密。</p>
 <p>SSL在通信过程中，使用了对称加密算法，也就是说客户端和服务器同时共享一个密钥。</p>
 <p>于是，以共享密钥的方式加密，必须将密钥发给对方。这个时候，假如通信过程被监听，密钥被攻击者获取了，那么这个时候也就失去了加密的意义了。</p>
-<p><img src="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/https/https2.png" alt="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/https/https2.png"></p>
+<p><img src="https://hzzlyxx.oss-cn-beijing.aliyuncs.com/blog/https/https2.png" alt="https://hzzlyxx.oss-cn-beijing.aliyuncs.com/blog/https/https2.png"></p>
 <p>于是就需要使用两把密钥的非对称加密算法。</p>
 <h3 id="非对称加密算法"><a href="#非对称加密算法" class="headerlink" title="非对称加密算法"></a>非对称加密算法</h3><p>与对称加密算法相反，非对称加密算法需要两个密钥来进行加密和解密，这两个密钥是配对的，分别是公开密钥（公钥）和私有密钥（私钥）。</p>
 <p>于是现在，假设现在由服务器来生成一对公钥和密钥。</p>
@@ -233,7 +233,7 @@ ga('send', 'pageview');
 <p>再接着，服务器接收到了以后，用配对的私钥进行解密，就得到了客户端发送的数据。</p>
 <p>非对称加密算法的特点：算法强度复杂、安全性依赖于算法与密钥但是由于其算法复杂，而使得加解密速度性能上比较差，没有对称加密算法加解密的速度快。</p>
 <p>但是我们还存在一个问题，如果公钥被中间人拿到篡改呢？</p>
-<p><img src="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/https/https3.jpeg" alt="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/https/https3.jpeg"></p>
+<p><img src="https://hzzlyxx.oss-cn-beijing.aliyuncs.com/blog/https/https3.jpeg" alt="https://hzzlyxx.oss-cn-beijing.aliyuncs.com/blog/https/https3.jpeg"></p>
 <p>这时我们就需要使用证书保证公钥的正确性</p>
 <h3 id="公钥证书"><a href="#公钥证书" class="headerlink" title="公钥证书"></a>公钥证书</h3><p>首先，服务器的运营人员向数字证书机构（CA）提出公开密钥的申请。数字证书认证机构在验证申请者的身份之后，会对申请的公开密钥做数字签名，然后分配这个已签名的公开密钥，并将该公开密钥放入公钥证书后绑定在一起。</p>
 <p>简单点理解就是：<br>CA会向申请者颁发一个证书文件和证书的私钥文件，这个证书文件里面的内容有：签发者、证书用途、服务器申请的时候附带的公钥、服务器的加密算法、使用的HASH算法、证书到期的时间等等，私钥文件就是与证书中公钥对应的私钥。</p>
@@ -245,7 +245,7 @@ ga('send', 'pageview');
 <p>接下来就可以使用对称加密算法通信了。</p>
 <h3 id="扩展：客户端证书"><a href="#扩展：客户端证书" class="headerlink" title="扩展：客户端证书"></a>扩展：客户端证书</h3><p>HTTPS中不仅可以使用服务器证书，还可以使用客户端证书。以客户端证书进行客户端认证，它的作用与服务器证书是相同的。</p>
 <p>例如，银行的网上银行就采用了客户端证书（网银盾）。在登录网银时不仅要求用户确认输入ID和密码，还会要求用户的客户端证书（网银盾），以确认用户是否从特定的终端访问网银。</p>
-<h2 id="HTTPS的安全通信机制"><a href="#HTTPS的安全通信机制" class="headerlink" title="HTTPS的安全通信机制"></a>HTTPS的安全通信机制</h2><p><img src="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/https/https1.png" alt="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/https/https1.png"></p>
+<h2 id="HTTPS的安全通信机制"><a href="#HTTPS的安全通信机制" class="headerlink" title="HTTPS的安全通信机制"></a>HTTPS的安全通信机制</h2><p><img src="https://hzzlyxx.oss-cn-beijing.aliyuncs.com/blog/https/https1.png" alt="https://hzzlyxx.oss-cn-beijing.aliyuncs.com/blog/https/https1.png"></p>
 <h3 id="client-hello"><a href="#client-hello" class="headerlink" title="client_hello"></a>client_hello</h3><p>这一步中，客户端通过发送<code>client_hello</code>报文开始SSL通信。在请求中，浏览器会带上一些建立连接的必要信息（注意：这一步的信息全都是明文的），包括：</p>
 <ol>
 <li><code>版本</code>: 客户端支持的最高的 TLS 协议版本。从高到低依次为：TLS v1.2, TLS v1.1, TLS v1.0, SSL v3, SSL v2。其中低于 TLS v1.0 的版本基本不再使用，因为 SSL v3 和 SSL v2 都存在漏洞，Google 和 Mozilla 已明确禁用 SSL 协议。</li>
@@ -273,7 +273,7 @@ ga('send', 'pageview');
 <p>至此，整个过程介绍完毕。</p>
 <h2 id="实践HTTPS连接的握手过程"><a href="#实践HTTPS连接的握手过程" class="headerlink" title="实践HTTPS连接的握手过程"></a>实践HTTPS连接的握手过程</h2><p>我们可以使用 curl 命令来简略查看建立 HTTPS 时的握手过程，在命令行中执行：curl -v -I -L <a href="https://hzzly.cn" target="_blank" rel="noopener">https://hzzly.cn</a></p>
 <p>能得到如下的输出：</p>
-<p><img src="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/https/http4.png" alt="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/https/http4.png"></p>
+<p><img src="https://hzzlyxx.oss-cn-beijing.aliyuncs.com/blog/https/http4.png" alt="https://hzzlyxx.oss-cn-beijing.aliyuncs.com/blog/https/http4.png"></p>
 <p>简单说明一下连接的建立过程：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 表示建立了和 hzzly.cn 服务器 443 端口的连接。</span></span><br><span class="line">Connected to hzzly.cn (39.108.182.125) port 443 (<span class="comment">#0) </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 客户端发出 client_hello 消息。</span></span><br><span class="line">TLSv1.2 (OUT), TLS handshake, Client hello (1): </span><br><span class="line"></span><br><span class="line"><span class="comment"># 服务器发出 server_hello 消息。</span></span><br><span class="line">TLSv1.2 (IN), TLS handshake, Server hello (2): </span><br><span class="line"></span><br><span class="line"><span class="comment"># 服务器发出 certificate 消息。</span></span><br><span class="line">TLSv1.2 (IN), TLS handshake, Certificate (11): </span><br><span class="line"></span><br><span class="line"><span class="comment"># 服务器发出 server_key_exchange 消息。</span></span><br><span class="line">TLSv1.2 (IN), TLS handshake, Server key exchange (12): </span><br><span class="line"></span><br><span class="line"><span class="comment"># 服务器发出 server_done 消息。</span></span><br><span class="line">TLSv1.2 (IN), TLS handshake, Server finished (14): </span><br><span class="line"></span><br><span class="line"><span class="comment"># 客户端发出 client_key_exchange 消息。</span></span><br><span class="line">TLSv1.2 (OUT), TLS handshake, Client key exchange (16): </span><br><span class="line"></span><br><span class="line"><span class="comment"># 客户端发出加密后的 client_hello 消息。</span></span><br><span class="line">TLSv1.2 (OUT), TLS change cipher, Client hello (1): </span><br><span class="line"></span><br><span class="line"><span class="comment"># 客户端发出 hello_done 消息。</span></span><br><span class="line">TLSv1.2 (OUT), TLS handshake, Finished (20): </span><br><span class="line"></span><br><span class="line"><span class="comment"># 服务器将加密后的 client_hello 消息发回。</span></span><br><span class="line">TLSv1.2 (IN), TLS change cipher, Client hello (1): </span><br><span class="line"></span><br><span class="line"><span class="comment"># 握手结束。</span></span><br><span class="line">TLSv1.2 (IN), TLS handshake, Finished (20): </span><br><span class="line"></span><br><span class="line"><span class="comment"># SSL 连接采用 ECDHE-RSA-AES256-GCM-SHA384 密码套件。</span></span><br><span class="line"><span class="comment"># ECDHE 表示密钥交换方法采用椭圆曲线迪菲-赫尔曼交换方法</span></span><br><span class="line"><span class="comment"># RSA 表示密钥交换中使用的签名方式</span></span><br><span class="line"><span class="comment"># AES-256-GCM 表示的是对称加密算法</span></span><br><span class="line"><span class="comment"># SHA-384 表示的是内容完整性校验使用的哈希算法</span></span><br><span class="line">SSL connection using TLSv1.2 / ECDHE-RSA-AES256-GCM-SHA384 </span><br><span class="line"></span><br><span class="line"><span class="comment"># 之后的几行包含了证书的内容，包括有效时间、常用名、证书签发机构等。</span></span><br><span class="line">Server certificate: </span><br><span class="line">      <span class="comment"># Common Name 为 hzzly.cn</span></span><br><span class="line">    subject: CN=hzzly.cn</span><br><span class="line">      <span class="comment"># 在此时间之前无效</span></span><br><span class="line">    start date: Aug  2 00:00:00 2019 GMT</span><br><span class="line">      <span class="comment"># 在此时间之后无效</span></span><br><span class="line">    expire date: Aug  1 12:00:00 2020 GMT</span><br><span class="line">      <span class="comment"># 域名和证书的域名匹配</span></span><br><span class="line">    subjectAltName: host <span class="string">"hzzly.cn"</span> matched certs <span class="string">"hzzly.cn"</span></span><br><span class="line">      <span class="comment"># 签发者是 Encryption</span></span><br><span class="line">    issuer: C=US; O=DigiCert Inc; OU=www.digicert.com; CN=Encryption Everywhere DV TLS CA - G1</span><br></pre></td></tr></table></figure></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li>《图解http》</li>

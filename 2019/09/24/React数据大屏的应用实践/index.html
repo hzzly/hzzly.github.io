@@ -23,13 +23,13 @@
 <meta property="og:site_name" content="Hzzly">
 <meta property="og:description" content="数据大屏与数据可视化现如今大数据已无所不在，并且正被越来越广泛的被应用到历史、政治、科学、经济、商业甚至渗透到我们生活的方方面面中，获取的渠道也越来越便利。 今天我们就来聊一聊“大屏应用”，说到大屏就一定要聊到数据可视化，现如今，数据可视化由于数据分析的火热也变得火热起来，不过数据可视化并不是一个新技术，可视化数据就是用可视化的方式展现的数据。而数据大屏作为大数据展示媒介的一种，广泛运用于各种展示">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/bi/img2.gif">
-<meta property="og:image" content="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/bi/img2.png">
-<meta property="og:updated_time" content="2019-09-23T18:20:34.107Z">
+<meta property="og:image" content="https://hzzlyxx.oss-cn-beijing.aliyuncs.com/blog/bi/img2.gif">
+<meta property="og:image" content="https://hzzlyxx.oss-cn-beijing.aliyuncs.com/blog/bi/img2.png">
+<meta property="og:updated_time" content="2019-11-06T06:08:07.653Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React数据大屏的应用实践">
 <meta name="twitter:description" content="数据大屏与数据可视化现如今大数据已无所不在，并且正被越来越广泛的被应用到历史、政治、科学、经济、商业甚至渗透到我们生活的方方面面中，获取的渠道也越来越便利。 今天我们就来聊一聊“大屏应用”，说到大屏就一定要聊到数据可视化，现如今，数据可视化由于数据分析的火热也变得火热起来，不过数据可视化并不是一个新技术，可视化数据就是用可视化的方式展现的数据。而数据大屏作为大数据展示媒介的一种，广泛运用于各种展示">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/bi/img2.gif">
+<meta name="twitter:image" content="https://hzzlyxx.oss-cn-beijing.aliyuncs.com/blog/bi/img2.gif">
 
   
 
@@ -195,7 +195,7 @@ ga('send', 'pageview');
 <p>随着物联网、5G等各种跟连接有关的技术的出现与发展，每个人手中掌握的数据量都呈指数级增长，光看这些数是看不过来也看不懂的，“数据可视化”就是一种简化，让艰难的数据理解过程，变成——看颜色，辨长短，分高低。从而大大缩短理解数据所需的时间。</p>
 <p>因公司的自研产品涉及到BI模块，因此数据大屏展示的需求孕育而生（数据大屏需求已经完成）。</p>
 <p>下面是本人针对这个数据大屏需求前期做的一些探索实践，数据也是mock的。</p>
-<p><img src="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/bi/img2.gif" alt="bi"></p>
+<p><img src="https://hzzlyxx.oss-cn-beijing.aliyuncs.com/blog/bi/img2.gif" alt="bi"></p>
 <h2 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h2><ul>
 <li>React 全家桶（React-Router、React-Redux、React Hooks）</li>
 <li>Webpack 编译打包</li>
@@ -219,7 +219,7 @@ ga('send', 'pageview');
 <h3 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h3><p>数据大屏的核心就是数据的拼接，具体到展示层可以归纳成数据块的拼接。这里我们采用通用的尺寸1920*108(16:9)。尺寸确立后，接下来要对展示层进行布局和页面的划分。这里的划分，主要根据我们之前定好的业务指标进行，核心业务指标安排在中间位置、占较大面积；其余的指标按优先级依次在核心指标周围展开。一般把有关联的指标让其相邻或靠近，把图表类型相近的指标放一起，这样能减少观者认知上的负担并提高信息传递的效率。</p>
 <p>对于这种块状(网格)布局，我们就可以使用我们强大的 CSS 布局方案 – <strong>Grid</strong>。它将网页划分成一个个网格，可以任意组合不同的网格，做出各种各样的布局。</p>
 <p>安利一个grid 布局可视化设计工具 – <a href="https://cssgrid-generator.netlify.com/" target="_blank" rel="noopener">CSS Grid Generator</a>。可以使用它生成对应的代码，帮助咱们快速布局。</p>
-<p><img src="https://raw.githubusercontent.com/hzzly/hzzly.github.io/master/images/bi/img2.png" alt="grid"></p>
+<p><img src="https://hzzlyxx.oss-cn-beijing.aliyuncs.com/blog/bi/img2.png" alt="grid"></p>
 <h3 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h3><p>聊完这些通用知识我们就可以上手开发了。</p>
 <p>我这里使用了我自己开发的脚手架（hzzly-cli）来生成react项目环境。</p>
 <blockquote>
