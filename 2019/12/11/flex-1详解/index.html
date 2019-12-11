@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>flex: 1 详解 | Hzzly</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="随笔,">
+  
+
+  <meta name="description" content="前言前段时间被头条hr从库里捞起来了(去年面到三面打入冷宫)，于是就接受了面试邀请，心想进不了也可以查缺补漏自己的不足。 其中就问了一道关于flex的问题：123456789101112131415面试官：`flex: 1` 是哪些属性的缩写？ 我：对应三个属性(flex-grow|flex-shrink|flex-basis)。 面试官：`1` 对应哪个属性，另外两个属性的默认值是多少？ 我：当">
+<meta name="keywords" content="随笔">
+<meta property="og:type" content="article">
+<meta property="og:title" content="flex: 1 详解">
+<meta property="og:url" content="http://yoursite.com/2019/12/11/flex-1详解/index.html">
+<meta property="og:site_name" content="Hzzly">
+<meta property="og:description" content="前言前段时间被头条hr从库里捞起来了(去年面到三面打入冷宫)，于是就接受了面试邀请，心想进不了也可以查缺补漏自己的不足。 其中就问了一道关于flex的问题：123456789101112131415面试官：`flex: 1` 是哪些属性的缩写？ 我：对应三个属性(flex-grow|flex-shrink|flex-basis)。 面试官：`1` 对应哪个属性，另外两个属性的默认值是多少？ 我：当">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-12-11T09:26:47.393Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="flex: 1 详解">
+<meta name="twitter:description" content="前言前段时间被头条hr从库里捞起来了(去年面到三面打入冷宫)，于是就接受了面试邀请，心想进不了也可以查缺补漏自己的不足。 其中就问了一道关于flex的问题：123456789101112131415面试官：`flex: 1` 是哪些属性的缩写？ 我：对应三个属性(flex-grow|flex-shrink|flex-basis)。 面试官：`1` 对应哪个属性，另外两个属性的默认值是多少？ 我：当">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#flex-grow"><span class="toc-text">flex-grow</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#flex-shrink"><span class="toc-text">flex-shrink</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#flex-basis"><span class="toc-text">flex-basis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#flex-简写"><span class="toc-text">flex 简写</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#flex-取三个值"><span class="toc-text">flex 取三个值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex-取值为-none"><span class="toc-text">flex 取值为 none</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex-取值为-auto"><span class="toc-text">flex 取值为 auto</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex-取值为-一个非负数"><span class="toc-text">flex 取值为 一个非负数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex-取值为-长度或百分比"><span class="toc-text">flex 取值为 长度或百分比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex-取值为-两个非负数字"><span class="toc-text">flex 取值为 两个非负数字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex-取值为-一个非负数字和一个长度或百分比"><span class="toc-text">flex 取值为 一个非负数字和一个长度或百分比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#栗子🌰"><span class="toc-text">栗子🌰</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-flex-1详解" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">flex: 1 详解</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.12.11</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>hzzly</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前段时间被头条hr从库里捞起来了(去年面到三面打入冷宫)，于是就接受了面试邀请，心想进不了也可以查缺补漏自己的不足。</p>
+<p>其中就问了一道关于flex的问题：<br><figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">面试官：<span class="code">`flex: 1`</span> 是哪些属性的缩写？</span><br><span class="line"> </span><br><span class="line">我：对应三个属性(flex-grow|flex-shrink|flex-basis)。</span><br><span class="line"> </span><br><span class="line">面试官：<span class="code">`1`</span> 对应哪个属性，另外两个属性的默认值是多少？</span><br><span class="line"> </span><br><span class="line">我：当 flex 取值为一个非负数字时，则该数字为 flex-grow 值，flex-shrink 默认为 1，flex-basis 默认 0%。心想幸好当时学的时候看到过。</span><br><span class="line"> </span><br><span class="line">面试官：这三个属性分别表示的什么意思，剩余空间和溢出空间的概念有了解过吗？</span><br><span class="line"> </span><br><span class="line">我：。。。不知道</span><br><span class="line"> </span><br><span class="line">面试官：没关系，我们下一个问题。</span><br><span class="line"> </span><br><span class="line">总结：果然很头条(一个问题问到你不知道为止)。</span><br></pre></td></tr></table></figure></p>
+<p>接下来我就来对flex对应的三个属性做个详解。</p>
+<p>首先明确一点是，flex 属性是 flex-grow, flex-shrink 和 flex-basis 的简写，默认值为 0 1 auto。</p>
+<h2 id="flex-grow"><a href="#flex-grow" class="headerlink" title="flex-grow"></a>flex-grow</h2><p>传统的布局是子容器在父容器中从左到右进行布局，应用 flex 进行布局，那么父容器一定设置 <code>display: flex</code>，子容器要“占有”并且“瓜分”父容器的空间，如何占有、瓜分的策略就是弹性布局的策略。这里就要解释到“剩余空间”的概念：</p>
+<blockquote>
+<p>子容器在父容器的“主轴”上还有多少空间可以“瓜分”，这个可以被“瓜分”的空间就叫做剩余空间。</p>
+</blockquote>
+<p><code>flex-grow</code> 属性定义弹性盒子项（flex-item）的放大比例(定义子容器的瓜分剩余空间的比例)，默认为0，即如果存在剩余空间，也不放大(不会去瓜分)。</p>
+<h2 id="flex-shrink"><a href="#flex-shrink" class="headerlink" title="flex-shrink"></a>flex-shrink</h2><p>如果子容器宽度超过父容器宽度，即使是设置了 flex-grow，但是由于没有剩余空间，就分配不到剩余空间了。这时候有两个办法：换行和压缩。由于 flex 默认不换行，那么压缩的话，怎么压缩呢，压缩多少？此时就需要用到 <code>flex-shrink</code> 属性了。</p>
+<p><code>flex-shrink</code> 属性定义了弹性盒子项（flex-item）的缩小比例，默认为1，即如果空间不足，该子容器将缩小。</p>
+<p>如果所有子项的 <code>flex-shrink</code> 属性都为1，当空间不足时，都将等比例缩小。如果一个子项的 <code>flex-shrink</code> 属性为0，其他子项都为1，则空间不足时，前者不缩小。</p>
+<p>此时，剩余空间的概念就转化成了“溢出空间”。</p>
+<p>注意：</p>
+<ul>
+<li>负值对该属性无效。</li>
+<li>如果子容器没有超出父容器，设置 flex-shrink 无效</li>
+</ul>
+<h2 id="flex-basis"><a href="#flex-basis" class="headerlink" title="flex-basis"></a>flex-basis</h2><p><code>flex-basis</code> 属性定义了在分配多余空间之前，子项占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。</p>
+<p>它可以设为跟 width 或 height 属性一样的值（比如350px），则子项将占据固定空间。既然是跟宽度相关，那么 max-width，min-width，width 和 flex-basis 的大小优先级是怎么样的。</p>
+<blockquote>
+<p>max-width/min-width &gt; flex-basis &gt; width</p>
+</blockquote>
+<p>理解完了这三个属性接下来就看一些我们平时常写的一些简写表示的意义。</p>
+<h2 id="flex-简写"><a href="#flex-简写" class="headerlink" title="flex 简写"></a>flex 简写</h2><p>flex 的默认值是以上三个属性值的组合。假设以上三个属性同样取默认值，则 flex 的默认值是 0 1 auto。</p>
+<h3 id="flex-取三个值"><a href="#flex-取三个值" class="headerlink" title="flex 取三个值"></a>flex 取三个值</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123; <span class="attribute">flex</span>: <span class="number">2</span> <span class="number">1</span> <span class="number">200px</span>; &#125;</span><br><span class="line">// 等同于</span><br><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">flex-grow</span>: <span class="number">2</span>;</span><br><span class="line">  <span class="attribute">flex-shrink</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">flex-basis</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="flex-取值为-none"><a href="#flex-取值为-none" class="headerlink" title="flex 取值为 none"></a>flex 取值为 none</h3><p>当 flex 取值为 none，则计算值为 0 0 auto。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123; <span class="attribute">flex</span>: none; &#125;</span><br><span class="line">// 等同于</span><br><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">flex-grow</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">flex-shrink</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">flex-basis</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="flex-取值为-auto"><a href="#flex-取值为-auto" class="headerlink" title="flex 取值为 auto"></a>flex 取值为 auto</h3><p>当 flex 取值为 auto，则计算值为 1 1 auto。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123; <span class="attribute">flex</span>: auto; &#125;</span><br><span class="line">// 等同于</span><br><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">flex-grow</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">flex-shrink</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">flex-basis</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="flex-取值为-一个非负数"><a href="#flex-取值为-一个非负数" class="headerlink" title="flex 取值为 一个非负数"></a>flex 取值为 一个非负数</h3><p>当 flex 取值为一个非负数字，则该数字为 flex-grow 值，flex-shrink 取 1，flex-basis 取 0%。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123; <span class="attribute">flex</span>: <span class="number">1</span>; &#125;</span><br><span class="line">// 等同于</span><br><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">flex-grow</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">flex-shrink</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">flex-basis</span>: <span class="number">0%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="flex-取值为-长度或百分比"><a href="#flex-取值为-长度或百分比" class="headerlink" title="flex 取值为 长度或百分比"></a>flex 取值为 长度或百分比</h3><p>当 flex 取值为一个长度或百分比，则视为 flex-basis 值，flex-grow 取 1，flex-shrink 取 1。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123; <span class="attribute">flex</span>: <span class="number">0%</span>; &#125;</span><br><span class="line">// 等同于</span><br><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">flex-grow</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">flex-shrink</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">flex-basis</span>: <span class="number">0%</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.item</span> &#123; <span class="attribute">flex</span>: <span class="number">20px</span>; &#125;</span><br><span class="line">// 等同于</span><br><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">flex-grow</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">flex-shrink</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">flex-basis</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="flex-取值为-两个非负数字"><a href="#flex-取值为-两个非负数字" class="headerlink" title="flex 取值为 两个非负数字"></a>flex 取值为 两个非负数字</h3><p>当 flex 取值为两个非负数字，则分别视为 flex-grow 和 flex-shrink 的值，flex-basis 取 0%。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123; <span class="attribute">flex</span>: <span class="number">1</span> <span class="number">2</span>; &#125;</span><br><span class="line">// 等同于</span><br><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">flex-grow</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">flex-shrink</span>: <span class="number">2</span>;</span><br><span class="line">  <span class="attribute">flex-basis</span>: <span class="number">0%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="flex-取值为-一个非负数字和一个长度或百分比"><a href="#flex-取值为-一个非负数字和一个长度或百分比" class="headerlink" title="flex 取值为 一个非负数字和一个长度或百分比"></a>flex 取值为 一个非负数字和一个长度或百分比</h3><p>当 flex 取值为一个非负数字和一个长度或百分比，则分别视为 flex-grow 和 flex-basis 的值，flex-shrink 取 1。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123; <span class="attribute">flex</span>: <span class="number">2</span> <span class="number">20px</span>; &#125;</span><br><span class="line">// 等同于</span><br><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">flex-grow</span>: <span class="number">2</span>;</span><br><span class="line">  <span class="attribute">flex-shrink</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">flex-basis</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>最后我们来用一个例子来计算子项的宽度。</p>
+<h2 id="栗子🌰"><a href="#栗子🌰" class="headerlink" title="栗子🌰"></a>栗子🌰</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item1"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">  <span class="selector-class">.parent</span> &#123;</span></span><br><span class="line"><span class="undefined">    display: flex;</span></span><br><span class="line"><span class="undefined">    width: 600px;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="css">  <span class="selector-class">.parent</span> &gt; <span class="selector-tag">div</span> &#123;</span></span><br><span class="line"><span class="undefined">    height: 100px;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="css">  <span class="selector-class">.item1</span> &#123;</span></span><br><span class="line"><span class="undefined">    width: 140px;</span></span><br><span class="line"><span class="undefined">    flex: 2 1 0%;</span></span><br><span class="line"><span class="undefined">    background: blue;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="css">  <span class="selector-class">.item2</span> &#123;</span></span><br><span class="line"><span class="undefined">    width: 100px;</span></span><br><span class="line"><span class="undefined">    flex: 2 1 auto;</span></span><br><span class="line"><span class="undefined">    background: darkblue;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="css">  <span class="selector-class">.item3</span> &#123;</span></span><br><span class="line"><span class="undefined">    flex: 1 1 200px;</span></span><br><span class="line"><span class="undefined">    background: lightblue;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>当 item-1 的 flex-basis 取 0% 的时候，是把该项目视为零尺寸的，故即便声明其尺寸为 140px，也并没有什么用，形同虚设<br>而 item-2 的 flex-basis 取 auto 的时候，根据规则基准值使用值是主尺寸值即 100px，故这 100px 不会纳入剩余空间</p>
+</blockquote>
+<p>主轴上父容器总尺寸：600px</p>
+<p>剩余空间：<br>600px - 100px(item2的flex-basis值) - 200px(item3的flex-basis值) = 300px</p>
+<p>伸缩放大系数之和(flex-grow值)：<br>2(item1) + 2(item2) + 1(item3) = 5</p>
+<p>每一份比例所占宽度：300 / 5 = 60px;</p>
+<p>剩余空间分配如下：</p>
+<ul>
+<li>item1 和 item2 各分配 2/5，各得 120px</li>
+<li>item3 分配 1/5，得 60px</li>
+</ul>
+<p>各子项最终宽度为：</p>
+<ul>
+<li>item1 = 0%(0px) + 120px = 120px</li>
+<li>item2 = auto(100px) + 120px = 220px</li>
+<li>item3 = 200px + 60px = 260px</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="noopener">Flex 布局教程：语法篇</a></li>
+</ul>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持hzzly</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/09/24/React数据大屏的应用实践/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
