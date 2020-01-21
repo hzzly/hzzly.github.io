@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>js处理long型丢失精度问题 | Hzzly</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="JavaScript,随便,">
+  
+
+  <meta name="description" content="最近项目后端为Prong开发了一个基于snowflake算法的Java分布式ID组件，将实体主键从原来的String类型的UUID修改成了Long型的分布式ID。修改后发现前端显示的ID和数据库中的ID不一致。例如数据库中存储的是：812782555915911412，显示出来却成了812782555915911400，后面2位变成了0，精度丢失了： 12console.log(812782555">
+<meta name="keywords" content="JavaScript,随便">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js处理long型丢失精度问题">
+<meta property="og:url" content="http://yoursite.com/2020/01/21/JavaScript处理Long型丢失精度/index.html">
+<meta property="og:site_name" content="Hzzly">
+<meta property="og:description" content="最近项目后端为Prong开发了一个基于snowflake算法的Java分布式ID组件，将实体主键从原来的String类型的UUID修改成了Long型的分布式ID。修改后发现前端显示的ID和数据库中的ID不一致。例如数据库中存储的是：812782555915911412，显示出来却成了812782555915911400，后面2位变成了0，精度丢失了： 12console.log(812782555">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://hzzlyxx.oss-cn-beijing.aliyuncs.com/blog/long/long.png">
+<meta property="og:updated_time" content="2020-01-21T06:30:10.486Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js处理long型丢失精度问题">
+<meta name="twitter:description" content="最近项目后端为Prong开发了一个基于snowflake算法的Java分布式ID组件，将实体主键从原来的String类型的UUID修改成了Long型的分布式ID。修改后发现前端显示的ID和数据库中的ID不一致。例如数据库中存储的是：812782555915911412，显示出来却成了812782555915911400，后面2位变成了0，精度丢失了： 12console.log(812782555">
+<meta name="twitter:image" content="https://hzzlyxx.oss-cn-beijing.aliyuncs.com/blog/long/long.png">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#原因"><span class="toc-text">原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方法"><span class="toc-text">解决方法</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-JavaScript处理Long型丢失精度" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">js处理long型丢失精度问题</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2020.01.21</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>hzzly</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>最近项目后端为Prong开发了一个基于snowflake算法的Java分布式ID组件，将实体主键从原来的String类型的UUID修改成了Long型的分布式ID。修改后发现前端显示的ID和数据库中的ID不一致。例如数据库中存储的是：812782555915911412，显示出来却成了812782555915911400，后面2位变成了0，精度丢失了：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">812782555915911412</span>);</span><br><span class="line"><span class="number">812782555915911400</span></span><br></pre></td></tr></table></figure>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>这是因为JavaScript中数字的精度是有限的，Java的Long类型的数字超出了JavaScript的处理范围。JavaScript内部只有一种数字类型Number，所有数字都是采用IEEE 754 标准定义的双精度64位格式存储，即使整数也是如此。这就是说，JavaScript 语言的底层根本没有整数，所有数字都是小数（64位浮点数）。其结构如图：</p>
+<p><img src="https://hzzlyxx.oss-cn-beijing.aliyuncs.com/blog/long/long.png" alt="https://hzzlyxx.oss-cn-beijing.aliyuncs.com/blog/long/long.png"></p>
+<p>各位的含义如下：</p>
+<ul>
+<li>1位（s） 用来表示符号位，0表示正数，1表示负数</li>
+<li>11位（e） 用来表示指数部分</li>
+<li>52位（f） 表示小数部分（即有效数字）</li>
+</ul>
+<p>双精度浮点数(<code>double</code>)并不是能够精确表示范围内的所有数， 虽然双精度浮点型的范围看上去很大: 。 可以表示的最大整数可以很大，但能够精确表示，使用算数运算的并没有这么大。因为小数部分最大是 <code>52</code> 位，因此 JavaScript 中能精准表示的最大整数是 ，十进制即 <code>9007199254740991</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">53</span>) - <span class="number">1</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span>L&lt;&lt;<span class="number">53</span>);</span><br><span class="line"><span class="number">9007199254740991</span></span><br></pre></td></tr></table></figure>
+<p>JavaScript 有所谓的最大和最小安全值：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>.MAX_SAFE_INTEGER);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>.MIN_SAFE_INTEGER);</span><br><span class="line"><span class="number">9007199254740991</span></span><br><span class="line"><span class="number">-9007199254740991</span></span><br></pre></td></tr></table></figure>
+<p><code>安全</code> 意思是说能够 <code>one-by-one</code> 表示的整数，也就是说在范围内，双精度数表示和整数是一对一的，在这个范围以内，所有的整数都有唯一的浮点数表示，这叫做安全整数。</p>
+<p>而超过这个范围，会有两个或更多整数的双精度表示是相同的；即超过这个范围，有的整数是无法精确表示的，只能大约(round)到与它相近的浮点数（说到底就是科学计数法）表示，这种情况下叫做<code>不安全整数</code>，例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>.MAX_SAFE_INTEGER + <span class="number">1</span>); <span class="comment">// 结果：9007199254740992，精度未丢失</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>.MAX_SAFE_INTEGER + <span class="number">2</span>); <span class="comment">// 结果：9007199254740992，精度丢失</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>.MAX_SAFE_INTEGER + <span class="number">3</span>); <span class="comment">// 结果：9007199254740994，精度未丢失</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>.MAX_SAFE_INTEGER + <span class="number">4</span>); <span class="comment">// 结果：9007199254740996，精度丢失</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>.MAX_SAFE_INTEGER + <span class="number">5</span>); <span class="comment">// 结果：9007199254740996，精度未丢失</span></span><br></pre></td></tr></table></figure>
+<p>而 <code>Java</code> 的 <code>Long</code> 类型的有效位数是63位（扣除一位符号位），其最大值为，十进制为9223372036854775807。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    System.out.println(Long.MAX_VALUE);</span><br><span class="line">    System.out.println((<span class="number">1L</span>&lt;&lt;<span class="number">63</span>) -<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">9223372036854775807</span></span><br><span class="line"><span class="number">9223372036854775807</span></span><br></pre></td></tr></table></figure>
+<p>所以只要java传给JavaScript的 <code>Long</code> 类型的值超过9007199254740991，就有可能产生精度丢失，从而导致数据和逻辑出错。</p>
+<blockquote>
+<p>和其他编程语言（如 C 和 Java）不同，JavaScript 不区分整数值和浮点数值，所有数字在 JavaScript 中均用浮点数值表示，所以在进行数字运算的时候要特别注意精度缺失问题。容易造成混淆的是，某些运算只有整数才能完成，此时 JavaScript 会自动把64位浮点数，转成32位整数，然后再进行运算，由于浮点数不是精确的值，所以涉及小数的比较和运算要特别小心。</p>
+<p>进一步阅读：<a href="https://wangdoc.com/javascript/types/number.html" target="_blank" rel="noopener">JavaScript 教程 - 数据类型 - 数值</a></p>
+</blockquote>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>解决办法就是让Javascript把数字当成字符串进行处理。对Javascript来说如果不进行运算，数字和字符串处理起来没有什么区别。当然如果需要进行运算，只能采用其他方法，例如JavaScript的一些开源库 bignum、bigint等支持长整型的处理。Java进行JSON处理的时候是能够正确处理long型的，只需要将数字转化成字符串就可以了。</p>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持hzzly</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2020/01/19/h5手机键盘弹出收起的处理/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
