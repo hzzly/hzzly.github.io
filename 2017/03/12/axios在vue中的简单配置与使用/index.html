@@ -12,11 +12,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="随笔,axios,">
+    <meta name="keywords" content="随笔,vue,axios,">
   
 
   <meta name="description" content="尤雨溪之前在微博发布消息，不再继续维护vue-resource，并推荐大家开始使用 axios 。   一、axios 简介axios 是一个基于Promise 用于浏览器和 nodejs 的 HTTP 客户端，它本身具有以下特征：   从浏览器中创建 XMLHttpRequest 从 node.js 发出 http 请求 支持 Promise API 拦截请求和响应 转换请求和响应数据 取消请">
-<meta name="keywords" content="随笔,axios">
+<meta name="keywords" content="随笔,vue,axios">
 <meta property="og:type" content="article">
 <meta property="og:title" content="axios在vue中的简单配置与使用">
 <meta property="og:url" content="http://yoursite.com/2017/03/12/axios在vue中的简单配置与使用/index.html">
@@ -24,7 +24,7 @@
 <meta property="og:description" content="尤雨溪之前在微博发布消息，不再继续维护vue-resource，并推荐大家开始使用 axios 。   一、axios 简介axios 是一个基于Promise 用于浏览器和 nodejs 的 HTTP 客户端，它本身具有以下特征：   从浏览器中创建 XMLHttpRequest 从 node.js 发出 http 请求 支持 Promise API 拦截请求和响应 转换请求和响应数据 取消请">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://hzzly.github.io/img/axios.png">
-<meta property="og:updated_time" content="2017-06-10T15:42:36.000Z">
+<meta property="og:updated_time" content="2020-01-21T06:37:45.948Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="axios在vue中的简单配置与使用">
 <meta name="twitter:description" content="尤雨溪之前在微博发布消息，不再继续维护vue-resource，并推荐大家开始使用 axios 。   一、axios 简介axios 是一个基于Promise 用于浏览器和 nodejs 的 HTTP 客户端，它本身具有以下特征：   从浏览器中创建 XMLHttpRequest 从 node.js 发出 http 请求 支持 Promise API 拦截请求和响应 转换请求和响应数据 取消请">
@@ -208,7 +208,7 @@ ga('send', 'pageview');
 </blockquote>
 <h2 id="二、引入方式："><a href="#二、引入方式：" class="headerlink" title="二、引入方式："></a><strong>二、引入方式：</strong></h2><p>npm:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm install axios</span><br><span class="line">//淘宝源</span><br><span class="line">$ cnpm install axios</span><br></pre></td></tr></table></figure></p>
 <p>bower:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bower install axios</span><br></pre></td></tr></table></figure></p>
-<p>cdn:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"https://unpkg.com/axios/dist/axios.min.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<p>cdn:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"https://unpkg.com/axios/dist/axios.min.js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
 <h2 id="三、vue中axios的配置"><a href="#三、vue中axios的配置" class="headerlink" title="三、vue中axios的配置 "></a><strong>三、vue中axios的配置 </strong></h2><blockquote>
 <p>之前那个开源项目一开始就打算用axios，在网上找了好多文章与攻略，发现好多都不太详细，所以打算自己动手配置一个，(不要怂，撸起袖子就是干)。</p>
 </blockquote>
