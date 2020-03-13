@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-03-13T13:26:49.437Z</updated>
+  <updated>2020-03-13T13:37:00.212Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,16 +21,16 @@
     <link href="http://yoursite.com/2020/03/13/%E8%AE%B0%E4%B8%80%E6%AC%A1dva%E5%8D%87%E7%BA%A7%E5%90%8E%E7%9A%84bug/"/>
     <id>http://yoursite.com/2020/03/13/记一次dva升级后的bug/</id>
     <published>2020-03-13T13:24:32.000Z</published>
-    <updated>2020-03-13T13:26:49.437Z</updated>
+    <updated>2020-03-13T13:37:00.212Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>前言：去年的时候针对公司老项目（dva环境）进行了一次优化升级，升级后没出现啥问题，因为疫情的关系，导致一直在家办公，最近针对老项目又加了个需求，用自己的电脑从Gos上down下来<code>npm install</code>之后运行就报错了。</p></blockquote><p>安装完依赖npm start的时候，就开始报如下的错误：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Failed to compile</span><br><span class="line">./node_modules/<span class="built_in">history</span>/esm/history.js</span><br><span class="line">Module not found: Can<span class="string">'t resolve '</span>@babel/runtime/helpers/esm/extends<span class="string">' in '</span>xxxx\prong-console-tenant\node_modules\<span class="built_in">history</span>\esm<span class="string">'</span></span><br></pre></td></tr></table></figure><p>一般删了node_modules重新安装依赖能解决80%的问题，但这次重新安装却不起作用了。于是就开始了折腾之旅了，去Google搜了一圈，找了几个解决方案尝试之后发现都不太行。</p><p>最后在Github issues里找到了解决思路：<code>history</code> 版本问题。</p><p>按以下步骤检查：</p><p>1、<code>npm list history</code> 查看history安装情况；</p><p>2、如果版本不是4.7.2，卸载history， <code>npm un history</code>；</p><p>3、<code>npm list history</code> 确保history已全部删除；</p><p>4、<code>npm install --save history@4.7.2</code> 安装指定版本；</p><p>按照如上步骤就把这个错误解决了，运行成功。完美！</p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>前言：去年的时候针对公司老项目（dva环境）进行了一次优化升级，升级后没出现啥问题，因为疫情的关系，导致一直在家办公，最近针对老项目又加了个需求，用自己的电脑从Gogs上down下来<code>npm install</code>之后运行就报错了。</p></blockquote><p>安装完依赖npm start的时候，就开始报如下的错误：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Failed to compile</span><br><span class="line">./node_modules/<span class="built_in">history</span>/esm/history.js</span><br><span class="line">Module not found: Can<span class="string">'t resolve '</span>@babel/runtime/helpers/esm/extends<span class="string">' in '</span>xxxx\prong-console-tenant\node_modules\<span class="built_in">history</span>\esm<span class="string">'</span></span><br></pre></td></tr></table></figure><p>一般删了node_modules重新安装依赖能解决80%的问题，但这次重新安装却不起作用了。于是就开始了折腾之旅了，去Google搜了一圈，找了几个解决方案尝试之后发现都不太行。</p><p>最后在Github issues里找到了解决思路：<code>history</code> 版本问题。</p><p>按以下步骤检查：</p><p>1、<code>npm list history</code> 查看history安装情况；</p><p>2、如果版本不是4.7.2，卸载history， <code>npm un history</code>；</p><p>3、<code>npm list history</code> 确保history已全部删除；</p><p>4、<code>npm install --save history@4.7.2</code> 安装指定版本；</p><p>按照如上步骤就把这个错误解决了，运行成功。完美！</p>]]></content>
     
     <summary type="html">
     
       
       
         &lt;blockquote&gt;
-&lt;p&gt;前言：去年的时候针对公司老项目（dva环境）进行了一次优化升级，升级后没出现啥问题，因为疫情的关系，导致一直在家办公，最近针对老项目又加了个需求，用自己的电脑从Gos上down下来&lt;code&gt;npm install&lt;/code&gt;之后运行就报错了。&lt;
+&lt;p&gt;前言：去年的时候针对公司老项目（dva环境）进行了一次优化升级，升级后没出现啥问题，因为疫情的关系，导致一直在家办公，最近针对老项目又加了个需求，用自己的电脑从Gogs上down下来&lt;code&gt;npm install&lt;/code&gt;之后运行就报错了。
       
     
     </summary>
