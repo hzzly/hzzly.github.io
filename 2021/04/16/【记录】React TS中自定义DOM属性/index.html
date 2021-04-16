@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>【记录】React TS中自定义DOM属性 | Hzzly</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="随笔,react,TypeScript,记录,">
+  
+
+  <meta name="description" content="前言：最近在项目中进行渐进式重构升级，技术栈也是从之前的jQuery时代转换成React和TypeScript。当然重构过程中也冒出了不少的问题，本文将记录一下React TS中自定义DOM属性的一些解决方案。  先看一下需求  在原生DOM节点新增自定义属性  比如： 1&amp;lt;div mark=&quot;mark&quot;&amp;gt;&amp;lt;/div&amp;gt; 在React中这样写是能正常渲染的，React官方对">
+<meta name="keywords" content="随笔,react,TypeScript,记录">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【记录】React TS中自定义DOM属性">
+<meta property="og:url" content="http://yoursite.com/2021/04/16/【记录】React TS中自定义DOM属性/index.html">
+<meta property="og:site_name" content="Hzzly">
+<meta property="og:description" content="前言：最近在项目中进行渐进式重构升级，技术栈也是从之前的jQuery时代转换成React和TypeScript。当然重构过程中也冒出了不少的问题，本文将记录一下React TS中自定义DOM属性的一些解决方案。  先看一下需求  在原生DOM节点新增自定义属性  比如： 1&amp;lt;div mark=&quot;mark&quot;&amp;gt;&amp;lt;/div&amp;gt; 在React中这样写是能正常渲染的，React官方对">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2021-04-16T09:41:18.723Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【记录】React TS中自定义DOM属性">
+<meta name="twitter:description" content="前言：最近在项目中进行渐进式重构升级，技术栈也是从之前的jQuery时代转换成React和TypeScript。当然重构过程中也冒出了不少的问题，本文将记录一下React TS中自定义DOM属性的一些解决方案。  先看一下需求  在原生DOM节点新增自定义属性  比如： 1&amp;lt;div mark=&quot;mark&quot;&amp;gt;&amp;lt;/div&amp;gt; 在React中这样写是能正常渲染的，React官方对">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-【记录】React TS中自定义DOM属性" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">【记录】React TS中自定义DOM属性</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2021.04.16</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>hzzly</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <blockquote>
+<p>前言：最近在项目中进行渐进式重构升级，技术栈也是从之前的jQuery时代转换成React和TypeScript。当然重构过程中也冒出了不少的问题，本文将记录一下React TS中自定义DOM属性的一些解决方案。</p>
+</blockquote>
+<p>先看一下需求</p>
+<ul>
+<li><strong>在原生DOM节点新增自定义属性</strong></li>
+</ul>
+<p>比如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">mark</span>=<span class="string">"mark"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在React中这样写是能正常渲染的，React官方对于<a href="https://reactjs.org/blog/2017/09/08/dom-attributes-in-react-16.html" target="_blank" rel="noopener">自定义DOM属性</a>也是有一篇文章特别说明，大致意思就是React 16之前对于未知的DOM属性。如果JSX具有React无法识别的属性，React只会跳过它，并不会渲染在DOM中，在React 16之后，进行了更改，所有未知属性都将最终出现在DOM中。</p>
+<p>但是在TypeScript中这样写就会报错：</p>
+<blockquote>
+<p>类型“DetailedHTMLProps&lt;HTMLAttributes<htmldivelement>, HTMLDivElement&gt;”上不存在属性“mark”</htmldivelement></p>
+</blockquote>
+<p>Google了一圈，在 <a href="https://stackoverflow.com/questions/40093655/how-do-i-add-attributes-to-existing-html-elements-in-typescript-jsx" target="_blank" rel="noopener">stackoverflow</a> 看到一个差不多的问题，尝试按照useful最多的这样声明：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">declare <span class="built_in">module</span> <span class="string">'react'</span> &#123;</span><br><span class="line">  interface HTMLProps&lt;T&gt; &#123;</span><br><span class="line">    mark?:string;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然而还是报相同的错误，未解决。</p>
+<p>最后在一个Answer中找到了解决方案，测试可行：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">declare <span class="built_in">module</span> <span class="string">'react'</span> &#123;</span><br><span class="line">  interface HTMLAttributes&lt;T&gt; extends AriaAttributes, DOMAttributes&lt;T&gt; &#123;</span><br><span class="line">    mark?: string;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>添加这句声明后能顺利的解决ts的报错，但这也不是最好的解决方案，这是为什么呢？在添加了这句声明后，发现我们在上面声明的图片格式失效报错了：</p>
+<blockquote>
+<p>找不到模块“xxxxxx.png”或其相应的类型声明</p>
+</blockquote>
+<p>这里就直接列举出我尝试后的解决方案，可能不是最好的，但目前可以解决上面的两个报错问题：</p>
+<p><strong>把自定义DOM属性类型声明和图片类型声明分开到不一样的.d.ts文件里，防止冲突报错</strong></p>
+<p>如果有更好的解决方案，欢迎交流探讨。</p>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持hzzly</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2021/04/06/Tree-Shaking知多少/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
