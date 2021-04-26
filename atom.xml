@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2021-04-16T09:41:18.723Z</updated>
+  <updated>2021-04-26T02:59:59.517Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Monorepo的实践落地</title>
+    <link href="http://yoursite.com/2021/04/26/Monorepo%E7%9A%84%E5%AE%9E%E8%B7%B5%E8%90%BD%E5%9C%B0/"/>
+    <id>http://yoursite.com/2021/04/26/Monorepo的实践落地/</id>
+    <published>2021-04-26T02:53:13.000Z</published>
+    <updated>2021-04-26T02:59:59.517Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>前言：最近针对项目代码仓库进行了一次重构，之前代码管理缺少规范和模块化的思想，也是借着项目重构这次机会重新规划代码仓库，实践落地了一种新的项目管理方式——Monorepo，Monorepo的管理概念跟我们规划的项目代码管理非常贴合，再加上我们新增的组件库及工具库，打造了一套比较完整的工作流。</p></blockquote><p>一些概念性的的东西这里就不多说了，不太了解 <code>Monorepo</code> 的可以自行 google 一下，这里就默认已经了解过了。</p><p>要想从零开始定制一套完善的 Monorepo 的工程化工具，还是一件比较有难度的事情。不过社区已经提供了一些比较成熟的方案，我们可以拿来进行定制。</p><p>在重构方案选择上，我们选择了业界比较成熟的 <strong><a href="https://lerna.js.org/" target="_blank" rel="noopener">lerna</a></strong> 和 <strong>yarn workspaces</strong>，用 <code>yarn</code> 来处理依赖问题，用 <code>lerna</code> 来处理发布问题。</p><p><a href="https://github.com/hzzlyxx/lerna" target="_blank" rel="noopener">仓库地址</a></p><h2 id="lerna"><a href="#lerna" class="headerlink" title="lerna"></a>lerna</h2><p><code>lerna</code> 官方的定位：A tool for managing JavaScript projects with multiple packages（一个用来管理带有多个package的JavaScript项目）。</p><p>lerna不负责构建，测试等任务，它提出了一种集中管理package的目录模式，提供了一套自动化管理程序，让开发者不必再深耕到具体的组件里维护内容，在项目根目录就可以全局掌控，基于 npm scripts，使用者可以很好地完成组件构建，代码格式化等操作。</p><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install lerna –g</span><br><span class="line">//</span><br><span class="line">yarn add lerna global</span><br></pre></td></tr></table></figure><h3 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// lerna 项目初始化</span><br><span class="line">lerna init // 固定模式</span><br><span class="line">lerna init -i // 独立模式</span><br><span class="line"></span><br><span class="line">// 创建子项目</span><br><span class="line">lerna create [包名]</span><br><span class="line"></span><br><span class="line">// 清除所有子项目的依赖</span><br><span class="line">lerna clean</span><br><span class="line"></span><br><span class="line">// 安装所有依赖</span><br><span class="line">lerna bootstrap</span><br><span class="line"></span><br><span class="line">// 发布</span><br><span class="line">lerna publish</span><br></pre></td></tr></table></figure><h2 id="重构的价值"><a href="#重构的价值" class="headerlink" title="重构的价值"></a>重构的价值</h2><p>之前的代码管理非常的混杂，还是比较传统的代码目录结构，一些公共基础服务无法扩展复用，如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 之前的代码目录</span><br><span class="line">├── package.json</span><br><span class="line">├── README.md</span><br><span class="line">├── tool // 项目打包编译配置</span><br><span class="line">├── release // 打包目标文件夹</span><br><span class="line">└── src // 源代码</span><br><span class="line">    ├── css</span><br><span class="line">    ├── html</span><br><span class="line">    ├── images</span><br><span class="line">    ├── js</span><br><span class="line">    └── sass</span><br></pre></td></tr></table></figure><p>重构后的代码结构无论是模块化还是复用性都很清晰，同时在代码规范上也比之前更规范了，如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 重构后的代码目录：</span><br><span class="line">├── ... // 其它配置文件（代码规范）</span><br><span class="line">├── package.json</span><br><span class="line">├── README.md</span><br><span class="line">├── lerna.json // lerna 配置文件</span><br><span class="line">└── packages // 分割的小项目</span><br><span class="line">    ├── components</span><br><span class="line">    ├── utils</span><br><span class="line">    ├── ... // 多个业务模块</span><br></pre></td></tr></table></figure><p><strong>总结一下：</strong></p><ul><li>将之前混杂的代码库分割为独立版本控制的小项目（项目更清晰）</li><li>解决了包之间的依赖关系（新增了组件库以及工具库）</li><li>通过git仓库检查到改动并自动同步（公共基础库的发布）</li><li>根据提交的commit生成CHANGELOG版本日志文件（项目代码更规范）</li><li>TypeScript支持</li><li>统一技术栈</li><li>完善的工作流</li></ul><p>当然，<code>lerna</code> 还有更多的功能可以去发掘，还有很多可以结合 <code>lerna</code> 一起使用的工具。构建一套完善的仓库管理机制，可能它的收益不是一些量化的指标可以衡量出来的，也没有直接的价值输出，但它能在日常的工作中极大的提高工作效率，解放生产力，节省大量的人力成本。</p><p>下篇就来聊聊组件库的那些事。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;前言：最近针对项目代码仓库进行了一次重构，之前代码管理缺少规范和模块化的思想，也是借着项目重构这次机会重新规划代码仓库，实践落地了一种新的项目管理方式——Monorepo，Monorepo的管理概念跟我们规划的项目代码管理非常贴合，再加上我们新增的
+      
+    
+    </summary>
+    
+    
+      <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
   
   <entry>
     <title>【记录】React TS中自定义DOM属性</title>
@@ -528,35 +552,6 @@
       <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
     
       <category term="nginx" scheme="http://yoursite.com/tags/nginx/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>图解词法作用域与作用域链</title>
-    <link href="http://yoursite.com/2019/03/04/%E5%9B%BE%E8%A7%A3%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/"/>
-    <id>http://yoursite.com/2019/03/04/图解词法作用域与作用域链/</id>
-    <published>2019-03-04T07:53:11.000Z</published>
-    <updated>2020-01-21T06:36:51.585Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><blockquote><p>作用域是指程序源代码中定义变量的区域。</p><p>作用域规定了如何查找变量，也就是确定当前执行代码对变量的访问权限。</p><p>JavaScript 采用词法作用域(lexical scoping)，也就是静态作用域。</p><p>想了解更多关于作用域的问题推荐阅读《你不知道的JavaScript上卷》第一章（或第一部分），从编译原理的角度说明什么是作用域。概括的说作用域就是一套设计良好的规则来存储变量，并且之后可以方便地找到这些变量。</p></blockquote><h2 id="词法作用域"><a href="#词法作用域" class="headerlink" title="词法作用域"></a>词法作用域</h2><p>在你不知道的javascript上卷中是这样定义的：<strong>词法作用域就是定义在词法阶段的作用域。换句话说，词法作用域是由你在写代码时将变量和块作用域写在哪里来决定的，因此当词法分析器处理代码时会保持作用域不变(大部分情况下是这样的)。</strong></p><p>在JS中词法作用域的规则：</p><blockquote><ul><li>函数允许访问函数外部的数据</li><li>整个代码结构中只有函数可以限定作用域</li><li>作用规则首先使用提升规则分析</li><li>如果当前作用域中有了名字了，就不考虑外面的名字</li></ul></blockquote><p>栗1：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">3</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(a); <span class="comment">// 3</span></span><br><span class="line">&#125;</span><br><span class="line">foo();</span><br></pre></td></tr></table></figure></p><p>栗2：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a); <span class="comment">// 2</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">3</span>;</span><br><span class="line">  foo();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">bar();</span><br></pre></td></tr></table></figure></p><h2 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h2><p>只有函数才能制造作用域结构，那么只要是代码，至少有一个作用域，即全局作用域。</p><p>凡是代码中有函数，那么这个函数就构成另一个作用域。如果函数中还有函数，那么在这个作用域中就又可以诞生一个作用域，那么将这样的所有作用域列出来，可以有一个结构：函数内指向函数外的链式结构。</p><p>以上面栗2：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(a); <span class="comment">// 2</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">3</span>;</span><br><span class="line">  foo();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">bar();</span><br></pre></td></tr></table></figure></p><ul><li>全局作用域，有三个标识符：foo、bar、a</li><li>bar 所创建的作用域，其中有一个标识符：a</li></ul><p>作用域是由代码写在哪里决定的，并且是逐级包含的。</p><p>我们用级链来表示一下以上代码块：</p><p><img src="https://hzzlyxx.oss-cn-beijing.aliyuncs.com/blog/scope/scope1.png" alt="scope1"></p><p>从图中我们可以看到：函数foo和bar以及变量 a=2， 在1级链，而bar下又可以展开2级链，2级链上有a=3。程序bar()调用进入中间2级链，而bar中又调用了foo函数，此时程序进入foo的作用域链，按照向上查找的原则，程序会从这一条链向上查找，首先2级链没有a，向上到达1级链，刚好1级链上有a=2，所以就直接使用2，程序最后的结果就是打印2。</p><p>所以无论函数在哪里被调用，也无论它如何被调用，它的词法作用域都只由函数被声明时所处的位置决定。</p><h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><p><a href="https://github.com/mqyqingfeng/Blog/issues/3" target="_blank" rel="noopener">《JavaScript深入之词法作用域和动态作用域》</a>思考题<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scope = <span class="string">"global scope"</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkscope</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> scope = <span class="string">"local scope"</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> scope;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> f();</span><br><span class="line">&#125;</span><br><span class="line">checkscope();</span><br></pre></td></tr></table></figure></p><p><img src="https://hzzlyxx.oss-cn-beijing.aliyuncs.com/blog/scope/scope2.png" alt="scope2"></p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul><li><a href="https://github.com/mqyqingfeng/Blog/issues/3" target="_blank" rel="noopener">JavaScript深入之词法作用域和动态作用域</a></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;作用域&quot;&gt;&lt;a href=&quot;#作用域&quot; class=&quot;headerlink&quot; title=&quot;作用域&quot;&gt;&lt;/a&gt;作用域&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;作用域是指程序源代码中定义变量的区域。&lt;/p&gt;
-&lt;p&gt;作用域规定了如何查找变量，也就是确定当前执行代码对变
-      
-    
-    </summary>
-    
-    
-      <category term="随笔" scheme="http://yoursite.com/tags/%E9%9A%8F%E7%AC%94/"/>
-    
-      <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
-    
-      <category term="js" scheme="http://yoursite.com/tags/js/"/>
     
   </entry>
   
