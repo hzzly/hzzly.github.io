@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>组件库搭建实践 | Hzzly</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="随笔,组件库,">
+  
+
+  <meta name="description" content="前言：从去年年底开始规划项目的重构，也是这样一个机遇，我开始负责项目的一个基础架构以及一些公共基础服务，主要搭建了组件库以及工具类库来提升后续开发以及重构的效率，期间也是踩了不少坑，接下来就作为整个搭建过程的一个总结，本篇主要是组件库的搭建与实践。  一个项目或系统有着大量的业务场景和业务代码，相似的页面和代码层出不穷，那如何管理和抽象这些相似的代码和模块，这肯定是许多团队都会遇到的问题。不断的">
+<meta name="keywords" content="随笔,组件库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="组件库搭建实践">
+<meta property="og:url" content="http://yoursite.com/2021/08/08/组件库搭建实践/index.html">
+<meta property="og:site_name" content="Hzzly">
+<meta property="og:description" content="前言：从去年年底开始规划项目的重构，也是这样一个机遇，我开始负责项目的一个基础架构以及一些公共基础服务，主要搭建了组件库以及工具类库来提升后续开发以及重构的效率，期间也是踩了不少坑，接下来就作为整个搭建过程的一个总结，本篇主要是组件库的搭建与实践。  一个项目或系统有着大量的业务场景和业务代码，相似的页面和代码层出不穷，那如何管理和抽象这些相似的代码和模块，这肯定是许多团队都会遇到的问题。不断的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2021-08-08T15:10:05.261Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="组件库搭建实践">
+<meta name="twitter:description" content="前言：从去年年底开始规划项目的重构，也是这样一个机遇，我开始负责项目的一个基础架构以及一些公共基础服务，主要搭建了组件库以及工具类库来提升后续开发以及重构的效率，期间也是踩了不少坑，接下来就作为整个搭建过程的一个总结，本篇主要是组件库的搭建与实践。  一个项目或系统有着大量的业务场景和业务代码，相似的页面和代码层出不穷，那如何管理和抽象这些相似的代码和模块，这肯定是许多团队都会遇到的问题。不断的">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题"><span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#价值"><span class="toc-text">价值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方案"><span class="toc-text">解决方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实践"><span class="toc-text">实践</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基础架构"><span class="toc-text">基础架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#组件库目录结构"><span class="toc-text">组件库目录结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组件目录结构"><span class="toc-text">组件目录结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编译后的组件目录结构"><span class="toc-text">编译后的组件目录结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规范"><span class="toc-text">规范</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#组件"><span class="toc-text">组件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#样式"><span class="toc-text">样式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文档"><span class="toc-text">文档</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#组件文档"><span class="toc-text">组件文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组件库文档"><span class="toc-text">组件库文档</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#打包"><span class="toc-text">打包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#编译打包-ts-x"><span class="toc-text">编译打包 ts[x]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编译打包样式文件"><span class="toc-text">编译打包样式文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UMD"><span class="toc-text">UMD</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#迭代维护"><span class="toc-text">迭代维护</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CHANGELOG-md"><span class="toc-text">CHANGELOG.md</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-组件库搭建实践" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">组件库搭建实践</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2021.08.08</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>hzzly</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <blockquote>
+<p>前言：从去年年底开始规划项目的重构，也是这样一个机遇，我开始负责项目的一个基础架构以及一些公共基础服务，主要搭建了组件库以及工具类库来提升后续开发以及重构的效率，期间也是踩了不少坑，接下来就作为整个搭建过程的一个总结，本篇主要是组件库的搭建与实践。</p>
+</blockquote>
+<p>一个项目或系统有着大量的业务场景和业务代码，相似的页面和代码层出不穷，那如何管理和抽象这些相似的代码和模块，这肯定是许多团队都会遇到的问题。不断的拷代码？还是抽象成 UI 组件或业务组件？显然后者更高效。</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>之前的开发流程从产品设计到研发的过程中，最常出现在需求沟通与研发过程中由于缺少统一的规范和标准化体系来指导实践，导致实施环节各方沟通成本高。</p>
+<ul>
+<li><strong>认知：</strong>产品、研发、设计师对于同一需求都有自己理解的解决方案，缺少统一规范的约束，难以达成共识。</li>
+<li><strong>效率：</strong>设计效率低，交互原型的维护成本及上下游团队的沟通成本高，易造成不专业的印象。</li>
+<li><strong>品质：</strong>认知和效率的局限性，最终导致实施落地的产品质量和用户体验难以得到保障。</li>
+</ul>
+<h2 id="价值"><a href="#价值" class="headerlink" title="价值"></a>价值</h2><p><strong>组件库最大的价值在于提升整个团队的产研效率，使设计质量得以保障的同时提升产品整体的用户体验。</strong></p>
+<ul>
+<li><strong>保证产品体验的一致性：</strong>对于一个含有多业务系统的大型复杂产品，每个独立的业务系统虽然在功能上有一定区别，但整体的用户体验需要满足基本的一致性。</li>
+<li><strong>提升设计师的效率：</strong>在需求量巨大且需求来自不同的业务线时，需要逐一绘制页面及组件，造成大量重复劳动，并且在评审及需求沟通环节还可能存在不断地细节调优，所以对于设计师而言，组件的高频复用能大大提升设计效率，使设计师更多的将精力聚焦于理解和解决用户的实际问题。</li>
+<li><strong>提升产研团队的效率：</strong>通用场景及普通需求直接按规范进行设计和研发，减少上下游对同一页面及组件使用方式的不同理解而产生的多余沟通成本。</li>
+<li><strong>利于技术的沉淀：</strong>从一个组件库可以扩展到其它的技术方案，比如懒加载、Tree Shaking、文档预览等等。</li>
+</ul>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p><strong>搭建统一的组件库</strong></p>
+<h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><p>接下来将详细介绍搭建一个前端组件库需要涉及的流程和相关知识、工具，其中也是参考了一些主流开源组件库的做法。</p>
+<h2 id="基础架构"><a href="#基础架构" class="headerlink" title="基础架构"></a>基础架构</h2><h3 id="组件库目录结构"><a href="#组件库目录结构" class="headerlink" title="组件库目录结构"></a>组件库目录结构</h3><p>目前现在的组件目录结构大致如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">├── ...</span><br><span class="line">├── package.json</span><br><span class="line">├── README.md // 文档说明</span><br><span class="line">├── tsconfig.json // ts 配置文件</span><br><span class="line">├── tsconfig.build.json // ts 编译配置</span><br><span class="line">├── build // 配置文件</span><br><span class="line">├── esm // es modules目标文件</span><br><span class="line">├── lib // umd目标文件</span><br><span class="line">├── docs // 文档</span><br><span class="line">└── src</span><br><span class="line">    ├── JsComponents // 原生js组件</span><br><span class="line">    ├── components // React 组件</span><br><span class="line">    ├── images</span><br><span class="line">    ├── style // 公共样式文件</span><br><span class="line">    └── index.ts // 入口文件</span><br></pre></td></tr></table></figure>
+<h3 id="组件目录结构"><a href="#组件目录结构" class="headerlink" title="组件目录结构"></a>组件目录结构</h3><p>组件的目录结构参考了 antd 的规范</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Input</span><br><span class="line">├── Input.tsx // 组件</span><br><span class="line">├── demo.tsx // 示例演示demo</span><br><span class="line">├── index.md // 组件文档说明</span><br><span class="line">├── index.tsx // 组件入口文件</span><br><span class="line">└── style // 样式文件</span><br><span class="line">    ├── index.scss</span><br><span class="line">    └── index.ts</span><br></pre></td></tr></table></figure>
+<h3 id="编译后的组件目录结构"><a href="#编译后的组件目录结构" class="headerlink" title="编译后的组件目录结构"></a>编译后的组件目录结构</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">├── Input.d.ts</span><br><span class="line">├── Input.js</span><br><span class="line">├── index.d.ts</span><br><span class="line">├── index.js</span><br><span class="line">└── style</span><br><span class="line">    ├── index.css</span><br><span class="line">    ├── index.d.ts</span><br><span class="line">    ├── index.js</span><br><span class="line">    └── index.scss</span><br></pre></td></tr></table></figure>
+<h3 id="规范"><a href="#规范" class="headerlink" title="规范"></a>规范</h3><p>无规矩不成方圆，在组件库开始之初就定义好规范，保证代码的严谨性，配置了以下规则：</p>
+<ul>
+<li>eslint/@typescript-eslint</li>
+<li>stylelint</li>
+<li>git hooks</li>
+<li>git commit</li>
+<li>prettier</li>
+</ul>
+<h2 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h2><p>基础架构定义好之后就可以愉快的进行组件开发了，组件的基本开发流程：</p>
+<ul>
+<li>组件初始化</li>
+<li>代码 coding</li>
+<li>组件 demo</li>
+<li>组件文档说明</li>
+<li>组件库入口文件导出组件</li>
+</ul>
+<p>对于组件初始化，我们也是通过脚本自动化实现，减少这些繁琐重复的工作。</p>
+<h3 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h3><p>对于组件的样式，一开始我们有两套方案：</p>
+<ul>
+<li>常规样式（css/scss）</li>
+<li>CSS-in-JS（<a href="https://www.styled-components.com/" target="_blank" rel="noopener">styled-components</a>）</li>
+</ul>
+<p>我个人的话更喜欢 CSS-in-JS 的方案，不用去考虑样式的打包以及引用方式，但最终考虑到业务场景还需要输出原生的 css 代码提供旧项目引用，所以最后也是采用了常规样式，通过 gulp 打包输出 css 以及 scss 文件，后面打包的时候也会具体介绍一下。</p>
+<h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><p>这里介绍一下目前的文档说明以及文档生成方案，首先对于每一个组件，需要在开发组件时编写好组件的说明文档（规则格式看下面组件文档）以及 demo，当我们运行组件库文档预览项目时会通过 node 脚本读取组件的说明文档以及 demo 自动生成对应的路由文件，这样我们就能实时预览文档以及 demo 演示。</p>
+<h3 id="组件文档"><a href="#组件文档" class="headerlink" title="组件文档"></a>组件文档</h3><figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">## Input</span></span><br><span class="line"></span><br><span class="line"><span class="section">#### 输入框组件。</span></span><br><span class="line"></span><br><span class="line"><span class="section">## Input Props：</span></span><br><span class="line"></span><br><span class="line">| 参数       | 说明                     | 类型                                         | 默认值  |</span><br><span class="line">| ---------- | ------------------------ | -------------------------------------------- | ------- |</span><br><span class="line">| disabled   | 是否禁用                 | boolean                                      | -       |</span><br><span class="line">| icon       | input 图标               | React.ReactElement                           | -       |</span><br><span class="line">| iconPlace  | input 图标渲染位置       | 'left' \| 'right'                            | 'right' |</span><br><span class="line">| allowClear | 是否可清除，渲染清除图标 | boolean                                      | false   |</span><br><span class="line">| showNumber | 是否渲染字数计算         | boolean                                      | false   |</span><br><span class="line">| maxLength  | 最大输入长度             | number                                       | 70      |</span><br><span class="line">| onChange   | input 输入框改变的回调   | (e: ChangeEvent\&lt;HTMLInputElement\&gt;) =&gt; void | -       |</span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; Tip：Input 的 props 不止上面列举的项，可传入原生 input 的所有属性</span></span><br><span class="line"></span><br><span class="line"><span class="section">### Usage</span></span><br><span class="line"></span><br><span class="line"><span class="code">```js</span></span><br><span class="line"><span class="code">import &#123; Input &#125; from "@hzzly/components";</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">const onChange = (e) =&gt; &#123;</span></span><br><span class="line"><span class="code">  console.log("Value: ", e.target.value);</span></span><br><span class="line"><span class="code">&#125;;</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">ReactDOM.render(&lt;Input icon=&#123;&lt;Icon /&gt;&#125; onChange=&#123;onChange&#125; /&gt;, mountNode);</span></span><br><span class="line"><span class="code">```</span></span><br></pre></td></tr></table></figure>
+<h3 id="组件库文档"><a href="#组件库文档" class="headerlink" title="组件库文档"></a>组件库文档</h3><p>组件库的文档一般都是对外可访问的，因此需要部署到服务器上，同时也需具备本地预览的功能。</p>
+<p>可以自己搭一个文档站点，也可以使用目前主流的文档生成器（Docz、Storybook、VuePress）来生成文档站点。</p>
+<p>这里我们采用的是自己搭建的一个单独的 React 项目，也就是上面的 <code>docs</code> 文件夹，其实自己搭也比较简单，首先是思路：</p>
+<ul>
+<li><code>readFile</code> 读取 <code>src</code> 下组件的 md 文件和 demo 文件保存起来</li>
+<li><code>writeFile</code> 写入路由配置以及对应的路由文件</li>
+<li>通过不同的路由渲染对应的组件文档和演示</li>
+</ul>
+<p>主要借助的是 node 读写文件的便捷性，对于文档自动生成方案在后面文章会具体介绍一下，先明确一下思路就行。</p>
+<h2 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h2><p>对于打包后的文件，统一放在 <code>ems</code> 目录下，顾名思义我们需要打包成 <code>ESModule</code> 的规范。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// packages.json</span><br><span class="line">&#123;</span><br><span class="line">  ...</span><br><span class="line">  "scripts": &#123;</span><br><span class="line">    "clean": "rimraf dist",</span><br><span class="line">    "build": "npm run clean &amp;&amp; tsc -p tsconfig.build.json &amp;&amp; gulp -f ./build/gulpfile.js", // 组件库打包</span><br><span class="line">    "start": "cross-env webpack-dev-server --config ./build/webpack.dev.js", // 组件开发调试环境</span><br><span class="line">    "build:umd": "cross-env NODE_ENV='production' webpack --config ./build/webpack.umd.js", // umd打包</span><br><span class="line">  &#125;,</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="编译打包-ts-x"><a href="#编译打包-ts-x" class="headerlink" title="编译打包 ts[x]"></a>编译打包 ts[x]</h3><p>在入口文件我们需要以 <code>ESModule</code> 的规范导出组件：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> &#123; <span class="keyword">default</span> <span class="keyword">as</span> Input &#125; <span class="keyword">from</span> <span class="string">"./components/Input"</span>;</span><br></pre></td></tr></table></figure>
+<p>打包工具的话我们就不能使用 <code>webpack</code> 来打包我们的组件库，可以使用 <code>rollup</code> 或 <code>TS</code>来编译组件，这里我们采用的是 <code>TS</code> 编译的方案，配置 <code>tsconfig.build.json</code> :</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"compilerOptions"</span>: &#123;</span><br><span class="line">    <span class="attr">"outDir"</span>: <span class="string">"ems"</span>,</span><br><span class="line">    <span class="attr">"target"</span>: <span class="string">"es6"</span>,</span><br><span class="line">    <span class="attr">"module"</span>: <span class="string">"esnext"</span>,</span><br><span class="line">    <span class="attr">"moduleResolution"</span>: <span class="string">"node"</span>,</span><br><span class="line">    "declaration": true, // 生成声明文件 .d.ts</span><br><span class="line">    "skipLibCheck": true,</span><br><span class="line">    "allowSyntheticDefaultImports": true,</span><br><span class="line">    "experimentalDecorators": true,</span><br><span class="line">    "baseUrl": ".",</span><br><span class="line">    "paths": &#123;</span><br><span class="line">      "@/*": ["./src/*"]</span><br><span class="line">    &#125;,</span><br><span class="line">    "jsx": "react"</span><br><span class="line">  &#125;,</span><br><span class="line">  "include": ["src"],</span><br><span class="line">  "exclude": [</span><br><span class="line">    // 排除编译文件</span><br><span class="line">    "node_modules",</span><br><span class="line">    "src/**/demo.tsx",</span><br><span class="line">    <span class="string">"**/*.md"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="编译打包样式文件"><a href="#编译打包样式文件" class="headerlink" title="编译打包样式文件"></a>编译打包样式文件</h3><p>上面我们已经成功编译了 <code>ts</code> 或 <code>tsx</code> 文件，但是对于我们的样式文件还没处理（TS 无法编译样式文件），样式文件根据我们上面的代码规范，需要打包编译到对应的组件文件夹下，这样就可以跟着组件路径来引入：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">"@hzzly/components/esm/input/style"</span>;</span><br></pre></td></tr></table></figure>
+<p>这里我们采用 <code>gulp</code> 来处理样式文件：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 生成css到对应组件</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">scss2css</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> gulp</span><br><span class="line">    .src(paths.styles)</span><br><span class="line">    .pipe(base64(&#123; <span class="attr">maxImageSize</span>: <span class="number">2000</span> &#125;))</span><br><span class="line">    .pipe(sass()) <span class="comment">// 处理sass文件</span></span><br><span class="line">    .pipe(autoprefixer()) <span class="comment">// 根据browserslistrc增加前缀</span></span><br><span class="line">    .pipe(cssmin(&#123; <span class="attr">compatibility</span>: <span class="string">"ie9"</span> &#125;)) <span class="comment">// 压缩</span></span><br><span class="line">    .pipe(gulp.dest(paths.dest.esm));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 拷贝scss到对应的组件</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">copyScss</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> gulp</span><br><span class="line">    .src(paths.styles)</span><br><span class="line">    .pipe(base64(&#123; <span class="attr">maxWeightResource</span>: <span class="number">10000</span> &#125;))</span><br><span class="line">    .pipe(gulp.dest(paths.dest.esm));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="UMD"><a href="#UMD" class="headerlink" title="UMD"></a>UMD</h3><p>这里还有一个业务场景是 <code>JsComponents</code> 需要打包成 <code>umd</code> 的格式提供旧框架通过链接的方式直接引用，所以我们还配置了 <code>umd</code> 的打包规范，分别单独打包 js 原生组件, 将组件单独打包需要在 Webpack 中配置多个<code>entry</code>，大致配置如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> entry = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> names = fs</span><br><span class="line">  .readdirSync(path.resolve(__dirname, <span class="string">`../src/JsComponents`</span>))</span><br><span class="line">  .filter(<span class="function">(<span class="params">f</span>) =&gt;</span> f.indexOf(<span class="string">'.'</span>) &lt; <span class="number">0</span>);</span><br><span class="line">names.forEach(<span class="function">(<span class="params">name</span>) =&gt;</span> &#123;</span><br><span class="line">  entry[name.toLocaleLowerCase()] = path.resolve(__dirname, <span class="string">`../src/JsComponents/<span class="subst">$&#123;name&#125;</span>/index.ts`</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  ...</span><br><span class="line">  entry,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, <span class="string">'../lib'</span>),</span><br><span class="line">    filename: <span class="string">'[name].min.js'</span>,</span><br><span class="line">    publicPath: <span class="string">'./'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="迭代维护"><a href="#迭代维护" class="headerlink" title="迭代维护"></a>迭代维护</h2><h3 id="CHANGELOG-md"><a href="#CHANGELOG-md" class="headerlink" title="CHANGELOG.md"></a>CHANGELOG.md</h3><p>组件日常维护占整个组件库生命周期的很大一部分，组件库做起来了以后，组件功能后续会不断迭代，也许是 bug fix，也可能 feature，这些组件的迭代我们通过 PR 和 issue 来管理，同时，我们需要管理好组件的 changelog，为了规范我们也是将 changelog 维护到一个 Markdown 文件里，通过 <code>conventional-changelog</code> 工具自动根据 commit message 生成 CHANGELOG.md**。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>到这里，也算是对最近在组件库的探索做了个总结，从零开始构建了一个比较完整的组件库，这段经历也是让我在架构思维以及业务层面有了新的认识，也学到了不少的知识。当然，还有很多不完善的地方，也是在慢慢优化完善，在组件化这条路上，我们还有很多事情要做，加油！！！</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://link.zhihu.com/?target=https%3A//github.com/ant-design/ant-design/" target="_blank" rel="noopener">Ant Design</a></li>
+</ul>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持hzzly</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2021/06/11/Input组件字数限制引发的问题/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
