@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>组件库文档v1.0 | Hzzly</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="随笔,组件库,">
+  
+
+  <meta name="description" content="上篇我们具体介绍了一些组件库的搭建，这篇我们将介绍一下组件库文档 1.0 的构建生成过程。  需求首先来看一下组件库文档最基本的一些需求：  提供组件的介绍说明 提供组件的属性列表 Props 提供组件调用的示例源码 Usage 提供组件调用的演示 demo  方案我们前期规范好了 markdown 说明文件以及 demo 文件，我们就可以直接通过 node 的读写文件再配合 react 菜单路">
+<meta name="keywords" content="随笔,组件库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="组件库文档v1.0">
+<meta property="og:url" content="http://yoursite.com/2021/08/30/组件库文档v1.0/index.html">
+<meta property="og:site_name" content="Hzzly">
+<meta property="og:description" content="上篇我们具体介绍了一些组件库的搭建，这篇我们将介绍一下组件库文档 1.0 的构建生成过程。  需求首先来看一下组件库文档最基本的一些需求：  提供组件的介绍说明 提供组件的属性列表 Props 提供组件调用的示例源码 Usage 提供组件调用的演示 demo  方案我们前期规范好了 markdown 说明文件以及 demo 文件，我们就可以直接通过 node 的读写文件再配合 react 菜单路">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2021-08-30T06:56:23.072Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="组件库文档v1.0">
+<meta name="twitter:description" content="上篇我们具体介绍了一些组件库的搭建，这篇我们将介绍一下组件库文档 1.0 的构建生成过程。  需求首先来看一下组件库文档最基本的一些需求：  提供组件的介绍说明 提供组件的属性列表 Props 提供组件调用的示例源码 Usage 提供组件调用的演示 demo  方案我们前期规范好了 markdown 说明文件以及 demo 文件，我们就可以直接通过 node 的读写文件再配合 react 菜单路">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#需求"><span class="toc-text">需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方案"><span class="toc-text">方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#规范"><span class="toc-text">规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#技术实现"><span class="toc-text">技术实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#node-读写-markdown-和-demo"><span class="toc-text">node 读写 markdown 和 demo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自动生成组件及路由"><span class="toc-text">自动生成组件及路由</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#markdown-解析"><span class="toc-text">markdown 解析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小结"><span class="toc-text">小结</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-组件库文档v1.0" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">组件库文档v1.0</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2021.08.30</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>hzzly</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <blockquote>
+<p>上篇我们具体介绍了一些组件库的搭建，这篇我们将介绍一下组件库文档 1.0 的构建生成过程。</p>
+</blockquote>
+<h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>首先来看一下组件库文档最基本的一些需求：</p>
+<ul>
+<li>提供组件的介绍说明</li>
+<li>提供组件的属性列表 Props</li>
+<li>提供组件调用的示例源码 Usage</li>
+<li>提供组件调用的演示 demo</li>
+</ul>
+<h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><p>我们前期规范好了 markdown 说明文件以及 demo 文件，我们就可以直接通过 node 的读写文件再配合 react 菜单路由的方式进行生成：</p>
+<ul>
+<li>node 读写文件</li>
+<li>react 路由</li>
+</ul>
+<h2 id="规范"><a href="#规范" class="headerlink" title="规范"></a>规范</h2><p>在上篇我们讲到对于一个组件，需要在开发组件时编写好组件的说明文档 markdown 文件以及 demo，文档规范如下：</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">## Input</span></span><br><span class="line"></span><br><span class="line"><span class="section">#### 输入框组件。</span></span><br><span class="line"></span><br><span class="line"><span class="section">## Input Props：</span></span><br><span class="line"></span><br><span class="line">| 参数       | 说明                     | 类型                                         | 默认值  |</span><br><span class="line">| ---------- | ------------------------ | -------------------------------------------- | ------- |</span><br><span class="line">| disabled   | 是否禁用                 | boolean                                      | -       |</span><br><span class="line">| icon       | input 图标               | React.ReactElement                           | -       |</span><br><span class="line">| iconPlace  | input 图标渲染位置       | 'left' \| 'right'                            | 'right' |</span><br><span class="line">| allowClear | 是否可清除，渲染清除图标 | boolean                                      | false   |</span><br><span class="line">| showNumber | 是否渲染字数计算         | boolean                                      | false   |</span><br><span class="line">| maxLength  | 最大输入长度             | number                                       | 70      |</span><br><span class="line">| onChange   | input 输入框改变的回调   | (e: ChangeEvent\&lt;HTMLInputElement\&gt;) =&gt; void | -       |</span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; Tip：Input 的 props 不止上面列举的项，可传入原生 input 的所有属性</span></span><br><span class="line"></span><br><span class="line"><span class="section">### Usage</span></span><br><span class="line"></span><br><span class="line"><span class="code">```js</span></span><br><span class="line"><span class="code">import &#123; Input &#125; from "@hzzly/components";</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">const onChange = (e) =&gt; &#123;</span></span><br><span class="line"><span class="code">  console.log("Value: ", e.target.value);</span></span><br><span class="line"><span class="code">&#125;;</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">ReactDOM.render(&lt;Input icon=&#123;&lt;Icon /&gt;&#125; onChange=&#123;onChange&#125; /&gt;, mountNode);</span></span><br><span class="line"><span class="code">```</span></span><br></pre></td></tr></table></figure>
+<p>这也是我们目前定义的组件 markdown 规范，这样书写一个 markdown 文件就能满足前三点的需求，最后一点我们单独定义了一个 demo 文件来进行组件的演示和调试。</p>
+<h2 id="技术实现"><a href="#技术实现" class="headerlink" title="技术实现"></a>技术实现</h2><h3 id="node-读写-markdown-和-demo"><a href="#node-读写-markdown-和-demo" class="headerlink" title="node 读写 markdown 和 demo"></a>node 读写 markdown 和 demo</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 读取组件库</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">readComponents</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> markdowns = &#123;&#125;;</span><br><span class="line">  <span class="keyword">const</span> demos = &#123;&#125;;</span><br><span class="line">  <span class="keyword">const</span> components = [];</span><br><span class="line">  <span class="keyword">const</span> dir = path.join(__dirname, <span class="string">"../src"</span>);</span><br><span class="line">  <span class="keyword">const</span> dirs = fs</span><br><span class="line">    .readdirSync(dir)</span><br><span class="line">    .filter(</span><br><span class="line">      (f) =&gt; f.indexOf(<span class="string">"."</span>) &lt; <span class="number">0</span> &amp;&amp; f.toLowerCase().indexOf(<span class="string">"components"</span>) &gt; <span class="number">-1</span></span><br><span class="line">    );</span><br><span class="line">  dirs.forEach(<span class="function">(<span class="params">d</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> absolutePath = path.join(dir, d);</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.isDir(absolutePath)) &#123;</span><br><span class="line">      fs.readdirSync(absolutePath).forEach(<span class="function">(<span class="params">f</span>) =&gt;</span> &#123;</span><br><span class="line">        components.push(f);</span><br><span class="line">        <span class="keyword">const</span> mdPath = path.join(dir, <span class="string">`./<span class="subst">$&#123;d&#125;</span>/<span class="subst">$&#123;f&#125;</span>/index.md`</span>);</span><br><span class="line">        <span class="keyword">const</span> demoPath = path.join(dir, <span class="string">`./<span class="subst">$&#123;d&#125;</span>/<span class="subst">$&#123;f&#125;</span>/demo.tsx`</span>);</span><br><span class="line">        <span class="keyword">if</span> (fs.existsSync(mdPath)) &#123;</span><br><span class="line">          markdowns[f] = fs.readFileSync(mdPath).toString();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (fs.existsSync(demoPath)) &#123;</span><br><span class="line">          demos[f] = <span class="string">`../src/<span class="subst">$&#123;d&#125;</span>/<span class="subst">$&#123;f&#125;</span>/demo`</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    components,</span><br><span class="line">    markdowns,</span><br><span class="line">    demos,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 写入markdown字符串</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">writeMd</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> &#123; markdowns &#125; = readComponents();</span><br><span class="line">  markdowns = &#123;</span><br><span class="line">    ...markdowns,</span><br><span class="line">    Welcome: fs</span><br><span class="line">      .readFileSync(path.join(__dirname, <span class="string">`../src/welcome.md`</span>))</span><br><span class="line">      .toString(),</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">const</span> str = <span class="built_in">JSON</span>.stringify(markdowns, <span class="string">""</span>, <span class="string">"\t"</span>);</span><br><span class="line">  fs.writeFile(</span><br><span class="line">    path.join(__dirname, <span class="string">"../src/md.ts"</span>),</span><br><span class="line">    <span class="string">`export default <span class="subst">$&#123;str&#125;</span>`</span>,</span><br><span class="line">    (err) =&gt; &#123;</span><br><span class="line">      <span class="keyword">if</span> (err) &#123;</span><br><span class="line">        <span class="built_in">console</span>.error(err);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"写入配置成功!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="自动生成组件及路由"><a href="#自动生成组件及路由" class="headerlink" title="自动生成组件及路由"></a>自动生成组件及路由</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 创建组件</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createComponents</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; components, demos &#125; = readComponents();</span><br><span class="line">  components.forEach(<span class="function">(<span class="params">component</span>) =&gt;</span> <span class="keyword">this</span>.createComponent(component, demos));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createComponent</span>(<span class="params">name, demos</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> to = path.resolve(__dirname, <span class="string">`../src/pages/<span class="subst">$&#123;name&#125;</span>.tsx`</span>);</span><br><span class="line">  fs.ensureFileSync(to); <span class="comment">// 确保文件存在(文件目录结构没有会新建)</span></span><br><span class="line">  <span class="keyword">const</span> template = <span class="string">`import React from 'react';</span></span><br><span class="line"><span class="string">import &#123; markdown &#125; from '@/utils';</span></span><br><span class="line"><span class="string"><span class="subst">$&#123;demo[name] ? <span class="string">`import Demo from '<span class="subst">$&#123;demo[name]&#125;</span>';`</span> : <span class="string">""</span>&#125;</span></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">interface Props &#123;&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">const index: React.FC&lt;Props&gt; = () =&gt; &#123;</span></span><br><span class="line"><span class="string">  return (</span></span><br><span class="line"><span class="string">    &lt;&gt;</span></span><br><span class="line"><span class="string">      &lt;div</span></span><br><span class="line"><span class="string">        className="markdown"</span></span><br><span class="line"><span class="string">        // eslint-disable-next-line react/no-danger</span></span><br><span class="line"><span class="string">        dangerouslySetInnerHTML=&#123;&#123; __html: markdown('<span class="subst">$&#123;name&#125;</span>') &#125;&#125;</span></span><br><span class="line"><span class="string">      /&gt;</span></span><br><span class="line"><span class="string">      &lt;div className="demo"&gt;</span></span><br><span class="line"><span class="string">        &lt;h2 className="demo-title"&gt;演示&lt;/h2&gt;</span></span><br><span class="line"><span class="string">        <span class="subst">$&#123;demo[name] ? <span class="string">"&lt;Demo /&gt;"</span> : <span class="string">"&lt;p&gt;演示代码&lt;/p&gt;"</span>&#125;</span></span></span><br><span class="line"><span class="string">      &lt;/div&gt;</span></span><br><span class="line"><span class="string">    &lt;/&gt;</span></span><br><span class="line"><span class="string">  )</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">export default index;</span></span><br><span class="line"><span class="string">`</span>;</span><br><span class="line">  fs.outputFileSync(to, template);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 写入路由</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">writeRouter</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; components &#125; = readComponents();</span><br><span class="line">  <span class="keyword">const</span> template = <span class="string">`</span></span><br><span class="line"><span class="string">import React from 'react';</span></span><br><span class="line"><span class="string">import &#123; RouteConfig &#125; from "react-router-config";</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">import Home from '@/pages/Home';</span></span><br><span class="line"><span class="string">import Welcome from '@/pages/Welcome';</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">const MarkDown = React.lazy(() =&gt; import(/* webpackChunkName: "IMarkDown" */ '@/pages/MarkDown'));</span></span><br><span class="line"><span class="string"><span class="subst">$&#123;components</span></span></span><br><span class="line"><span class="string"><span class="subst">  .map(</span></span></span><br><span class="line"><span class="string"><span class="subst">    (component) =&gt;</span></span></span><br><span class="line"><span class="string"><span class="subst">      <span class="string">`const <span class="subst">$&#123;component&#125;</span> = React.lazy(() =&gt; import(/* webpackChunkName: "I<span class="subst">$&#123;component&#125;</span>" */ '@/pages/<span class="subst">$&#123;component&#125;</span>'));`</span></span></span></span><br><span class="line"><span class="string"><span class="subst">  )</span></span></span><br><span class="line"><span class="string"><span class="subst">  .join(<span class="string">"\n"</span>)&#125;</span></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">const routes: RouteConfig[] = [</span></span><br><span class="line"><span class="string">  &#123;</span></span><br><span class="line"><span class="string">    path: '/',</span></span><br><span class="line"><span class="string">    component: Home,</span></span><br><span class="line"><span class="string">    children: [</span></span><br><span class="line"><span class="string">      &#123; path: "/welcome", component: Welcome, name: 'Welcome' &#125;,</span></span><br><span class="line"><span class="string">      &#123; path: "/markdown", component: MarkDown, name: 'MarkDown测试' &#125;,</span></span><br><span class="line"><span class="string">      <span class="subst">$&#123;components</span></span></span><br><span class="line"><span class="string"><span class="subst">        .map((component) =&gt; &#123;</span></span></span><br><span class="line"><span class="string"><span class="subst">          <span class="keyword">if</span> (component.toLowerCase().indexOf(<span class="string">"js"</span>) &gt; <span class="number">-1</span>) &#123;</span></span></span><br><span class="line"><span class="string"><span class="subst">            <span class="keyword">return</span> <span class="string">`&#123; path: "/<span class="subst">$&#123;component.toLowerCase()&#125;</span>", component: <span class="subst">$&#123;component&#125;</span>, name: '<span class="subst">$&#123;component&#125;</span>' &#125;,`</span>;</span></span></span><br><span class="line"><span class="string"><span class="subst">          &#125;</span> else &#123;</span></span><br><span class="line"><span class="string">            return `</span>&#123; <span class="attr">path</span>: <span class="string">"/$&#123;component</span></span><br><span class="line"><span class="string">              .replace(/\B([A-Z])/g, "</span>-$<span class="number">1</span><span class="string">")</span></span><br><span class="line"><span class="string">              .toLowerCase()&#125;"</span>, <span class="attr">component</span>: $&#123;component&#125;, <span class="attr">name</span>: <span class="string">'$&#123;component&#125;'</span> &#125;,<span class="string">`;</span></span><br><span class="line"><span class="string">          &#125;</span></span><br><span class="line"><span class="string">        &#125;)</span></span><br><span class="line"><span class="string">        .join("\n      ")&#125;</span></span><br><span class="line"><span class="string">    ],</span></span><br><span class="line"><span class="string">  &#125;,</span></span><br><span class="line"><span class="string">];</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">export default routes;</span></span><br><span class="line"><span class="string">`</span>;</span><br><span class="line">  fs.outputFileSync(path.join(__dirname, <span class="string">`../src/router/index.ts`</span>), template);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="markdown-解析"><a href="#markdown-解析" class="headerlink" title="markdown 解析"></a>markdown 解析</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// utils.ts</span></span><br><span class="line"><span class="keyword">import</span> marked <span class="keyword">from</span> <span class="string">"marked"</span>;</span><br><span class="line"><span class="keyword">import</span> hljs <span class="keyword">from</span> <span class="string">"highlight.js/lib/core"</span>;</span><br><span class="line"><span class="keyword">import</span> javascript <span class="keyword">from</span> <span class="string">"highlight.js/lib/languages/javascript"</span>;</span><br><span class="line"><span class="keyword">import</span> md <span class="keyword">from</span> <span class="string">"@/md"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">markdown</span>(<span class="params">component: string, isComponent = true</span>): <span class="title">string</span> </span>&#123;</span><br><span class="line">  marked.setOptions(&#123;</span><br><span class="line">    renderer: <span class="keyword">new</span> marked.Renderer(),</span><br><span class="line">    highlight: <span class="function">(<span class="params">code: string</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> hljs.highlightAuto(code).value;</span><br><span class="line">    &#125;,</span><br><span class="line">    pedantic: <span class="literal">false</span>,</span><br><span class="line">    gfm: <span class="literal">true</span>,</span><br><span class="line">    tables: <span class="literal">true</span>,</span><br><span class="line">    breaks: <span class="literal">false</span>,</span><br><span class="line">    sanitize: <span class="literal">false</span>,</span><br><span class="line">    smartLists: <span class="literal">true</span>,</span><br><span class="line">    smartypants: <span class="literal">false</span>,</span><br><span class="line">    xhtml: <span class="literal">false</span>,</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">if</span> (md[component]) &#123;</span><br><span class="line">    <span class="keyword">return</span> marked(md[component]);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (isComponent) &#123;</span><br><span class="line">    <span class="keyword">return</span> marked(<span class="string">`## <span class="subst">$&#123;component&#125;</span>`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> marked(component);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>在日常开发的过程中，我们除了组件的代码编写外，还有很多流程上、边角上的工作需要做，这些事情往往都比较琐碎又必须要做。我们多借助工具去解决我们的工作中那些零星简单的任务。</p>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持hzzly</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2021/08/08/组件库搭建实践/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tag/" rel="noopener noreferrer" target="_self">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/link/" rel="noopener noreferrer" target="_self">
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/atom.xml" rel="noopener noreferrer" target="_blank">
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_self">
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
