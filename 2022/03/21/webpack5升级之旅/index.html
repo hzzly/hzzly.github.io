@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>webpack5升级之旅 | Hzzly</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="webpack," />
+  
+
+  <meta name="description" content="前言：2020 年 10 月 10 日，webpack5 正式发布，并带来了诸多重大的变更，使前端的构建效率与质量大为提升。最近也是趁着空闲时间把项目里的 webapck4 进行了升级，接下来就介绍一下我的踩坑升级之旅吧。  准备工作node 版本Webpack 5 对 Node.js 的版本要求至少是 10.13.0 (LTS)，如果还在使用旧版本的 Node.js，需要进行升级。 升级 we">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack5升级之旅">
+<meta property="og:url" content="http://yoursite.com/2022/03/21/webpack5%E5%8D%87%E7%BA%A7%E4%B9%8B%E6%97%85/index.html">
+<meta property="og:site_name" content="Hzzly">
+<meta property="og:description" content="前言：2020 年 10 月 10 日，webpack5 正式发布，并带来了诸多重大的变更，使前端的构建效率与质量大为提升。最近也是趁着空闲时间把项目里的 webapck4 进行了升级，接下来就介绍一下我的踩坑升级之旅吧。  准备工作node 版本Webpack 5 对 Node.js 的版本要求至少是 10.13.0 (LTS)，如果还在使用旧版本的 Node.js，需要进行升级。 升级 we">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-21T15:33:11.000Z">
+<meta property="article:modified_time" content="2022-03-21T15:34:58.664Z">
+<meta property="article:author" content="hzzly">
+<meta property="article:tag" content="webpack">
+<meta name="twitter:card" content="summary">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    
+<link rel="stylesheet" href="/css/personal-style.css">
+
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+
+<meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/atom.xml" title="Hzzly" type="application/atom+xml">
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-text">准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#node-%E7%89%88%E6%9C%AC"><span class="toc-text">node 版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%87%E7%BA%A7-webpack"><span class="toc-text">升级 webpack</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5%E4%BE%9D%E8%B5%96%E6%98%AF%E5%90%A6%E8%BF%87%E6%9C%9F%E5%8F%8A%E5%8D%87%E7%BA%A7%E7%9B%B8%E5%85%B3%E5%8C%85%E7%9A%84%E7%89%88%E6%9C%AC"><span class="toc-text">检查依赖是否过期及升级相关包的版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%87%E7%BA%A7%E5%BA%9F%E5%BC%83%E7%9A%84%E9%85%8D%E7%BD%AE%E9%A1%B9"><span class="toc-text">升级废弃的配置项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%85%E7%90%86%E9%85%8D%E7%BD%AE"><span class="toc-text">清理配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95%E7%82%B9"><span class="toc-text">踩坑记录点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81webpack-dev-server%E9%85%8D%E7%BD%AE%E5%B1%9E%E6%80%A7%E5%8F%98%E6%9B%B4"><span class="toc-text">1、webpack-dev-server配置属性变更</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%A4%9A%E5%85%A5%E5%8F%A3%E5%BC%80%E5%90%AF-hot-true-%E7%83%AD%E6%9B%B4%E6%96%B0%E6%97%A0%E6%95%88"><span class="toc-text">2、多入口开启 hot: true 热更新无效</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81JSON-%E6%A8%A1%E5%9D%97%E9%9C%80%E8%A6%81%E4%BD%BF%E7%94%A8%E5%85%B7%E5%90%8D%E5%AF%BC%E5%87%BA"><span class="toc-text">3、JSON 模块需要使用具名导出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81webpack-merge-%E5%8F%98%E6%9B%B4"><span class="toc-text">4、webpack-merge 变更</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81optimize-css-assets-webpack-plugin-%E5%8F%98%E6%9B%B4%EF%BC%88%E5%AE%98%E6%96%B9%E5%87%86%E5%A4%87%E5%BC%83%E7%94%A8%E4%BA%86%EF%BC%89"><span class="toc-text">5、optimize-css-assets-webpack-plugin 变更（官方准备弃用了）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81url-loader%E3%80%81file-loader%E3%80%81raw-loader%EF%BC%88%E5%B0%86%E6%9D%A5%E4%BC%9A%E8%A2%AB%E6%B7%98%E6%B1%B0%EF%BC%89"><span class="toc-text">6、url-loader、file-loader、raw-loader（将来会被淘汰）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E3%80%81config-module-rules-%E9%87%8C%E9%85%8D%E7%BD%AE%E4%BA%86-loaders"><span class="toc-text">7、config.module.rules 里配置了 loaders</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8%E3%80%81heap-eval-module-source-map-%E5%90%8D%E7%A7%B0%E4%BF%AE%E6%94%B9"><span class="toc-text">8、heap-eval-module-source-map 名称修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9%E3%80%81copy-webpack-plugin-%E6%8A%A5%E9%94%99"><span class="toc-text">9、copy-webpack-plugin 报错</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10%E3%80%81%E5%8E%BB%E9%99%A4-dll"><span class="toc-text">10、去除 dll</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11%E3%80%81cache-%E6%8C%81%E4%B9%85%E5%8C%96%E7%BC%93%E5%AD%98"><span class="toc-text">11、cache 持久化缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12%E3%80%81Node-Polyfill-%E8%84%9A%E6%9C%AC%E8%A2%AB%E7%A7%BB%E9%99%A4"><span class="toc-text">12、Node Polyfill 脚本被移除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13%E3%80%81Module-Federation"><span class="toc-text">13、Module Federation</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84-webpack5-%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%E5%8F%82%E8%80%83"><span class="toc-text">我的 webpack5 项目配置参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-text">参考</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-webpack5升级之旅" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">webpack5升级之旅</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2022.03.21</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>hzzly</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <blockquote>
+<p>前言：2020 年 10 月 10 日，webpack5 正式发布，并带来了诸多重大的变更，使前端的构建效率与质量大为提升。最近也是趁着空闲时间把项目里的 webapck4 进行了升级，接下来就介绍一下我的踩坑升级之旅吧。</p>
+</blockquote>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h3 id="node-版本"><a href="#node-版本" class="headerlink" title="node 版本"></a>node 版本</h3><p>Webpack 5 对 Node.js 的版本要求至少是 10.13.0 (LTS)，如果还在使用旧版本的 Node.js，需要进行升级。</p>
+<h3 id="升级-webpack"><a href="#升级-webpack" class="headerlink" title="升级 webpack"></a>升级 webpack</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add webpack webpack-cli -D</span><br></pre></td></tr></table></figure>
+
+<h3 id="检查依赖是否过期及升级相关包的版本"><a href="#检查依赖是否过期及升级相关包的版本" class="headerlink" title="检查依赖是否过期及升级相关包的版本"></a>检查依赖是否过期及升级相关包的版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn outdated</span><br></pre></td></tr></table></figure>
+
+<p>将会列出<code>package.json</code>所有依赖的版本信息，包括当前安装版本，给予 semver 渴望的版本以及最新的版本。</p>
+<p>接下来就说升级所有使用到的 plugin 和 loader 为最新的可用版本。</p>
+<h3 id="升级废弃的配置项"><a href="#升级废弃的配置项" class="headerlink" title="升级废弃的配置项"></a>升级废弃的配置项</h3><p>如有使用以下的配置项，请升级至最新的版本：</p>
+<ul>
+<li><code>optimization.hashedModuleIds: true</code> → <code>optimization.moduleIds: &#39;hashed&#39;</code></li>
+<li><code>optimization.namedChunks: true</code> → <code>optimization.chunkIds: &#39;named&#39;</code></li>
+<li><code>optimization.namedModules: true</code> → <code>optimization.moduleIds: &#39;named&#39;</code></li>
+<li><code>NamedModulesPlugin</code> → <code>optimization.moduleIds: &#39;named&#39;</code></li>
+<li><code>NamedChunksPlugin</code> → <code>optimization.chunkIds: &#39;named&#39;</code></li>
+<li><code>HashedModuleIdsPlugin</code> → <code>optimization.moduleIds: &#39;hashed&#39;</code></li>
+<li><code>optimization.noEmitOnErrors: false</code> → <code>optimization.emitOnErrors: true</code></li>
+<li><code>optimization.occurrenceOrder: true</code> → <code>optimization: &#123; chunkIds: &#39;total-size&#39;, moduleIds: &#39;size&#39; &#125;</code></li>
+<li><code>optimization.splitChunks.cacheGroups.vendors</code> → <code>optimization.splitChunks.cacheGroups.defaultVendors</code></li>
+<li><code>Compilation.entries</code> → <code>Compilation.entryDependencies</code></li>
+<li><code>serve</code> → <code>serve</code> 已被移除，推荐使用 <a target="_blank" rel="noopener" href="https://webpack.docschina.org/configuration/dev-server/"><code>DevServer</code></a></li>
+<li><a target="_blank" rel="noopener" href="https://webpack.docschina.org/configuration/module/#ruleoptions--rulequery"><code>Rule.query</code></a> (从 v3 开始被移除) → <code>Rule.options</code>&#x2F;<code>UseEntry.options</code></li>
+</ul>
+<h3 id="清理配置"><a href="#清理配置" class="headerlink" title="清理配置"></a>清理配置</h3><ul>
+<li>将 <code>optimization.moduleIds</code> 和 <code>optimization.chunkIds</code> 从配置中移除，使用默认值会更合适，因为它们会在 <code>production 模式</code> 下支持长效缓存且可以在 <code>development</code> 模式&#96; 下进行调试。</li>
+<li>将配置中使用的 <code>[hash]</code> 占位符改为 <code>[contenthash]</code>。效果一致，但事实证明会更为有效</li>
+<li>正则表达式参数的 <code>IgnorePlugin</code>，现已支持传入一个 <code>options</code> 对象：&#96;new IgnorePlugin({ resourceRegExp: &#x2F;regExp&#x2F; })</li>
+</ul>
+<h2 id="踩坑记录点"><a href="#踩坑记录点" class="headerlink" title="踩坑记录点"></a>踩坑记录点</h2><h3 id="1、webpack-dev-server配置属性变更"><a href="#1、webpack-dev-server配置属性变更" class="headerlink" title="1、webpack-dev-server配置属性变更"></a>1、<a target="_blank" rel="noopener" href="https://github.com/webpack/webpack-dev-server">webpack-dev-server</a>配置属性变更</h3><ul>
+<li>contentBase -&gt; static.directory</li>
+<li>移除 stats</li>
+<li>移除 disableHostCheck</li>
+<li>openPage -&gt; open</li>
+<li>before -&gt; onBeforeSetupMiddleware</li>
+<li>after -&gt; onAfterSetupMiddleware</li>
+<li>…</li>
+</ul>
+<p>以上列举了一些常用配置修改，具体 v3 升级到 v4 的迁移指南可以查看官方文档 <a target="_blank" rel="noopener" href="https://github.com/webpack/webpack-dev-server/blob/master/migration-v4.md">https://github.com/webpack/webpack-dev-server/blob/master/migration-v4.md</a></p>
+<h3 id="2、多入口开启-hot-true-热更新无效"><a href="#2、多入口开启-hot-true-热更新无效" class="headerlink" title="2、多入口开启 hot: true 热更新无效"></a>2、多入口开启 <code>hot: true</code> 热更新无效</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">optimization</span>: &#123;</span><br><span class="line">  <span class="attr">runtimeChunk</span>: <span class="string">&#x27;single&#x27;</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>具体可以查看<a target="_blank" rel="noopener" href="https://github.com/webpack/webpack-dev-server/issues/2792">webpack-dev-server&#x2F;issues&#x2F;2792</a></p>
+<h3 id="3、JSON-模块需要使用具名导出"><a href="#3、JSON-模块需要使用具名导出" class="headerlink" title="3、JSON 模块需要使用具名导出"></a>3、JSON 模块需要使用具名导出</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pkg <span class="keyword">from</span> <span class="string">&#x27;./package.json&#x27;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(pkg.<span class="property">version</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="4、webpack-merge-变更"><a href="#4、webpack-merge-变更" class="headerlink" title="4、webpack-merge 变更"></a>4、webpack-merge 变更</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack 4.x</span></span><br><span class="line"><span class="keyword">const</span> merge = <span class="built_in">require</span>(<span class="string">&#x27;webpack-merge&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// webpack 5.x</span></span><br><span class="line"><span class="keyword">const</span> &#123; merge &#125; = <span class="built_in">require</span>(<span class="string">&#x27;webpack-merge&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="5、optimize-css-assets-webpack-plugin-变更（官方准备弃用了）"><a href="#5、optimize-css-assets-webpack-plugin-变更（官方准备弃用了）" class="headerlink" title="5、optimize-css-assets-webpack-plugin 变更（官方准备弃用了）"></a>5、optimize-css-assets-webpack-plugin 变更（官方准备弃用了）</h3><p>使用官方推荐的新插件：<a target="_blank" rel="noopener" href="https://github.com/webpack-contrib/css-minimizer-webpack-plugin">css-minimizer-webpack-plugin</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add css-minimizer-webpack-plugin -D</span><br></pre></td></tr></table></figure>
+
+<h3 id="6、url-loader、file-loader、raw-loader（将来会被淘汰）"><a href="#6、url-loader、file-loader、raw-loader（将来会被淘汰）" class="headerlink" title="6、url-loader、file-loader、raw-loader（将来会被淘汰）"></a>6、url-loader、file-loader、raw-loader（将来会被淘汰）</h3><p>官方推荐：<a target="_blank" rel="noopener" href="https://webpack.docschina.org/guides/asset-modules/">资源模块</a></p>
+<h3 id="7、config-module-rules-里配置了-loaders"><a href="#7、config-module-rules-里配置了-loaders" class="headerlink" title="7、config.module.rules 里配置了 loaders"></a>7、config.module.rules 里配置了 loaders</h3><p>webpack5 不再支持 loaders 的属性，需要改成 <code>use</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">test</span>: <span class="regexp">/\.(sc|sa|c)ss$/</span>,</span><br><span class="line">	<span class="attr">use</span>: [<span class="string">&#x27;style-loader&#x27;</span>, <span class="string">&#x27;css-loader&#x27;</span>, <span class="string">&#x27;postcss-loader&#x27;</span>, <span class="string">&#x27;sass-loader&#x27;</span>],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="8、heap-eval-module-source-map-名称修改"><a href="#8、heap-eval-module-source-map-名称修改" class="headerlink" title="8、heap-eval-module-source-map 名称修改"></a>8、heap-eval-module-source-map 名称修改</h3><p>需要改成 <code>eval-cheap-module-source-map</code></p>
+<h3 id="9、copy-webpack-plugin-报错"><a href="#9、copy-webpack-plugin-报错" class="headerlink" title="9、copy-webpack-plugin 报错"></a>9、copy-webpack-plugin 报错</h3><blockquote>
+<p>ValidationError: Invalid options object. Copy Plugin has been initialized using an options object that does not match the API schema.</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="comment">// webpack 4.x</span></span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">CopyWebpackPlugin</span>([<span class="string">&#x27;public&#x27;</span>])</span><br><span class="line"></span><br><span class="line">    <span class="comment">// webpack 5.x</span></span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">CopyWebpackPlugin</span>(&#123;</span><br><span class="line">      <span class="attr">patterns</span>: [</span><br><span class="line">        &#123; <span class="attr">from</span>: <span class="string">&#x27;public&#x27;</span>, <span class="attr">to</span>: <span class="string">&#x27;public&#x27;</span> &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="10、去除-dll"><a href="#10、去除-dll" class="headerlink" title="10、去除 dll"></a>10、去除 dll</h3><p>在 webpack5 中已经不建议使用这种方式进行模块缓存，因为其已经内置了更好的 cache 方法</p>
+<h3 id="11、cache-持久化缓存"><a href="#11、cache-持久化缓存" class="headerlink" title="11、cache 持久化缓存"></a>11、cache 持久化缓存</h3><p>通过配置 <a href="https://link.juejin.cn/?target=https://webpack.docschina.org/configuration/cache/%23root">cache</a> 缓存生成的 webpack 模块和 chunk，来改善构建速度。</p>
+<p>webpack5 默认将构建的缓存结果放在 node_modules&#x2F;.cache 目录下，可以通过配置更改目录。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">cache</span>: &#123;</span><br><span class="line">    <span class="comment">// 将缓存类型设置为文件系统</span></span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;filesystem&#x27;</span>,</span><br><span class="line">    <span class="attr">buildDependencies</span>: &#123;</span><br><span class="line">      <span class="comment">/* 将你的 config 添加为 buildDependency，以便在改变 config 时获得缓存无效 */</span></span><br><span class="line">      <span class="attr">config</span>: [__filename],</span><br><span class="line">      <span class="comment">/* 如果有其他的东西被构建依赖，你可以在这里添加它们 */</span></span><br><span class="line">      <span class="comment">/* 注意，webpack.config，加载器和所有从你的配置中引用的模块都会被自动添加 */</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 指定缓存的版本</span></span><br><span class="line">    <span class="attr">version</span>: <span class="string">&#x27;1.0&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Tips:</p>
+<ul>
+<li>cache 的属性 type 会在开发模式下被默认设置成 memory，而且在生产模式中被禁用，所以如果想要在生产打包时使用缓存需要显式的设置。</li>
+<li>为了防止缓存过于固定，导致更改构建配置无感知，依然使用旧的缓存，默认情况下，每次修改构建配置文件都会导致重新开始缓存。当然也可以自己主动设置 version 来控制缓存的更新。</li>
+</ul>
+</blockquote>
+<p>更多缓存配置可以参考官方文档 <a target="_blank" rel="noopener" href="https://webpack.js.org/configuration/other-options/#cache">https://webpack.js.org/configuration/other-options/#cache</a></p>
+<h3 id="12、Node-Polyfill-脚本被移除"><a href="#12、Node-Polyfill-脚本被移除" class="headerlink" title="12、Node Polyfill 脚本被移除"></a>12、Node Polyfill 脚本被移除</h3><p>webpack4 版本中附带了大多数 Node.js 核心模块的 polyfill，一旦前端使用了任何核心模块，这些模块就会自动应用，但是其实有些是不必要的。</p>
+<p>webpack5 将不会自动为 Node.js 模块添加 polyfill，而是更专注的投入到前端模块的兼容中。因此需要开发者手动添加合适的 polyfill。</p>
+<h3 id="13、Module-Federation"><a href="#13、Module-Federation" class="headerlink" title="13、Module Federation"></a>13、Module Federation</h3><p>Module Federation 使得使 JavaScript 应用得以从另一个 JavaScript 应用中动态地加载代码 —— 同时共享依赖。相当于 webpack 提供了线上 runtime 的环境，多个应用利用 CDN 共享组件或应用，不需要本地安装 npm 包再构建了。</p>
+<p>具体配置可以查看官方文档 <a target="_blank" rel="noopener" href="https://webpack.js.org/concepts/module-federation/">https://webpack.js.org/concepts/module-federation/</a></p>
+<h2 id="我的-webpack5-项目配置参考"><a href="#我的-webpack5-项目配置参考" class="headerlink" title="我的 webpack5 项目配置参考"></a>我的 webpack5 项目配置参考</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/hzzlyxx/webpack5">https://github.com/hzzlyxx/webpack5</a></p>
+</blockquote>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>webpack5 正式发布已经有段时间了，总的来说：</p>
+<ul>
+<li>在加构建性能大幅度提升，依赖核心代码层面的持久缓存 cache，可大大加快二次构建速度</li>
+<li>在打包体积上能有效减少，依赖更优的 Tree Shaking</li>
+<li>默认支持浏览器长期缓存，降低配置门槛</li>
+<li>令人激动的新特性 Module Federation，蕴含极大的可能性</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://webpack.js.org/">https://webpack.js.org/</a></li>
+<li><a target="_blank" rel="noopener" href="https://webpack.js.org/migrate/5/">https://webpack.js.org/migrate/5/</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/webpack/webpack-dev-server/blob/master/migration-v4.md">https://github.com/webpack/webpack-dev-server/blob/master/migration-v4.md</a></li>
+</ul>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持hzzly</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2021/08/30/%E7%BB%84%E4%BB%B6%E5%BA%93%E6%96%87%E6%A1%A3v1.0/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

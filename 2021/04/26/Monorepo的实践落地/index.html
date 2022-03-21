@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>Monorepo的实践落地 | Hzzly</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="随笔," />
+  
+
+  <meta name="description" content="前言：最近针对项目代码仓库进行了一次重构，之前代码管理缺少规范和模块化的思想，也是借着项目重构这次机会重新规划代码仓库，实践落地了一种新的项目管理方式——Monorepo，Monorepo的管理概念跟我们规划的项目代码管理非常贴合，再加上我们新增的组件库及工具库，打造了一套比较完整的工作流。  一些概念性的的东西这里就不多说了，不太了解 Monorepo 的可以自行 google 一下，这里就默">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Monorepo的实践落地">
+<meta property="og:url" content="http://yoursite.com/2021/04/26/Monorepo%E7%9A%84%E5%AE%9E%E8%B7%B5%E8%90%BD%E5%9C%B0/index.html">
+<meta property="og:site_name" content="Hzzly">
+<meta property="og:description" content="前言：最近针对项目代码仓库进行了一次重构，之前代码管理缺少规范和模块化的思想，也是借着项目重构这次机会重新规划代码仓库，实践落地了一种新的项目管理方式——Monorepo，Monorepo的管理概念跟我们规划的项目代码管理非常贴合，再加上我们新增的组件库及工具库，打造了一套比较完整的工作流。  一些概念性的的东西这里就不多说了，不太了解 Monorepo 的可以自行 google 一下，这里就默">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-26T02:53:13.000Z">
+<meta property="article:modified_time" content="2021-04-26T02:59:59.517Z">
+<meta property="article:author" content="hzzly">
+<meta property="article:tag" content="随笔">
+<meta name="twitter:card" content="summary">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    
+<link rel="stylesheet" href="/css/personal-style.css">
+
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+
+<meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/atom.xml" title="Hzzly" type="application/atom+xml">
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#lerna"><span class="toc-text">lerna</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4"><span class="toc-text">基本命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E6%9E%84%E7%9A%84%E4%BB%B7%E5%80%BC"><span class="toc-text">重构的价值</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Monorepo的实践落地" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Monorepo的实践落地</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2021.04.26</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>hzzly</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <blockquote>
+<p>前言：最近针对项目代码仓库进行了一次重构，之前代码管理缺少规范和模块化的思想，也是借着项目重构这次机会重新规划代码仓库，实践落地了一种新的项目管理方式——Monorepo，Monorepo的管理概念跟我们规划的项目代码管理非常贴合，再加上我们新增的组件库及工具库，打造了一套比较完整的工作流。</p>
+</blockquote>
+<p>一些概念性的的东西这里就不多说了，不太了解 <code>Monorepo</code> 的可以自行 google 一下，这里就默认已经了解过了。</p>
+<p>要想从零开始定制一套完善的 Monorepo 的工程化工具，还是一件比较有难度的事情。不过社区已经提供了一些比较成熟的方案，我们可以拿来进行定制。</p>
+<p>在重构方案选择上，我们选择了业界比较成熟的 <strong><a target="_blank" rel="noopener" href="https://lerna.js.org/">lerna</a></strong> 和 <strong>yarn workspaces</strong>，用 <code>yarn</code> 来处理依赖问题，用 <code>lerna</code> 来处理发布问题。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/hzzlyxx/lerna">仓库地址</a></p>
+<h2 id="lerna"><a href="#lerna" class="headerlink" title="lerna"></a>lerna</h2><p><code>lerna</code> 官方的定位：A tool for managing JavaScript projects with multiple packages（一个用来管理带有多个package的JavaScript项目）。</p>
+<p>lerna不负责构建，测试等任务，它提出了一种集中管理package的目录模式，提供了一套自动化管理程序，让开发者不必再深耕到具体的组件里维护内容，在项目根目录就可以全局掌控，基于 npm scripts，使用者可以很好地完成组件构建，代码格式化等操作。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install lerna –g</span><br><span class="line">//</span><br><span class="line">yarn add lerna global</span><br></pre></td></tr></table></figure>
+
+<h3 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// lerna 项目初始化</span><br><span class="line">lerna init // 固定模式</span><br><span class="line">lerna init -i // 独立模式</span><br><span class="line"></span><br><span class="line">// 创建子项目</span><br><span class="line">lerna create [包名]</span><br><span class="line"></span><br><span class="line">// 清除所有子项目的依赖</span><br><span class="line">lerna clean</span><br><span class="line"></span><br><span class="line">// 安装所有依赖</span><br><span class="line">lerna bootstrap</span><br><span class="line"></span><br><span class="line">// 发布</span><br><span class="line">lerna publish</span><br></pre></td></tr></table></figure>
+
+<h2 id="重构的价值"><a href="#重构的价值" class="headerlink" title="重构的价值"></a>重构的价值</h2><p>之前的代码管理非常的混杂，还是比较传统的代码目录结构，一些公共基础服务无法扩展复用，如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 之前的代码目录</span><br><span class="line">├── package.json</span><br><span class="line">├── README.md</span><br><span class="line">├── tool // 项目打包编译配置</span><br><span class="line">├── release // 打包目标文件夹</span><br><span class="line">└── src // 源代码</span><br><span class="line">    ├── css</span><br><span class="line">    ├── html</span><br><span class="line">    ├── images</span><br><span class="line">    ├── js</span><br><span class="line">    └── sass</span><br></pre></td></tr></table></figure>
+
+<p>重构后的代码结构无论是模块化还是复用性都很清晰，同时在代码规范上也比之前更规范了，如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 重构后的代码目录：</span><br><span class="line">├── ... // 其它配置文件（代码规范）</span><br><span class="line">├── package.json</span><br><span class="line">├── README.md</span><br><span class="line">├── lerna.json // lerna 配置文件</span><br><span class="line">└── packages // 分割的小项目</span><br><span class="line">    ├── components</span><br><span class="line">    ├── utils</span><br><span class="line">    ├── ... // 多个业务模块</span><br></pre></td></tr></table></figure>
+
+<p><strong>总结一下：</strong></p>
+<ul>
+<li>将之前混杂的代码库分割为独立版本控制的小项目（项目更清晰）</li>
+<li>解决了包之间的依赖关系（新增了组件库以及工具库）</li>
+<li>通过git仓库检查到改动并自动同步（公共基础库的发布）</li>
+<li>根据提交的commit生成CHANGELOG版本日志文件（项目代码更规范）</li>
+<li>TypeScript支持</li>
+<li>统一技术栈</li>
+<li>完善的工作流</li>
+</ul>
+<p>当然，<code>lerna</code> 还有更多的功能可以去发掘，还有很多可以结合 <code>lerna</code> 一起使用的工具。构建一套完善的仓库管理机制，可能它的收益不是一些量化的指标可以衡量出来的，也没有直接的价值输出，但它能在日常的工作中极大的提高工作效率，解放生产力，节省大量的人力成本。</p>
+<p>下篇就来聊聊组件库的那些事。</p>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持hzzly</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2021/04/16/%E3%80%90%E8%AE%B0%E5%BD%95%E3%80%91React%20TS%E4%B8%AD%E8%87%AA%E5%AE%9A%E4%B9%89DOM%E5%B1%9E%E6%80%A7/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2021/06/11/Input%E7%BB%84%E4%BB%B6%E5%AD%97%E6%95%B0%E9%99%90%E5%88%B6%E5%BC%95%E5%8F%91%E7%9A%84%E9%97%AE%E9%A2%98/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

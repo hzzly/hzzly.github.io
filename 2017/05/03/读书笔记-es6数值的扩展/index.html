@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>读书笔记-es6数值的扩展 | Hzzly</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="随笔,JavaScript,es6," />
+  
+
+  <meta name="description" content="数值的扩展一、Number.isFinite(), Number.isNaN()  Number.isFinite()  检查一个数值是否为有限的（finite） Number.isNaN()  检查一个值是否为NaN   1234567891011121314151617&#x2F;&#x2F;Number.isFinite()Number.isFinite(15); &#x2F;&#x2F; trueNumber.isFinite(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读书笔记-es6数值的扩展">
+<meta property="og:url" content="http://yoursite.com/2017/05/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-es6%E6%95%B0%E5%80%BC%E7%9A%84%E6%89%A9%E5%B1%95/index.html">
+<meta property="og:site_name" content="Hzzly">
+<meta property="og:description" content="数值的扩展一、Number.isFinite(), Number.isNaN()  Number.isFinite()  检查一个数值是否为有限的（finite） Number.isNaN()  检查一个值是否为NaN   1234567891011121314151617&#x2F;&#x2F;Number.isFinite()Number.isFinite(15); &#x2F;&#x2F; trueNumber.isFinite(">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-05-03T15:03:20.000Z">
+<meta property="article:modified_time" content="2020-01-21T06:34:22.613Z">
+<meta property="article:author" content="hzzly">
+<meta property="article:tag" content="随笔">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="es6">
+<meta name="twitter:card" content="summary">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    
+<link rel="stylesheet" href="/css/personal-style.css">
+
+  
+
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-38189205-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+
+<meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/atom.xml" title="Hzzly" type="application/atom+xml">
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            rel="noopener noreferrer"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%80%BC%E7%9A%84%E6%89%A9%E5%B1%95"><span class="toc-text">数值的扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81Number-isFinite-Number-isNaN"><span class="toc-text">一、Number.isFinite(), Number.isNaN()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Number-parseInt-Number-parseFloat"><span class="toc-text">二、Number.parseInt(), Number.parseFloat()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81Number-isInteger"><span class="toc-text">三、Number.isInteger()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%AE%89%E5%85%A8%E6%95%B4%E6%95%B0%E5%92%8CNumber-isSafeInteger"><span class="toc-text">四、安全整数和Number.isSafeInteger()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81Math-trunc"><span class="toc-text">五、Math.trunc()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD%E3%80%81Math-sign"><span class="toc-text">六、Math.sign()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%83%E3%80%81Math-signbit"><span class="toc-text">七、Math.signbit()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E6%8C%87%E6%95%B0%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">八、指数运算符( ** )</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-读书笔记-es6数值的扩展" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">读书笔记-es6数值的扩展</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.05.03</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>hzzly</span>
+        </span>
+      
+
+      
+
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="数值的扩展"><a href="#数值的扩展" class="headerlink" title="数值的扩展"></a><strong>数值的扩展</strong></h2><h3 id="一、Number-isFinite-Number-isNaN"><a href="#一、Number-isFinite-Number-isNaN" class="headerlink" title="一、Number.isFinite(), Number.isNaN()"></a>一、Number.isFinite(), Number.isNaN()</h3><blockquote>
+<ul>
+<li>Number.isFinite()  检查一个数值是否为有限的（finite）</li>
+<li>Number.isNaN()  检查一个值是否为NaN</li>
+</ul>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Number.isFinite()</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="built_in">isFinite</span>(<span class="number">15</span>); <span class="comment">// true</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="built_in">isFinite</span>(<span class="number">0.8</span>); <span class="comment">// true</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="built_in">isFinite</span>(<span class="title class_">NaN</span>); <span class="comment">// false</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="built_in">isFinite</span>(<span class="title class_">Infinity</span>); <span class="comment">// false</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="built_in">isFinite</span>(-<span class="title class_">Infinity</span>); <span class="comment">// false</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="built_in">isFinite</span>(<span class="string">&#x27;foo&#x27;</span>); <span class="comment">// false</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="built_in">isFinite</span>(<span class="string">&#x27;15&#x27;</span>); <span class="comment">// false</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="built_in">isFinite</span>(<span class="literal">true</span>); <span class="comment">// false</span></span><br><span class="line"><span class="comment">//Number.isNaN()</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="built_in">isNaN</span>(<span class="title class_">NaN</span>) <span class="comment">// true</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="built_in">isNaN</span>(<span class="number">15</span>) <span class="comment">// false</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="built_in">isNaN</span>(<span class="string">&#x27;15&#x27;</span>) <span class="comment">// false</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="built_in">isNaN</span>(<span class="literal">true</span>) <span class="comment">// false</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="built_in">isNaN</span>(<span class="number">9</span>/<span class="title class_">NaN</span>) <span class="comment">// true</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="built_in">isNaN</span>(<span class="string">&#x27;true&#x27;</span>/<span class="number">0</span>) <span class="comment">// true</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="built_in">isNaN</span>(<span class="string">&#x27;true&#x27;</span>/<span class="string">&#x27;true&#x27;</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="二、Number-parseInt-Number-parseFloat"><a href="#二、Number-parseInt-Number-parseFloat" class="headerlink" title="二、Number.parseInt(), Number.parseFloat()"></a>二、Number.parseInt(), Number.parseFloat()</h3><blockquote>
+<p>全局方法parseInt()和parseFloat()，移植到Number对象上面，行为完全保持不变。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Number</span>.<span class="property">parseInt</span> === <span class="built_in">parseInt</span> <span class="comment">// true</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="property">parseFloat</span> === <span class="built_in">parseFloat</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="三、Number-isInteger"><a href="#三、Number-isInteger" class="headerlink" title="三、Number.isInteger()"></a>三、Number.isInteger()</h3><blockquote>
+<p>判断一个值是否为整数</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Number</span>.<span class="title function_">isInteger</span>(<span class="number">25</span>) <span class="comment">// true</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="title function_">isInteger</span>(<span class="number">25.0</span>) <span class="comment">// true</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="title function_">isInteger</span>(<span class="number">25.1</span>) <span class="comment">// false</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="title function_">isInteger</span>(<span class="string">&quot;15&quot;</span>) <span class="comment">// false</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="title function_">isInteger</span>(<span class="literal">true</span>) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h3 id="四、安全整数和Number-isSafeInteger"><a href="#四、安全整数和Number-isSafeInteger" class="headerlink" title="四、安全整数和Number.isSafeInteger()"></a>四、安全整数和Number.isSafeInteger()</h3><blockquote>
+<p>JavaScript能够准确表示的整数范围在-2^53到2^53之间（不含两个端点），超过这个范围，无法精确表示这个值。Number.isSafeInteger() 用来判断一个整数是否落在这个范围之内</p>
+</blockquote>
+<h3 id="五、Math-trunc"><a href="#五、Math-trunc" class="headerlink" title="五、Math.trunc()"></a>五、Math.trunc()</h3><blockquote>
+<p>去除一个数的小数部分，返回整数部分</p>
+</blockquote>
+<h3 id="六、Math-sign"><a href="#六、Math-sign" class="headerlink" title="六、Math.sign()"></a>六、Math.sign()</h3><blockquote>
+<p>判断一个数到底是正数、负数、还是零</p>
+<ul>
+<li>参数为正数，返回+1；</li>
+<li>参数为负数，返回-1；</li>
+<li>参数为0，返回0；</li>
+<li>参数为-0，返回-0;</li>
+<li>其他值，返回NaN。</li>
+</ul>
+</blockquote>
+<h3 id="七、Math-signbit"><a href="#七、Math-signbit" class="headerlink" title="七、Math.signbit()"></a>七、Math.signbit()</h3><blockquote>
+<p>判断一个数的符号位是否设置了</p>
+<ul>
+<li>如果参数是NaN，返回false</li>
+<li>如果参数是-0，返回true</li>
+<li>如果参数是负值，返回true</li>
+<li>其他情况返回false</li>
+</ul>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Math</span>.<span class="title function_">signbit</span>(<span class="number">2</span>) <span class="comment">//false</span></span><br><span class="line"><span class="title class_">Math</span>.<span class="title function_">signbit</span>(-<span class="number">2</span>) <span class="comment">//true</span></span><br><span class="line"><span class="title class_">Math</span>.<span class="title function_">signbit</span>(<span class="number">0</span>) <span class="comment">//false</span></span><br><span class="line"><span class="title class_">Math</span>.<span class="title function_">signbit</span>(-<span class="number">0</span>) <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="八、指数运算符"><a href="#八、指数运算符" class="headerlink" title="八、指数运算符( ** )"></a>八、指数运算符( ** )</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span> ** <span class="number">2</span> <span class="comment">// 4</span></span><br><span class="line"><span class="number">2</span> ** <span class="number">3</span> <span class="comment">// 8</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Github地址：</strong> <a target="_blank" rel="noopener" href="https://github.com/hzzly/learn-es6">https://github.com/hzzly/learn-es6</a></p>
+
+    
+  </div>
+
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持hzzly</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/04/27/DIY%E4%B8%80%E4%B8%AA%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2017/05/04/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-es6%E6%95%B0%E7%BB%84%E7%9A%84%E6%89%A9%E5%B1%95/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              rel="noopener noreferrer"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
