@@ -29,7 +29,7 @@
 <meta property="og:image" content="https://hzzlyxx.oss-cn-beijing.aliyuncs.com/blog/git/git-push-log.png">
 <meta property="og:image" content="https://hzzlyxx.oss-cn-beijing.aliyuncs.com/blog/git/git-push-reset.png">
 <meta property="article:published_time" content="2019-03-03T15:34:28.000Z">
-<meta property="article:modified_time" content="2021-04-16T09:56:38.238Z">
+<meta property="article:modified_time" content="2023-01-16T11:33:05.223Z">
 <meta property="article:author" content="hzzly">
 <meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary">
@@ -51,48 +51,10 @@
   
 
   
-<!-- Google Analytics -->
-<script type="text/javascript">
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-38189205-1', 'auto');
-ga('send', 'pageview');
-
-</script>
-<!-- End Google Analytics -->
-
 
   
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
 
   
-  <script type="text/javascript">
-	(function(){
-	    var bp = document.createElement('script');
-	    var curProtocol = window.location.protocol.split(':')[0];
-	    if (curProtocol === 'https') {
-	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
-	    }
-	    else {
-	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-	    }
-	    var s = document.getElementsByTagName("script")[0];
-	    s.parentNode.insertBefore(bp, s);
-	})();
-  </script>
-
 
 
   
@@ -192,7 +154,7 @@ ga('send', 'pageview');
 
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E5%88%86%E6%94%AF"><span class="toc-text">主分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E5%88%86%E6%94%AF"><span class="toc-text">开发分支</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Git%E5%88%9B%E5%BB%BADevelop%E5%88%86%E6%94%AF%E7%9A%84%E5%91%BD%E4%BB%A4%EF%BC%9A"><span class="toc-text">Git创建Develop分支的命令：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86Develop%E5%88%86%E6%94%AF%E5%8F%91%E5%B8%83%E5%88%B0Master%E5%88%86%E6%94%AF%E7%9A%84%E5%91%BD%E4%BB%A4%EF%BC%9A"><span class="toc-text">将Develop分支发布到Master分支的命令：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%B4%E6%97%B6%E6%80%A7%E5%88%86%E6%94%AF"><span class="toc-text">临时性分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%E5%88%86%E6%94%AF"><span class="toc-text">功能分支</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%8A%9F%E8%83%BD%E5%88%86%E6%94%AF%EF%BC%9A"><span class="toc-text">创建一个功能分支：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E5%AE%8C%E6%88%90%E5%90%8E%EF%BC%8C%E5%B0%86%E5%8A%9F%E8%83%BD%E5%88%86%E6%94%AF%E5%90%88%E5%B9%B6%E5%88%B0develop%E5%88%86%E6%94%AF%EF%BC%9A"><span class="toc-text">开发完成后，将功能分支合并到develop分支：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4feature%E5%88%86%E6%94%AF%EF%BC%9A"><span class="toc-text">删除feature分支：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%84%E5%8F%91%E5%B8%83%E5%88%86%E6%94%AF"><span class="toc-text">预发布分支</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E9%A2%84%E5%8F%91%E5%B8%83%E5%88%86%E6%94%AF%EF%BC%9A"><span class="toc-text">创建一个预发布分支：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AE%E8%AE%A4%E6%B2%A1%E6%9C%89%E9%97%AE%E9%A2%98%E5%90%8E%EF%BC%8C%E5%90%88%E5%B9%B6%E5%88%B0master%E5%88%86%E6%94%AF%EF%BC%9A"><span class="toc-text">确认没有问题后，合并到master分支：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%8D%E5%90%88%E5%B9%B6%E5%88%B0develop%E5%88%86%E6%94%AF%EF%BC%9A"><span class="toc-text">再合并到develop分支：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%90%8E%EF%BC%8C%E5%88%A0%E9%99%A4%E9%A2%84%E5%8F%91%E5%B8%83%E5%88%86%E6%94%AF%EF%BC%9A"><span class="toc-text">最后，删除预发布分支：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E8%A1%A5bug%E5%88%86%E6%94%AF"><span class="toc-text">修补bug分支</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E4%BF%AE%E8%A1%A5bug%E5%88%86%E6%94%AF%EF%BC%9A"><span class="toc-text">创建一个修补bug分支：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E8%A1%A5%E7%BB%93%E6%9D%9F%E5%90%8E%EF%BC%8C%E5%90%88%E5%B9%B6%E5%88%B0master%E5%88%86%E6%94%AF%EF%BC%9A"><span class="toc-text">修补结束后，合并到master分支：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%8D%E5%90%88%E5%B9%B6%E5%88%B0develop%E5%88%86%E6%94%AF%EF%BC%9A-1"><span class="toc-text">再合并到develop分支：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%90%8E%EF%BC%8C%E5%88%A0%E9%99%A4%E4%BF%AE%E8%A1%A5bug%E5%88%86%E6%94%AF%EF%BC%9A"><span class="toc-text">最后，删除修补bug分支：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%96%E6%B6%88%E5%88%9A%E6%89%8D%E7%9A%84%E5%90%88%E5%B9%B6merge"><span class="toc-text">取消刚才的合并merge</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%88%E5%B9%B6"><span class="toc-text">合并</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%86%B2%E7%AA%81%E5%90%8E%E7%9A%84%E6%8F%90%E4%BA%A4"><span class="toc-text">修改冲突后的提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%96%E6%B6%88rebase"><span class="toc-text">取消rebase</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9E%E9%80%80"><span class="toc-text">回退</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#commit-%E5%9B%9E%E9%80%80"><span class="toc-text">commit 回退</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#push-%E5%9B%9E%E9%80%80"><span class="toc-text">push 回退</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E7%AD%BE"><span class="toc-text">标签</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E8%BD%BB%E6%A0%87%E7%AD%BE"><span class="toc-text">添加轻标签</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E6%B3%A8%E8%A7%A3%E6%A0%87%E7%AD%BE"><span class="toc-text">添加注解标签</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%A0%87%E7%AD%BE"><span class="toc-text">删除标签</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A8%E9%80%81%E6%A0%87%E7%AD%BE%E5%88%B0%E8%BF%9C%E7%A8%8B"><span class="toc-text">推送标签到远程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF"><span class="toc-text">查看远程分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E5%9C%B0%E5%9D%80%E5%8F%98%E6%9B%B4"><span class="toc-text">Git远程仓库地址变更</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%89%80%E6%9C%89%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-text">查看所有远程仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E5%9C%B0%E5%9D%80"><span class="toc-text">删除远程仓库地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%8F%98%E6%9B%B4%E5%90%8E%E7%9A%84%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E5%9C%B0%E5%9D%80"><span class="toc-text">修改变更后的远程仓库地址</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git%E9%97%AE%E9%A2%98"><span class="toc-text">git问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LibreSSL-SSL-read-SSL-ERROR-SYSCALL-errno-60"><span class="toc-text">LibreSSL SSL_read: SSL_ERROR_SYSCALL, errno 60</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LibreSSL-SSL-connect-SSL-ERROR-SYSCALL-in-connection-to-github-com-443"><span class="toc-text">LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Empty-reply-from-server"><span class="toc-text">Empty reply from server</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-text">参考</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E5%88%86%E6%94%AF"><span class="toc-text">主分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E5%88%86%E6%94%AF"><span class="toc-text">开发分支</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Git%E5%88%9B%E5%BB%BADevelop%E5%88%86%E6%94%AF%E7%9A%84%E5%91%BD%E4%BB%A4%EF%BC%9A"><span class="toc-text">Git创建Develop分支的命令：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86Develop%E5%88%86%E6%94%AF%E5%8F%91%E5%B8%83%E5%88%B0Master%E5%88%86%E6%94%AF%E7%9A%84%E5%91%BD%E4%BB%A4%EF%BC%9A"><span class="toc-text">将Develop分支发布到Master分支的命令：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%B4%E6%97%B6%E6%80%A7%E5%88%86%E6%94%AF"><span class="toc-text">临时性分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%E5%88%86%E6%94%AF"><span class="toc-text">功能分支</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%8A%9F%E8%83%BD%E5%88%86%E6%94%AF%EF%BC%9A"><span class="toc-text">创建一个功能分支：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E5%AE%8C%E6%88%90%E5%90%8E%EF%BC%8C%E5%B0%86%E5%8A%9F%E8%83%BD%E5%88%86%E6%94%AF%E5%90%88%E5%B9%B6%E5%88%B0develop%E5%88%86%E6%94%AF%EF%BC%9A"><span class="toc-text">开发完成后，将功能分支合并到develop分支：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4feature%E5%88%86%E6%94%AF%EF%BC%9A"><span class="toc-text">删除feature分支：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%84%E5%8F%91%E5%B8%83%E5%88%86%E6%94%AF"><span class="toc-text">预发布分支</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E9%A2%84%E5%8F%91%E5%B8%83%E5%88%86%E6%94%AF%EF%BC%9A"><span class="toc-text">创建一个预发布分支：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AE%E8%AE%A4%E6%B2%A1%E6%9C%89%E9%97%AE%E9%A2%98%E5%90%8E%EF%BC%8C%E5%90%88%E5%B9%B6%E5%88%B0master%E5%88%86%E6%94%AF%EF%BC%9A"><span class="toc-text">确认没有问题后，合并到master分支：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%8D%E5%90%88%E5%B9%B6%E5%88%B0develop%E5%88%86%E6%94%AF%EF%BC%9A"><span class="toc-text">再合并到develop分支：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%90%8E%EF%BC%8C%E5%88%A0%E9%99%A4%E9%A2%84%E5%8F%91%E5%B8%83%E5%88%86%E6%94%AF%EF%BC%9A"><span class="toc-text">最后，删除预发布分支：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E8%A1%A5bug%E5%88%86%E6%94%AF"><span class="toc-text">修补bug分支</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E4%BF%AE%E8%A1%A5bug%E5%88%86%E6%94%AF%EF%BC%9A"><span class="toc-text">创建一个修补bug分支：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E8%A1%A5%E7%BB%93%E6%9D%9F%E5%90%8E%EF%BC%8C%E5%90%88%E5%B9%B6%E5%88%B0master%E5%88%86%E6%94%AF%EF%BC%9A"><span class="toc-text">修补结束后，合并到master分支：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%8D%E5%90%88%E5%B9%B6%E5%88%B0develop%E5%88%86%E6%94%AF%EF%BC%9A-1"><span class="toc-text">再合并到develop分支：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%90%8E%EF%BC%8C%E5%88%A0%E9%99%A4%E4%BF%AE%E8%A1%A5bug%E5%88%86%E6%94%AF%EF%BC%9A"><span class="toc-text">最后，删除修补bug分支：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%96%E6%B6%88%E5%88%9A%E6%89%8D%E7%9A%84%E5%90%88%E5%B9%B6merge"><span class="toc-text">取消刚才的合并merge</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%88%E5%B9%B6"><span class="toc-text">合并</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%86%B2%E7%AA%81%E5%90%8E%E7%9A%84%E6%8F%90%E4%BA%A4"><span class="toc-text">修改冲突后的提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%96%E6%B6%88rebase"><span class="toc-text">取消rebase</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9E%E9%80%80"><span class="toc-text">回退</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#commit-%E5%9B%9E%E9%80%80"><span class="toc-text">commit 回退</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#push-%E5%9B%9E%E9%80%80"><span class="toc-text">push 回退</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%88%E5%B9%B6-commit"><span class="toc-text">合并 commit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E7%AD%BE"><span class="toc-text">标签</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E8%BD%BB%E6%A0%87%E7%AD%BE"><span class="toc-text">添加轻标签</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E6%B3%A8%E8%A7%A3%E6%A0%87%E7%AD%BE"><span class="toc-text">添加注解标签</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%A0%87%E7%AD%BE"><span class="toc-text">删除标签</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A8%E9%80%81%E6%A0%87%E7%AD%BE%E5%88%B0%E8%BF%9C%E7%A8%8B"><span class="toc-text">推送标签到远程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF"><span class="toc-text">查看远程分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E5%9C%B0%E5%9D%80%E5%8F%98%E6%9B%B4"><span class="toc-text">Git远程仓库地址变更</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%89%80%E6%9C%89%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-text">查看所有远程仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E5%9C%B0%E5%9D%80"><span class="toc-text">删除远程仓库地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%8F%98%E6%9B%B4%E5%90%8E%E7%9A%84%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E5%9C%B0%E5%9D%80"><span class="toc-text">修改变更后的远程仓库地址</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git%E9%97%AE%E9%A2%98"><span class="toc-text">git问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LibreSSL-SSL-read-SSL-ERROR-SYSCALL-errno-60"><span class="toc-text">LibreSSL SSL_read: SSL_ERROR_SYSCALL, errno 60</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LibreSSL-SSL-connect-SSL-ERROR-SYSCALL-in-connection-to-github-com-443"><span class="toc-text">LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Empty-reply-from-server"><span class="toc-text">Empty reply from server</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-text">参考</span></a></li></ol>
   </div>
 
 
@@ -277,6 +239,8 @@ ga('send', 'pageview');
 <p>push reset</p>
 </blockquote>
 <p><img src="https://hzzlyxx.oss-cn-beijing.aliyuncs.com/blog/git/git-push-reset.png" alt="git-push-reset"></p>
+<h2 id="合并-commit"><a href="#合并-commit" class="headerlink" title="合并 commit"></a>合并 commit</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 从HEAD版本开始往过去数3个版本</span></span><br><span class="line">$ git rebase -i HEAD~3</span><br><span class="line"></span><br><span class="line"><span class="comment"># 合并指定版本号（不包含此版本）</span></span><br><span class="line">$ git rebase -i [commitid]</span><br></pre></td></tr></table></figure>
+
 <h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><h3 id="添加轻标签"><a href="#添加轻标签" class="headerlink" title="添加轻标签"></a>添加轻标签</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git tag v2.0</span><br><span class="line"><span class="comment"># 显示标签列表</span></span><br><span class="line">git tag</span><br><span class="line"><span class="comment"># 显示标签列表包含标签资料的历史记录</span></span><br><span class="line">git <span class="built_in">log</span> --decorate</span><br></pre></td></tr></table></figure>
 
 <h2 id="添加注解标签"><a href="#添加注解标签" class="headerlink" title="添加注解标签"></a>添加注解标签</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git tag -a v3.0</span><br><span class="line">// 或</span><br><span class="line">git tag -am <span class="string">&quot;注解&quot;</span> v3.0</span><br><span class="line"><span class="comment"># 显示标签的列表和注解</span></span><br><span class="line">git tag -n</span><br></pre></td></tr></table></figure>
@@ -311,32 +275,6 @@ ga('send', 'pageview');
 
 
    
-  <div class="text-center donation">
-    <div class="inner-donation">
-      <span class="btn-donation">支持一下</span>
-      <div class="donation-body">
-        <div class="tip text-center">扫一扫，支持hzzly</div>
-        <ul>
-        
-          <li class="item">
-            
-              <span>微信扫一扫</span>
-            
-            <img src="" alt="">
-          </li>
-        
-          <li class="item">
-            
-              <span>支付宝扫一扫</span>
-            
-            <img src="" alt="">
-          </li>
-        
-        </ul>
-      </div>
-    </div>
-  </div>
-
 
    
   <div class="box-prev-next clearfix">
@@ -494,6 +432,16 @@ ga('send', 'pageview');
     });
   }
 </script>
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?6508187e24de2691c66e41f4c33b1718";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+  
 
 </body>
 </html>
